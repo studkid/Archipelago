@@ -1,24 +1,48 @@
 from dataclasses import dataclass
 from Options import Toggle, DefaultOnToggle, DeathLink, Range, Choice, PerGameCommonOptions
 
-class Goal(Choice):
+class Grouping(Choice):
     """
-    Classic Mode: Every Item pickup increases fills a progress bar which gives location checks.
+    Universal: Every Item pickup increases fills a progress bar which gives location checks.
 
-    Explore Mode: Each environment will have location checks within each environment.
-    environments will be locked in the item pool until received.
+    Stages (NYI): Each stage will have location checks within each map variant on a given stage.
+    Stages will be locked in the item pool until received.
+
+    Maps (NYI): Each map will have location checks within each map on said stage.
+    Both maps and stages will be locked in the item pool until received.
     """
-    display_name = "Game Mode"
-    option_classic = 0
-    option_explore = 1
+    display_name = "Location Grouping"
+    option_universal = 0
+    # option_stage = 1
+    # option_map = 2
     default = 0
 
 class TotalLocations(Range):
-    """Classic Mode: Number of location checks which are added to the Risk of Rain playthrough."""
+    """
+    Number of location checks which are added to the Risk of Rain playthrough.
+    On stage or map grouping, will determine how many locations checks are added per stage/map.
+    """
     display_name = "Total Locations"
     range_start = 40
     range_end = 250
     default = 40
+
+class RequiredFrags(Range):
+    """Number of teleporter fragments required to access the final stage"""
+    display_name = "Teleporter Fragments Required"
+    range_start = 0
+    range_end = 100
+    default = 0
+
+class AvailableFrags(Range):
+    """
+    Number of teleporter fragments that can be collected
+    This must be lower than total location checks
+    """
+    display_name = "Teleporter Fragments Available"
+    range_start = 0
+    range_end = 100
+    default = 0
 
 class ItemPickupStep(Range):
     """
@@ -132,8 +156,10 @@ class MeteorTrap(Range):
 
 @dataclass
 class ROROptions(PerGameCommonOptions):
-    goal: Goal
+    grouping: Grouping
     total_locations: TotalLocations
+    required_frags: RequiredFrags
+    available_frags: AvailableFrags
     item_pickup_step: ItemPickupStep
     enable_trap: AllowTrapItems
     common_item: CommonItem

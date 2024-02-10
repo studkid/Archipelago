@@ -55,7 +55,7 @@ class RoR1World(World):
         for map_name, _ in maps_pool.items():
             itempool += [map_name]
         
-        if self.options.goal == "classic":
+        if self.options.grouping == "universal":
             total_locations = self.options.total_locations.value
         
         junk_pool = self.create_junk_pool()
@@ -105,9 +105,8 @@ class RoR1World(World):
         if total_locations / 25 == num_of_events:
             num_of_events -= 1
         world_region = self.multiworld.get_region("Contact Light", self.player)
-        if self.options.goal == "classic":
-            # classic mode
-            # only setup Pickups when using classic_mode
+        if self.options.grouping == "universal":
+            # universal pickups
             for i in range(num_of_events):
                 event_loc = RoR1Location(self.player, f"Pickup{(i + 1) * 25}", None, world_region)
                 event_loc.place_locked_item(
