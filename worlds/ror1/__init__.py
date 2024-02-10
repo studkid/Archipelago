@@ -45,10 +45,6 @@ class RoR1World(World):
 
     def create_items(self) -> None:
         maps_pool = {}
-
-        # unlock = self.random.choices(list(map_orderedstages_table[0].keys()), k=1)
-        # self.multiworld.push_precollected(self.create_item(unlock[0]))
-        # maps_pool.pop(unlock[0])
         
         itempool: List[str] = []
 
@@ -57,7 +53,10 @@ class RoR1World(World):
         
         if self.options.grouping == "universal":
             total_locations = self.options.total_locations.value
-        
+
+        if self.options.required_frags > 0:
+            itempool += ["Teleporter Fragment"] * self.options.available_frags
+            
         junk_pool = self.create_junk_pool()
         filler = self.random.choices(*zip(*junk_pool.items()), k = total_locations - len(itempool))
         itempool.extend(filler)
@@ -92,11 +91,9 @@ class RoR1World(World):
         return RoR1Item(name, data.item_type, data.code, self.player)
     
     def fill_slot_data(self) -> Dict[str, Any]:
-        options_dict = self.options.as_dict("item_pickup_step", "goal", "total_locations", casing="camel")
+        options_dict = self.options.as_dict("grouping", "total_locations", "required_frags", "item_pickup_step", casing="camel")
         return {
             **options_dict,
-            "seed": "".join(self.random.choice(string.digits) for _ in range(16)),
-            "offset": offset
         }
     
     def create_events(self) -> None:

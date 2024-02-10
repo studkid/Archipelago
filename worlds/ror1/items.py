@@ -23,6 +23,7 @@ upgrade_table: Dict[str, RoR1ItemData] = {
     "Legendary Item":       RoR1ItemData("Upgrade", 3 + offset, ItemClassification.filler, 64),
     "Boss Item":            RoR1ItemData("Upgrade", 4 + offset, ItemClassification.filler, 64),
     "Equipment":            RoR1ItemData("Upgrade", 5 + offset, ItemClassification.filler, 64),
+    "Teleporter Fragment":  RoR1ItemData("Upgrade", 6 + offset, ItemClassification.progression, 64),
 }
 # Filler item ids  250101 - 250102
 filler_table: Dict[str, RoR1ItemData] = {
