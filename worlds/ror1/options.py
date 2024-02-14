@@ -1,20 +1,20 @@
 from dataclasses import dataclass
-from Options import Toggle, DefaultOnToggle, DeathLink, Range, Choice, PerGameCommonOptions
+from Options import Toggle, DeathLink, Range, Choice, PerGameCommonOptions
 
 class Grouping(Choice):
     """
     Universal: Every Item pickup increases fills a progress bar which gives location checks.
 
-    Stages (NYI): Each stage will have location checks within each map variant on a given stage.
+    Stages: Each stage will have location checks within each map variant on a given stage.
     Stages will be locked in the item pool until received.
 
-    Maps (NYI): Each map will have location checks within each map on said stage.
-    Both maps and stages will be locked in the item pool until received.
+    Maps: Each map will have location checks within each map on said stage.
+    Both maps and stages will be locked in the item pool until received. asdkfjas;dlkf
     """
     display_name = "Location Grouping"
     option_universal = 0
-    # option_stage = 1
-    # option_map = 2
+    option_stage = 1
+    option_map = 2
     default = 0
 
 class TotalLocations(Range):

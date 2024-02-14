@@ -28,7 +28,7 @@ def get_map_locations(chests: int, map_name: str, map_index: int) -> Dict[str, i
 
     map_start_id = map_index + ror_locations_start_ordered_stage
     for n in range(chests):
-        locations.update({f"{map_name}: Chest {n + 1}": n + offset_chests + map_start_id})
+        locations.update({f"{map_name}: Item Pickup {n + 1}": n + offset_chests + map_start_id})
     return locations
 
 def get_locations(chests: int) -> Dict[str, int]:
@@ -41,9 +41,6 @@ def get_locations(chests: int) -> Dict[str, int]:
             map_index = map_index
         ),)
     return locations
-
-
-
 
 map_orderedstage_1_table: Dict[str, int] = {
     "Desolate Forest":          0,
@@ -65,13 +62,9 @@ map_orderedstage_5_table: Dict[str, int] = {
     "Temple of the Elders":     8,
 }
 map_orderedstage_special_table: Dict[str, int] = {
-    "Boar Beach":               9,
-    "Contact Light":            10,
+    # "Boar Beach":               9,
+    "Risk of Rain":            10,
 }
-
-map_orderedstages_table = \
-    [map_orderedstage_1_table, map_orderedstage_2_table, map_orderedstage_3_table,
-     map_orderedstage_4_table, map_orderedstage_5_table]
 
 X = TypeVar("X")
 Y = TypeVar("Y")
@@ -81,3 +74,11 @@ def compress_dict_list_horizontal(list_of_dict: List[Dict[X, Y]]) -> Dict[X, Y]:
     for individual in list_of_dict:
         compressed.update(individual)
     return compressed
+
+map_orderedstages_table = \
+    [map_orderedstage_1_table, map_orderedstage_2_table, map_orderedstage_3_table,
+     map_orderedstage_4_table, map_orderedstage_5_table]
+
+map_table = \
+    {**compress_dict_list_horizontal(map_orderedstages_table),
+     **map_orderedstage_special_table}

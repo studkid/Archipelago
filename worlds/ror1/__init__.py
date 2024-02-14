@@ -2,10 +2,10 @@
 
 import string
 
-from .items import RoR1Item, default_weights, item_table, offset
-from .locations import RoR1Location, item_pickups, get_locations, map_orderedstages_table
+from .items import RoR1Item, default_weights, item_table, offset, map_offset
+from .locations import RoR1Location, item_pickups, get_locations, map_orderedstages_table, map_table, shift_by_offset
 from .options import ROROptions
-from .regions import create_classic_regions
+from .regions import create_universal_regions, create_grouped_regions
 
 from worlds.AutoWorld import World, WebWorld
 from BaseClasses import Item, ItemClassification, Tutorial
@@ -40,11 +40,21 @@ class RoR1World(World):
     required_client_version = (0, 4, 4)
 
     def create_regions(self) -> None:
-        create_classic_regions(self)
+        if self.options.grouping == "universal":
+            create_universal_regions(self)
+        else:
+            create_grouped_regions(self)
+
         self.create_events()
 
     def create_items(self) -> None:
         maps_pool = {}
+
+        if self.options.grouping != "universal":
+            maps_pool = shift_by_offset(map_table, map_offset)
+            unlock = self.random.choices(List(map_table[0].keys()), k=1)
+            self.multiworld.push_precollected(self.create_item(unlock[0]))
+            maps_pool.pop(unlock[0])
         
         itempool: List[str] = []
 
@@ -53,6 +63,13 @@ class RoR1World(World):
         
         if self.options.grouping == "universal":
             total_locations = self.options.total_locations.value
+        else:
+            itempool += ["Stage 2", "Stage 3", "Stage 4", "Stage 5"]
+            total_locations = len(
+                get_locations(
+                    chests=self.options.total_locations.value,
+                )
+            )
 
         if self.options.required_frags > 0:
             itempool += ["Teleporter Fragment"] * self.options.available_frags
@@ -113,13 +130,13 @@ class RoR1World(World):
                     lambda state, i=i: state.can_reach(f"ItemPickup{((i + 1) * 25) - 1}", "Location", self.player)
                 world_region.locations.append(event_loc)
         else:
-            # explore mode
-            event_region = self.multiworld.get_region("OrderedStage_5", self.player)
+            # stage and map pickups
+            event_region = self.multiworld.get_region("Stage 5", self.player)
             event_loc = RoR1Location(self.player, "Stage 5", None, event_region)
             event_loc.place_locked_item(RoR1Item("Stage 5", ItemClassification.progression, None, self.player))
             event_loc.show_in_spoiler = False
             event_region.locations.append(event_loc)
-            event_loc.access_rule = lambda state: state.has("Sky Meadow", self.player)
+            event_loc.access_rule = lambda state: state.has("Temple of the Elders", self.player)
 
         victory_region = self.multiworld.get_region("Victory", self.player)
         victory_event = RoR1Location(self.player, "Victory", None, victory_region)
