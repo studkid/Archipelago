@@ -5,6 +5,7 @@ import string
 from .items import RoR1Item, default_weights, item_table, offset, map_offset
 from .locations import RoR1Location, item_pickups, get_locations, map_orderedstages_table, map_table, shift_by_offset
 from .options import ROROptions
+from .rules import set_rules
 from .regions import create_universal_regions, create_grouped_regions
 
 from worlds.AutoWorld import World, WebWorld
@@ -107,6 +108,9 @@ class RoR1World(World):
         data = item_table[name]
         return RoR1Item(name, data.item_type, data.code, self.player)
     
+    def set_rules(self) -> None:
+        set_rules(self)
+    
     def fill_slot_data(self) -> Dict[str, Any]:
         options_dict = self.options.as_dict("grouping", "total_locations", "required_frags", "item_pickup_step", casing="camel")
         return {
@@ -131,9 +135,9 @@ class RoR1World(World):
                 world_region.locations.append(event_loc)
         else:
             # stage and map pickups
-            event_region = self.multiworld.get_region("Stage 5", self.player)
-            event_loc = RoR1Location(self.player, "Stage 5", None, event_region)
-            event_loc.place_locked_item(RoR1Item("Stage 5", ItemClassification.progression, None, self.player))
+            event_region = self.multiworld.get_region("Stage 6", self.player)
+            event_loc = RoR1Location(self.player, "Stage 6", None, event_region)
+            event_loc.place_locked_item(RoR1Item("Stage 6", ItemClassification.progression, None, self.player))
             event_loc.show_in_spoiler = False
             event_region.locations.append(event_loc)
             event_loc.access_rule = lambda state: state.has("Temple of the Elders", self.player)

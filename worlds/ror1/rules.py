@@ -1,4 +1,4 @@
-from worlds.generic.Rules import set_rule, add_rule
+from worlds.generic.Rules import set_rule
 from BaseClasses import MultiWorld
 from .locations import get_locations, map_orderedstages_table
 from typing import Set, TYPE_CHECKING
@@ -59,7 +59,7 @@ def set_rules(ror_world: "RoR1World") -> None:
     event_location_step = 25  # set an event location at these locations for "spheres"
     divisions = total_locations // event_location_step
 
-    if ror_options.goal == "classic":
+    if ror_options.grouping == "universal":
         # classic mode
         if divisions:
             for i in range(1, divisions + 1):  # since divisions is the floor of total_locations / 25
@@ -83,23 +83,19 @@ def set_rules(ror_world: "RoR1World") -> None:
 
     else:
         # explore mode
-        chests = ror_options.chests_per_stage.value
-        shrines = ror_options.shrines_per_stage.value
-        newts = ror_options.altars_per_stage.value
-        scavengers = ror_options.scavengers_per_stage.value
-        scanners = ror_options.scanner_per_stage.value
+        chests = ror_options.total_locations
         for i in range(len(map_orderedstages_table)):
-            for environment_name, _ in map_orderedstages_table[i].items():
+            for map_name, _ in map_orderedstages_table[i].items():
                 # Make sure to go through each location
                 for chest in range(1, chests + 1):
-                    has_location_access_rule(multiworld, environment_name, player, chest, "Chest")
+                    has_location_access_rule(multiworld, map_name, player, chest, "Item Pickup")
                 if i > 0:
-                    has_entrance_access_rule(multiworld, f"Stage {i}", environment_name, player)
+                    has_entrance_access_rule(multiworld, f"Stage {i}", map_name, player)
             get_stage_event(multiworld, player, i)
 
-        has_entrance_access_rule(multiworld, "Stage 5", "Risk of Rain", player)
+        has_entrance_access_rule(multiworld, "Stage 6", "Risk of Rain", player)
 
     # Win Condition
-    tele_fragments = min(multiworld.RequiredFrags[player], multiworld.AvailableFrags[player])
+    tele_fragments = min(ror_world.options.required_frags[player], ror_world.options.available_frags[player])
     completion_requirements = lambda state: state.has("Teleporter Fragment", player, tele_fragments)
     multiworld.completion_condition[player] = lambda state: completion_requirements(state) and state.has("Victory", player)

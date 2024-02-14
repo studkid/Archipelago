@@ -16,23 +16,25 @@ def create_grouped_regions(ror_world: "RoR1World") -> None:
     player = ror_world.player
 
     map_regions: Dict[str, RoR1Location] = {
-        "Menu":                             RoR1RegionData(None, ["Desolate Forest", "Dried Lake"]),
-        "Desolate Forest":                  RoR1RegionData([], ["Stage 1"]),
-        "Dried Lake":                       RoR1RegionData([], ["Stage 1"]),
-        "Damp Caverns":                     RoR1RegionData([], ["Stage 2"]),
-        "Sky Meadow":                       RoR1RegionData([], ["Stage 2"]),
-        "Ancient Valley":                   RoR1RegionData([], ["Stage 3"]),
-        "Sunken Tomb":                      RoR1RegionData([], ["Stage 3"]),
-        "Magma Barracks":                   RoR1RegionData([], ["Stage 4"]),
-        "Hive Cluster":                     RoR1RegionData([], ["Stage 4"]),
-        "Temple of the Elders":             RoR1RegionData([], ["Stage 5"]),
+        "Menu":                             RoR1RegionData(None, ["Desolate Forest", "Dried Lake", "Stage 1"]),
+        "Desolate Forest":                  RoR1RegionData([], ["Stage 2"]),
+        "Dried Lake":                       RoR1RegionData([], ["Stage 2"]),
+        "Damp Caverns":                     RoR1RegionData([], ["Stage 3"]),
+        "Sky Meadow":                       RoR1RegionData([], ["Stage 3"]),
+        "Ancient Valley":                   RoR1RegionData([], ["Stage 4"]),
+        "Sunken Tomb":                      RoR1RegionData([], ["Stage 4"]),
+        "Magma Barracks":                   RoR1RegionData([], ["Stage 5"]),
+        "Hive Cluster":                     RoR1RegionData([], ["Stage 5"]),
+        "Temple of the Elders":             RoR1RegionData([], ["Stage 6"]),
     }
     stage_regions: Dict[str, RoR1Location] = {
-        "Stage 1":                          RoR1RegionData([], ["Desolate Forest", "Dried Lake"]),
+        "Stage 1":                          RoR1RegionData([], []),
         "Stage 2":                          RoR1RegionData([], ["Damp Caverns", "Sky Meadow"]),
         "Stage 3":                          RoR1RegionData([], ["Ancient Valley", "Sunken Tomb"]),
         "Stage 4":                          RoR1RegionData([], ["Magma Barracks", "Hive Cluster"]),
         "Stage 5":                          RoR1RegionData([], ["Temple of the Elders"]),
+        "Stage 6":                          RoR1RegionData([], ["Risk of Rain"]),
+        
     }
     other_regions: Dict[str, RoR1Location] = {
         "Risk of Rain":                     RoR1RegionData(None, ["Victory"]),
