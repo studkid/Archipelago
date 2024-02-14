@@ -52,7 +52,7 @@ class RoR1World(World):
 
         if self.options.grouping != "universal":
             maps_pool = shift_by_offset(map_table, map_offset)
-            unlock = self.random.choices(List(map_table[0].keys()), k=1)
+            unlock = self.random.choices(list(map_orderedstages_table[0].keys()), k=1)
             self.multiworld.push_precollected(self.create_item(unlock[0]))
             maps_pool.pop(unlock[0])
         

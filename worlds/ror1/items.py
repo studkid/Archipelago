@@ -1,6 +1,6 @@
 from BaseClasses import Item, ItemClassification
 from typing import NamedTuple, Optional, Dict
-from locations import map_table
+from .locations import map_table, map_orderedstages_table
 
 class RoR1Item(Item):
     game: str = "Risk of Rain"
@@ -50,12 +50,13 @@ item_table = {**upgrade_table, **filler_table, **trap_table, **stage_table}
 def create_map_table(name: str, map_id: int, map_classification: ItemClassification) -> Dict[str, RoR1ItemData]:
     return {name: RoR1ItemData("Map", map_offset + map_id, map_classification)}
 
-map_table: Dict[str, RoR1ItemData] = {}
-for data, key in map_table:
+map_pool: Dict[str, RoR1ItemData] = {}
+for data, key in map_table.items():
     classification = ItemClassification.progression
-    map_table.update(create_map_table(data, key, classification))
+    map_pool.update(create_map_table(data, key, classification))
 
-item_table.update(map_table)
+item_table.update(map_pool)
+print(item_table)
 
 default_weights: Dict[str, int] = {
     "Common Item":          64,

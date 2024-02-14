@@ -33,16 +33,17 @@ def create_grouped_regions(ror_world: "RoR1World") -> None:
         "Stage 3":                          RoR1RegionData([], ["Ancient Valley", "Sunken Tomb"]),
         "Stage 4":                          RoR1RegionData([], ["Magma Barracks", "Hive Cluster"]),
         "Stage 5":                          RoR1RegionData([], ["Temple of the Elders"]),
+    }
+    other_regions: Dict[str, RoR1Location] = {
         "Risk of Rain":                     RoR1RegionData(None, ["Victory"]),
         "Contact Light":                    RoR1RegionData(None, []),
+        "Victory":                          RoR1RegionData(None, None)
     }
 
     pickups = int(ror_options.total_locations)
 
     if ror_options.grouping == "stage":
         for key in stage_regions:
-            if key == "Risk of Rain" or key == "Contact Light":
-                continue
             for i in range(0, pickups):
                 map_regions[key].locations.append(f"{key}: Item Pickup {i + 1}")
 
@@ -52,7 +53,7 @@ def create_grouped_regions(ror_world: "RoR1World") -> None:
                 continue
             for i in range(0, pickups):
                 map_regions[key].locations.append(f"{key}: Item Pickup {i + 1}")
-    regions_pool: Dict = {**map_regions, **stage_regions}
+    regions_pool: Dict = {**map_regions, **stage_regions, **other_regions}
 
     for name, data, in regions_pool.items():
         multiworld.regions.append(create_region(multiworld, player, name, data))
@@ -71,7 +72,7 @@ def create_region(multiworld:MultiWorld, player: int, name: str, data: RoR1Regio
 
     return region
 
-def create_connections_in_regions(multiworld: MultiWorld, player: int, name: str, data, RoRRegionData):
+def create_connections_in_regions(multiworld: MultiWorld, player: int, name: str, data: RoR1RegionData):
     region = multiworld.get_region(name, player)
     if data.region_exits:
         for region_exit in data.region_exits:

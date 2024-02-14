@@ -23,9 +23,9 @@ class TotalLocations(Range):
     On stage or map grouping, will determine how many locations checks are added per stage/map.
     """
     display_name = "Total Locations"
-    range_start = 40
+    range_start = 5
     range_end = 250
-    default = 40
+    default = 5
 
 class RequiredFrags(Range):
     """Number of teleporter fragments required to access the final stage"""

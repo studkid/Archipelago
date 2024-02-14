@@ -61,15 +61,17 @@ map_orderedstage_4_table: Dict[str, int] = {
 map_orderedstage_5_table: Dict[str, int] = {
     "Temple of the Elders":     8,
 }
-map_orderedstage_special_table: Dict[str, int] = {
-    # "Boar Beach":               9,
+map_special_table: Dict[str, int] = {
+    "Boar Beach":               9,
     "Risk of Rain":            10,
 }
 
 X = TypeVar("X")
 Y = TypeVar("Y")
 
+#Taken from ror2environments.py
 def compress_dict_list_horizontal(list_of_dict: List[Dict[X, Y]]) -> Dict[X, Y]:
+    """Combine all dictionaries in a list together into one dictionary."""
     compressed: Dict[X, Y] = {}
     for individual in list_of_dict:
         compressed.update(individual)
@@ -81,4 +83,8 @@ map_orderedstages_table = \
 
 map_table = \
     {**compress_dict_list_horizontal(map_orderedstages_table),
-     **map_orderedstage_special_table}
+     **map_special_table}
+
+def shift_by_offset(dictionary: Dict[str, int], offset: int) -> Dict[str, int]:
+    """Shift all indexes in a dictionary by an offset"""
+    return {name: index+offset for name, index in dictionary.items()}
