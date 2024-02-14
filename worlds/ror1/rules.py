@@ -84,18 +84,29 @@ def set_rules(ror_world: "RoR1World") -> None:
     else:
         # explore mode
         chests = ror_options.total_locations
-        for i in range(len(map_orderedstages_table)):
-            for map_name, _ in map_orderedstages_table[i].items():
-                # Make sure to go through each location
-                for chest in range(1, chests + 1):
-                    has_location_access_rule(multiworld, map_name, player, chest, "Item Pickup")
-                if i > 0:
-                    has_entrance_access_rule(multiworld, f"Stage {i}", map_name, player)
-            get_stage_event(multiworld, player, i)
+
+        if ror_options.grouping == "stage": # Stages
+            for i in range(5):
+                for _ in range(1, total_locations + 1):
+                    # Make sure to go through each location
+                    for chest in range(1, chests + 1):
+                        has_location_access_rule(multiworld, f"Stage {i + 1}", player, chest, "Item Pickup")
+                    if i > 0:
+                        has_entrance_access_rule(multiworld, f"Stage {i}", f"Stage {i + 1}", player)
+
+        else: # Maps
+            for i in range(len(map_orderedstages_table)):
+                for map_name, _ in map_orderedstages_table[i].items():
+                    # Make sure to go through each location
+                    for chest in range(1, chests + 1):
+                        has_location_access_rule(multiworld, map_name, player, chest, "Item Pickup")
+                    if i > 0:
+                        has_entrance_access_rule(multiworld, f"Stage {i}", map_name, player)
+                get_stage_event(multiworld, player, i)
 
         has_entrance_access_rule(multiworld, "Stage 6", "Risk of Rain", player)
 
     # Win Condition
-    tele_fragments = min(ror_world.options.required_frags[player], ror_world.options.available_frags[player])
+    tele_fragments = min(ror_world.options.required_frags, ror_world.options.available_frags)
     completion_requirements = lambda state: state.has("Teleporter Fragment", player, tele_fragments)
     multiworld.completion_condition[player] = lambda state: completion_requirements(state) and state.has("Victory", player)

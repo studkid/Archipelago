@@ -56,7 +56,6 @@ for data, key in map_table.items():
     map_pool.update(create_map_table(data, key, classification))
 
 item_table.update(map_pool)
-print(item_table)
 
 default_weights: Dict[str, int] = {
     "Common Item":          64,

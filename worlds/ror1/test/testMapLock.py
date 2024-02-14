@@ -2,7 +2,7 @@ from . import RoRTestBase
 
 class MapLockTest(RoRTestBase):
     options = {
-        "grouping": "map"
+        "grouping": "stage"
     }
 
     def test_providence(self) -> None:

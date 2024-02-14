@@ -28,7 +28,7 @@ def create_grouped_regions(ror_world: "RoR1World") -> None:
         "Temple of the Elders":             RoR1RegionData([], ["Stage 6"]),
     }
     stage_regions: Dict[str, RoR1Location] = {
-        "Stage 1":                          RoR1RegionData([], []),
+        "Stage 1":                          RoR1RegionData([], None),
         "Stage 2":                          RoR1RegionData([], ["Damp Caverns", "Sky Meadow"]),
         "Stage 3":                          RoR1RegionData([], ["Ancient Valley", "Sunken Tomb"]),
         "Stage 4":                          RoR1RegionData([], ["Magma Barracks", "Hive Cluster"]),
@@ -46,8 +46,10 @@ def create_grouped_regions(ror_world: "RoR1World") -> None:
 
     if ror_options.grouping == "stage":
         for key in stage_regions:
+            if key == "Stage 6":
+                continue
             for i in range(0, pickups):
-                map_regions[key].locations.append(f"{key}: Item Pickup {i + 1}")
+                stage_regions[key].locations.append(f"{key}: Item Pickup {i + 1}")
 
     elif ror_options.grouping == "map":
         for key in map_regions:
