@@ -91,7 +91,7 @@ def set_rules(self) -> None:
                     for chest in range(1, chests + 1):
                         has_location_access_rule(multiworld, f"Stage {i + 1}", player, chest, "Item Pickup")
                     if i > 0:
-                        has_entrance_access_rule(multiworld, f"Stage {i + 1}", f"OrderedStage_{i}", player)
+                        has_entrance_access_rule(multiworld, f"Stage {i}", f"OrderedStage_{i}", player)
                         get_stage_event(multiworld, player, i)
 
         else: # Maps
@@ -110,6 +110,3 @@ def set_rules(self) -> None:
     tele_fragments = min(self.options.required_frags, self.options.available_frags)
     completion_requirements = lambda state: state.has("Teleporter Fragment", player, tele_fragments)
     multiworld.completion_condition[player] = lambda state: completion_requirements(state) and state.has("Victory", player)
-
-    from Utils import visualize_regions
-    visualize_regions(self.multiworld.get_region("Menu", self.player), "my_world.puml")

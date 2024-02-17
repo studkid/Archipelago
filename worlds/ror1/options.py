@@ -5,7 +5,7 @@ class Grouping(Choice):
     """
     Universal: Every Item pickup increases fills a progress bar which gives location checks.
 
-    Stages: Each stage will have location checks within each map variant on a given stage.
+    Stages (NYI): Each stage will have location checks within each map variant on a given stage.
     Stages will be locked in the item pool until received.
 
     Maps: Each map will have location checks within each map on said stage.
