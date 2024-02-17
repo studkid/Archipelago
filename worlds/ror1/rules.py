@@ -28,7 +28,6 @@ def has_location_access_rule(multiworld: MultiWorld, map: str, player: int, item
         multiworld.get_location(f"{map}: {item_type} {item_number}", player).access_rule = \
             lambda state: check_location(state, map, player, item_number, item_type)
 
-
 def check_location(state, map: str, player: int, item_number: int, item_name: str) -> bool:
     return state.can_reach(f"{map}: {item_name} {item_number - 1}", "Location", player)
 
@@ -37,14 +36,14 @@ def check_location(state, map: str, player: int, item_number: int, item_name: st
 def get_stage_event(multiworld: MultiWorld, player: int, stage_number: int) -> None:
     if stage_number == 4:
         return
-    multiworld.get_entrance(f"Stage {stage_number + 1}", player).access_rule = \
+    multiworld.get_entrance(f"OrderedStage_{stage_number + 1}", player).access_rule = \
         lambda state: state.has(f"Stage {stage_number + 1}", player)
 
 
-def set_rules(ror_world: "RoR1World") -> None:
-    player = ror_world.player
-    multiworld = ror_world.multiworld
-    ror_options = ror_world.options
+def set_rules(self) -> None:
+    player = self.player
+    multiworld = self.multiworld
+    ror_options = self.options
     if ror_options.grouping == "universal":
         # classic mode
         total_locations = ror_options.total_locations.value  # total locations for current player
@@ -86,13 +85,14 @@ def set_rules(ror_world: "RoR1World") -> None:
         chests = ror_options.total_locations
 
         if ror_options.grouping == "stage": # Stages
-            for i in range(5):
+            for i in range(len(map_orderedstages_table)):
                 for _ in range(1, total_locations + 1):
                     # Make sure to go through each location
                     for chest in range(1, chests + 1):
                         has_location_access_rule(multiworld, f"Stage {i + 1}", player, chest, "Item Pickup")
                     if i > 0:
-                        has_entrance_access_rule(multiworld, f"Stage {i}", f"Stage {i + 1}", player)
+                        has_entrance_access_rule(multiworld, f"Stage {i + 1}", f"OrderedStage_{i}", player)
+                        get_stage_event(multiworld, player, i)
 
         else: # Maps
             for i in range(len(map_orderedstages_table)):
@@ -101,12 +101,15 @@ def set_rules(ror_world: "RoR1World") -> None:
                     for chest in range(1, chests + 1):
                         has_location_access_rule(multiworld, map_name, player, chest, "Item Pickup")
                     if i > 0:
-                        has_entrance_access_rule(multiworld, f"Stage {i}", map_name, player)
-                get_stage_event(multiworld, player, i)
+                        has_entrance_access_rule(multiworld, f"Stage {i + 1}", map_name, player)
+                        get_stage_event(multiworld, player, i)
 
-        has_entrance_access_rule(multiworld, "Stage 6", "Risk of Rain", player)
+        has_entrance_access_rule(multiworld, "OrderedStage_6", "Risk of Rain", player)
 
     # Win Condition
-    tele_fragments = min(ror_world.options.required_frags, ror_world.options.available_frags)
+    tele_fragments = min(self.options.required_frags, self.options.available_frags)
     completion_requirements = lambda state: state.has("Teleporter Fragment", player, tele_fragments)
     multiworld.completion_condition[player] = lambda state: completion_requirements(state) and state.has("Victory", player)
+
+    from Utils import visualize_regions
+    visualize_regions(self.multiworld.get_region("Menu", self.player), "my_world.puml")

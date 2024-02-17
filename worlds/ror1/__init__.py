@@ -51,11 +51,14 @@ class RoR1World(World):
     def create_items(self) -> None:
         maps_pool = {}
 
-        if self.options.grouping != "universal":
+        if self.options.grouping == "map":
             maps_pool = shift_by_offset(map_table, map_offset)
             unlock = self.random.choices(list(map_orderedstages_table[0].keys()), k=1)
             self.multiworld.push_precollected(self.create_item(unlock[0]))
+            self.multiworld.push_precollected(self.create_item("Stage 1"))
             maps_pool.pop(unlock[0])
+        elif self.options.grouping == "stage":
+            self.multiworld.push_precollected(self.create_item("Stage 1"))
         
         itempool: List[str] = []
 
@@ -135,9 +138,9 @@ class RoR1World(World):
                 world_region.locations.append(event_loc)
         else:
             # stage and map pickups
-            event_region = self.multiworld.get_region("Stage 6", self.player)
-            event_loc = RoR1Location(self.player, "Stage 6", None, event_region)
-            event_loc.place_locked_item(RoR1Item("Stage 6", ItemClassification.progression, None, self.player))
+            event_region = self.multiworld.get_region("OrderedStage_6", self.player)
+            event_loc = RoR1Location(self.player, "OrderedStage_6", None, event_region)
+            event_loc.place_locked_item(RoR1Item("OrderedStage_6", ItemClassification.progression, None, self.player))
             event_loc.show_in_spoiler = False
             event_region.locations.append(event_loc)
             event_loc.access_rule = lambda state: state.has("Temple of the Elders", self.player)

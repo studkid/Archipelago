@@ -10,34 +10,34 @@ class RoR1RegionData(NamedTuple):
     locations: Optional[List[str]]
     region_exits: Optional[List[str]]
 
-def create_grouped_regions(ror_world: "RoR1World") -> None:
-    ror_options = ror_world.options
-    multiworld = ror_world.multiworld
-    player = ror_world.player
+def create_grouped_regions(self) -> None:
+    ror_options = self.options
+    multiworld = self.multiworld
+    player = self.player
 
-    map_regions: Dict[str, RoR1Location] = {
-        "Menu":                             RoR1RegionData(None, ["Desolate Forest", "Dried Lake", "Stage 1"]),
-        "Desolate Forest":                  RoR1RegionData([], ["Stage 2"]),
-        "Dried Lake":                       RoR1RegionData([], ["Stage 2"]),
-        "Damp Caverns":                     RoR1RegionData([], ["Stage 3"]),
-        "Sky Meadow":                       RoR1RegionData([], ["Stage 3"]),
-        "Ancient Valley":                   RoR1RegionData([], ["Stage 4"]),
-        "Sunken Tomb":                      RoR1RegionData([], ["Stage 4"]),
-        "Magma Barracks":                   RoR1RegionData([], ["Stage 5"]),
-        "Hive Cluster":                     RoR1RegionData([], ["Stage 5"]),
-        "Temple of the Elders":             RoR1RegionData([], ["Stage 6"]),
+    map_regions: Dict[str, RoR1RegionData] = {
+        "Menu":                             RoR1RegionData(None, ["OrderedStage_1"]),
+        "Desolate Forest":                  RoR1RegionData([], ["OrderedStage_2", "OrderedStage_3", "OrderedStage_4", "OrderedStage_5", "OrderedStage_6"]),
+        "Dried Lake":                       RoR1RegionData([], ["OrderedStage_2", "OrderedStage_3", "OrderedStage_4", "OrderedStage_5", "OrderedStage_6"]),
+        "Damp Caverns":                     RoR1RegionData([], ["OrderedStage_3", "OrderedStage_4", "OrderedStage_5", "OrderedStage_6"]),
+        "Sky Meadow":                       RoR1RegionData([], ["OrderedStage_3", "OrderedStage_4", "OrderedStage_5", "OrderedStage_6"]),
+        "Ancient Valley":                   RoR1RegionData([], ["OrderedStage_4", "OrderedStage_5", "OrderedStage_6"]),
+        "Sunken Tomb":                      RoR1RegionData([], ["OrderedStage_4", "OrderedStage_5", "OrderedStage_6"]),
+        "Magma Barracks":                   RoR1RegionData([], ["OrderedStage_5", "OrderedStage_6"]),
+        "Hive Cluster":                     RoR1RegionData([], ["OrderedStage_5", "OrderedStage_6"]),
+        "Temple of the Elders":             RoR1RegionData([], ["OrderedStage_6"]),
     }
-    stage_regions: Dict[str, RoR1Location] = {
-        "Stage 1":                          RoR1RegionData([], None),
-        "Stage 2":                          RoR1RegionData([], ["Damp Caverns", "Sky Meadow"]),
-        "Stage 3":                          RoR1RegionData([], ["Ancient Valley", "Sunken Tomb"]),
-        "Stage 4":                          RoR1RegionData([], ["Magma Barracks", "Hive Cluster"]),
-        "Stage 5":                          RoR1RegionData([], ["Temple of the Elders"]),
-        "Stage 6":                          RoR1RegionData([], ["Risk of Rain"]),
+    stage_regions: Dict[str, RoR1RegionData] = {
+        "OrderedStage_1":                          RoR1RegionData([], ["Desolate Forest", "Dried Lake"]),
+        "OrderedStage_2":                          RoR1RegionData([], ["Damp Caverns", "Sky Meadow"]),
+        "OrderedStage_3":                          RoR1RegionData([], ["Ancient Valley", "Sunken Tomb"]),
+        "OrderedStage_4":                          RoR1RegionData([], ["Magma Barracks", "Hive Cluster"]),
+        "OrderedStage_5":                          RoR1RegionData([], ["Temple of the Elders"]),
+        "OrderedStage_6":                          RoR1RegionData([], ["Risk of Rain"]),
         
     }
-    other_regions: Dict[str, RoR1Location] = {
-        "Risk of Rain":                     RoR1RegionData(None, ["Victory"]),
+    other_regions: Dict[str, RoR1RegionData] = {
+        "Risk of Rain":                     RoR1RegionData(None, ["Victory", "Contact Light"]),
         "Contact Light":                    RoR1RegionData(None, []),
         "Victory":                          RoR1RegionData(None, None)
     }
@@ -45,11 +45,14 @@ def create_grouped_regions(ror_world: "RoR1World") -> None:
     pickups = int(ror_options.total_locations)
 
     if ror_options.grouping == "stage":
+        map_regions["Menu"].region_exits.append("OrderedStage_1")
+        x = 1
         for key in stage_regions:
-            if key == "Stage 6":
+            if key == "OrderedStage_6":
                 continue
             for i in range(0, pickups):
-                stage_regions[key].locations.append(f"{key}: Item Pickup {i + 1}")
+                stage_regions[key].locations.append(f"Stage {x}: Item Pickup {i + 1}")
+            x += 1
 
     elif ror_options.grouping == "map":
         for key in map_regions:
@@ -86,10 +89,10 @@ def create_connections_in_regions(multiworld: MultiWorld, player: int, name: str
             region.exits.append(r_exit_stage)
 
 # TODO Refactor this code into the main create_regions method maybe?
-def create_universal_regions(ror_world: "RoR1World") -> None:
-    player = ror_world.player
-    ror_options = ror_world.options
-    multiworld = ror_world.multiworld
+def create_universal_regions(self) -> None:
+    player = self.player
+    ror_options = self.options
+    multiworld = self.multiworld
 
     menu = create_universal_region(multiworld, player, "Menu")
     multiworld.regions.append(menu)
