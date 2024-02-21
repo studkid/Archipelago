@@ -11,36 +11,18 @@ class RoR1LocationData(NamedTuple):
 
 ror_locations_start_id = 250000
 
-def get_item_pickups(n: int) -> Dict[str, int]:
+def get_universal_item_pickups(n: int) -> Dict[str, int]:
     n = max(n, 0)
     n = min(n, TotalLocations.range_end)
     return {f"ItemPickup{i + 1}": ror_locations_start_id + i for i in range(n)}
 
-item_pickups = get_item_pickups(TotalLocations.range_end)
+item_pickups = get_universal_item_pickups(TotalLocations.range_end)
 location_table = item_pickups
 
 ror_locations_start_ordered_stage = ror_locations_start_id + TotalLocations.range_end
 
 offset_chests = 0
 
-def get_map_locations(chests: int, map_name: str, map_index: int) -> Dict[str, int]:
-    locations = {}
-
-    map_start_id = map_index + ror_locations_start_ordered_stage
-    for n in range(chests):
-        locations.update({f"{map_name}: Item Pickup {n + 1}": n + offset_chests + map_start_id})
-    return locations
-
-def get_locations(chests: int) -> Dict[str, int]:
-    locations = {}
-    orderedstages = compress_dict_list_horizontal(map_orderedstages_table)
-    for map_name, map_index in orderedstages.items():
-        locations.update(get_map_locations(
-            chests = chests,
-            map_name = map_name,
-            map_index = map_index
-        ),)
-    return locations
 
 map_orderedstage_1_table: Dict[str, int] = {
     "Desolate Forest":          0,
@@ -88,3 +70,26 @@ map_table = \
 def shift_by_offset(dictionary: Dict[str, int], offset: int) -> Dict[str, int]:
     """Shift all indexes in a dictionary by an offset"""
     return {name: index+offset for name, index in dictionary.items()}
+
+def get_map_locations(chests: int, map_name: str, map_index: int) -> Dict[str, int]:
+    locations = {}
+
+    map_start_id = map_index * TotalLocations.range_end + ror_locations_start_ordered_stage
+    for n in range(chests):
+        locations.update({f"{map_name}: Item Pickup {n + 1}": n + offset_chests + map_start_id})
+    return locations
+
+def get_locations(chests: int) -> Dict[str, int]:
+    locations = {}
+    orderedstages = compress_dict_list_horizontal(map_orderedstages_table)
+    for map_name, map_index in orderedstages.items():
+        locations.update(get_map_locations(
+            chests = chests,
+            map_name = map_name,
+            map_index = map_index
+        ),)
+    return locations
+
+location_table.update(get_locations(
+    chests=TotalLocations.range_end
+))

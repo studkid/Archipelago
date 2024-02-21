@@ -1,7 +1,7 @@
 from typing import Dict, List, NamedTuple, Optional, TYPE_CHECKING
 
 from BaseClasses import Region, Entrance, MultiWorld
-from .locations import location_table, RoR1Location, get_item_pickups
+from .locations import location_table, RoR1Location, get_universal_item_pickups
 
 if TYPE_CHECKING:
     from . import RoR1World
@@ -100,7 +100,7 @@ def create_universal_regions(self) -> None:
     victory_region = create_universal_region(multiworld, player, "Victory")
     multiworld.regions.append(victory_region)
     contactLight = create_universal_region(multiworld, player, "Contact Light",
-                                      get_item_pickups(ror_options.total_locations.value))
+                                      get_universal_item_pickups(ror_options.total_locations.value))
     multiworld.regions.append(contactLight)
 
     # classic mode can get to victory from the beginning of the game

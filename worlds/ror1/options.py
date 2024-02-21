@@ -24,7 +24,7 @@ class TotalLocations(Range):
     """
     display_name = "Total Locations"
     range_start = 20
-    range_end = 250
+    range_end = 200
     default = 20
 
 class RequiredFrags(Range):

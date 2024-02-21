@@ -91,7 +91,7 @@ def set_rules(self) -> None:
                     for chest in range(1, chests + 1):
                         has_location_access_rule(multiworld, f"Stage {i + 1}", player, chest, "Item Pickup")
                     if i > 0:
-                        has_entrance_access_rule(multiworld, f"Stage {i}", f"OrderedStage_{i}", player)
+                        has_entrance_access_rule(multiworld, f"Stage {i + 1}", f"OrderedStage_{i}", player)
                         get_stage_event(multiworld, player, i)
 
         else: # Maps
