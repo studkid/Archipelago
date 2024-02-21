@@ -34,7 +34,7 @@ map_orderedstage_2_table: Dict[str, int] = {
 }
 map_orderedstage_3_table: Dict[str, int] = {
     "Ancient Valley":           4,
-    "Sunken Tomb":              5,
+    "Sunken Tombs":             5,
 }
 map_orderedstage_4_table: Dict[str, int] = {
     "Magma Barracks":           6,
