@@ -22,7 +22,7 @@ def create_grouped_regions(self) -> None:
         "Damp Caverns":                     RoR1RegionData([], ["OrderedStage_3", "OrderedStage_4", "OrderedStage_5", "OrderedStage_6"]),
         "Sky Meadow":                       RoR1RegionData([], ["OrderedStage_3", "OrderedStage_4", "OrderedStage_5", "OrderedStage_6"]),
         "Ancient Valley":                   RoR1RegionData([], ["OrderedStage_4", "OrderedStage_5", "OrderedStage_6"]),
-        "Sunken Tomb":                      RoR1RegionData([], ["OrderedStage_4", "OrderedStage_5", "OrderedStage_6"]),
+        "Sunken Tombs":                      RoR1RegionData([], ["OrderedStage_4", "OrderedStage_5", "OrderedStage_6"]),
         "Magma Barracks":                   RoR1RegionData([], ["OrderedStage_5", "OrderedStage_6"]),
         "Hive Cluster":                     RoR1RegionData([], ["OrderedStage_5", "OrderedStage_6"]),
         "Temple of the Elders":             RoR1RegionData([], ["OrderedStage_6"]),
@@ -30,7 +30,7 @@ def create_grouped_regions(self) -> None:
     stage_regions: Dict[str, RoR1RegionData] = {
         "OrderedStage_1":                          RoR1RegionData([], ["Desolate Forest", "Dried Lake"]),
         "OrderedStage_2":                          RoR1RegionData([], ["Damp Caverns", "Sky Meadow"]),
-        "OrderedStage_3":                          RoR1RegionData([], ["Ancient Valley", "Sunken Tomb"]),
+        "OrderedStage_3":                          RoR1RegionData([], ["Ancient Valley", "Sunken Tombs"]),
         "OrderedStage_4":                          RoR1RegionData([], ["Magma Barracks", "Hive Cluster"]),
         "OrderedStage_5":                          RoR1RegionData([], ["Temple of the Elders"]),
         "OrderedStage_6":                          RoR1RegionData([], ["Risk of Rain"]),
