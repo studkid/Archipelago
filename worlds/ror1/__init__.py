@@ -57,8 +57,8 @@ class RoR1World(World):
             self.multiworld.push_precollected(self.create_item(unlock[0]))
             self.multiworld.push_precollected(self.create_item("Stage 1"))
             maps_pool.pop(unlock[0])
-        elif self.options.grouping == "stage":
-            self.multiworld.push_precollected(self.create_item("Stage 1"))
+        # elif self.options.grouping == "stage":
+        #     self.multiworld.push_precollected(self.create_item("Stage 1"))
         
         itempool: List[str] = []
 

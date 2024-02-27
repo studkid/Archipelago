@@ -84,17 +84,7 @@ def set_rules(self) -> None:
         # explore mode
         chests = ror_options.total_locations
 
-        if ror_options.grouping == "stage": # Stages
-            for i in range(len(map_orderedstages_table)):
-                for _ in range(1, total_locations + 1):
-                    # Make sure to go through each location
-                    for chest in range(1, chests + 1):
-                        has_location_access_rule(multiworld, f"Stage {i + 1}", player, chest, "Item Pickup")
-                    if i > 0:
-                        has_entrance_access_rule(multiworld, f"Stage {i + 1}", f"OrderedStage_{i}", player)
-                        get_stage_event(multiworld, player, i)
-
-        else: # Maps
+        if ror_options.grouping == "map": # Maps
             for i in range(len(map_orderedstages_table)):
                 for map_name, _ in map_orderedstages_table[i].items():
                     # Make sure to go through each location
@@ -103,6 +93,16 @@ def set_rules(self) -> None:
                     if i > 0:
                         has_entrance_access_rule(multiworld, f"Stage {i + 1}", map_name, player)
                         get_stage_event(multiworld, player, i)
+
+        # else ror_options.grouping == "stage": # Stages
+        #     for i in range(len(map_orderedstages_table)):
+        #         for _ in range(1, total_locations + 1):
+        #             # Make sure to go through each location
+        #             for chest in range(1, chests + 1):
+        #                 has_location_access_rule(multiworld, f"Stage {i + 1}", player, chest, "Item Pickup")
+        #             if i > 0:
+        #                 has_entrance_access_rule(multiworld, f"Stage {i + 1}", f"OrderedStage_{i}", player)
+        #                 get_stage_event(multiworld, player, i)
 
         has_entrance_access_rule(multiworld, "OrderedStage_6", "Risk of Rain", player)
 

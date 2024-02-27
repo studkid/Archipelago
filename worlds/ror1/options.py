@@ -13,7 +13,7 @@ class Grouping(Choice):
     """
     display_name = "Location Grouping"
     option_universal = 0
-    option_stage = 1
+    # option_stage = 1
     option_map = 2
     default = 0
 
@@ -23,7 +23,7 @@ class TotalLocations(Range):
     On stage or map grouping, will determine how many locations checks are added per stage/map.
     """
     display_name = "Total Locations"
-    range_start = 20
+    range_start = 10
     range_end = 200
     default = 20
 

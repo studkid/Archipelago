@@ -44,22 +44,23 @@ def create_grouped_regions(self) -> None:
 
     pickups = int(ror_options.total_locations)
 
-    if ror_options.grouping == "stage":
-        map_regions["Menu"].region_exits.append("OrderedStage_1")
-        x = 1
-        for key in stage_regions:
-            if key == "OrderedStage_6":
-                continue
-            for i in range(0, pickups):
-                stage_regions[key].locations.append(f"Stage {x}: Item Pickup {i + 1}")
-            x += 1
-
-    elif ror_options.grouping == "map":
+    if ror_options.grouping == "map":
         for key in map_regions:
             if key == "Menu":
                 continue
             for i in range(0, pickups):
                 map_regions[key].locations.append(f"{key}: Item Pickup {i + 1}")
+
+    # elif ror_options.grouping == "stage":
+    #     map_regions["Menu"].region_exits.append("OrderedStage_1")
+    #     x = 1
+    #     for key in stage_regions:
+    #         if key == "OrderedStage_6":
+    #             continue
+    #         for i in range(0, pickups):
+    #             stage_regions[key].locations.append(f"Stage {x}: Item Pickup {i + 1}")
+    #         x += 1
+    
     regions_pool: Dict = {**map_regions, **stage_regions, **other_regions}
 
     for name, data, in regions_pool.items():
