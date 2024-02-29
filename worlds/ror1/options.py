@@ -15,7 +15,7 @@ class Grouping(Choice):
     option_universal = 0
     # option_stage = 1
     option_map = 2
-    default = 0
+    default = 2
 
 class TotalLocations(Range):
     """
