@@ -16,6 +16,7 @@ def has_entrance_access_rule(multiworld: MultiWorld, stage: str, region: str, pl
 def has_stage_access_rule(multiworld: MultiWorld, stage: str, amount: int, region: str, player: int) -> None:
     rule = lambda state: state.has(region, player) and \
         (state.has(stage, player) or state.count("Progressive Stage", player) >= amount)
+    print(stage + " " + region)
     for entrance in multiworld.get_region(region, player).entrances:
         entrance.access_rule = rule
 
@@ -90,7 +91,7 @@ def set_rules(self) -> None:
                         has_location_access_rule(multiworld, map_name, player, chest, "Item Pickup")
                     if i > 0:
                         # has_entrance_access_rule(multiworld, f"Stage {i + 1}", map_name, player)
-                        has_stage_access_rule(multiworld, f"Stage {i}", i, map_name, player)
+                        has_stage_access_rule(multiworld, f"Stage {i + 1}", i, map_name, player)
 
         # else ror_options.grouping == "stage": # Stages
         #     for i in range(len(map_orderedstages_table)):
