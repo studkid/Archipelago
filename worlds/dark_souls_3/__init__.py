@@ -14,8 +14,9 @@ from .Options import RandomizeWeaponLevelOption, PoolTypeOption, EarlySmallLothr
 
 class DarkSouls3Web(WebWorld):
     bug_report_page = "https://github.com/Marechal-L/Dark-Souls-III-Archipelago-client/issues"
+    theme = "stone"
     setup_en = Tutorial(
-        "Multiworld Setup Tutorial",
+        "Multiworld Setup Guide",
         "A guide to setting up the Archipelago Dark Souls III randomizer on your computer.",
         "English",
         "setup_en.md",
@@ -33,6 +34,8 @@ class DarkSouls3Web(WebWorld):
     )
 
     tutorials = [setup_en, setup_fr]
+
+    item_descriptions = item_descriptions
 
 
 class DarkSouls3World(World):
@@ -60,8 +63,6 @@ class DarkSouls3World(World):
             "Cinders of a Lord - Lothric Prince"
         }
     }
-    item_descriptions = item_descriptions
-
 
     def __init__(self, multiworld: MultiWorld, player: int):
         super().__init__(multiworld, player)
