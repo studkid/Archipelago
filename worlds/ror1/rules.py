@@ -8,14 +8,21 @@ if TYPE_CHECKING:
 
 
 # Rule to see if it has access to the previous stage
-def has_entrance_access_rule(multiworld: MultiWorld, stage: str, entrance: str, player: int) -> None:
-    multiworld.get_entrance(entrance, player).access_rule = \
-        lambda state: state.has(entrance, player) and state.has(stage, player)
+def has_entrance_access_rule(multiworld: MultiWorld, stage: str, region: str, player: int) -> None:
+    rule = lambda state: state.has(region, player) and state.has(stage, player)
+    for entrance in multiworld.get_region(region, player).entrances:
+        entrance.access_rule = rule
 
+def has_stage_access_rule(multiworld: MultiWorld, stage: str, amount: int, region: str, player: int) -> None:
+    rule = lambda state: state.has(region, player) and \
+        (state.has(stage, player) or state.count("Progressive Stage", player) >= amount)
+    for entrance in multiworld.get_region(region, player).entrances:
+        entrance.access_rule = rule
 
-def has_all_items(multiworld: MultiWorld, items: Set[str], entrance: str, player: int) -> None:
-    multiworld.get_entrance(entrance, player).access_rule = \
-        lambda state: state.has_all(items, player) and state.has(entrance, player)
+def has_all_items(multiworld: MultiWorld, items: Set[str], region: str, player: int) -> None:
+    rule = lambda state: state.has_all(items, player) and state.has(region, player)
+    for entrance in multiworld.get_region(region, player).entrances:
+        entrance.access_rule = rule
 
 
 # Checks to see if chest/shrine are accessible
@@ -30,15 +37,6 @@ def has_location_access_rule(multiworld: MultiWorld, map: str, player: int, item
 
 def check_location(state, map: str, player: int, item_number: int, item_name: str) -> bool:
     return state.can_reach(f"{map}: {item_name} {item_number - 1}", "Location", player)
-
-
-# unlock event to next set of stages
-def get_stage_event(multiworld: MultiWorld, player: int, stage_number: int) -> None:
-    if stage_number == 4:
-        return
-    multiworld.get_entrance(f"OrderedStage_{stage_number + 1}", player).access_rule = \
-        lambda state: state.has(f"Stage {stage_number + 1}", player)
-
 
 def set_rules(self) -> None:
     player = self.player
@@ -91,8 +89,8 @@ def set_rules(self) -> None:
                     for chest in range(1, chests + 1):
                         has_location_access_rule(multiworld, map_name, player, chest, "Item Pickup")
                     if i > 0:
-                        has_entrance_access_rule(multiworld, f"Stage {i + 1}", map_name, player)
-                        get_stage_event(multiworld, player, i)
+                        # has_entrance_access_rule(multiworld, f"Stage {i + 1}", map_name, player)
+                        has_stage_access_rule(multiworld, f"Stage {i}", i, map_name, player)
 
         # else ror_options.grouping == "stage": # Stages
         #     for i in range(len(map_orderedstages_table)):

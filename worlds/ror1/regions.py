@@ -22,7 +22,7 @@ def create_grouped_regions(self) -> None:
         "Damp Caverns":                     RoR1RegionData([], ["OrderedStage_3", "OrderedStage_4", "OrderedStage_5", "OrderedStage_6"]),
         "Sky Meadow":                       RoR1RegionData([], ["OrderedStage_3", "OrderedStage_4", "OrderedStage_5", "OrderedStage_6"]),
         "Ancient Valley":                   RoR1RegionData([], ["OrderedStage_4", "OrderedStage_5", "OrderedStage_6"]),
-        "Sunken Tombs":                      RoR1RegionData([], ["OrderedStage_4", "OrderedStage_5", "OrderedStage_6"]),
+        "Sunken Tombs":                     RoR1RegionData([], ["OrderedStage_4", "OrderedStage_5", "OrderedStage_6"]),
         "Magma Barracks":                   RoR1RegionData([], ["OrderedStage_5", "OrderedStage_6"]),
         "Hive Cluster":                     RoR1RegionData([], ["OrderedStage_5", "OrderedStage_6"]),
         "Temple of the Elders":             RoR1RegionData([], ["OrderedStage_6"]),
@@ -83,11 +83,7 @@ def create_region(multiworld:MultiWorld, player: int, name: str, data: RoR1Regio
 def create_connections_in_regions(multiworld: MultiWorld, player: int, name: str, data: RoR1RegionData):
     region = multiworld.get_region(name, player)
     if data.region_exits:
-        for region_exit in data.region_exits:
-            r_exit_stage = Entrance(player, region_exit, region)
-            exit_region = multiworld.get_region(region_exit, player)
-            r_exit_stage.connect(exit_region)
-            region.exits.append(r_exit_stage)
+        region.add_exits(data.region_exits)
 
 # TODO Refactor this code into the main create_regions method maybe?
 def create_universal_regions(self) -> None:
