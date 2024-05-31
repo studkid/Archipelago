@@ -16,7 +16,6 @@ def has_entrance_access_rule(multiworld: MultiWorld, stage: str, region: str, pl
 def has_stage_access_rule(multiworld: MultiWorld, stage: str, amount: int, region: str, player: int) -> None:
     rule = lambda state: state.has(region, player) and \
         (state.has(stage, player) or state.count("Progressive Stage", player) >= amount)
-    print(stage + " " + region)
     for entrance in multiworld.get_region(region, player).entrances:
         entrance.access_rule = rule
 
