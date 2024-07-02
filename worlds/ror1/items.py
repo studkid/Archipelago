@@ -44,6 +44,7 @@ stage_table: Dict[str, RoR1ItemData] = {
     "Stage 3":              RoR1ItemData("Stage", 3 + stage_offset, ItemClassification.progression),
     "Stage 4":              RoR1ItemData("Stage", 4 + stage_offset, ItemClassification.progression),
     "Stage 5":              RoR1ItemData("Stage", 5 + stage_offset, ItemClassification.progression),
+    "Progressive Stage":    RoR1ItemData("Stage", 6 + stage_offset, ItemClassification.progression),
 }
 
 item_table = {**upgrade_table, **filler_table, **trap_table, **stage_table}

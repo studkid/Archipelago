@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from Options import Toggle, DeathLink, Range, Choice, PerGameCommonOptions
+from Options import Toggle, DefaultOnToggle, DeathLink, Range, Choice, PerGameCommonOptions
 
 class Grouping(Choice):
     """
@@ -26,6 +26,32 @@ class TotalLocations(Range):
     range_start = 10
     range_end = 200
     default = 20
+
+class ProgressiveStage(DefaultOnToggle):
+    """
+    Changes stage items to be progressive.
+    """
+    display_name = "Progressive Stages"
+
+class RequireStage(DefaultOnToggle):
+    """
+    Add Stage items to the pool that blocks maps of the type
+    Does nothing unless on map grouping
+    """
+    display_name = "Require Stage"
+
+class StrictStageProg(Toggle):
+    """
+    Require both the prior stage and any corresponding map before having access to later stages
+    Ex. You won't be able to access Stage 3 until you have Stage 2 and either Stage 2 map
+    """
+    display_name = "Strict Map Requirements"
+
+class StageFiveTP(Toggle):
+    """
+    Only allow access to teleport to final stage if on stage 5, like RoR2
+    """
+    display_name = "Divine Teleporter on Stage 5"
 
 class RequiredFrags(Range):
     """Number of teleporter fragments required to access the final stage"""
@@ -68,7 +94,6 @@ class CommonItem(Range):
     range_end = 100
     default = 64
 
-
 class UncommonItem(Range):
     """Weight of uncommon items in the item pool.
 
@@ -78,7 +103,6 @@ class UncommonItem(Range):
     range_end = 100
     default = 32
 
-
 class LegendaryItem(Range):
     """Weight of legendary items in the item pool.
 
@@ -87,7 +111,6 @@ class LegendaryItem(Range):
     range_start = 0
     range_end = 100
     default = 8
-
 
 class BossItem(Range):
     """Weight of boss items in the item pool.
@@ -134,7 +157,6 @@ class TimeWarpTrap(Range):
     range_end = 100
     default = 20
 
-
 class CombatTrap(Range):
     """Weight of combat trap items in the item pool.
 
@@ -143,7 +165,6 @@ class CombatTrap(Range):
     range_start = 0
     range_end = 100
     default = 20
-
 
 class MeteorTrap(Range):
     """Weight of meteor trap items in the item pool.
@@ -158,6 +179,10 @@ class MeteorTrap(Range):
 class ROROptions(PerGameCommonOptions):
     grouping: Grouping
     total_locations: TotalLocations
+    progressive_stages: ProgressiveStage
+    require_stage: RequireStage
+    stage_five_tp: StageFiveTP
+    strict_stage_prog: StrictStageProg
     required_frags: RequiredFrags
     available_frags: AvailableFrags
     item_pickup_step: ItemPickupStep

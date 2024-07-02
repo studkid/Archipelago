@@ -44,7 +44,7 @@ map_orderedstage_5_table: Dict[str, int] = {
     "Temple of the Elders":     8,
 }
 map_special_table: Dict[str, int] = {
-    "Boar Beach":               9,
+    # "Boar Beach":               9,
     "Risk of Rain":            10,
 }
 

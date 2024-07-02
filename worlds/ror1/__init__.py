@@ -57,6 +57,11 @@ class RoR1World(World):
             self.multiworld.push_precollected(self.create_item(unlock[0]))
             self.multiworld.push_precollected(self.create_item("Stage 1"))
             maps_pool.pop(unlock[0])
+            if not self.options.require_stage:
+                self.multiworld.push_precollected(self.create_item("Stage 2"))
+                self.multiworld.push_precollected(self.create_item("Stage 3"))
+                self.multiworld.push_precollected(self.create_item("Stage 4"))
+                self.multiworld.push_precollected(self.create_item("Stage 5"))
         # elif self.options.grouping == "stage":
         #     self.multiworld.push_precollected(self.create_item("Stage 1"))
         
@@ -68,7 +73,13 @@ class RoR1World(World):
         if self.options.grouping == "universal":
             total_locations = self.options.total_locations.value
         else:
-            itempool += ["Stage 2", "Stage 3", "Stage 4", "Stage 5"]
+            if self.options.require_stage:
+                if not self.options.progressive_stages:
+                    itempool += ["Stage 2", "Stage 3", "Stage 4", "Stage 5"]
+                else:
+                    itempool += ["Progressive Stage"] * 4
+
+                
             total_locations = len(
                 get_locations(
                     chests=self.options.total_locations.value,
@@ -115,7 +126,8 @@ class RoR1World(World):
         set_rules(self)
     
     def fill_slot_data(self) -> Dict[str, Any]:
-        options_dict = self.options.as_dict("grouping", "total_locations", "required_frags", "item_pickup_step", casing="camel")
+        options_dict = self.options.as_dict("grouping", "total_locations", "required_frags", "item_pickup_step",
+                                            "stage_five_tp", "strict_stage_prog", "progressive_stages", casing="camel")
         return {
             **options_dict,
         }
