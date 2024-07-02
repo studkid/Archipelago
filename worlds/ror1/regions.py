@@ -1,7 +1,7 @@
 from typing import Dict, List, NamedTuple, Optional, TYPE_CHECKING
 
 from BaseClasses import Region, Entrance, MultiWorld
-from .locations import location_table, RoR1Location, get_universal_item_pickups
+from .locations import location_table, map_orderedstage_2_table, map_orderedstage_3_table, map_orderedstage_4_table, RoR1Location, get_universal_item_pickups
 
 if TYPE_CHECKING:
     from . import RoR1World
@@ -16,19 +16,18 @@ def create_grouped_regions(self) -> None:
     player = self.player
 
     map_regions: Dict[str, RoR1RegionData] = {
-        "Menu":                             RoR1RegionData(None, ["OrderedStage_1"]),
-        "Desolate Forest":                  RoR1RegionData([], ["OrderedStage_2", "OrderedStage_3", "OrderedStage_4", "OrderedStage_5", "OrderedStage_6"]),
-        "Dried Lake":                       RoR1RegionData([], ["OrderedStage_2", "OrderedStage_3", "OrderedStage_4", "OrderedStage_5", "OrderedStage_6"]),
-        "Damp Caverns":                     RoR1RegionData([], ["OrderedStage_3", "OrderedStage_4", "OrderedStage_5", "OrderedStage_6"]),
-        "Sky Meadow":                       RoR1RegionData([], ["OrderedStage_3", "OrderedStage_4", "OrderedStage_5", "OrderedStage_6"]),
-        "Ancient Valley":                   RoR1RegionData([], ["OrderedStage_4", "OrderedStage_5", "OrderedStage_6"]),
-        "Sunken Tombs":                     RoR1RegionData([], ["OrderedStage_4", "OrderedStage_5", "OrderedStage_6"]),
-        "Magma Barracks":                   RoR1RegionData([], ["OrderedStage_5", "OrderedStage_6"]),
-        "Hive Cluster":                     RoR1RegionData([], ["OrderedStage_5", "OrderedStage_6"]),
+        "Menu":                             RoR1RegionData(None, ["Desolate Forest", "Dried Lake"]),
+        "Desolate Forest":                  RoR1RegionData([], ["OrderedStage_2"]),
+        "Dried Lake":                       RoR1RegionData([], ["OrderedStage_2"]),
+        "Damp Caverns":                     RoR1RegionData([], ["OrderedStage_3"]),
+        "Sky Meadow":                       RoR1RegionData([], ["OrderedStage_3"]),
+        "Ancient Valley":                   RoR1RegionData([], ["OrderedStage_4"]),
+        "Sunken Tombs":                     RoR1RegionData([], ["OrderedStage_4"]),
+        "Magma Barracks":                   RoR1RegionData([], ["OrderedStage_5"]),
+        "Hive Cluster":                     RoR1RegionData([], ["OrderedStage_5"]),
         "Temple of the Elders":             RoR1RegionData([], ["OrderedStage_6"]),
     }
     stage_regions: Dict[str, RoR1RegionData] = {
-        "OrderedStage_1":                          RoR1RegionData([], ["Desolate Forest", "Dried Lake"]),
         "OrderedStage_2":                          RoR1RegionData([], ["Damp Caverns", "Sky Meadow"]),
         "OrderedStage_3":                          RoR1RegionData([], ["Ancient Valley", "Sunken Tombs"]),
         "OrderedStage_4":                          RoR1RegionData([], ["Magma Barracks", "Hive Cluster"]),
@@ -41,6 +40,22 @@ def create_grouped_regions(self) -> None:
         "Contact Light":                    RoR1RegionData(None, []),
         "Victory":                          RoR1RegionData(None, None)
     }
+
+    if not ror_options.strict_stage_prog:
+        for key in map_orderedstage_2_table:
+            map_regions[key].region_exits.append("OrderedStage_3")
+            map_regions[key].region_exits.append("OrderedStage_4")
+            map_regions[key].region_exits.append("OrderedStage_5")
+        for key in map_orderedstage_3_table:
+            map_regions[key].region_exits.append("OrderedStage_4")
+            map_regions[key].region_exits.append("OrderedStage_5")
+        for key in map_orderedstage_4_table:
+            map_regions[key].region_exits.append("OrderedStage_5")
+
+    if not ror_options.stage_five_tp:
+        for key in map_regions:
+            if not key == "Menu" or not key == "Temple of the Elders":
+                map_regions[key].region_exits.append("OrderedStage_6")
 
     pickups = int(ror_options.total_locations)
 
