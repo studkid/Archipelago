@@ -1,8 +1,4 @@
-# Most of this AP World is ripped 1:1 from RoR2's AP World
-
-import string
-
-from .items import RoR1Item, default_weights, item_table, offset, map_offset
+from .items import RoR1Item, item_table, map_offset
 from .locations import RoR1Location, item_pickups, get_locations, map_orderedstages_table, map_table, shift_by_offset
 from .options import ROROptions
 from .rules import set_rules
@@ -39,6 +35,9 @@ class RoR1World(World):
 
     data_version = 8
     required_client_version = (0, 5, 0)
+
+    fragAmount: 0
+    requiredFragAmount: 0
 
     def create_regions(self) -> None:
         if self.options.grouping == "universal":
@@ -86,8 +85,11 @@ class RoR1World(World):
                 )
             )
 
-        if self.options.required_frags > 0:
-            itempool += ["Teleporter Fragment"] * self.options.available_frags
+        if self.options.required_frags.value > 0:
+            fillerSize = total_locations - len(itempool)
+            self.fragAmount = round(fillerSize * (self.options.available_frags / 100))
+            self.requiredFragAmount = round(self.fragAmount * (self.options.required_frags / 100))
+            itempool += ["Teleporter Fragment"] * self.fragAmount
             
         junk_pool = self.create_junk_pool()
         filler = self.random.choices(*zip(*junk_pool.items()), k = total_locations - len(itempool))
@@ -126,8 +128,9 @@ class RoR1World(World):
         set_rules(self)
     
     def fill_slot_data(self) -> Dict[str, Any]:
-        options_dict = self.options.as_dict("grouping", "total_locations", "required_frags", "item_pickup_step",
+        options_dict = self.options.as_dict("grouping", "total_locations", "item_pickup_step",
                                             "stage_five_tp", "strict_stage_prog", "progressive_stages", casing="camel")
+        options_dict["requiredFrags"] = self.requiredFragAmount
         return {
             **options_dict,
         }

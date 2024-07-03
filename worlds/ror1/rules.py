@@ -57,7 +57,7 @@ def set_rules(self) -> None:
     divisions = total_locations // event_location_step
 
     if ror_options.grouping == "universal":
-        # classic mode
+        # universal mode
         if divisions:
             for i in range(1, divisions + 1):  # since divisions is the floor of total_locations / 25
                 if i * event_location_step != total_locations:
@@ -79,7 +79,7 @@ def set_rules(self) -> None:
                  lambda state: state.can_reach(f"ItemPickup{total_locations}", "Location", player))
 
     else:
-        # explore mode
+        # map mode
         chests = ror_options.total_locations
 
         if ror_options.grouping == "map": # Maps

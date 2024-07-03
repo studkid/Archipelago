@@ -1,6 +1,6 @@
 from BaseClasses import Item, ItemClassification
 from typing import NamedTuple, Optional, Dict
-from .locations import map_table, map_orderedstages_table
+from .locations import map_table
 
 class RoR1Item(Item):
     game: str = "Risk of Rain"

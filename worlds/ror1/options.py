@@ -54,7 +54,9 @@ class StageFiveTP(Toggle):
     display_name = "Divine Teleporter on Stage 5"
 
 class RequiredFrags(Range):
-    """Number of teleporter fragments required to access the final stage"""
+    """
+    Percentage of teleporter fragments required to access the final stage
+    """
     display_name = "Teleporter Fragments Required"
     range_start = 0
     range_end = 100
@@ -62,8 +64,7 @@ class RequiredFrags(Range):
 
 class AvailableFrags(Range):
     """
-    Number of teleporter fragments that can be collected
-    This must be lower than total location checks
+    Percentage of filler items to be replaced with teleporter fragments
     """
     display_name = "Teleporter Fragments Available"
     range_start = 0
