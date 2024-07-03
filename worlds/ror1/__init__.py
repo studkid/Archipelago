@@ -38,7 +38,7 @@ class RoR1World(World):
     location_name_to_id = item_pickups
 
     data_version = 8
-    required_client_version = (0, 4, 4)
+    required_client_version = (0, 5, 0)
 
     def create_regions(self) -> None:
         if self.options.grouping == "universal":
