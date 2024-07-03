@@ -36,8 +36,8 @@ class RoR1World(World):
     data_version = 8
     required_client_version = (0, 5, 0)
 
-    fragAmount: 0
-    requiredFragAmount: 0
+    fragAmount = 0
+    requiredFragAmount = 0
 
     def create_regions(self) -> None:
         if self.options.grouping == "universal":
@@ -85,7 +85,7 @@ class RoR1World(World):
                 )
             )
 
-        if self.options.required_frags.value > 0:
+        if self.options.required_frags.value > 0 and self.options.available_frags.value > 0:
             fillerSize = total_locations - len(itempool)
             self.fragAmount = round(fillerSize * (self.options.available_frags / 100))
             self.requiredFragAmount = round(self.fragAmount * (self.options.required_frags / 100))
