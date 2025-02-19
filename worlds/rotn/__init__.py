@@ -237,5 +237,5 @@ class RotNWorld(World):
             "victoryLocation": self.victory_song_name,
             "deathLink": self.options.death_link.value,
             "musicSheetWinCount": self.get_diamond_win_count(),
-            "gradeNeeded": self.options.grade_needed,
+            "gradeNeeded": self.options.grade_needed.value,
         }
