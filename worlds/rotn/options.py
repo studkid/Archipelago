@@ -64,6 +64,8 @@ class MaxIntensity(Range):
 
 class GradeNeeded(Choice):
     """
+    Not Yet Implemented
+
     Required grade that needs to be achieved to send a check
     """
     display_name = "Grade Needed"

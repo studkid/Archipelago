@@ -45,7 +45,7 @@ class RotNWorld(World):
 
     def generate_early(self):
         min_diff = min(self.options.min_intensity.value, self.options.max_intensity.value)
-        max_diff = min(self.options.min_intensity.value, self.options.max_intensity.value)
+        max_diff = max(self.options.min_intensity.value, self.options.max_intensity.value)
 
         starter_song_count = self.options.starting_song_count.value
 
