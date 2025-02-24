@@ -4,7 +4,7 @@ from collections import ChainMap
 
 class RotNCollections:
     DIAMOND_NAME: str = "Diamond"
-    DIAMOND_CODE: int = 0
+    DIAMOND_CODE: int = 1
 
     # Thanks to DeamonHunter for genning this info
     SONG_DATA: Dict[str, SongData] = {
@@ -54,11 +54,11 @@ class RotNCollections:
     song_items: Dict[str, SongData] = {}
 
     filler_items: Dict[str, int] = {
-        "Apple": 1,
-        "Cheese": 2,
-        "Chicken": 3,
-        "Ham": 4,
-        "Vibe Charge": 5,
+        "Apple": 2,
+        "Cheese": 3,
+        "Chicken": 4,
+        "Ham": 5,
+        "Vibe Charge": 6,
     }
 
     filler_weights: Dict[str, int] = {
@@ -80,9 +80,9 @@ class RotNCollections:
 
         self.item_names_to_id.update({name: data.code for name, data in self.song_items.items()})
 
-        location_id_index = 0
+        location_id_index = 1
         for name in self.SONG_DATA.keys():
-            self.song_locations[f"{name}-0"] = location_id_index
+            self.song_locations[f"{name}-0"] = location_id_index 
             self.song_locations[f"{name}-1"] = location_id_index + 1
             location_id_index += 2
 
