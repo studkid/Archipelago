@@ -165,7 +165,7 @@ class RotNWorld(World):
 
         # When it comes to filling remaining spaces, we have 2 options. A useless filler or additional songs.
         # First fill 50% with the filler. The rest is to be duplicate songs.
-        filler_count = floor(0.5 * items_left)
+        filler_count = floor(items_left * (self.options.duplicate_song_percentage / 100))
         items_left -= filler_count
 
         for _ in range(0, filler_count):
