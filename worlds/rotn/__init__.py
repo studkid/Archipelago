@@ -7,7 +7,7 @@ from Options import PerGameCommonOptions
 from .options import RotNOptions
 from .RiftCollections import RotNCollections
 from .items import RotNSongItem, RotNFixedItem
-from. locations import RotNLocation
+from .locations import RotNLocation
 
 class RotNWeb(WebWorld):
     theme = "stone"
@@ -50,7 +50,7 @@ class RotNWorld(World):
         starter_song_count = self.options.starting_song_count.value
 
         while True:
-            available_song_keys = self.rift_collection.getSongsWithSettings(min_diff, max_diff)
+            available_song_keys = self.rift_collection.getSongsWithSettings(self.options.dlc_songs ,min_diff, max_diff)
             available_song_keys = self.handle_plando(available_song_keys)
 
             count_needed_for_start = max(0, starter_song_count - len(self.starting_songs))
