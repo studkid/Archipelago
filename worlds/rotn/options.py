@@ -122,6 +122,13 @@ class ExcludeSongs(ItemSet):
     verify_item_name = True
     display_name = "Exclude Songs"
 
+
+class GoalSongPool(ItemSet):
+    """Songs listed here will randomly chosen to be the final song.
+    If empty, the goal song will be chosen randomly from all included songs."""
+    verify_item_name = True
+    display_name = "Goal Song Pool"
+
 @dataclass
 class RotNOptions(PerGameCommonOptions):
     dlc_songs: DLCMusicPacks
@@ -138,3 +145,4 @@ class RotNOptions(PerGameCommonOptions):
     death_link: DeathLink
     include_songs: IncludeSongs
     exclude_songs: ExcludeSongs
+    goal_song_pool: GoalSongPool
