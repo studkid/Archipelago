@@ -10,16 +10,25 @@ from typing import List, Dict, Any
 
 class RiskOfWeb(WebWorld):
     tutorials = [Tutorial(
-        "Multiworld Setup Guide",
+        "Risk of Rain 2013 Setup Guide",
         "A guide to setting up the Risk of Rain 1 integration for Archipelago multiworld games.",
         "English",
-        "setup_en.md",
+        "setup_RoR1_en.md",
+        "setup/en",
+        ["studkid"]
+    ),
+    Tutorial(
+        "Risk of Rain Returns Setup Guide",
+        "A guide to setting up the Risk of Rain Returns integration for Archipelago multiworld games.",
+        "English",
+        "setup_RoRR_en.md",
         "setup/en",
         ["studkid"]
     )]
 
 class RoR1World(World):
     game = "Risk of Rain"
+    web = RiskOfWeb()
     options_dataclass = ROROptions
     options: ROROptions
     topology_present = False

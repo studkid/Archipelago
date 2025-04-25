@@ -1,4 +1,4 @@
-# Risk of Rain Setup Guide
+# Risk of Rain (2013) Setup Guide
 
 ## Installing Archipelago Mod
 
@@ -21,3 +21,5 @@ Run `RoRML Launcher` once again and you should now have a new window displaying 
 ## Connecting to Archipelago Game
 
 In RoRML Launcher, click on the `Archipelago Ranomizer` mod.  Once selected, on the right side of the screen will be the mod options.  Input your server address, slot name, and password into the corresponding boxes.
+
+Item pickup step, deathlink, and ringlink settings can also be updated here to your preferance.  Any changes will require you to reboot the game however.
