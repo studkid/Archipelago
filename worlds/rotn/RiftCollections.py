@@ -40,20 +40,40 @@ class RotNCollections:
         "Final Fugue": SongData(79, "TrackName_FinalFugue", "Base", 6, 13, 20, 30),
         "Twombtorial": SongData(80, "TrackName_Twombtorial", "Base", 5, 13, 19, 23),
         "Portamello": SongData(81, "TrackName_Portamello", "Base", 5, 10, 15, 20),
+        #Meat Boy
         "Slugger's Refrain": SongData(82, "TrackName_DLC_Apricot01", "MeatBoy", 6, 14, 21, 30),
         "Got Danged": SongData(83, "TrackName_DLC_Apricot02", "MeatBoy", 5, 12, 20, 30),
         "Bootus Bleez": SongData(84, "TrackName_DLC_Apricot03", "MeatBoy", 6, 10, 19, 29),
+        #Celeste
         "Resurrections (dannyBstyle Remix)": SongData(85, "TrackName_DLC_Banana01", "CelesteFree", 6, 10, 17, 27),
         "Scattered and Lost": SongData(86, "Scattered and Lost", "Celeste", 4, 8, 16, 25),
         "Reach for the Summit": SongData(87, "Reach for the Summit", "Celeste", 7, 11, 18, 30),
         "Confronting Myself": SongData(88, "Confronting Myself", "Celeste", 6, 9, 17, 26),
         "Resurrections": SongData(89, "Resurrections", "Celeste", 6, 10, 17, 27),
+        #Anniversary
+        "Crypteque": SongData(90, "Crypteque", "Anniversary", 5, 9, 13, 24),
+        "Power Cords": SongData(91, "Power Cords", "Anniversary", 2, 7, 12, 23),
+        "Fungal Funk": SongData(92, "Fungal Funk", "Anniversary", 4, 12, 17, 24),
+        #Pizza Tower
+        "It's Pizza Time!": SongData(93, "It's Pizza Time!", "Pizza Tower", 7, 13, 19, 24),
+        "The Death That I Deservioli": SongData(94, "The Death That I Deservioli", "Pizza Tower", 7, 11, 18, 26),
+        "Unexpectancy, Pt. 3": SongData(95, "Unexpectancy, Pt. 3", "Pizza Tower", 8, 16, 21, 29),
+        "World Wide Noise": SongData(96, "World Wide Noise", "Pizza Tower", 5, 10, 19, 28),
+        #Miku
+        "Too Real": SongData(95, "Too Real", "MikuFree", 4, 9, 16, 25),
+        "M@GICAL☆CURE! LOVE ♥ SHOT!": SongData(96, "M@GICAL☆CURE! LOVE ♥ SHOT!", "Hatsune Miku", 5, 11, 18, 26),
+        "Intergalactic Bound": SongData(97, "Intergalactic Bound", "Hatsune Miku", 3, 8, 15, 23),
+        "Just 1dB Louder": SongData(98, "Just 1dB Louder", "Hatsune Miku", 4, 11, 18, 26),
+        "MikuFiesta": SongData(99, "MikuFiesta", "Hatsune Miku", 3, 9, 16, 24),
+        "Radiant Revival": SongData(100, "Radiant Revival", "Hatsune Miku", 4, 7, 16, 23),
     }
 
     FREE_PACKS: List[str] = [
         "Base",
         "MeatBoy",
-        "CelesteFree"
+        "CelesteFree",
+        "Anniversary",
+        "MikuFree"
     ]
 
     DLC: List[str] = [
@@ -62,8 +82,28 @@ class RotNCollections:
         "Scattered and Lost",
         "Reach for the Summit",
         "Confronting Myself",
-        "Resurrections"
+        "Resurrections",
+
+        "Pizza Tower",
+        "It's Pizza Time!",
+        "The Death That I Deservioli",
+        "Unexpectancy, Pt. 3",
+        "World Wide Noise",
+
+        "Hatsune Miku",
+        "M@GICAL☆CURE! LOVE ♥ SHOT!",
+        "M@GICAL CURE! LOVE SHOT!",
+        "MAGICAL CURE! LOVE SHOT!",
+        "Intergalactic Bound",
+        "Just 1dB Louder",
+        "MikuFiesta",
+        "Radiant Revival"
     ]
+
+    SONG_ALIAS: Dict[str, str] = {
+        "M@GICAL CURE! LOVE SHOT!": "M@GICAL☆CURE! LOVE ♥ SHOT!",
+        "MAGICAL CURE! LOVE SHOT!": "M@GICAL☆CURE! LOVE ♥ SHOT!",
+    }
 
     song_locations: Dict[str, int] = {}
     song_items: Dict[str, SongData] = {}
@@ -103,6 +143,11 @@ class RotNCollections:
 
     def getSongsWithSettings(self, dlc_songs: Set[str], diff_lower: int, diff_higher:int) -> List[str]:
         filtered_list = []
+
+        for key, data in self.SONG_ALIAS.items():
+            if key in dlc_songs:
+                dlc_songs.remove(key)
+                dlc_songs.add(data)
 
         for key, data in self.song_items.items():
             if not self.songMatchesDlcFilter(data, dlc_songs):
