@@ -10,6 +10,11 @@ class SongData(NamedTuple):
     diff_hard: int
     diff_impossible: int
 
+class ExtraSongData(NamedTuple):
+    code: Optional[int]
+    DLC: str
+    diff: int
+
 class RotNSongItem(Item):
     game: str = "Rift of the Necrodancer"
 

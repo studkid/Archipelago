@@ -51,7 +51,7 @@ class RotNWorld(World):
         goal_song_pool = self.options.goal_song_pool.value
 
         while True:
-            available_song_keys = self.rift_collection.getSongsWithSettings(self.options.dlc_songs, min_diff, max_diff)
+            available_song_keys = self.rift_collection.getSongsWithSettings(self.options, min_diff, max_diff)
             available_song_keys = self.handle_plando(available_song_keys)
 
             # Find the proposed goal songs and add them to a new list

@@ -39,21 +39,25 @@ class DuplicateSongPercentage(Range):
     default = 100
     display_name = "Duplicate Song Percentage"
 
-class IncludeMinigames(Toggle):
+class IncludeMinigames(Choice):
     """
-    Not Yet Implemented
-
-    Adds minigames to the song pool
+    Adds minigames to the song pool.
+    Split allows medium and hard variants to be shuffled separately.
     """
     display_name = "Include Minigames"
+    option_false = 0
+    option_true = 1
+    option_Split = 2
 
 class IncludeBossBattles(Toggle):
     """
-    Not Yet Implemented
-    
     Add boss battles to the song pool
+    Split allows medium and hard variants to be shuffled separately.
     """
     display_name = "Include Boss Battles"
+    option_false = 0
+    option_true = 1
+    option_Split = 2
 
 class MinIntensity(Range):
     """

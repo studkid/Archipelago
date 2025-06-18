@@ -1,4 +1,4 @@
-from .items import SongData
+from .items import SongData, ExtraSongData
 from typing import Dict, List, Set, Optional
 from collections import ChainMap
 
@@ -68,12 +68,29 @@ class RotNCollections:
         "Radiant Revival": SongData(100, "Radiant Revival", "Hatsune Miku", 4, 7, 16, 23),
     }
 
+    EXTRA_DATA: Dict[str, ExtraSongData] = {
+        #Minigames
+        "A bit of a Stretch": ExtraSongData(2000, "Minigame", 0),
+        "Lunch Rush": ExtraSongData(2003, "Minigame", 0),
+        "Voguelike": ExtraSongData(2006, "Minigame", 0),
+        "Show Time!": ExtraSongData(2008, "Minigame", 0),
+        "Take a Breather": ExtraSongData(2012, "Minigame", 0),
+        #Bosses
+        "Harmonie": ExtraSongData(2100, "Boss", 0),
+        "Deep Blues": ExtraSongData(2103, "Boss", 0),
+        "Matron": ExtraSongData(2106, "Boss", 0),
+        "Reaper": ExtraSongData(2109, "Boss", 0),
+        "Necrodancer": ExtraSongData(2012, "Boss", 0),
+    }
+
     FREE_PACKS: List[str] = [
         "Base",
         "MeatBoy",
         "CelesteFree",
         "Anniversary",
-        "MikuFree"
+        "MikuFree",
+        "Minigame",
+        "Boss"
     ]
 
     DLC: List[str] = [
@@ -133,6 +150,11 @@ class RotNCollections:
         for key, data in self.SONG_DATA.items():
             self.song_items[key] = data
 
+        for key, data in self.EXTRA_DATA.items():
+            self.song_items[key] = data
+            self.song_items[key + " (Medium)"] = ExtraSongData(data.code + 1, data.DLC, 1)
+            self.song_items[key + " (Hard)"] = ExtraSongData(data.code + 2, data.DLC, 2)
+
         self.item_names_to_id.update({name: data.code for name, data in self.song_items.items()})
 
         location_id_index = 1
@@ -141,7 +163,18 @@ class RotNCollections:
             self.song_locations[f"{name}-1"] = location_id_index + 1
             location_id_index += 2
 
-    def getSongsWithSettings(self, dlc_songs: Set[str], diff_lower: int, diff_higher:int) -> List[str]:
+        location_id_index = 1000
+        for name in self.EXTRA_DATA.keys():
+            self.song_locations[f"{name}-0"] = location_id_index 
+            self.song_locations[f"{name}-1"] = location_id_index + 1
+            self.song_locations[f"{name} (Medium)-0"] = location_id_index + 2
+            self.song_locations[f"{name} (Medium)-1"] = location_id_index + 3
+            self.song_locations[f"{name} (Hard)-0"] = location_id_index + 4
+            self.song_locations[f"{name} (Hard)-1"] = location_id_index + 5
+            location_id_index += 6
+
+    def getSongsWithSettings(self, options, diff_lower: int, diff_higher:int) -> List[str]:
+        dlc_songs = options.dlc_songs
         filtered_list = []
 
         for key, data in self.SONG_ALIAS.items():
@@ -150,6 +183,20 @@ class RotNCollections:
                 dlc_songs.add(data)
 
         for key, data in self.song_items.items():
+            if data.DLC == "Minigame":
+                if options.include_minigames == 1 and data.diff == 0:
+                    filtered_list.append(key)
+                elif options.include_minigames == 2 and data.diff != 0:
+                    filtered_list.append(key)
+                continue
+
+            if data.DLC == "Boss":
+                if options.include_boss_battle == 1 and data.diff == 0:
+                    filtered_list.append(key)
+                elif options.include_boss_battle == 2 and data.diff != 0:
+                    filtered_list.append(key)
+                continue
+
             if not self.songMatchesDlcFilter(data, dlc_songs):
                 continue
 
