@@ -39,6 +39,12 @@ class DuplicateSongPercentage(Range):
     default = 100
     display_name = "Duplicate Song Percentage"
 
+class IncludeRemixMode(Toggle):
+    """
+    Adds remix mode songs as separate items and locations. When off, both normal and remix mode unlocks are the same. 
+    """
+    display_name = "Include Remix Mode"
+
 class IncludeMinigames(Choice):
     """
     Adds minigames to the song pool.
@@ -138,6 +144,7 @@ class RotNOptions(PerGameCommonOptions):
     starting_song_count: StartingSongs
     additional_song_count: AdditionalSongs
     duplicate_song_percentage: DuplicateSongPercentage
+    include_remix: IncludeRemixMode
     include_minigames: IncludeMinigames
     include_boss_battle: IncludeBossBattles
     min_intensity: MinIntensity
