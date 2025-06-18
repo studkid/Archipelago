@@ -247,5 +247,5 @@ class RotNWorld(World):
             "deathLink": self.options.death_link.value,
             "diamondWinCount": self.get_diamond_win_count(),
             "gradeNeeded": self.options.grade_needed.value,
-            "remixes": self.options.include_remix,
+            "remixes": self.options.include_remix.value,
         }
