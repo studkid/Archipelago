@@ -7,7 +7,7 @@ class DLCMusicPacks(OptionSet):
     Choose which DLC Packs will be included in the pool of chooseable songs.
     Both individual songs and dlc pack names work.
 
-    Current DLC Pack Groups: "Celeste"
+    Current DLC Pack Groups: "Celeste", "Pizza Tower", "Hatsune Miku"
     """
     display_name = "DLC Packs"
     valid_keys = [dlc for dlc in RotNCollections.DLC]
@@ -122,14 +122,14 @@ class GradeNeeded(Choice):
     default = 0
 
 class DiamondCountPercentage(Range):
-    """The percentage of Diamonds in the item pool that are needed to unlock the winning song."""
+    """Percentage of filler item to be replaced with diamonds."""
     range_start = 50
     range_end = 100
     default = 80
-    display_name = "Diamonds Needed to Win"
+    display_name = "Diamond Percentage"
 
 class DiamondWinPercentage(Range):
-    """The percentage of Diamonds in the item pool that are needed to unlock the winning song."""
+    """The percentage of diamonds in the item pool that are needed to unlock the winning song."""
     range_start = 50
     range_end = 100
     default = 80
