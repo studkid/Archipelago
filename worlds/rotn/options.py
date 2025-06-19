@@ -55,7 +55,7 @@ class IncludeMinigames(Choice):
     option_true = 1
     option_Split = 2
 
-class IncludeBossBattles(Toggle):
+class IncludeBossBattles(Choice):
     """
     Add boss battles to the song pool
     Split allows medium and hard variants to be shuffled separately.
@@ -66,22 +66,45 @@ class IncludeBossBattles(Toggle):
     option_Split = 2
 
 class MinIntensity(Range):
-    """
-    Ensures chosen rhythm rift will have a chart with an intensity value higher than this value 
+    """ 
+    Ensures chosen rhythm rift will have a chart with an intensity value higher than this value (Rhythm Rifts only)
     """
     range_start = 1
-    range_end = 99
+    range_end = 40
     default = 1
     display_name = "Minimum Intensity"
 
 class MaxIntensity(Range):
     """
-    Ensures chosen rhythm rift will have a chart with an intensity value lower than this value
+    Ensures chosen rhythm rift will have a chart with an intensity value lower than this value (Rhythm Rifts only)
     """
     range_start = 1
-    range_end = 99
+    range_end = 40
     default = 30
     display_name = "Maximum Intensity"
+
+class MinDifficulty(Choice):
+    """
+    Minimum difficulty level for intensity range for filtering (Rhythm Rifts only)
+    This setting will still allow any difficulty to be beaten to send a check
+    """
+    display_name = "Minimum Difficulty"
+    option_Easy = 0
+    option_Medium = 1
+    option_Hard = 2
+    option_Impossible = 3
+
+class MaxDifficulty(Choice):
+    """
+    Maximum difficulty level for intensity range for filtering (Rhythm Rifts only)
+    This setting will still allow any difficulty to be beaten to send a check
+    """
+    display_name = "Maximum Difficulty"
+    option_Easy = 0
+    option_Medium = 1
+    option_Hard = 2
+    option_Impossible = 3
+    default = 3
 
 class GradeNeeded(Choice):
     """
@@ -115,7 +138,7 @@ class DiamondWinPercentage(Range):
 class IncludeSongs(ItemSet):
     """
     These songs will be guaranteed to show up within the seed.
-    - You must have the DLC enabled to play these songs.
+    - You must have the DLC enabled to play those songs.
     - Difficulty options will not affect these songs.
     - If there are too many included songs, this will act as a whitelist ignoring song difficulty.
     """
@@ -149,6 +172,8 @@ class RotNOptions(PerGameCommonOptions):
     include_boss_battle: IncludeBossBattles
     min_intensity: MinIntensity
     max_intensity: MaxIntensity
+    min_difficulty: MinDifficulty
+    max_difficulty: MaxDifficulty
     grade_needed: GradeNeeded
     diamond_count_percentage: DiamondCountPercentage
     diamond_win_percentage: DiamondWinPercentage

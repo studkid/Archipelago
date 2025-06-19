@@ -51,6 +51,9 @@ class RotNWorld(World):
         goal_song_pool = self.options.goal_song_pool.value
 
         while True:
+            if self.options.min_difficulty.value > self.options.max_difficulty.value:
+                raise Exception("Max song difficulty is higher then min song difficulty.")
+
             available_song_keys = self.rift_collection.getSongsWithSettings(self.options, min_diff, max_diff)
             available_song_keys = self.handle_plando(available_song_keys)
 
@@ -79,7 +82,7 @@ class RotNWorld(World):
 
             # If the above fails, we want to adjust the difficulty thresholds.
             # Easier first, then harder
-            if min_diff <= 1 and max_diff >= 11:
+            if min_diff <= 1 and max_diff >= 40:
                 raise Exception("Failed to find enough songs, even with maximum difficulty thresholds.")
             elif min_diff <= 1:
                 max_diff += 1
