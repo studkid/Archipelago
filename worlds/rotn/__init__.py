@@ -248,4 +248,6 @@ class RotNWorld(World):
             "diamondWinCount": self.get_diamond_win_count(),
             "gradeNeeded": self.options.grade_needed.value,
             "remixes": self.options.include_remix.value,
+            "minigameMode": self.options.include_minigames.value,
+            "bossMode": self.options.include_boss_battle.value,
         }

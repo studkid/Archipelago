@@ -70,7 +70,7 @@ class RotNCollections:
 
     EXTRA_DATA: Dict[str, ExtraSongData] = {
         #Minigames
-        "A bit of a Stretch": ExtraSongData(2000, "Minigame", 0),
+        "A Bit of a Stretch": ExtraSongData(2000, "Minigame", 0),
         "Lunch Rush": ExtraSongData(2003, "Minigame", 0),
         "Voguelike": ExtraSongData(2006, "Minigame", 0),
         "Show Time!": ExtraSongData(2008, "Minigame", 0),
@@ -149,7 +149,7 @@ class RotNCollections:
 
         for key, data in self.SONG_DATA.items():
             self.song_items[key] = data
-            self.song_items[key + " (Remix)"] = SongData(data.code, data.song_name, data.DLC, data.diff_easy, data.diff_medium, data.diff_hard, data.diff_impossible, True)
+            self.song_items[key + " (Remix)"] = SongData(data.code + 1000, data.song_name, data.DLC, data.diff_easy, data.diff_medium, data.diff_hard, data.diff_impossible, True)
 
         for key, data in self.EXTRA_DATA.items():
             self.song_items[key] = data
