@@ -60,12 +60,12 @@ class RotNCollections:
         "Unexpectancy, Pt. 3": SongData(95, "Unexpectancy, Pt. 3", "Pizza Tower", 8, 16, 21, 29, False),
         "World Wide Noise": SongData(96, "World Wide Noise", "Pizza Tower", 5, 10, 19, 28, False),
         #Miku
-        "Too Real": SongData(95, "Too Real", "MikuFree", 4, 9, 16, 25, False),
-        "M@GICAL☆CURE! LOVE ♥ SHOT!": SongData(96, "M@GICAL☆CURE! LOVE ♥ SHOT!", "Hatsune Miku", 5, 11, 18, 26, False),
-        "Intergalactic Bound": SongData(97, "Intergalactic Bound", "Hatsune Miku", 3, 8, 15, 23, False),
-        "Just 1dB Louder": SongData(98, "Just 1dB Louder", "Hatsune Miku", 4, 11, 18, 26, False),
-        "MikuFiesta": SongData(99, "MikuFiesta", "Hatsune Miku", 3, 9, 16, 24, False),
-        "Radiant Revival": SongData(100, "Radiant Revival", "Hatsune Miku", 4, 7, 16, 23, False),
+        "Too Real": SongData(97, "Too Real", "MikuFree", 4, 9, 16, 25, False),
+        "M@GICAL☆CURE! LOVE ♥ SHOT!": SongData(98, "M@GICAL☆CURE! LOVE ♥ SHOT!", "Hatsune Miku", 5, 11, 18, 26, False),
+        "Intergalactic Bound": SongData(99, "Intergalactic Bound", "Hatsune Miku", 3, 8, 15, 23, False),
+        "Just 1dB Louder": SongData(100, "Just 1dB Louder", "Hatsune Miku", 4, 11, 18, 26, False),
+        "MikuFiesta": SongData(101, "MikuFiesta", "Hatsune Miku", 3, 9, 16, 24, False),
+        "Radiant Revival": SongData(102, "Radiant Revival", "Hatsune Miku", 4, 7, 16, 23, False),
     }
 
     EXTRA_DATA: Dict[str, ExtraSongData] = {
