@@ -66,6 +66,12 @@ class RotNCollections:
         "Just 1dB Louder": SongData(100, "Just 1dB Louder", "Hatsune Miku", 4, 11, 18, 26, False),
         "MikuFiesta": SongData(101, "MikuFiesta", "Hatsune Miku", 3, 9, 16, 24, False),
         "Radiant Revival": SongData(102, "Radiant Revival", "Hatsune Miku", 4, 7, 16, 23, False),
+        #Hololive
+        "REFLECT": SongData(103, "REFLECT", "CustomCounterpartNative", 7, 12, 17, 23),
+        "BIBBIDIBA": SongData(104, "BIBBIDIBA", "CustomCounterpartNative", 4, 9, 14, 22),
+        "Play Dice!": SongData(105, "Play Dice!", "CustomCounterpartNative", 8, 13, 19, 25),
+        "Ahoy!! 我ら宝鐘海賊団☆": SongData(106, "Ahoy!! 我ら宝鐘海賊団☆", "CustomCounterpartNative", 7, 14, 20, 30),
+        "Carbonated Love": SongData(107, "Carbonated Love", "CustomCounterpartNative", 5, 10, 15, 23),
     }
 
     EXTRA_DATA: Dict[str, ExtraSongData] = {
@@ -80,7 +86,7 @@ class RotNCollections:
         "Deep Blues": ExtraSongData(2103, "Boss", 0),
         "Matron": ExtraSongData(2106, "Boss", 0),
         "Reaper": ExtraSongData(2109, "Boss", 0),
-        "Necrodancer": ExtraSongData(2012, "Boss", 0),
+        "The Necrodancer": ExtraSongData(2012, "Boss", 0),
     }
 
     FREE_PACKS: List[str] = [
