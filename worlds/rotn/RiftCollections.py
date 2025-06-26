@@ -86,7 +86,7 @@ class RotNCollections:
         "Deep Blues": ExtraSongData(2103, "Boss", 0),
         "Matron": ExtraSongData(2106, "Boss", 0),
         "Reaper": ExtraSongData(2109, "Boss", 0),
-        "The Necrodancer": ExtraSongData(2012, "Boss", 0),
+        "The NecroDancer": ExtraSongData(2012, "Boss", 0),
     }
 
     FREE_PACKS: List[str] = [
