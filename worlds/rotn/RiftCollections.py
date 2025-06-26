@@ -60,18 +60,18 @@ class RotNCollections:
         "Unexpectancy, Pt. 3": SongData(95, "Unexpectancy, Pt. 3", "Pizza Tower", 8, 16, 21, 29, False),
         "World Wide Noise": SongData(96, "World Wide Noise", "Pizza Tower", 5, 10, 19, 28, False),
         #Miku
-        "Too Real": SongData(97, "Too Real", "MikuFree", 4, 9, 16, 25, False),
+        "Too Real": SongData(97, "Too Real", "FreeDLC", 4, 9, 16, 25, False),
         "M@GICAL☆CURE! LOVE ♥ SHOT!": SongData(98, "M@GICAL☆CURE! LOVE ♥ SHOT!", "Hatsune Miku", 5, 11, 18, 26, False),
         "Intergalactic Bound": SongData(99, "Intergalactic Bound", "Hatsune Miku", 3, 8, 15, 23, False),
         "Just 1dB Louder": SongData(100, "Just 1dB Louder", "Hatsune Miku", 4, 11, 18, 26, False),
         "MikuFiesta": SongData(101, "MikuFiesta", "Hatsune Miku", 3, 9, 16, 24, False),
         "Radiant Revival": SongData(102, "Radiant Revival", "Hatsune Miku", 4, 7, 16, 23, False),
         #Hololive
-        "REFLECT": SongData(103, "REFLECT", "CustomCounterpartNative", 7, 12, 17, 23),
-        "BIBBIDIBA": SongData(104, "BIBBIDIBA", "CustomCounterpartNative", 4, 9, 14, 22),
-        "Play Dice!": SongData(105, "Play Dice!", "CustomCounterpartNative", 8, 13, 19, 25),
-        "Ahoy!! 我ら宝鐘海賊団☆": SongData(106, "Ahoy!! 我ら宝鐘海賊団☆", "CustomCounterpartNative", 7, 14, 20, 30),
-        "Carbonated Love": SongData(107, "Carbonated Love", "CustomCounterpartNative", 5, 10, 15, 23),
+        "REFLECT": SongData(103, "REFLECT", "FreeDLC", 7, 12, 17, 23, False),
+        "BIBBIDIBA": SongData(104, "BIBBIDIBA", "Hololive", 4, 9, 14, 22, False),
+        "Play Dice!": SongData(105, "Play Dice!", "Hololive", 8, 13, 19, 25, False),
+        "Ahoy!! 我ら宝鐘海賊団☆": SongData(106, "Ahoy!! 我ら宝鐘海賊団☆", "Hololive", 7, 14, 20, 30, False),
+        "Carbonated Love": SongData(107, "Carbonated Love", "Hololive", 5, 10, 15, 23, False),
     }
 
     EXTRA_DATA: Dict[str, ExtraSongData] = {
@@ -94,7 +94,7 @@ class RotNCollections:
         "MeatBoy",
         "CelesteFree",
         "Anniversary",
-        "MikuFree",
+        "FreeDLC",
         "Minigame",
         "Boss"
     ]
@@ -120,7 +120,13 @@ class RotNCollections:
         "Intergalactic Bound",
         "Just 1dB Louder",
         "MikuFiesta",
-        "Radiant Revival"
+        "Radiant Revival",
+
+        "Hololive",
+        "BIBBIDIBA",
+        "Play Dice!",
+        "Ahoy!! 我ら宝鐘海賊団☆",
+        "Carbonated Love",
     ]
 
     SONG_ALIAS: Dict[str, str] = {
