@@ -83,7 +83,7 @@ class RotNWorld(World):
             # If the above fails, we want to adjust the difficulty thresholds.
             # Easier first, then harder
             if min_diff <= 1 and max_diff >= 40:
-                raise OptionError("Failed to find enough songs, even with maximum difficulty thresholds.")
+                raise OptionError("Failed to find enough songs, even with maximum difficulty thresholds.  (Did you exclude too many songs?)")
             elif min_diff <= 1:
                 max_diff += 1
             else:
