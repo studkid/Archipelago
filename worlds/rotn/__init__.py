@@ -2,7 +2,7 @@ from BaseClasses import Tutorial, Region, Item, ItemClassification
 from worlds.AutoWorld import WebWorld, World
 from typing import List, ClassVar, Type
 from math import floor
-from Options import PerGameCommonOptions
+from Options import PerGameCommonOptions, OptionError
 
 from .options import RotNOptions
 from .RiftCollections import RotNCollections
@@ -52,7 +52,7 @@ class RotNWorld(World):
 
         while True:
             if self.options.min_difficulty.value > self.options.max_difficulty.value:
-                raise Exception("Max song difficulty is higher then min song difficulty.")
+                raise OptionError("Max song difficulty is higher then min song difficulty.")
 
             available_song_keys = self.rift_collection.getSongsWithSettings(self.options, min_diff, max_diff)
             available_song_keys = self.handle_plando(available_song_keys)
