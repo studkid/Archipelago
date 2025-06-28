@@ -79,7 +79,7 @@ class RotNCollections:
         "A Bit of a Stretch": ExtraSongData(2000, "Minigame", 0),
         "Lunch Rush": ExtraSongData(2003, "Minigame", 0),
         "Voguelike": ExtraSongData(2006, "Minigame", 0),
-        "Show Time!": ExtraSongData(2008, "Minigame", 0),
+        "Show Time!": ExtraSongData(2009, "Minigame", 0),
         "Take a Breather": ExtraSongData(2012, "Minigame", 0),
         #Bosses
         "Harmonie": ExtraSongData(2100, "Boss", 0),
