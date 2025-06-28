@@ -115,8 +115,6 @@ class RotNCollections:
 
         "Hatsune Miku",
         "M@GICAL☆CURE! LOVE ♥ SHOT!",
-        "M@GICAL CURE! LOVE SHOT!",
-        "MAGICAL CURE! LOVE SHOT!",
         "Intergalactic Bound",
         "Just 1dB Louder",
         "MikuFiesta",
@@ -128,11 +126,6 @@ class RotNCollections:
         "Ahoy!! 我ら宝鐘海賊団☆",
         "Carbonated Love",
     ]
-
-    SONG_ALIAS: Dict[str, str] = {
-        "M@GICAL CURE! LOVE SHOT!": "M@GICAL☆CURE! LOVE ♥ SHOT!",
-        "MAGICAL CURE! LOVE SHOT!": "M@GICAL☆CURE! LOVE ♥ SHOT!",
-    }
 
     song_locations: Dict[str, int] = {}
     song_items: Dict[str, SongData] = {}
@@ -191,11 +184,6 @@ class RotNCollections:
     def getSongsWithSettings(self, options, diff_lower: int, diff_higher:int) -> List[str]:
         dlc_songs = options.dlc_songs
         filtered_list = []
-
-        for key, data in self.SONG_ALIAS.items():
-            if key in dlc_songs:
-                dlc_songs.remove(key)
-                dlc_songs.add(data)
 
         for key, data in self.song_items.items():
             if data.DLC == "Minigame":
