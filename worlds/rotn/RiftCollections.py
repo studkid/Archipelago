@@ -210,11 +210,11 @@ class RotNCollections:
                 filtered_list.append(key)
                 continue
 
-            if data.diff_medium != -1 and options.min_difficulty < 2 and options.max_difficulty < 1 and diff_lower <= data.diff_medium <= diff_higher:
+            if data.diff_medium != -1 and options.min_difficulty < 2 and options.max_difficulty >= 1 and diff_lower <= data.diff_medium <= diff_higher:
                 filtered_list.append(key)
                 continue
 
-            if data.diff_hard != -1 and options.min_difficulty < 3 and options.max_difficulty < 2 and diff_lower <= data.diff_hard <= diff_higher:
+            if data.diff_hard != -1 and options.min_difficulty < 3 and options.max_difficulty >= 2 and diff_lower <= data.diff_hard <= diff_higher:
                 filtered_list.append(key)
                 continue
 
