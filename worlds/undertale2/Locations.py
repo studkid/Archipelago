@@ -26,10 +26,13 @@ location_table: Dict[str, UT2LocationData] = {
     "Ruins - Fabio":                                        UT2LocationData("party", "Ruins Main", 1),
     "Ruins - Monk Key":                                     UT2LocationData("party", "Ruins Lake", 2),
     "Ruins - SANS":                                         UT2LocationData("party", "Ruins Tree", 3),
+    "Swamp - Monk Key":                                     UT2LocationData("party", "Swamp", 4),
 
     # Enemy Drops
     "Ruins - Scopestablook Defeated":                       UT2LocationData("drop", "Ruins Main", 101),
     "Swamp - Friefit Defeated":                             UT2LocationData("drop", "Swamp", 102),
+    "Slungy Scungle - Frogueslick Defeated":                UT2LocationData("drop", "Swamp", 103),
+    "Archives Frogue Chamber - Froguelass Defeated":        UT2LocationData("drop", "Frogue Chamber", 104),
 
     # Shops
     "Nicky Coinflip - Paper hat Purchase":                  UT2LocationData("shop", "Ruins Main", 201),
@@ -70,6 +73,10 @@ location_table: Dict[str, UT2LocationData] = {
     "Archives Sewer - Shop Math Token":                     UT2LocationData("pickup", "Archives Sewers", 26),
     "Archives Chimeny - Magic Glass Chest":                 UT2LocationData("pickup", "Archives Back", 27),
     "Church - Chef Chest":                                  UT2LocationData("pickup", "Hotden", 28),
+    "Archives Frogue Chamber - Odd Key":                    UT2LocationData("pickup", "Frogue Chamber", 29),
+
+    "Swamp - Upper Chest":                                  UT2LocationData("pickup", "Swamp", 30),
+    "Swamp - Lower Chest":                                  UT2LocationData("pickup", "Swamp", 31),
 
     # Enemies
     "#1 Flowey Card":                                       UT2LocationData("boss", "Landing", 301),
@@ -86,8 +93,11 @@ location_table: Dict[str, UT2LocationData] = {
     "#12 Whimsoot Card":                                    UT2LocationData("enemy", "Archives Back", 312),
     "#13 Smolderpot Card":                                  UT2LocationData("enemy", "Archives Back", 313),
     "#14 Friefit Card":                                     UT2LocationData("boss", "Swamp", 314),
+    "#15 Bog Cog Card":                                     UT2LocationData("enemy", "Swamp", 315),
+    "#16 Frogueslick Card":                                 UT2LocationData("boss", "Swamp", 316),
+    "#17 Frogueslick Card":                                 UT2LocationData("boss", "Frogue Chamber", 317),
 
-    "#59 Gilded☆Bingus Card":                                  UT2LocationData("enemy", "Ruins Lake", 359),
+    "#59 Gilded☆Bingus Card":                               UT2LocationData("enemy", "Ruins Lake", 359),
 
     # Special
     "Church - Cooking Minigame Reward #1":                  UT2LocationData("minigame", "Hotden", 401),

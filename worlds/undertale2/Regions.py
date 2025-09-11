@@ -21,10 +21,11 @@ def create_regions(multiworld: MultiWorld, player: int, options: UT2Options):
         "Ruins Lake":               UT2RegionData([], ["Ruins Tree"]),
         "Ruins Tree":               UT2RegionData([], ["Archives Pit", "Swamp"]),
         
-        "Archives Pit":             UT2RegionData([], ["Archives Sewers", "Archives Back"]),
+        "Archives Pit":             UT2RegionData([], ["Archives Sewers", "Archives Back", "Frogue Chamber"]),
         "Archives Sewers":          UT2RegionData([], []),
         "Archives Back":            UT2RegionData([], ["Hotden"]),
         "Hotden":                   UT2RegionData([], []),
+        "Frogue Chamber":           UT2RegionData([], []),
 
         "Swamp":                    UT2RegionData([], []),
     }

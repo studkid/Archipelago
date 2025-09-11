@@ -22,12 +22,14 @@ def set_rules(multiworld: MultiWorld, player: int):
             lambda state: state.has("Lucky Crowbar", player)
     multiworld.get_entrance("Archives Pit -> Archives Back", player).access_rule = \
             lambda state: state.has("Library Card", player)
+    multiworld.get_entrance("Archives Pit -> Frogue Chamber", player).access_rule = \
+            lambda state: state.has("Progressive Monk Key", player, 2) or state.has("Progrressive Key", player, 5)
     
     # Swamp
     multiworld.get_entrance("Ruins Tree -> Swamp", player).access_rule =\
             lambda state: state.has("Hotden Reached", player)
     
     # Special
-    multiworld.get_location("Lancer Card", player).access_rule = \
+    multiworld.get_location("#11 Lancer Card", player).access_rule = \
             lambda state: state.has("Lancer Encountered", player)
     

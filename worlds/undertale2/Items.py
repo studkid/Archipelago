@@ -36,19 +36,22 @@ item_table: Dict[str, UT2ItemData] = {
     "Pinkeye scope":                        UT2ItemData("eyewear", 102, ItemClassification.progression_deprioritized),
     "Hawaiian shirt":                       UT2ItemData("body", 103, ItemClassification.progression_deprioritized),
     "Froggit Leg":                          UT2ItemData("trinket", 104, ItemClassification.progression_deprioritized),
+    "Hatsune Miku Dice":                    UT2ItemData("trinket", 105, ItemClassification.progression_deprioritized),
 
     # Weapons
     "Lucky Crowbar":                        UT2ItemData("weapon", 201, ItemClassification.progression),
     "Baseball Bat":                         UT2ItemData("weapon", 202, ItemClassification.progression_deprioritized),
     "Nutcracker":                           UT2ItemData("weapon", 203, ItemClassification.progression_deprioritized),
+    "Madame's Chalice":                     UT2ItemData("weapon", 204, ItemClassification.progression_deprioritized),
 
     # Key Items
     "Gold Key":                             UT2ItemData("key", 301, ItemClassification.progression),
     "Silver Key":                           UT2ItemData("key", 302, ItemClassification.progression),
     "Bronze Key":                           UT2ItemData("key", 303, ItemClassification.progression),
-    "Progressive Key":                      UT2ItemData("progkey", 304, ItemClassification.progression, 4),
+    "Progressive Key":                      UT2ItemData("progkey", 304, ItemClassification.progression, 5),
     "Anime catboy transformation potion":   UT2ItemData("misc prog", 304, ItemClassification.progression),
     "Library Card":                         UT2ItemData("misc prog", 305, ItemClassification.progression),
+    "Odd Key":                              UT2ItemData("misc prog", 306, ItemClassification.progression, 1),
 
     # Junk
     "EXP breeze badge!!!":                  UT2ItemData("trinket", 1001, ItemClassification.filler),
@@ -71,6 +74,7 @@ item_table: Dict[str, UT2ItemData] = {
     "Wadda-P":                              UT2ItemData("filler", 1018, ItemClassification.filler),
     "Scrumptious Stew":                     UT2ItemData("filler", 1019, ItemClassification.filler, weight=1),
     "Placebo":                              UT2ItemData("filler", 1020, ItemClassification.filler, weight=1),
+    "Gravy Granules":                       UT2ItemData("filler", 1021, ItemClassification.filler, weight=1),
 }
 
 event_item_table: Dict[str, UT2ItemData] = {
