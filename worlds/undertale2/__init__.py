@@ -6,7 +6,7 @@ from .Items import UT2Item, UT2ItemData, event_item_table, get_items_by_category
 from .Locations import UT2Location, location_table
 from .Options import UT2Options
 from .Regions import create_regions
-# from .Rules import set_rules
+from .Rules import set_rules
 
 
 class UT2Web(WebWorld):
@@ -73,13 +73,13 @@ class UT2World(World):
         data = event_item_table[name]
         return UT2Item(name, data.classification, data.code, self.player)
 
-    # def set_rules(self):
-    #     set_rules(self, self.player)
+    def set_rules(self):
+        set_rules(self.multiworld, self.player)
 
     def create_regions(self):
         create_regions(self.multiworld, self.player, self.options)
-        from Utils import visualize_regions
-        visualize_regions(self.multiworld.get_region("Menu", self.player), "my_world.puml")
+        # from Utils import visualize_regions
+        # visualize_regions(self.multiworld.get_region("Menu", self.player), "my_world.puml")
         # self._place_events()
 
     # def _place_events(self):
