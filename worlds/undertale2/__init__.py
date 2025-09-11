@@ -5,7 +5,7 @@ from worlds.AutoWorld import WebWorld, World
 from .Items import UT2Item, UT2ItemData, event_item_table, get_items_by_category, item_table
 from .Locations import UT2Location, location_table
 from .Options import UT2Options
-# from .Regions import create_regions
+from .Regions import create_regions
 # from .Rules import set_rules
 
 
@@ -47,9 +47,9 @@ class UT2World(World):
             if data.category == "Filler":
                 continue
 
-            if data.category == "key" and self.options.progmonkkey != 1:
+            if data.category == "key" and self.options.progressive_monkkey == 1:
                 continue
-            elif data.category == "progkey":
+            elif data.category == "progkey" and self.options.progressive_monkkey != 1:
                 continue
 
             item_pool += [self.create_item(name) for _ in range(0, quantity)]
@@ -77,10 +77,9 @@ class UT2World(World):
     #     set_rules(self, self.player)
 
     def create_regions(self):
-        menu = Region("Menu", self.player, self.multiworld)
-        self.multiworld.regions.append(menu)
-        menu.add_locations(self.location_name_to_id, UT2Location)
-    #     create_regions(self)
+        create_regions(self.multiworld, self.player, self.options)
+        from Utils import visualize_regions
+        visualize_regions(self.multiworld.get_region("Menu", self.player), "my_world.puml")
         # self._place_events()
 
     # def _place_events(self):

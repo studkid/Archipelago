@@ -27,7 +27,7 @@ item_table: Dict[str, UT2ItemData] = {
     # Party Members
     # "Frisk":                    UT2ItemData("party", 1, ItemClassification.progression),
     "Fabio":                    UT2ItemData("party", 2, ItemClassification.progression),
-    "Monk Key":                 UT2ItemData("party", 3, ItemClassification.progression),
+    "Monk Key":                 UT2ItemData("key", 3, ItemClassification.progression),
     "SANS":                     UT2ItemData("party", 4, ItemClassification.progression),
     # "Nazrin":       UT2ItemData("party", 5, ItemClassification.progression),
 

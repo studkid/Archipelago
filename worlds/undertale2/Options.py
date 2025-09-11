@@ -13,7 +13,8 @@ class ProgMonkKey(Choice):
 
 class CardSanity(Choice):
     """
-    Turns card drops into locations
+    Turns card drops into locations.
+    (You will need to interact with the card in your inventory to send the location)
     """
     display_name = "Cardsanity"
     option_false = 0
@@ -28,6 +29,6 @@ class CardSanity(Choice):
 
 @dataclass
 class UT2Options(PerGameCommonOptions):
-    progmonkkey: ProgMonkKey
+    progressive_monkkey: ProgMonkKey
     cardsanity: CardSanity
     # lancersanity: LancerSanity
