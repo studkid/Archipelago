@@ -24,19 +24,20 @@ def get_locations_by_category(category: str) -> Dict[str, UT2LocationData]:
 location_table: Dict[str, UT2LocationData] = {
     # Party Members
     "Ruins - Fabio":                                        UT2LocationData("party", "Ruins Main", 1),
-    "Ruins - Monk Key":                                     UT2LocationData("party", "Ruins Lake", 2),
-    "Ruins - SANS":                                         UT2LocationData("party", "Ruins Tree", 3),
-    "Swamp - Monk Key":                                     UT2LocationData("party", "Swamp", 4),
+    "Ruins - Lake Monk Key":                                UT2LocationData("party", "Ruins Lake", 2),
+    "Ruins - sans":                                         UT2LocationData("party", "Ruins Tree", 3),
+    "Swamp - Save Monk Key":                                UT2LocationData("party", "Swamp", 4),
+    "Prison - Nazrin":                                      UT2LocationData("party", "Prison Cells", 5),
 
     # Enemy Drops
-    "Ruins - Scopestablook Defeated":                       UT2LocationData("drop", "Ruins Main", 101),
-    "Swamp - Friefit Defeated":                             UT2LocationData("drop", "Swamp", 102),
-    "Slungy Scungle - Frogueslick Defeated":                UT2LocationData("drop", "Swamp", 103),
+    "Ruins - Scopestablook Drop":                           UT2LocationData("drop", "Ruins Main", 101),
+    "Swamp - Friefit Drop":                                 UT2LocationData("drop", "Swamp", 102),
+    "Slungy Scungle - Frogueslick Drop":                    UT2LocationData("drop", "Swamp", 103),
     "Archives Frogue Chamber - Froguelass Defeated":        UT2LocationData("drop", "Frogue Chamber", 104),
 
     # Shops
     "Nicky Coinflip - Paper hat Purchase":                  UT2LocationData("shop", "Ruins Main", 201),
-    "Nicky Coinflip - Lucky Crowbar Purchase":              UT2LocationData("shop", "Ruins Main", 202),
+    "Nicky Coinflip Rest Stop - Lucky Crowbar Purchase":    UT2LocationData("shop", "Ruins Main", 202),
     "P-Capsule Seller - Soap-P Purchase":                   UT2LocationData("shop", "Ruins Tree", 203),
     "P-Capsule Seller - Midnight-P Purchase":               UT2LocationData("shop", "Ruins Tree", 204),
     "P-Capsule Seller - Berry-P Purchase":                  UT2LocationData("shop", "Ruins Tree", 205),
@@ -95,13 +96,13 @@ location_table: Dict[str, UT2LocationData] = {
     "#14 Friefit Card":                                     UT2LocationData("boss", "Swamp", 314),
     "#15 Bog Cog Card":                                     UT2LocationData("enemy", "Swamp", 315),
     "#16 Frogueslick Card":                                 UT2LocationData("boss", "Swamp", 316),
-    "#17 Frogueslick Card":                                 UT2LocationData("boss", "Frogue Chamber", 317),
+    "#17 Froguelass Card":                                  UT2LocationData("boss", "Frogue Chamber", 317),
 
-    "#59 Gilded☆Bingus Card":                               UT2LocationData("enemy", "Ruins Lake", 359),
+    "#59 Gilded☆Bingus Card":                              UT2LocationData("enemy", "Ruins Lake", 359),
 
     # Special
-    "Church - Cooking Minigame Reward #1":                  UT2LocationData("minigame", "Hotden", 401),
-    "Church - Cooking Minigame Reward #2":                  UT2LocationData("minigame", "Hotden", 402),                
+    "Church - Play Cooking Minigame 1 Time":                UT2LocationData("minigame", "Hotden", 401),
+    "Church - Play Cooking Minigame 5 Times":               UT2LocationData("minigame", "Hotden", 402),                
 
     # Silly
     # "Rest Zone - PISS AND SHIT FM":                         UT2LocationData("silly", "Rest Zone", 1001),

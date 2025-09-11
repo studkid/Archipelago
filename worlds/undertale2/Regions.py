@@ -24,10 +24,12 @@ def create_regions(multiworld: MultiWorld, player: int, options: UT2Options):
         "Archives Pit":             UT2RegionData([], ["Archives Sewers", "Archives Back", "Frogue Chamber"]),
         "Archives Sewers":          UT2RegionData([], []),
         "Archives Back":            UT2RegionData([], ["Hotden"]),
-        "Hotden":                   UT2RegionData([], []),
+        "Hotden":                   UT2RegionData([], ["Prison Cells"]),
         "Frogue Chamber":           UT2RegionData([], []),
 
         "Swamp":                    UT2RegionData([], []),
+
+        "Prison Cells":             UT2RegionData([], []),
     }
 
     for name, data in location_table.items():

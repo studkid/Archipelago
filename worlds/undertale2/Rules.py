@@ -29,6 +29,11 @@ def set_rules(multiworld: MultiWorld, player: int):
     multiworld.get_entrance("Ruins Tree -> Swamp", player).access_rule =\
             lambda state: state.has("Hotden Reached", player)
     
+    # Prison
+    multiworld.get_entrance("Hotden -> Prison Cells", player).access_rule =\
+            lambda state: has_all(state, player, ["sans", "Anime catboy transformation potion"]) and \
+                          state.has("Progressive Monk Key", player, 2) or state.has("Progrressive Key", player, 5)
+    
     # Special
     multiworld.get_location("#11 Lancer Card", player).access_rule = \
             lambda state: state.has("Lancer Encountered", player)
