@@ -10,10 +10,24 @@ def has_all(state: CollectionState, player: int, items: List[str]) -> bool:
     return True
 
 def set_rules(multiworld: MultiWorld, player: int):
-    for entrance in multiworld.get_region("Sewers", player).entrances:
-        entrance.access_rule = lambda state: state.has("Lucky Crowbar", player)
+    # Ruins
+    multiworld.get_entrance("Ruins Main -> Ruins Sewers", player).access_rule = \
+            lambda state: state.has("Lucky Crowbar", player)
+    multiworld.get_entrance("Ruins Lake -> Ruins Tree", player).access_rule = \
+            lambda state: has_all(state, player, ["Gold Key", "Silver Key", "Bronze Key", "Progressive Monk Key"])\
+                          or state.has("Progressive Key", player, 4)
 
-    for entrance in multiworld.get_region("Ruins Tree", player).entrances:
-        entrance.access_rule = lambda state: has_all(state, player, ["Gold Key", "Silver Key", "Bronze Key", "Monk Key"])\
-                                             or state.has("Progressive Key", player, 4)
+    # Archives
+    multiworld.get_entrance("Archives Pit -> Archives Sewers", player).access_rule = \
+            lambda state: state.has("Lucky Crowbar", player)
+    multiworld.get_entrance("Archives Pit -> Archives Back", player).access_rule = \
+            lambda state: state.has("Library Card", player)
+    
+    # Swamp
+    multiworld.get_entrance("Ruins Tree -> Swamp", player).access_rule =\
+            lambda state: state.has("Hotden Reached", player)
+    
+    # Special
+    multiworld.get_location("Lancer Card", player).access_rule = \
+            lambda state: state.has("Lancer Encountered", player)
     

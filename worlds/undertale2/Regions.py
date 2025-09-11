@@ -1,7 +1,7 @@
 from typing import Dict, List, NamedTuple, Optional
 
 from BaseClasses import MultiWorld, Region
-from .Locations import UT2Location, location_table, get_locations_by_category
+from .Locations import UT2Location, location_table, event_location_table
 from Options import Choice
 from .Options import UT2Options
 
@@ -11,13 +11,22 @@ class UT2RegionData(NamedTuple):
 
 def create_regions(multiworld: MultiWorld, player: int, options: UT2Options):
     regions: Dict[str, UT2RegionData] = {
-        "Menu":                     UT2RegionData(None, ["Landing"]),
+        "Menu":                     UT2RegionData(None, ["Landing", "Special Enemies"]),
+        "Special Enemies":          UT2RegionData([], []),
+
         "Landing":                  UT2RegionData([], ["Ruins Main"]),
-        "Ruins Main":               UT2RegionData([], ["Sewers", "Ruins Lake", "Rest Zone"]),
-        "Sewers":                   UT2RegionData([], ["Ruins Lake"]),
+        "Ruins Main":               UT2RegionData([], ["Ruins Sewers", "Ruins Lake", "Rest Zone"]),
+        "Ruins Sewers":             UT2RegionData([], ["Ruins Lake"]),
         "Rest Zone":                UT2RegionData([], []),
         "Ruins Lake":               UT2RegionData([], ["Ruins Tree"]),
-        "Ruins Tree":               UT2RegionData([], [])
+        "Ruins Tree":               UT2RegionData([], ["Archives Pit", "Swamp"]),
+        
+        "Archives Pit":             UT2RegionData([], ["Archives Sewers", "Archives Back"]),
+        "Archives Sewers":          UT2RegionData([], []),
+        "Archives Back":            UT2RegionData([], ["Hotden"]),
+        "Hotden":                   UT2RegionData([], []),
+
+        "Swamp":                    UT2RegionData([], []),
     }
 
     for name, data in location_table.items():
@@ -26,6 +35,9 @@ def create_regions(multiworld: MultiWorld, player: int, options: UT2Options):
         if data.category == "boss" and options.cardsanity < 1:
             continue
 
+        regions[data.region].locations.append(name)
+
+    for name, data in event_location_table.items():
         regions[data.region].locations.append(name)
 
     for name, data in regions.items():

@@ -13,7 +13,8 @@ class ProgMonkKey(Choice):
 
 class CardSanity(Choice):
     """
-    Turns card drops into locations.
+    Turns card drops into locations.  
+    It's a 1/50 chance drop from most enemies.
     (You will need to interact with the card in your inventory to send the location)
     """
     display_name = "Cardsanity"
@@ -21,14 +22,7 @@ class CardSanity(Choice):
     option_bosses_only = 1
     option_all = 2
 
-# class LancerSanity(Toggle):
-#     """
-#     Turns all lancer interactions into locations
-#     """
-#     display_name = "lancersanity"
-
 @dataclass
 class UT2Options(PerGameCommonOptions):
     progressive_monkkey: ProgMonkKey
     cardsanity: CardSanity
-    # lancersanity: LancerSanity
