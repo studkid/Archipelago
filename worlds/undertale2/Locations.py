@@ -33,7 +33,7 @@ location_table: Dict[str, UT2LocationData] = {
     "Ruins - Scopestablook Drop":                           UT2LocationData("drop", "Ruins Main", 101),
     "Swamp - Friefit Drop":                                 UT2LocationData("drop", "Swamp", 102),
     "Slungy Scungle - Frogueslick Drop":                    UT2LocationData("drop", "Swamp", 103),
-    "Archives Frogue Chamber - Froguelass Defeated":        UT2LocationData("drop", "Frogue Chamber", 104),
+    "Archives Frogue Chamber - Froguelass Drop":            UT2LocationData("drop", "Frogue Chamber", 104),
 
     # Shops
     "Nicky Coinflip - Paper hat Purchase":                  UT2LocationData("shop", "Ruins Main", 201),
