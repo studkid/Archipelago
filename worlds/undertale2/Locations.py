@@ -30,7 +30,7 @@ location_table: Dict[str, UT2LocationData] = {
     "Prison - Nazrin":                                      UT2LocationData("party", "Prison Cells", 5),
 
     # Enemy Drops
-    "Ruins - Scopestablook Drop":                           UT2LocationData("drop", "Ruins Main", 101),
+    "Ruins - Scopestablook Drop":                           UT2LocationData("drop", "Scopestablook", 101),
     "Swamp - Friefit Drop":                                 UT2LocationData("drop", "Swamp", 102),
     "Slungy Scungle - Frogueslick Drop":                    UT2LocationData("drop", "Swamp", 103),
     "Archives Frogue Chamber - Froguelass Drop":            UT2LocationData("drop", "Frogue Chamber", 104),
@@ -83,7 +83,6 @@ location_table: Dict[str, UT2LocationData] = {
     "Swamp - Upper Chest":                                  UT2LocationData("pickup", "Swamp", 30),
     "Swamp - Lower Chest":                                  UT2LocationData("pickup", "Swamp", 31),
 
-    # Prison
     "Prison - Corridor Chest Behind Spikes":                UT2LocationData("pickup", "Prison Cells", 32),
     "Prison - Puzzle Chest":                                UT2LocationData("pickup", "Prison Puzzle", 33),
     "Prison - Marylin Reward #1":                           UT2LocationData("pickup", "Prison Puzzle", 34),
@@ -94,7 +93,7 @@ location_table: Dict[str, UT2LocationData] = {
     "#1 Flowey Card":                                       UT2LocationData("boss", "Landing", 301),
     "#2 Froggit Card":                                      UT2LocationData("enemy", "Ruins Main", 302),
     "#3 Bart Playing Rough Card":                           UT2LocationData("enemy", "Ruins Main", 303),
-    "#4 Scopestablook Card":                                UT2LocationData("boss", "Ruins Main", 304),
+    "#4 Scopestablook Card":                                UT2LocationData("boss", "Scopestablook", 304),
     "#5 Peatrooper Card":                                   UT2LocationData("enemy", "Ruins Lake", 305),
     "#6 Helper Mimic Card":                                 UT2LocationData("enemy", "Archives Sewers", 306),
     "#7 Table Mimic Card":                                  UT2LocationData("boss", "Ruins Lake", 307),

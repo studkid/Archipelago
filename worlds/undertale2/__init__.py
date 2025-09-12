@@ -4,7 +4,7 @@ from BaseClasses import Tutorial, Region
 from worlds.AutoWorld import WebWorld, World
 from .Items import UT2Item, UT2ItemData, event_item_table, get_items_by_category, item_table
 from .Locations import UT2Location, location_table
-from .Options import UT2Options
+from .Options import UT2Options, ProgMonkKey
 from .Regions import create_regions
 from .Rules import set_rules
 
@@ -34,9 +34,6 @@ class UT2World(World):
     item_name_to_id = {name: data.code for name, data in item_table.items() if data.code is not None}
     location_name_to_id = {name: data.code for name, data in location_table.items() if data.code is not None}
 
-    # def fill_slot_data(self) -> dict:
-    #     return self.options.as_dict(*[name for name in self.options_dataclass.type_hints.keys()])
-
     def create_items(self):
         item_pool: List[UT2Item] = []
         total_locations = len(self.multiworld.get_unfilled_locations(self.player))
@@ -47,9 +44,12 @@ class UT2World(World):
             if data.category == "Filler":
                 continue
 
-            if data.category == "key" and self.options.progressive_monkkey == 1:
+            if data.category == "key" and not name == "Progressive Monk Key" and self.options.progressive_monkkey == ProgMonkKey.option_monk_key_only:
                 continue
-            elif data.category == "progkey" and self.options.progressive_monkkey != 1:
+
+            if data.category == "key" and self.options.progressive_monkkey == ProgMonkKey.option_true:
+                continue
+            elif data.category == "progkey" and self.options.progressive_monkkey != ProgMonkKey.option_true:
                 continue
 
             if data.category == "card" and self.options.cardsanity != 2:
@@ -77,13 +77,20 @@ class UT2World(World):
         return UT2Item(name, data.classification, data.code, self.player)
 
     def set_rules(self):
-        set_rules(self.multiworld, self.player)
+        set_rules(self.multiworld, self.player, self.options)
 
     def create_regions(self):
         create_regions(self.multiworld, self.player, self.options)
-        # from Utils import visualize_regions
-        # visualize_regions(self.multiworld.get_region("Menu", self.player), "my_world.puml")
+        from Utils import visualize_regions
+        visualize_regions(self.multiworld.get_region("Menu", self.player), "my_world.puml")
         self._place_events()
+        if self.options.progressive_monkkey == ProgMonkKey.option_monk_key_only:
+            self.multiworld.get_location("Ruins - Lake Gold Key", self.player).place_locked_item(
+                            self.create_item("Gold Key"))
+            self.multiworld.get_location("Ruins - Lake Silver Key", self.player).place_locked_item(
+                            self.create_item("Silver Key"))
+            self.multiworld.get_location("Ruins - Lake Bronze Key", self.player).place_locked_item(
+                            self.create_item("Bronze Key"))
 
     def _place_events(self):
         self.multiworld.get_location("Lancer Encounter", self.player).place_locked_item(

@@ -1,6 +1,6 @@
 from typing import List
 from BaseClasses import CollectionState, MultiWorld, Location, Region, Item
-from typing import TYPE_CHECKING
+from .Options import UT2Options, CardSanity
 
 def has_all(state: CollectionState, player: int, items: List[str]) -> bool:
     for _, item in enumerate(items):
@@ -34,11 +34,11 @@ def can_beat_froguelass(state: CollectionState, player: int) -> bool:
 def can_beat_cirno(state: CollectionState, player: int) -> bool:
     return party_count(state, player) >= 4
 
-def set_rules(multiworld: MultiWorld, player: int):
+def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
     # Ruins
     multiworld.get_entrance("Ruins Main -> Ruins Sewers", player).access_rule = \
             lambda state: state.has("Lucky Crowbar", player)
-    multiworld.get_entrance("Ruins Main -> Ruins Lake", player).access_rule = \
+    multiworld.get_entrance("Ruins Main -> Scopestablook", player).access_rule = \
             lambda state: can_beat_snopestablook(state, player)
     multiworld.get_entrance("Ruins Lake -> Ruins Tree", player).access_rule = \
             lambda state: has_all(state, player, ["Gold Key", "Silver Key", "Bronze Key", "Progressive Monk Key"])\
@@ -76,12 +76,13 @@ def set_rules(multiworld: MultiWorld, player: int):
             lambda state: can_beat_cirno(state, player)
     
     # Special
-    multiworld.get_location("#11 Lancer Card", player).access_rule = \
-            lambda state: state.has("Lancer Encountered", player)
-    multiworld.get_location("#18 Homer Guard Card", player).access_rule = \
-        lambda state: state.has("#18 Homer Guard Card", player)
-    multiworld.get_location("#19 Prison Tick Card", player).access_rule = \
-        lambda state: state.has("#19 Prison Tick Card", player)
+    if options.cardsanity == CardSanity.option_all:
+        multiworld.get_location("#11 Lancer Card", player).access_rule = \
+                lambda state: state.has("Lancer Encountered", player)
+        multiworld.get_location("#18 Homer Guard Card", player).access_rule = \
+            lambda state: state.has("#18 Homer Guard Card", player)
+        multiworld.get_location("#19 Prison Tick Card", player).access_rule = \
+            lambda state: state.has("#19 Prison Tick Card", player)
     
     # Win Condition
     multiworld.completion_condition[player] = lambda state: state.can_reach("Cirno Defeated", "Location", player)

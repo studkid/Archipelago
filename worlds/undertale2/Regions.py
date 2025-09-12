@@ -15,9 +15,10 @@ def create_regions(multiworld: MultiWorld, player: int, options: UT2Options):
         "Special Enemies":          UT2RegionData([], []),
 
         "Landing":                  UT2RegionData([], ["Ruins Main"]),
-        "Ruins Main":               UT2RegionData([], ["Ruins Sewers", "Ruins Lake", "Rest Zone"]),
+        "Ruins Main":               UT2RegionData([], ["Ruins Sewers", "Scopestablook", "Rest Zone"]),
         "Ruins Sewers":             UT2RegionData([], ["Ruins Lake"]),
         "Rest Zone":                UT2RegionData([], []),
+        "Scopestablook":            UT2RegionData([], ["Ruins Lake"]),
         "Ruins Lake":               UT2RegionData([], ["Ruins Tree"]),
         "Ruins Tree":               UT2RegionData([], ["Archives Pit", "Swamp"]),
         
