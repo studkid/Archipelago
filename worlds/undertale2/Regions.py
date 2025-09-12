@@ -29,9 +29,10 @@ def create_regions(multiworld: MultiWorld, player: int, options: UT2Options):
 
         "Swamp":                    UT2RegionData([], []),
 
-        "Prison Cells":             UT2RegionData([], ["Goal Region"]),
-
-        "Goal Region":              UT2RegionData(None, []),
+        "Prison Cells":             UT2RegionData([], ["Prison Puzzle", "Prison Kitchen"]),
+        "Prison Puzzle":            UT2RegionData([], []),
+        "Prison Kitchen":           UT2RegionData([], ["Prison Office"]),
+        "Prison Office":            UT2RegionData([], []),
     }
 
     for name, data in location_table.items():

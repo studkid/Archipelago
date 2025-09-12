@@ -23,13 +23,16 @@ def party_count(state: CollectionState, player: int) -> int:
     return count
 
 def can_beat_snopestablook(state: CollectionState, player: int) -> bool:
-    return party_count(state, player) == 2
+    return party_count(state, player) >= 2
 
 def can_beat_swamp(state: CollectionState, player: int) -> bool:
-    return party_count(state, player) == 2
+    return party_count(state, player) >= 2
 
 def can_beat_froguelass(state: CollectionState, player: int) -> bool:
-    return party_count(state, player) == 3
+    return party_count(state, player) >= 3
+
+def can_beat_cirno(state: CollectionState, player: int) -> bool:
+    return party_count(state, player) >= 4
 
 def set_rules(multiworld: MultiWorld, player: int):
     # Ruins
@@ -52,17 +55,34 @@ def set_rules(multiworld: MultiWorld, player: int):
     
     # Swamp
     multiworld.get_entrance("Ruins Tree -> Swamp", player).access_rule =\
-            lambda state: state.has("Hotden Reached", player) and can_beat_swamp(state, player)
+            lambda state: state.has("Hotden Reached", player)
     
     # Prison
     multiworld.get_entrance("Hotden -> Prison Cells", player).access_rule =\
             lambda state: has_all(state, player, ["sans", "Anime catboy transformation potion"]) and \
                           (state.has("Progressive Monk Key", player, 2) or state.has("Progressive Key", player, 5))
     
+    multiworld.get_location("Prison - Marylin Reward #1", player).access_rule =\
+            lambda state: has_all(state, player, ["Puzzle Key"])
+    multiworld.get_location("Prison - Marylin Reward #2", player).access_rule =\
+            lambda state: has_all(state, player, ["Puzzle Key"])
+    multiworld.get_location("#20 Marylin Card", player).access_rule =\
+            lambda state: has_all(state, player, ["Puzzle Key"])
+    
+    multiworld.get_entrance("Prison Cells -> Prison Kitchen", player).access_rule =\
+            lambda state: state.has("Prison Key", player)
+    
+    multiworld.get_entrance("Prison Kitchen -> Prison Office", player).access_rule =\
+            lambda state: can_beat_cirno(state, player)
+    
     # Special
     multiworld.get_location("#11 Lancer Card", player).access_rule = \
             lambda state: state.has("Lancer Encountered", player)
+    multiworld.get_location("#18 Homer Guard Card", player).access_rule = \
+        lambda state: state.has("#18 Homer Guard Card", player)
+    multiworld.get_location("#19 Prison Tick Card", player).access_rule = \
+        lambda state: state.has("#19 Prison Tick Card", player)
     
     # Win Condition
-    multiworld.completion_condition[player] = lambda state: state.can_reach("Goal Region", "Region", player)
+    multiworld.completion_condition[player] = lambda state: state.can_reach("Cirno Defeated", "Location", player)
     

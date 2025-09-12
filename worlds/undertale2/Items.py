@@ -39,21 +39,32 @@ item_table: Dict[str, UT2ItemData] = {
     "Hatsune Miku Dice":                    UT2ItemData("trinket", 105, ItemClassification.progression_deprioritized),
     "Chef's Kiss":                          UT2ItemData("trinket", 106, ItemClassification.progression_deprioritized),
     "Chef's Hat":                           UT2ItemData("head", 107, ItemClassification.progression_deprioritized),
+    "Cool Shades":                          UT2ItemData("eyewear", 108, ItemClassification.progression_deprioritized),
+    "Ice crystals":                         UT2ItemData("body", 109, ItemClassification.progression_deprioritized),
+    "Prisonmaster pauldrons":               UT2ItemData("trinket", 110, ItemClassification.progression_deprioritized),
 
     # Weapons
     "Lucky Crowbar":                        UT2ItemData("weapon", 201, ItemClassification.progression),
     "Baseball Bat":                         UT2ItemData("weapon", 202, ItemClassification.progression_deprioritized),
     "Nutcracker":                           UT2ItemData("weapon", 203, ItemClassification.progression_deprioritized),
     "Madame's Chalice":                     UT2ItemData("weapon", 204, ItemClassification.progression_deprioritized),
+    "Prison Shank":                         UT2ItemData("weapon", 205, ItemClassification.progression_deprioritized),
 
     # Key Items
     "Gold Key":                             UT2ItemData("key", 301, ItemClassification.progression),
     "Silver Key":                           UT2ItemData("key", 302, ItemClassification.progression),
     "Bronze Key":                           UT2ItemData("key", 303, ItemClassification.progression),
     "Progressive Key":                      UT2ItemData("progkey", 304, ItemClassification.progression, 5),
-    "Anime catboy transformation potion":   UT2ItemData("misc prog", 304, ItemClassification.progression),
-    "Library Card":                         UT2ItemData("misc prog", 305, ItemClassification.progression),
-    "Odd Key":                              UT2ItemData("misc prog", 306, ItemClassification.progression, 1),
+    "Anime catboy transformation potion":   UT2ItemData("misc prog", 305, ItemClassification.progression),
+    "Library Card":                         UT2ItemData("misc prog", 306, ItemClassification.progression),
+    "Odd Key":                              UT2ItemData("misc prog", 307, ItemClassification.progression, 1),
+    "Puzzle Key":                           UT2ItemData("misc prog", 308, ItemClassification.progression),
+    "Prison Key":                           UT2ItemData("misc prog", 309, ItemClassification.progression),
+    "Feelings Key":                         UT2ItemData("useful", 310, ItemClassification.useful),
+
+    # Card
+    "#18 Homer Guard Card":                 UT2ItemData("card", 401, ItemClassification.progression),
+    "#19 Prison Tick Card":                 UT2ItemData("card", 402, ItemClassification.progression),
 
     # Junk
     "EXP breeze badge!!!":                  UT2ItemData("trinket", 1001, ItemClassification.filler),
@@ -86,4 +97,5 @@ item_table: Dict[str, UT2ItemData] = {
 event_item_table: Dict[str, UT2ItemData] = {
     "Lancer Encountered":                   UT2ItemData("event", classification=ItemClassification.progression),
     "Hotden Reached":                       UT2ItemData("event", classification=ItemClassification.progression),
+    "Prison Destroyed":                     UT2ItemData("event", classification=ItemClassification.progression),
 }

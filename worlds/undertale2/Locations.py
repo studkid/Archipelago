@@ -34,9 +34,11 @@ location_table: Dict[str, UT2LocationData] = {
     "Swamp - Friefit Drop":                                 UT2LocationData("drop", "Swamp", 102),
     "Slungy Scungle - Frogueslick Drop":                    UT2LocationData("drop", "Swamp", 103),
     "Archives Frogue Chamber - Froguelass Drop":            UT2LocationData("drop", "Frogue Chamber", 104),
+    "Prison - Professormaster Cirno Drop #1":               UT2LocationData("drop", "Prison Office", 105),
+    "Prison - Professormaster Cirno Drop #2":               UT2LocationData("drop", "Prison Office", 106),
 
     # Shops
-    "Nicky Coinflip - Paper hat Purchase":                  UT2LocationData("shop", "Ruins Main", 201),
+    "Nicky Coinflip Ruins - Paper hat Purchase":            UT2LocationData("shop", "Ruins Main", 201),
     "Nicky Coinflip Rest Stop - Lucky Crowbar Purchase":    UT2LocationData("shop", "Ruins Main", 202),
     "P-Capsule Seller - Soap-P Purchase":                   UT2LocationData("shop", "Ruins Tree", 203),
     "P-Capsule Seller - Midnight-P Purchase":               UT2LocationData("shop", "Ruins Tree", 204),
@@ -51,7 +53,9 @@ location_table: Dict[str, UT2LocationData] = {
     "P-Capsule Seller - Gurin-P Purchase":                  UT2LocationData("shop", "Hotden", 213),
     "P-Capsule Seller - Baby-P Purchase":                   UT2LocationData("shop", "Hotden", 214),
     "P-Capsule Seller - Yoko-P Purchase":                   UT2LocationData("shop", "Hotden", 215),
-    "P-Capsule Seller - Wadda-P Purchase":                  UT2LocationData("shop", "Hotden", 216),          
+    "P-Capsule Seller - Wadda-P Purchase":                  UT2LocationData("shop", "Hotden", 216),
+    "Nicky Coinflip Prison - Prison shank Purchase":        UT2LocationData("shop", "Prison Kitchen", 217),     
+    "Nicky Coinflip Prison - Cool shades Purchase":         UT2LocationData("shop", "Prison Kitchen", 218),      
 
     # Item Pickups
     "Landing - In the Void":                                UT2LocationData("pickup", "Landing", 10),
@@ -79,6 +83,13 @@ location_table: Dict[str, UT2LocationData] = {
     "Swamp - Upper Chest":                                  UT2LocationData("pickup", "Swamp", 30),
     "Swamp - Lower Chest":                                  UT2LocationData("pickup", "Swamp", 31),
 
+    # Prison
+    "Prison - Corridor Chest Behind Spikes":                UT2LocationData("pickup", "Prison Cells", 32),
+    "Prison - Puzzle Chest":                                UT2LocationData("pickup", "Prison Puzzle", 33),
+    "Prison - Marylin Reward #1":                           UT2LocationData("pickup", "Prison Puzzle", 34),
+    "Prison - Marylin Reward #2":                           UT2LocationData("pickup", "Prison Puzzle", 35),
+    "Prison - Waiting Room Chest":                          UT2LocationData("pickup", "Prison Puzzle", 36),
+
     # Enemies
     "#1 Flowey Card":                                       UT2LocationData("boss", "Landing", 301),
     "#2 Froggit Card":                                      UT2LocationData("enemy", "Ruins Main", 302),
@@ -97,6 +108,10 @@ location_table: Dict[str, UT2LocationData] = {
     "#15 Bog Cog Card":                                     UT2LocationData("enemy", "Swamp", 315),
     "#16 Frogueslick Card":                                 UT2LocationData("boss", "Swamp", 316),
     "#17 Froguelass Card":                                  UT2LocationData("boss", "Frogue Chamber", 317),
+    "#18 Homer Guard Card":                                 UT2LocationData("enemy", "Special Enemies", 318),
+    "#19 Prison Tick Card":                                 UT2LocationData("enemy", "Special Enemies", 319),
+    "#20 Marylin Card":                                     UT2LocationData("boss", "Prison Puzzle", 320),
+    "#21 Professormaster Cirno Card":                       UT2LocationData("boss", "Prison Office", 321),
 
     "#59 Gilded☆Bingus Card":                              UT2LocationData("enemy", "Ruins Lake", 359),
 
@@ -107,9 +122,13 @@ location_table: Dict[str, UT2LocationData] = {
     # Silly
     # "Rest Zone - PISS AND SHIT FM":                         UT2LocationData("silly", "Rest Zone", 1001),
     "Hotden - Naughty Child Wiggler":                       UT2LocationData("silly", "Hotden", 1002),
+
+    # Prison
+    
 }
 
 event_location_table: Dict[str, UT2LocationData] = {
     "Lancer Encounter":                                     UT2LocationData("event", "Archives Back"),
     "Hotden Reached":                                       UT2LocationData("event", "Hotden"),
+    "Cirno Defeated":                                       UT2LocationData("event", "Prison Office")
 }

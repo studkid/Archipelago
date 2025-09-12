@@ -52,6 +52,9 @@ class UT2World(World):
             elif data.category == "progkey" and self.options.progressive_monkkey != 1:
                 continue
 
+            if data.category == "card" and self.options.cardsanity != 2:
+                continue
+
             item_pool += [self.create_item(name) for _ in range(0, quantity)]
 
         # Fill any empty locations with filler items.
@@ -88,3 +91,6 @@ class UT2World(World):
         
         self.multiworld.get_location("Hotden Reached", self.player).place_locked_item(
             self.create_event("Hotden Reached"))
+        
+        self.multiworld.get_location("Cirno Defeated", self.player).place_locked_item(
+            self.create_event("Prison Destroyed"))
