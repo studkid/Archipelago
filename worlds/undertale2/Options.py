@@ -22,7 +22,15 @@ class CardSanity(Choice):
     option_bosses_only = 1
     option_all = 2
 
+class RequireNazrin(DefaultOnToggle):
+    """
+    Require Nazrin and Mousey Help to get enemy card drops
+    Does nothing if cardsanity is not set to all
+    """
+    display_name = "Require Nazrin"
+
 @dataclass
 class UT2Options(PerGameCommonOptions):
     progressive_monkkey: ProgMonkKey
     cardsanity: CardSanity
+    requirenazrin: RequireNazrin

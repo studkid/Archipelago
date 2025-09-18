@@ -1,6 +1,7 @@
 from typing import List
 from BaseClasses import CollectionState, MultiWorld, Location, Region, Item
-from .Options import UT2Options, CardSanity
+from .Options import UT2Options, CardSanity, RequireNazrin
+from .Locations import location_table
 
 def has_all(state: CollectionState, player: int, items: List[str]) -> bool:
     for _, item in enumerate(items):
@@ -35,6 +36,16 @@ def can_beat_cirno(state: CollectionState, player: int) -> bool:
     return party_count(state, player) >= 4
 
 def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
+    if options.cardsanity == CardSanity.option_all and options.requirenazrin == RequireNazrin.option_true:
+        for name, data in location_table.items():
+            if name == "#59 Gilded☆Bingus Card":
+                continue
+            if data.category != "enemy":
+                continue
+            
+            multiworld.get_location(name, player).access_rule = \
+                lambda state: state.has("Nazrin", player)
+
     # Ruins
     multiworld.get_entrance("Ruins Main -> Ruins Sewers", player).access_rule = \
             lambda state: state.has("Lucky Crowbar", player)

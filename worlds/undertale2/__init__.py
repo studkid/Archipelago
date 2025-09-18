@@ -81,8 +81,6 @@ class UT2World(World):
 
     def create_regions(self):
         create_regions(self.multiworld, self.player, self.options)
-        from Utils import visualize_regions
-        visualize_regions(self.multiworld.get_region("Menu", self.player), "my_world.puml")
         self._place_events()
         if self.options.progressive_monkkey == ProgMonkKey.option_monk_key_only:
             self.multiworld.get_location("Ruins - Lake Gold Key", self.player).place_locked_item(
@@ -91,6 +89,9 @@ class UT2World(World):
                             self.create_item("Silver Key"))
             self.multiworld.get_location("Ruins - Lake Bronze Key", self.player).place_locked_item(
                             self.create_item("Bronze Key"))
+            
+        from Utils import visualize_regions
+        visualize_regions(self.multiworld.get_region("Menu", self.player), "my_world.puml")
 
     def _place_events(self):
         self.multiworld.get_location("Lancer Encounter", self.player).place_locked_item(

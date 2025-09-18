@@ -156,7 +156,7 @@ location_table: Dict[str, UT2LocationData] = {
 
     # Silly
     # "Rest Zone - PISS AND SHIT FM":                         UT2LocationData("silly", "Rest Zone", 1001),
-    "Hotden - Naughty Child Wiggler":                       UT2LocationData("silly", "Hotden", 1002),
+    # "Hotden - Naughty Child Wiggler":                       UT2LocationData("silly", "Hotden", 1002),
 
     # Prison
     
