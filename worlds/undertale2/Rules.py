@@ -75,6 +75,25 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
     multiworld.get_entrance("Prison Kitchen -> Prison Office", player).access_rule =\
             lambda state: can_beat_cirno(state, player)
     
+    # Beach
+    multiworld.get_entrance("Prison Office -> Beach Entry", player).access_rule =\
+            lambda state: state.has("Prison Destroyed", player)    
+            
+    multiworld.get_entrance("Beach Entry -> Beach Relax 1", player).access_rule =\
+            lambda state: state.has("Relax Pass", player, 1)
+    multiworld.get_entrance("Beach Relax 1 -> Beach Relax 2", player).access_rule =\
+            lambda state: state.has("Relax Pass", player, 2)
+    multiworld.get_entrance("Beach Relax 2 -> Beach Relax 3", player).access_rule =\
+            lambda state: state.has("Relax Pass", player, 3)
+    multiworld.get_entrance("Beach Relax 3 -> Beach Relax 4", player).access_rule =\
+            lambda state: state.has("Relax Pass", player, 4)
+    multiworld.get_entrance("Beach Relax 4 -> Beach Relax 5", player).access_rule =\
+            lambda state: state.has("Relax Pass", player, 5)
+    multiworld.get_entrance("Beach Relax 5 -> Beach Relax 6", player).access_rule =\
+            lambda state: state.has("Relax Pass", player, 6)
+    multiworld.get_entrance("Beach Relax 6 -> Beach Relax 7", player).access_rule =\
+            lambda state: state.has("Relax Pass", player, 7)
+    
     # Special
     if options.cardsanity == CardSanity.option_all:
         multiworld.get_location("#11 Lancer Card", player).access_rule = \

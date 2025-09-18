@@ -42,6 +42,9 @@ item_table: Dict[str, UT2ItemData] = {
     "Cool Shades":                          UT2ItemData("eyewear", 108, ItemClassification.progression_deprioritized),
     "Ice crystals":                         UT2ItemData("body", 109, ItemClassification.progression_deprioritized),
     "Prisonmaster pauldrons":               UT2ItemData("trinket", 110, ItemClassification.progression_deprioritized),
+    "Rouxian Lapel":                        UT2ItemData("trinket", 111, ItemClassification.progression_deprioritized),
+    "Mimic's adieu":                        UT2ItemData("trinket", 112, ItemClassification.progression_deprioritized),
+    "Sunflower":                            UT2ItemData("eyewear", 113, ItemClassification.progression_deprioritized),
 
     # Weapons
     "Lucky Crowbar":                        UT2ItemData("weapon", 201, ItemClassification.progression),
@@ -49,6 +52,9 @@ item_table: Dict[str, UT2ItemData] = {
     "Nutcracker":                           UT2ItemData("weapon", 203, ItemClassification.progression_deprioritized),
     "Madame's Chalice":                     UT2ItemData("weapon", 204, ItemClassification.progression_deprioritized),
     "Prison Shank":                         UT2ItemData("weapon", 205, ItemClassification.progression_deprioritized),
+    "Empty Gun":                            UT2ItemData("weapon", 206, ItemClassification.progression_deprioritized),
+    "Gun":                                  UT2ItemData("weapon", 207, ItemClassification.progression_deprioritized),
+    "Blood Berry":                          UT2ItemData("weapon", 208, ItemClassification.progression_deprioritized),
 
     # Key Items
     "Gold Key":                             UT2ItemData("key", 301, ItemClassification.progression),
@@ -61,10 +67,12 @@ item_table: Dict[str, UT2ItemData] = {
     "Puzzle Key":                           UT2ItemData("misc prog", 308, ItemClassification.progression),
     "Prison Key":                           UT2ItemData("misc prog", 309, ItemClassification.progression),
     "Feelings Key":                         UT2ItemData("useful", 310, ItemClassification.useful),
+    "Relax Pass":                           UT2ItemData("misc prog", 311, ItemClassification.progression, 7),
 
     # Card
     "#18 Homer Guard Card":                 UT2ItemData("card", 401, ItemClassification.progression),
     "#19 Prison Tick Card":                 UT2ItemData("card", 402, ItemClassification.progression),
+    "#21 Prisonmaster Card":                UT2ItemData("card", 403, ItemClassification.progression),
 
     # Junk
     "EXP breeze badge!!!":                  UT2ItemData("trinket", 1001, ItemClassification.filler),
@@ -92,6 +100,12 @@ item_table: Dict[str, UT2ItemData] = {
     "Pzuzu's Potpourri":                    UT2ItemData("filler", 1023, ItemClassification.filler, 0, 1),
     "Placebo":                              UT2ItemData("filler", 1024, ItemClassification.filler, 0, 1),
     "Gravy Granules":                       UT2ItemData("filler", 1025, ItemClassification.filler, 0, 1),
+    "Yeller-P":                             UT2ItemData("filler", 1026, ItemClassification.filler),
+    "Blue-P":                               UT2ItemData("filler", 1027, ItemClassification.filler),
+    "DADADADADADA-P":                       UT2ItemData("filler", 1028, ItemClassification.filler),
+    "Printa-P":                             UT2ItemData("filler", 1029, ItemClassification.filler),
+    "Flynn's diary":                        UT2ItemData("filler", 1030, ItemClassification.filler),
+    "Knight's diary":                       UT2ItemData("filler", 1031, ItemClassification.filler),
 }
 
 event_item_table: Dict[str, UT2ItemData] = {

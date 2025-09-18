@@ -33,7 +33,17 @@ def create_regions(multiworld: MultiWorld, player: int, options: UT2Options):
         "Prison Cells":             UT2RegionData([], ["Prison Puzzle", "Prison Kitchen"]),
         "Prison Puzzle":            UT2RegionData([], []),
         "Prison Kitchen":           UT2RegionData([], ["Prison Office"]),
-        "Prison Office":            UT2RegionData([], []),
+        "Prison Office":            UT2RegionData([], ["Beach Entry"]),
+
+        "Beach Entry":              UT2RegionData([], ["Beach Relax 1", "Beach Fishing"]),
+        "Beach Relax 1":            UT2RegionData([], ["Beach Relax 2"]),
+        "Beach Relax 2":            UT2RegionData([], ["Beach Relax 3"]),
+        "Beach Relax 3":            UT2RegionData([], ["Beach Relax 4"]),
+        "Beach Relax 4":            UT2RegionData([], ["Beach Relax 5"]),
+        "Beach Relax 5":            UT2RegionData([], ["Beach Relax 6"]),
+        "Beach Relax 6":            UT2RegionData([], ["Beach Relax 7"]),
+        "Beach Relax 7":            UT2RegionData([], []),
+        "Beach Fishing":            UT2RegionData([], []),
     }
 
     for name, data in location_table.items():
