@@ -113,6 +113,8 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
             lambda state: state.has("#18 Homer Guard Card", player)
         multiworld.get_location("#19 Prison Tick Card", player).access_rule = \
             lambda state: state.has("#19 Prison Tick Card", player)
+        multiworld.get_location("#21 Prisonmaster Cirno Card", player).access_rule = \
+            lambda state: state.has("#21 Prisonmaster Cirno Card", player)
     
     # Win Condition
     multiworld.completion_condition[player] = lambda state: state.can_reach("Cirno Defeated", "Location", player)

@@ -13,8 +13,8 @@ class ProgMonkKey(Choice):
 
 class CardSanity(Choice):
     """
-    Turns card drops into locations.  
-    It's a 1/50 chance drop from most enemies.
+    Turns card drops into locations. It's a 1/50 chance drop from most enemies.
+    Cards that are normally found in chests are instead shuffled into the pool
     (You will need to interact with the card in your inventory to send the location)
     """
     display_name = "Cardsanity"
