@@ -77,6 +77,9 @@ item_table: Dict[str, UT2ItemData] = {
     "Aquarium key":                         UT2ItemData("misc prog", 314, ItemClassification.progression),
     "Progressive Fishing Spot":             UT2ItemData("misc prog", 315, ItemClassification.progression, 5),
     "Rust Ticket":                          UT2ItemData("misc prog", 316, ItemClassification.progression),
+    "Waste Ticket":                         UT2ItemData("misc prog", 317, ItemClassification.progression),
+    "Bone Ticket":                          UT2ItemData("misc prog", 318, ItemClassification.progression),
+    "Star Ticket":                          UT2ItemData("misc prog", 319, ItemClassification.progression),
 
     # Junk
     "EXP breeze badge!!!":                  UT2ItemData("trinket", 1001, ItemClassification.filler),
@@ -112,6 +115,7 @@ item_table: Dict[str, UT2ItemData] = {
     "Knight's diary":                       UT2ItemData("filler", 1031, ItemClassification.filler),
     "Fishing Guide":                        UT2ItemData("filler", 1032, ItemClassification.filler),
     "50 DOLLARS":                           UT2ItemData("filler", 1033, ItemClassification.filler, 0, 4),
+    "Frogueslab 1":                         UT2ItemData("filler", 1034, ItemClassification.filler),
 
     # Settings
     "Relax Pass Off":                       UT2ItemData("filler", 90001, ItemClassification.filler, 0),

@@ -43,12 +43,15 @@ def create_regions(multiworld: MultiWorld, player: int, options: UT2Options):
         "Beach Relax 5":            UT2RegionData([], ["Beach Relax 6"]),
         "Beach Relax 6":            UT2RegionData([], ["Beach Relax 7"]),
         "Beach Relax 7":            UT2RegionData([], []),
-        "Greenhorn Shore":          UT2RegionData([], ["Breadcrumb Bay", "Rust Gear Gulf", "Aquarium"]),
+        "Greenhorn Shore":          UT2RegionData([], ["Breadcrumb Bay", "Rust Gear Gulf", "Aquarium", "Big Bone Bay", "Chemical Waste Zone", "Stardrop Tree"]),
         "Breadcrumb Bay":           UT2RegionData([], ["Melonbread Cove"]),
         "Melonbread Cove":          UT2RegionData([], ["Pudding"]),
         "Pudding":                  UT2RegionData([], []),
         "Aquarium":                 UT2RegionData([], []),
         "Rust Gear Gulf":           UT2RegionData([], []),
+        "Chemical Waste Zone":      UT2RegionData([], []),
+        "Big Bone Bay":             UT2RegionData([], []),
+        "Stardrop Tree":            UT2RegionData([], []),
     }
 
     for name, data in location_table.items():

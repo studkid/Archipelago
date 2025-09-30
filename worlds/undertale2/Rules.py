@@ -2,7 +2,7 @@ from typing import List
 from BaseClasses import CollectionState, MultiWorld, Location, Region, Item
 from .Options import UT2Options, CardSanity, RequireNazrin, AquariumSanity, ShuffleFishingMissions, RelaxRankNeedsPass
 from .Locations import location_table
-from .MiscData import fish_data
+from .MiscData import fish_data, fish_quests
 
 def has_all(state: CollectionState, player: int, items: List[str]) -> bool:
     for _, item in enumerate(items):
@@ -45,6 +45,7 @@ def can_get_fish(state: CollectionState, name: str, player: int) -> bool:
 
 
 def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
+    # Card Sanity -----------------------------------------------------------------------
     if options.cardsanity == CardSanity.option_all and options.require_nazrin == RequireNazrin.option_true:
         for name, data in location_table.items():
             if name == "#59 Gilded☆Bingus Card":
@@ -54,14 +55,24 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
             if name == "#11 Lancer Card":
                 multiworld.get_location(name, player).access_rule = \
                         lambda state: state.has("Nazrin", player) and state.has("Lancer Encountered", player)
+            if name == "#22 Angler Card":
+                multiworld.get_location(name, player).access_rule = \
+                        lambda state: state.has("Nazrin", player) and can_get_fish(state, "Angler", player)
+            if name == "#23 Angeler Card":
+                multiworld.get_location(name, player).access_rule = \
+                        lambda state: state.has("Nazrin", player) and can_get_fish(state, "Angeler", player)
             
             multiworld.get_location(name, player).access_rule = \
                     lambda state: state.has("Nazrin", player)
     elif options.cardsanity == CardSanity.option_all:
         multiworld.get_location("#11 Lancer Card", player).access_rule = \
                 lambda state: state.has("Lancer Encountered", player)
+        multiworld.get_location(name, player).access_rule = \
+                lambda state: can_get_fish(state, "Angler", player)
+        multiworld.get_location(name, player).access_rule = \
+                lambda state: can_get_fish(state, "Angeler", player)
 
-    # Ruins
+    # Ruins -----------------------------------------------------------------------
     multiworld.get_entrance("Ruins Main -> Ruins Sewers", player).access_rule = \
             lambda state: state.has("Lucky Crowbar", player)
     multiworld.get_entrance("Ruins Main -> Scopestablook", player).access_rule = \
@@ -70,7 +81,7 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
             lambda state: has_all(state, player, ["Gold Key", "Silver Key", "Bronze Key", "Progressive Monk Key"])\
                           or state.has("Progressive Key", player, 4)
 
-    # Archives
+    # Archives -----------------------------------------------------------------------
     multiworld.get_entrance("Archives Pit -> Archives Sewers", player).access_rule = \
             lambda state: state.has("Lucky Crowbar", player)
     multiworld.get_entrance("Archives Pit -> Archives Back", player).access_rule = \
@@ -79,11 +90,11 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
             lambda state: (state.has("Progressive Monk Key", player, 2) or state.has("Progressive Key", player, 5)) and \
                           can_beat_froguelass(state, player)
     
-    # Swamp
+    # Swamp -----------------------------------------------------------------------
     multiworld.get_entrance("Ruins Tree -> Swamp", player).access_rule =\
             lambda state: state.has("Hotden Reached", player)
     
-    # Prison
+    # Prison -----------------------------------------------------------------------
     multiworld.get_entrance("Hotden -> Prison Cells", player).access_rule =\
             lambda state: has_all(state, player, ["sans", "Anime catboy transformation potion"]) and \
                           (state.has("Progressive Monk Key", player, 2) or state.has("Progressive Key", player, 5))
@@ -101,7 +112,7 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
     multiworld.get_entrance("Prison Kitchen -> Prison Office", player).access_rule =\
             lambda state: can_beat_cirno(state, player)
     
-    # Beach
+    # Beach -----------------------------------------------------------------------
     multiworld.get_entrance("Prison Office -> Beach Entry", player).access_rule =\
             lambda state: state.has("Prison Destroyed", player)    
             
@@ -124,18 +135,30 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
     multiworld.get_entrance("Beach Entry -> Greenhorn Shore", player).access_rule =\
             lambda state: state.has("Membership Card", player)
     if options.shuffle_fish_mission == ShuffleFishingMissions.option_true:
-        multiworld.get_entrance("Greenhorn Shore -> Melonbread Cove", player).access_rule =\
+        multiworld.get_entrance("Greenhorn Shore -> Breadcrumb Bay", player).access_rule =\
                 lambda state: state.has("Progressive Fishing Spot", player)
-        multiworld.get_entrance("Greenhorn Shore -> Melonbread Cove", player).access_rule =\
+        multiworld.get_entrance("Breadcrumb Bay -> Melonbread Cove", player).access_rule =\
                 lambda state: state.has("Progressive Fishing Spot", player, 3)
         multiworld.get_entrance("Melonbread Cove -> Pudding", player).access_rule =\
                 lambda state: state.has("Progressive Fishing Spot", player, 5)
-        multiworld.get_entrance("Beach Entry -> Rust Gear Gulf", player).access_rule =\
+        multiworld.get_entrance("Greenhorn Shore -> Rust Gear Gulf", player).access_rule =\
                 lambda state: state.has("Rust Ticket", player) and state.has("Progressive Fishing Spot", player, 4)
+        multiworld.get_entrance("Greenhorn Shore -> Chemical Waste Zone", player).access_rule =\
+                lambda state: state.has("Waste Ticket", player) and state.has("Progressive Fishing Spot", player, 4)
+        multiworld.get_entrance("Greenhorn Shore -> Big Bone Bay", player).access_rule =\
+                lambda state: state.has("Bone Ticket", player) and state.has("Progressive Fishing Spot", player, 4)
+        multiworld.get_entrance("Greenhorn Shore -> Stardrop Tree", player).access_rule =\
+                lambda state: state.has("Star Ticket", player) and state.has("Progressive Fishing Spot", player, 4)
         
     else:    
-        multiworld.get_entrance("Beach Entry -> Rust Gear Gulf", player).access_rule =\
+        multiworld.get_entrance("Greenhorn Shore -> Rust Gear Gulf", player).access_rule =\
                 lambda state: state.has("Rust Ticket", player)
+        multiworld.get_entrance("Greenhorn Shore -> Chemical Waste Zone", player).access_rule =\
+                lambda state: state.has("Waste Ticket", player)
+        multiworld.get_entrance("Greenhorn Shore -> Big Bone Bay", player).access_rule =\
+                lambda state: state.has("Bone Ticket", player)
+        multiworld.get_entrance("Greenhorn Shore -> Stardrop Tree", player).access_rule =\
+                lambda state: state.has("Star Ticket", player)
     
     multiworld.get_location("Beach - Greenhorn Shore Chest", player).access_rule =\
             lambda state: state.has("Progressive Fishing Spot", player, 2)
@@ -148,7 +171,12 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
         for name, data in fish_data.items():
             multiworld.get_location("Aquarium - " + name, player).access_rule =\
                 lambda state: can_get_fish(state, name, player)
+            
+    if options.shuffle_fish_mission == ShuffleFishingMissions.option_true:
+        for i, name in enumerate(fish_quests):
+            multiworld.get_location("Beach - Fishing Mission " + str(i + 1), player).access_rule =\
+                lambda state: can_get_fish(state, name, player)
     
-    # Win Condition
+    # Win Condition -----------------------------------------------------------------------
     multiworld.completion_condition[player] = lambda state: state.can_reach("Cirno Defeated", "Location", player)
     

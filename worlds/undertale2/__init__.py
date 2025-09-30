@@ -38,7 +38,7 @@ class UT2World(World):
         item_pool: List[UT2Item] = []
         total_locations = len(self.multiworld.get_unfilled_locations(self.player))
 
-        if self.options.shuffle_relax == RelaxRankNeedsPass.option_true:
+        if self.options.shuffle_relax == RelaxRankNeedsPass.option_false:
             item_table["Relax Pass"] = UT2ItemData("misc prog", 311, ItemClassification.progression, 1)
             self.multiworld.push_precollected(self.create_item("Relax Pass Off"))
 

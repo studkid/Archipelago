@@ -140,7 +140,8 @@ location_table: Dict[str, UT2LocationData] = {
     "#20 Marylin Card":                                     UT2LocationData("boss", "Prison Puzzle", 320),
     "#21 Professormaster Cirno Card":                       UT2LocationData("boss", "Prison Office", 321),
     "#21 Prisonmaster Cirno Card":                          UT2LocationData("boss", "Prison Office", 921),
-
+    "#22 Angler Card":                                      UT2LocationData("enemy", "Special Enemies", 322),
+    "#23 Angeler Card":                                     UT2LocationData("enemy", "Special Enemies", 323),
     "#24 Scrambler Card":                                   UT2LocationData("enemy", "Beach Entry", 324),
     "#25 Baitmaster Card":                                  UT2LocationData("enemy", "Beach Entry", 325),
 
@@ -176,6 +177,7 @@ location_table: Dict[str, UT2LocationData] = {
     "Beach - Fishing Mission 8":                            UT2LocationData("fishing", "Greenhorn Shore", 417),
     "Beach - Fishing Mission 9":                            UT2LocationData("fishing", "Greenhorn Shore", 418),
     "Beach - Fishing Mission 10":                           UT2LocationData("fishing", "Greenhorn Shore", 419),
+    "Beach - Fishing Mission 11":                           UT2LocationData("fishing", "Greenhorn Shore", 420),
 
     # Aquarium
     "Aquarium - Empty Can":                                 UT2LocationData("aquarium", "Aquarium", 501),
@@ -198,6 +200,16 @@ location_table: Dict[str, UT2LocationData] = {
     "Aquarium - Mechanical Crap":                           UT2LocationData("aquarium", "Aquarium", 518),
     "Aquarium - Cum Buddy":                                 UT2LocationData("aquarium", "Aquarium", 519),
     "Aquarium - Son of Lokey":                              UT2LocationData("aquarium", "Aquarium", 520),
+    "Aquarium - Pagliacci":                                 UT2LocationData("aquarium", "Aquarium", 530),
+    "Aquarium - Blinky":                                    UT2LocationData("aquarium", "Aquarium", 531),
+    "Aquarium - Undyne JR":                                 UT2LocationData("aquarium", "Aquarium", 532),
+    "Aquarium - Whale Sharke Onesie":                       UT2LocationData("aquarium", "Aquarium", 533),
+    "Aquarium - Angeler":                                   UT2LocationData("aquarium", "Aquarium", 534),
+    "Aquarium - Sansfish":                                  UT2LocationData("aquarium", "Aquarium", 535),
+    "Aquarium - Angelfish":                                 UT2LocationData("aquarium", "Aquarium", 536),
+    "Aquarium - Leviathan":                                 UT2LocationData("aquarium", "Aquarium", 537),
+    "Aquarium - Pisces":                                    UT2LocationData("aquarium", "Aquarium", 538),
+    "Aquarium - Tsuchinoko":                                UT2LocationData("aquarium", "Aquarium", 539),
 
     # Silly
     # "Rest Zone - PISS AND SHIT FM":                         UT2LocationData("silly", "Rest Zone", 1001),
