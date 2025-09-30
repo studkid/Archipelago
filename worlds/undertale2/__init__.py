@@ -1,10 +1,10 @@
 from typing import List
 
-from BaseClasses import Tutorial, Region
+from BaseClasses import Tutorial, Region, ItemClassification
 from worlds.AutoWorld import WebWorld, World
 from .Items import UT2Item, UT2ItemData, event_item_table, get_items_by_category, item_table
 from .Locations import UT2Location, location_table
-from .Options import UT2Options, ProgMonkKey
+from .Options import UT2Options, ProgMonkKey, RelaxRankNeedsPass
 from .Regions import create_regions
 from .Rules import set_rules
 
@@ -37,6 +37,11 @@ class UT2World(World):
     def create_items(self):
         item_pool: List[UT2Item] = []
         total_locations = len(self.multiworld.get_unfilled_locations(self.player))
+
+        if self.options.shuffle_relax == RelaxRankNeedsPass.option_true:
+            item_table["Relax Pass"] = UT2ItemData("misc prog", 311, ItemClassification.progression, 1)
+            self.multiworld.push_precollected(self.create_item("Relax Pass Off"))
+
         for name, data in item_table.items():
             quantity = data.max_quantity
 

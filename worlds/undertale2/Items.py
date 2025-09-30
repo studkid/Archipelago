@@ -45,6 +45,9 @@ item_table: Dict[str, UT2ItemData] = {
     "Rouxian Lapel":                        UT2ItemData("trinket", 111, ItemClassification.progression_deprioritized),
     "Mimic's adieu":                        UT2ItemData("trinket", 112, ItemClassification.progression_deprioritized),
     "Sunflower":                            UT2ItemData("eyewear", 113, ItemClassification.progression_deprioritized),
+    "Fisherman's hat":                      UT2ItemData("head", 114, ItemClassification.progression_deprioritized),
+    "\"WOMEN WANT ME FISH FEAR ME\" hat":   UT2ItemData("head", 115, ItemClassification.progression_deprioritized),
+    "Aluminum Visor":                       UT2ItemData("head", 116, ItemClassification.progression_deprioritized),
 
     # Weapons
     "Lucky Crowbar":                        UT2ItemData("weapon", 201, ItemClassification.progression),
@@ -55,6 +58,7 @@ item_table: Dict[str, UT2ItemData] = {
     "Empty Gun":                            UT2ItemData("weapon", 206, ItemClassification.progression_deprioritized),
     "Gun":                                  UT2ItemData("weapon", 207, ItemClassification.progression_deprioritized),
     "Blood Berry":                          UT2ItemData("weapon", 208, ItemClassification.progression_deprioritized),
+    "Fishing rod":                          UT2ItemData("weapon", 209, ItemClassification.progression_deprioritized),
 
     # Key Items
     "Gold Key":                             UT2ItemData("key", 301, ItemClassification.progression),
@@ -68,6 +72,11 @@ item_table: Dict[str, UT2ItemData] = {
     "Prison Key":                           UT2ItemData("misc prog", 309, ItemClassification.progression),
     "Feelings Key":                         UT2ItemData("useful", 310, ItemClassification.useful),
     "Relax Pass":                           UT2ItemData("misc prog", 311, ItemClassification.progression, 7),
+    "Membership Card":                      UT2ItemData("misc prog", 312, ItemClassification.progression),
+    "Fisherman's haste":                    UT2ItemData("misc prog", 313, ItemClassification.useful),
+    "Aquarium key":                         UT2ItemData("misc prog", 314, ItemClassification.progression),
+    "Progressive Fishing Spot":             UT2ItemData("misc prog", 315, ItemClassification.progression, 5),
+    "Rust Ticket":                          UT2ItemData("misc prog", 316, ItemClassification.progression),
 
     # Card
     "#18 Homer Guard Card":                 UT2ItemData("card", 401, ItemClassification.progression),
@@ -106,6 +115,11 @@ item_table: Dict[str, UT2ItemData] = {
     "Printa-P":                             UT2ItemData("filler", 1029, ItemClassification.filler),
     "Flynn's diary":                        UT2ItemData("filler", 1030, ItemClassification.filler),
     "Knight's diary":                       UT2ItemData("filler", 1031, ItemClassification.filler),
+    "Fishing Guide":                        UT2ItemData("filler", 1032, ItemClassification.filler),
+    "50 DOLLARS":                           UT2ItemData("filler", 1033, ItemClassification.filler, 0, 4),
+
+    # Settings
+    "Relax Pass Off":                       UT2ItemData("filler", 90001, ItemClassification.filler, 0),
 }
 
 event_item_table: Dict[str, UT2ItemData] = {

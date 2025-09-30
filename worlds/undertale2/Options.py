@@ -5,11 +5,26 @@ from dataclasses import dataclass
 class ProgMonkKey(Choice):
     """
     Makes the gold, silver, bronze and monk key progressive.
+    If Monk Key Only, the gold, silver and bronze keys will be vanilla.
     """
     display_name = "Progressive Monk Key"
     option_false = 0
     option_true = 1
     option_monk_key_only = 2
+
+class RelaxRankNeedsPass(DefaultOnToggle):
+    """
+    Adds 6 more Relax Passes into the pool.  A relax pass will be consumed on each relax battle victory.
+    (Recommended to be on until combat logic is done)
+    """
+    display_name = "Relax Rank needs Passes"
+
+class ShuffleFishingMissions(Toggle):
+    """
+    Turns fishing missions into locations.  Progressive Fishing Spot is required
+    to access new areas.
+    """
+    display_name = "Shuffle Fishing Missions"
 
 class CardSanity(Choice):
     """
@@ -24,13 +39,22 @@ class CardSanity(Choice):
 
 class RequireNazrin(DefaultOnToggle):
     """
-    Require Nazrin and Mousey Help to get enemy card drops
+    Require Nazrin and Mousey Help to obtain non guarenteed enemy cards
     Does nothing if cardsanity is not set to all
     """
     display_name = "Require Nazrin"
 
+class AquariumSanity(Toggle):
+    """
+    Turns Aquarium Donations into locations
+    """
+    display_name = "Aquariumsanity"
+
 @dataclass
 class UT2Options(PerGameCommonOptions):
     progressive_monkkey: ProgMonkKey
+    shuffle_relax: RelaxRankNeedsPass
+    shuffle_fish_mission: ShuffleFishingMissions
     cardsanity: CardSanity
-    requirenazrin: RequireNazrin
+    require_nazrin: RequireNazrin
+    aqariumsanity: AquariumSanity

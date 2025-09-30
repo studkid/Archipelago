@@ -1,7 +1,8 @@
 from typing import List
 from BaseClasses import CollectionState, MultiWorld, Location, Region, Item
-from .Options import UT2Options, CardSanity, RequireNazrin
+from .Options import UT2Options, CardSanity, RequireNazrin, AquariumSanity, ShuffleFishingMissions, RelaxRankNeedsPass
 from .Locations import location_table
+from .MiscData import fish_data
 
 def has_all(state: CollectionState, player: int, items: List[str]) -> bool:
     for _, item in enumerate(items):
@@ -35,8 +36,16 @@ def can_beat_froguelass(state: CollectionState, player: int) -> bool:
 def can_beat_cirno(state: CollectionState, player: int) -> bool:
     return party_count(state, player) >= 4
 
+def can_get_fish(state: CollectionState, name: str, player: int) -> bool:
+    for _, region in enumerate(fish_data[name]):
+        if state.can_reach(region, "Region", player):
+            return True
+        
+    return False
+
+
 def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
-    if options.cardsanity == CardSanity.option_all and options.requirenazrin == RequireNazrin.option_true:
+    if options.cardsanity == CardSanity.option_all and options.require_nazrin == RequireNazrin.option_true:
         for name, data in location_table.items():
             if name == "#59 Gilded☆Bingus Card":
                 continue
@@ -92,18 +101,42 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
             
     multiworld.get_entrance("Beach Entry -> Beach Relax 1", player).access_rule =\
             lambda state: state.has("Relax Pass", player, 1)
-    multiworld.get_entrance("Beach Relax 1 -> Beach Relax 2", player).access_rule =\
-            lambda state: state.has("Relax Pass", player, 2)
-    multiworld.get_entrance("Beach Relax 2 -> Beach Relax 3", player).access_rule =\
-            lambda state: state.has("Relax Pass", player, 3)
-    multiworld.get_entrance("Beach Relax 3 -> Beach Relax 4", player).access_rule =\
-            lambda state: state.has("Relax Pass", player, 4)
-    multiworld.get_entrance("Beach Relax 4 -> Beach Relax 5", player).access_rule =\
-            lambda state: state.has("Relax Pass", player, 5)
-    multiworld.get_entrance("Beach Relax 5 -> Beach Relax 6", player).access_rule =\
-            lambda state: state.has("Relax Pass", player, 6)
-    multiworld.get_entrance("Beach Relax 6 -> Beach Relax 7", player).access_rule =\
-            lambda state: state.has("Relax Pass", player, 7)
+    if options.shuffle_relax == RelaxRankNeedsPass.option_true:
+        multiworld.get_entrance("Beach Relax 1 -> Beach Relax 2", player).access_rule =\
+                lambda state: state.has("Relax Pass", player, 2)
+        multiworld.get_entrance("Beach Relax 2 -> Beach Relax 3", player).access_rule =\
+                lambda state: state.has("Relax Pass", player, 3)
+        multiworld.get_entrance("Beach Relax 3 -> Beach Relax 4", player).access_rule =\
+                lambda state: state.has("Relax Pass", player, 4)
+        multiworld.get_entrance("Beach Relax 4 -> Beach Relax 5", player).access_rule =\
+                lambda state: state.has("Relax Pass", player, 5)
+        multiworld.get_entrance("Beach Relax 5 -> Beach Relax 6", player).access_rule =\
+                lambda state: state.has("Relax Pass", player, 6)
+        multiworld.get_entrance("Beach Relax 6 -> Beach Relax 7", player).access_rule =\
+                lambda state: state.has("Relax Pass", player, 7)
+    
+    multiworld.get_entrance("Beach Entry -> Greenhorn Shore", player).access_rule =\
+            lambda state: state.has("Membership Card", player)
+    if options.shuffle_fish_mission == ShuffleFishingMissions.option_true:
+        multiworld.get_entrance("Greenhorn Shore -> Melonbread Cove", player).access_rule =\
+                lambda state: state.has("Progressive Fishing Spot", player)
+        multiworld.get_entrance("Greenhorn Shore -> Melonbread Cove", player).access_rule =\
+                lambda state: state.has("Progressive Fishing Spot", player, 3)
+        multiworld.get_entrance("Melonbread Cove -> Pudding", player).access_rule =\
+                lambda state: state.has("Progressive Fishing Spot", player, 5)
+        multiworld.get_entrance("Beach Entry -> Rust Gear Gulf", player).access_rule =\
+                lambda state: state.has("Rust Ticket", player) and state.has("Progressive Fishing Spot", player, 4)
+        
+    else:    
+        multiworld.get_entrance("Beach Entry -> Rust Gear Gulf", player).access_rule =\
+                lambda state: state.has("Rust Ticket", player)
+    
+    multiworld.get_location("Beach - Greenhorn Shore Chest", player).access_rule =\
+            lambda state: state.has("Progressive Fishing Spot", player, 2)
+    multiworld.get_location("Beach - Melonbread Cove Chest", player).access_rule =\
+            lambda state: can_get_fish(state, "Rubber Duckie", player)
+    multiworld.get_location("Beach - Pudding Pond Can Trade", player).access_rule =\
+            lambda state: can_get_fish(state, "Empty Can", player)
     
     # Special
     if options.cardsanity == CardSanity.option_all:
@@ -115,6 +148,11 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
             lambda state: state.has("#19 Prison Tick Card", player)
         multiworld.get_location("#21 Prisonmaster Cirno Card", player).access_rule = \
             lambda state: state.has("#21 Prisonmaster Card", player)
+        
+    if options.aqariumsanity == AquariumSanity.option_true:
+        for name, data in fish_data.items():
+            multiworld.get_location("Aquarium - " + name, player).access_rule =\
+                lambda state: can_get_fish(state, name, player)
     
     # Win Condition
     multiworld.completion_condition[player] = lambda state: state.can_reach("Cirno Defeated", "Location", player)

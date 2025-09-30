@@ -35,7 +35,7 @@ def create_regions(multiworld: MultiWorld, player: int, options: UT2Options):
         "Prison Kitchen":           UT2RegionData([], ["Prison Office"]),
         "Prison Office":            UT2RegionData([], ["Beach Entry"]),
 
-        "Beach Entry":              UT2RegionData([], ["Beach Relax 1", "Beach Fishing"]),
+        "Beach Entry":              UT2RegionData([], ["Beach Relax 1", "Greenhorn Shore"]),
         "Beach Relax 1":            UT2RegionData([], ["Beach Relax 2"]),
         "Beach Relax 2":            UT2RegionData([], ["Beach Relax 3"]),
         "Beach Relax 3":            UT2RegionData([], ["Beach Relax 4"]),
@@ -43,13 +43,24 @@ def create_regions(multiworld: MultiWorld, player: int, options: UT2Options):
         "Beach Relax 5":            UT2RegionData([], ["Beach Relax 6"]),
         "Beach Relax 6":            UT2RegionData([], ["Beach Relax 7"]),
         "Beach Relax 7":            UT2RegionData([], []),
-        "Beach Fishing":            UT2RegionData([], []),
+        "Greenhorn Shore":          UT2RegionData([], ["Breadcrumb Bay", "Rust Gear Gulf", "Aquarium"]),
+        "Breadcrumb Bay":           UT2RegionData([], ["Melonbread Cove"]),
+        "Melonbread Cove":          UT2RegionData([], ["Pudding"]),
+        "Pudding":                  UT2RegionData([], []),
+        "Aquarium":                 UT2RegionData([], []),
+        "Rust Gear Gulf":           UT2RegionData([], []),
     }
 
     for name, data in location_table.items():
         if data.category == "enemy" and options.cardsanity < 2:
             continue
         if data.category == "boss" and options.cardsanity < 1:
+            continue
+        if data.category == "relax" and not options.shuffle_relax:
+            continue
+        if data.category == "fishing" and not options.shuffle_fish_mission:
+            continue
+        if data.category == "aquarium" and not options.aqariumsanity:
             continue
 
         regions[data.region].locations.append(name)
