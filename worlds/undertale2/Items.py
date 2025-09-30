@@ -78,11 +78,6 @@ item_table: Dict[str, UT2ItemData] = {
     "Progressive Fishing Spot":             UT2ItemData("misc prog", 315, ItemClassification.progression, 5),
     "Rust Ticket":                          UT2ItemData("misc prog", 316, ItemClassification.progression),
 
-    # Card
-    "#18 Homer Guard Card":                 UT2ItemData("card", 401, ItemClassification.progression),
-    "#19 Prison Tick Card":                 UT2ItemData("card", 402, ItemClassification.progression),
-    "#21 Prisonmaster Card":                UT2ItemData("card", 403, ItemClassification.progression),
-
     # Junk
     "EXP breeze badge!!!":                  UT2ItemData("trinket", 1001, ItemClassification.filler),
     "PEZ candy":                            UT2ItemData("filler", 1002, ItemClassification.filler, 0, 6),

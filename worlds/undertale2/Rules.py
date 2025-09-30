@@ -51,9 +51,15 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
                 continue
             if data.category != "enemy":
                 continue
+            if name == "#11 Lancer Card":
+                multiworld.get_location(name, player).access_rule = \
+                        lambda state: state.has("Nazrin", player) and state.has("Lancer Encountered", player)
             
             multiworld.get_location(name, player).access_rule = \
-                lambda state: state.has("Nazrin", player)
+                    lambda state: state.has("Nazrin", player)
+    elif options.cardsanity == CardSanity.option_all:
+        multiworld.get_location("#11 Lancer Card", player).access_rule = \
+                lambda state: state.has("Lancer Encountered", player)
 
     # Ruins
     multiworld.get_entrance("Ruins Main -> Ruins Sewers", player).access_rule = \
@@ -137,17 +143,6 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
             lambda state: can_get_fish(state, "Rubber Duckie", player)
     multiworld.get_location("Beach - Pudding Pond Can Trade", player).access_rule =\
             lambda state: can_get_fish(state, "Empty Can", player)
-    
-    # Special
-    if options.cardsanity == CardSanity.option_all:
-        multiworld.get_location("#11 Lancer Card", player).access_rule = \
-                lambda state: state.has("Lancer Encountered", player)
-        multiworld.get_location("#18 Homer Guard Card", player).access_rule = \
-            lambda state: state.has("#18 Homer Guard Card", player)
-        multiworld.get_location("#19 Prison Tick Card", player).access_rule = \
-            lambda state: state.has("#19 Prison Tick Card", player)
-        multiworld.get_location("#21 Prisonmaster Cirno Card", player).access_rule = \
-            lambda state: state.has("#21 Prisonmaster Card", player)
         
     if options.aqariumsanity == AquariumSanity.option_true:
         for name, data in fish_data.items():
