@@ -116,6 +116,10 @@ location_table: Dict[str, UT2LocationData] = {
     "Beach - Greenhorn Shore Chest":                        UT2LocationData("pickup", "Greenhorn Shore", 43),
     "Beach - Melonbread Cove Chest":                        UT2LocationData("pickup", "Melonbread Cove", 44),
     "Beach - Pudding Pond Can Trade":                       UT2LocationData("pickup", "Pudding", 45),
+    "Rust Gear Gulf - Mechanical Carp Trade":               UT2LocationData("pickup", "Rust Gear Gulf", 46),
+    "Chemical Waste Zone - Blinky Trade":                   UT2LocationData("pickup", "Chemical Waste Zone", 47),
+    "Big Bone Bay - Sansfish Trade":                        UT2LocationData("pickup", "Big Bone Bay", 48),
+    "Stardrop Tree - Bridge Chest":                         UT2LocationData("pickup", "Stardrop Tree", 49),
 
     # Enemies
     "#1 Flowey Card":                                       UT2LocationData("boss", "Landing", 301),

@@ -115,7 +115,8 @@ item_table: Dict[str, UT2ItemData] = {
     "Knight's diary":                       UT2ItemData("filler", 1031, ItemClassification.filler),
     "Fishing Guide":                        UT2ItemData("filler", 1032, ItemClassification.filler),
     "50 DOLLARS":                           UT2ItemData("filler", 1033, ItemClassification.filler, 0, 4),
-    "Frogueslab 1":                         UT2ItemData("filler", 1034, ItemClassification.filler),
+    "Frogueslab I":                         UT2ItemData("filler", 1034, ItemClassification.filler),
+    "Frogueslab IV":                        UT2ItemData("filler", 1035, ItemClassification.filler),
 
     # Settings
     "Relax Pass Off":                       UT2ItemData("filler", 90001, ItemClassification.filler, 0),
