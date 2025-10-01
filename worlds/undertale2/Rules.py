@@ -48,6 +48,9 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
     # Card Sanity -----------------------------------------------------------------------
     if options.cardsanity == CardSanity.option_all and options.require_nazrin == RequireNazrin.option_true:
         for name, data in location_table.items():
+            if data.category == "dig":
+                multiworld.get_location(name, player).access_rule = \
+                        lambda state: state.has("Joqua's Trowel", player)
             if name == "#59 Gilded☆Bingus Card":
                 continue
             if data.category != "enemy":
@@ -174,6 +177,8 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
             lambda state: state.can_reach("Chemical Waste Zone - Shyren Pagliacci Chest", "Location", player)
     multiworld.get_location("Beach - Eclaire", player).access_rule =\
             lambda state: can_get_fish(state, "Taiyaki", player)
+    multiworld.get_location("Beach - Helper Mimic Cave", player).access_rule = \
+                        lambda state: state.has("Joqua's Trowel", player)
         
     if options.aqariumsanity == AquariumSanity.option_true:
         for name, data in fish_data.items():
@@ -184,6 +189,9 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
         for i, name in enumerate(fish_quests):
             multiworld.get_location("Beach - Fishing Mission " + str(i + 1), player).access_rule =\
                 lambda state: can_get_fish(state, name, player)
+            
+    multiworld.get_entrance("Beach Entry -> Miku Zone", player).access_rule =\
+            lambda state: state.has("Vocal Key", player)
     
     # Win Condition -----------------------------------------------------------------------
     multiworld.completion_condition[player] = lambda state: state.can_reach("Cirno Defeated", "Location", player)

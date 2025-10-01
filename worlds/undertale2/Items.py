@@ -54,6 +54,7 @@ item_table: Dict[str, UT2ItemData] = {
     "Aluminum Shirt":                       UT2ItemData("body", 120, ItemClassification.useful),
     "Aluminum Hat":                         UT2ItemData("head", 121, ItemClassification.useful),
     "Aluminum Badge":                       UT2ItemData("trinket", 122, ItemClassification.useful),
+    "Ra Men Abs":                           UT2ItemData("body", 123, ItemClassification.useful),
 
     # Weapons
     "Lucky Crowbar":                        UT2ItemData("weapon", 201, ItemClassification.progression),
@@ -67,6 +68,7 @@ item_table: Dict[str, UT2ItemData] = {
     "Fishing rod":                          UT2ItemData("weapon", 209, ItemClassification.useful),
     "Joqua's Trowel":                       UT2ItemData("weapon", 210, ItemClassification.progression),
     "Aluminum Club":                        UT2ItemData("weapon", 211, ItemClassification.useful),
+    "Scathach's Toothpick":                 UT2ItemData("weapon", 212, ItemClassification.useful),
 
     # Key Items
     "Gold Key":                             UT2ItemData("key", 301, ItemClassification.progression),
@@ -75,7 +77,7 @@ item_table: Dict[str, UT2ItemData] = {
     "Progressive Key":                      UT2ItemData("progkey", 304, ItemClassification.progression, 5),
     "Anime catboy transformation potion":   UT2ItemData("misc prog", 305, ItemClassification.progression),
     "Library Card":                         UT2ItemData("misc prog", 306, ItemClassification.progression),
-    "Odd Key":                              UT2ItemData("misc prog", 307, ItemClassification.progression, 1),
+    "Odd Key":                              UT2ItemData("misc prog", 307, ItemClassification.progression, 2),
     "Puzzle Key":                           UT2ItemData("misc prog", 308, ItemClassification.progression),
     "Prison Key":                           UT2ItemData("misc prog", 309, ItemClassification.progression),
     "Feelings Key":                         UT2ItemData("useful", 310, ItemClassification.useful),
@@ -88,6 +90,7 @@ item_table: Dict[str, UT2ItemData] = {
     "Waste Ticket":                         UT2ItemData("misc prog", 317, ItemClassification.progression),
     "Bone Ticket":                          UT2ItemData("misc prog", 318, ItemClassification.progression),
     "Star Ticket":                          UT2ItemData("misc prog", 319, ItemClassification.progression),
+    "Vocal Key":                            UT2ItemData("misc prog", 320, ItemClassification.progression),
 
     # Junk
     "EXP breeze badge!!!":                  UT2ItemData("trinket", 1001, ItemClassification.filler),
@@ -127,6 +130,7 @@ item_table: Dict[str, UT2ItemData] = {
     "Frogueslab II":                        UT2ItemData("filler", 1035, ItemClassification.filler),
     "Frogueslab IV":                        UT2ItemData("filler", 1036, ItemClassification.filler),
     "Kiss on the Cheek":                    UT2ItemData("filler", 1037, ItemClassification.filler, 4, 1),
+    "Apple Core":                           UT2ItemData("filler", 1038, ItemClassification.filler),
 
     # Settings
     "Relax Pass Off":                       UT2ItemData("filler", 90001, ItemClassification.filler, 0),

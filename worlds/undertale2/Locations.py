@@ -47,6 +47,8 @@ location_table: Dict[str, UT2LocationData] = {
     "Beach - Travis Touchdown Drop #2":                     UT2LocationData("drop", "Beach Relax 7", 114),
     "Beach - Joqua La Boques Drop #1":                      UT2LocationData("drop", "Beach Entry", 115),
     "Beach - Joqua La Boques Drop #2":                      UT2LocationData("drop", "Beach Entry", 116),
+    "Miku Zone - Hatsune Miku Drop":                        UT2LocationData("drop", "Miku Zone", 117),
+    "Beach - The Ra Men Drop":                              UT2LocationData("drop", "Beach Post Boss", 118),
 
     # Shops
     "Nicky Coinflip Ruins - Paper hat Purchase":            UT2LocationData("shop", "Ruins Main", 201),
@@ -77,6 +79,7 @@ location_table: Dict[str, UT2LocationData] = {
     "Fishing Shop - Fishing Guide Purchase":                UT2LocationData("shop", "Greenhorn Shore", 223),
     "Fishing Shop - Fisherman's haste Purchase":            UT2LocationData("shop", "Greenhorn Shore", 224),
     "Fishing Shop - Aquarium key Purchase":                 UT2LocationData("shop", "Greenhorn Shore", 225),
+    "Miku Zone - MikuBoard Purchase":                       UT2LocationData("shop", "Miku Zone", 226),
 
     # Item Pickups
     "Landing - In the Void":                                UT2LocationData("pickup", "Landing", 10),
@@ -132,6 +135,8 @@ location_table: Dict[str, UT2LocationData] = {
     "Chemical Waste Zone - Shyren Pagliacci Chest":         UT2LocationData("pickup", "Chemical Waste Zone", 56),
     "Stardrop Tree - Shyren Pisces Trade Chest":            UT2LocationData("pickup", "Stardrop Tree", 57),
     "Stardrop Tree - Can Trade Chest":                      UT2LocationData("pickup", "Stardrop Tree", 58),
+    "Beach - Helper Mimic Cave":                            UT2LocationData("pickup", "Beach Post Boss", 59),
+    "Miku Zone - Robo Miku Chest":                          UT2LocationData("pickup", "Miku Zone", 60),
 
     # Enemies
     "#1 Flowey Card":                                       UT2LocationData("boss", "Landing", 301),
@@ -160,15 +165,19 @@ location_table: Dict[str, UT2LocationData] = {
     "#23 Angeler Card":                                     UT2LocationData("enemy", "Special Enemies", 323),
     "#24 Scrambler Card":                                   UT2LocationData("enemy", "Beach Entry", 324),
     "#25 Baitmaster Card":                                  UT2LocationData("enemy", "Beach Entry", 325),
+    "#26 Jinx&Punchbuggy Card":                             UT2LocationData("boss", "Beach Entry", 326),
+    "#27 The Ra Men Card":                                  UT2LocationData("boss", "Beach Post Boss", 327),
+    "#28 Shiteyanyo Card":                                  UT2LocationData("enemy", "Miku Zone", 328),
+    "#28 Hatsune Miku Card":                                UT2LocationData("boss", "Miku Zone", 329),
 
-    "#47 Roqua La Boques Card":                             UT2LocationData("boss", "Beach Relax 1", 347),
-    "#48 Rouxian Rouxlette Card":                           UT2LocationData("enemy", "Beach Relax 1", 348),
-    "#49 Plami Card":                                       UT2LocationData("enemy", "Beach Relax 2", 349),
-    "#50 DIE HARD Card":                                    UT2LocationData("enemy", "Beach Relax 3", 350),
-    "#51 Excutie Card":                                     UT2LocationData("enemy", "Beach Relax 4", 351),
-    "#52 Metal_Gnome Card":                                 UT2LocationData("enemy", "Beach Relax 5", 352),
-    "#53 DIE HARD II Card":                                 UT2LocationData("enemy", "Beach Relax 6", 353),
-    "#54 Travis Touchdown Card":                            UT2LocationData("enemy", "Beach Relax 7", 354),
+    "#47 Roqua La Boques Card":                             UT2LocationData("boss", "Beach Post Boss", 347),
+    "#48 Rouxian Rouxlette Card":                           UT2LocationData("boss", "Beach Relax 1", 348),
+    "#49 Plami Card":                                       UT2LocationData("boss", "Beach Relax 2", 349),
+    "#50 DIE HARD Card":                                    UT2LocationData("boss", "Beach Relax 3", 350),
+    "#51 Excutie Card":                                     UT2LocationData("boss", "Beach Relax 4", 351),
+    "#52 Metal_Gnome Card":                                 UT2LocationData("boss", "Beach Relax 5", 352),
+    "#53 DIE HARD II Card":                                 UT2LocationData("boss", "Beach Relax 6", 353),
+    "#54 Travis Touchdown Card":                            UT2LocationData("boss", "Beach Relax 7", 354),
 
     "#59 Gilded☆Bingus Card":                              UT2LocationData("enemy", "Ruins Lake", 359),
 
@@ -240,6 +249,8 @@ location_table: Dict[str, UT2LocationData] = {
     "Chemical Waste Zone - Dig Spot":                       UT2LocationData("dig", "Chemical Waste Zone", 609),
     "Big Bone Bay - Dig Spot":                              UT2LocationData("dig", "Big Bone Bay", 610),
     "Stardrop Tree - Dig Spot":                             UT2LocationData("dig", "Stardrop Tree", 611),
+    "Beach - S Room Dig Spot":                              UT2LocationData("dig", "Beach Entry", 612),
+    "Beach - Outside Ra Dig Spot":                          UT2LocationData("dig", "Beach Post Boss", 613),
 
     # Silly
     # "Rest Zone - PISS AND SHIT FM":                         UT2LocationData("silly", "Rest Zone", 1001),
