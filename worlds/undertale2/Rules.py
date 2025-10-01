@@ -96,6 +96,8 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
     # Swamp -----------------------------------------------------------------------
     multiworld.get_entrance("Ruins Tree -> Swamp", player).access_rule =\
             lambda state: state.has("Hotden Reached", player)
+    multiworld.get_entrance("Swamp -> Spark Chamber", player).access_rule =\
+                lambda state: state.has("Odd Key", player, 3)
     
     # Prison -----------------------------------------------------------------------
     multiworld.get_entrance("Hotden -> Prison Cells", player).access_rule =\

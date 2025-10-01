@@ -56,6 +56,7 @@ location_table: Dict[str, UT2LocationData] = {
     "Toriel's House - Rollick Drop":                        UT2LocationData("drop", "Toriel House", 122),
     "Toriel's House - Madame Tutoriel MK1 Drop":            UT2LocationData("drop", "Toriel House", 123),
     "Mario Zone - Mario Drop":                              UT2LocationData("drop", "Mario Zone", 124),
+    "Swamp - Spark Drop":                                   UT2LocationData("drop", "Spark Chamber", 125),
 
     # Shops
     "Nicky Coinflip Ruins - Paper hat Purchase":            UT2LocationData("shop", "Ruins Main", 201),
@@ -221,8 +222,8 @@ location_table: Dict[str, UT2LocationData] = {
     "#39 Locke Card":                                       UT2LocationData("boss", "Toriel Roof", 339),
     "#40 Madame Tutariel MK1 Card":                         UT2LocationData("boss", "Toriel Roof", 340),
     "#41 Kyouko Kasodani Card":                             UT2LocationData("boss", "Toriel Roof", 341),
-    "#42 Spark Card":                                       UT2LocationData("boss", "Toriel Roof", 342),
-    "#43 Gilded☆Bingus Card":                              UT2LocationData("boss", "Toriel Roof", 343),
+    "#42 Spark Card":                                       UT2LocationData("boss", "Spark Chamber", 342),
+    "#43 Gilded☆Bingus Card":                              UT2LocationData("enemy", "Ruins Lake", 343),
     "#44 The Wise Dummy Card":                              UT2LocationData("boss", "Beach Post Boss", 344),
     "#45 Pestilence Card":                                  UT2LocationData("pgenemy", "Server", 345),
     "#46 backflip.exe Card":                                UT2LocationData("pgboss", "Server Settings", 346),
@@ -234,8 +235,6 @@ location_table: Dict[str, UT2LocationData] = {
     "#52 Metal_Gnome Card":                                 UT2LocationData("boss", "Beach Relax 5", 352),
     "#53 DIE HARD II Card":                                 UT2LocationData("boss", "Beach Relax 6", 353),
     "#54 Travis Touchdown Card":                            UT2LocationData("boss", "Beach Relax 7", 354),
-
-    "#59 Gilded☆Bingus Card":                              UT2LocationData("enemy", "Ruins Lake", 359),
 
     # Special
     "Church - Play Cooking Minigame 1 Time":                UT2LocationData("minigame", "Hotden", 401),

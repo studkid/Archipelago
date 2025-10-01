@@ -73,6 +73,7 @@ item_table: Dict[str, UT2ItemData] = {
     "Scathach's Toothpick":                 UT2ItemData("weapon", 212, ItemClassification.useful),
     "Cypress Stick":                        UT2ItemData("weapon", 213, ItemClassification.useful),
     "Kyouko's Horn":                        UT2ItemData("weapon", 214, ItemClassification.useful),
+    "Splacer":                              UT2ItemData("weapon", 215, ItemClassification.useful),
 
     # Key Items
     "Gold Key":                             UT2ItemData("key", 301, ItemClassification.progression),

@@ -28,7 +28,8 @@ def create_regions(multiworld: MultiWorld, player: int, options: UT2Options):
         "Hotden":                   UT2RegionData([], ["Prison Cells"]),
         "Frogue Chamber":           UT2RegionData([], []),
 
-        "Swamp":                    UT2RegionData([], []),
+        "Swamp":                    UT2RegionData([], ["Spark Chamber"]),
+        "Spark Chamber":            UT2RegionData([], []),
 
         "Prison Cells":             UT2RegionData([], ["Prison Puzzle", "Prison Kitchen"]),
         "Prison Puzzle":            UT2RegionData([], []),
