@@ -44,6 +44,8 @@ location_table: Dict[str, UT2LocationData] = {
     "Beach - DIE HARD II Drop #2":                          UT2LocationData("drop", "Beach Relax 6", 112),
     "Beach - Travis Touchdown Drop #1":                     UT2LocationData("drop", "Beach Relax 7", 113),
     "Beach - Travis Touchdown Drop #2":                     UT2LocationData("drop", "Beach Relax 7", 114),
+    "Beach - Joqua La Boques Drop #1":                      UT2LocationData("drop", "Beach Entry", 115),
+    "Beach - Joqua La Boques Drop #2":                      UT2LocationData("drop", "Beach Entry", 116),
 
     # Shops
     "Nicky Coinflip Ruins - Paper hat Purchase":            UT2LocationData("shop", "Ruins Main", 201),
@@ -119,7 +121,16 @@ location_table: Dict[str, UT2LocationData] = {
     "Rust Gear Gulf - Mechanical Carp Trade":               UT2LocationData("pickup", "Rust Gear Gulf", 46),
     "Chemical Waste Zone - Blinky Trade":                   UT2LocationData("pickup", "Chemical Waste Zone", 47),
     "Big Bone Bay - Sansfish Trade":                        UT2LocationData("pickup", "Big Bone Bay", 48),
-    "Stardrop Tree - Bridge Chest":                         UT2LocationData("pickup", "Stardrop Tree", 49),
+    "Stardrop Tree - Tsuchinoko Trade Chest":               UT2LocationData("pickup", "Stardrop Tree", 49),
+    "Beach - Piss and Shit FM HQ":                          UT2LocationData("pickup", "Pudding", 50),
+    "Big Bone Bay - Can Trade":                             UT2LocationData("pickup", "Big Bone Bay", 51),
+    "Big Bone Bay - Shyren Undyne Jr Trade":                UT2LocationData("pickup", "Big Bone Bay", 52),
+    "Big Bone Bay - Angeler Trade Chest":                   UT2LocationData("pickup", "Big Bone Bay", 53),
+    "Rust Gear Gulf - Can Trade Chest":                     UT2LocationData("pickup", "Rust Gear Gulf", 54),
+    "Chemical Waste Zone - Can Trade Chest":                UT2LocationData("pickup", "Chemical Waste Zone", 55),
+    "Chemical Waste Zone - Shyren Pagliacci Chest":         UT2LocationData("pickup", "Chemical Waste Zone", 56),
+    "Stardrop Tree - Shyren Pisces Trade Chest":            UT2LocationData("pickup", "Stardrop Tree", 57),
+    "Stardrop Tree - Can Trade Chest":                      UT2LocationData("pickup", "Stardrop Tree", 58),
 
     # Enemies
     "#1 Flowey Card":                                       UT2LocationData("boss", "Landing", 301),
@@ -149,6 +160,7 @@ location_table: Dict[str, UT2LocationData] = {
     "#24 Scrambler Card":                                   UT2LocationData("enemy", "Beach Entry", 324),
     "#25 Baitmaster Card":                                  UT2LocationData("enemy", "Beach Entry", 325),
 
+    "#47 Roqua La Boques Card":                             UT2LocationData("boss", "Beach Relax 1", 347),
     "#48 Rouxian Rouxlette Card":                           UT2LocationData("enemy", "Beach Relax 1", 348),
     "#49 Plami Card":                                       UT2LocationData("enemy", "Beach Relax 2", 349),
     "#50 DIE HARD Card":                                    UT2LocationData("enemy", "Beach Relax 3", 350),
@@ -214,6 +226,19 @@ location_table: Dict[str, UT2LocationData] = {
     "Aquarium - Leviathan":                                 UT2LocationData("aquarium", "Aquarium", 537),
     "Aquarium - Pisces":                                    UT2LocationData("aquarium", "Aquarium", 538),
     "Aquarium - Tsuchinoko":                                UT2LocationData("aquarium", "Aquarium", 539),
+
+    # Dig Spots
+    "Beach - Greenhorn Shore Dig Spot":                     UT2LocationData("dig", "Greenhorn Shore", 601),
+    "Beach - Breadcrumb Bay Dig Spot":                      UT2LocationData("dig", "Breadcrumb Bay", 602),
+    "Beach - Melonbread Cove Dig Spot 1":                   UT2LocationData("dig", "Melonbread Cove", 603),
+    "Beach - Melonbread Cove Dig Spot 2":                   UT2LocationData("dig", "Melonbread Cove", 604),
+    "Beach - Melonbread Cove Dig Spot Island":              UT2LocationData("dig", "Melonbread Cove", 605),
+    "Beach - Pudding Pond Dig Spot 1":                      UT2LocationData("dig", "Pudding", 606),
+    "Beach - Pudding Pond Dig Spot 2":                      UT2LocationData("dig", "Pudding", 607),
+    "Rust Gear Gulf - Dig Spot":                            UT2LocationData("dig", "Rust Gear Gulf", 608),
+    "Chemical Waste Zone - Dig Spot":                       UT2LocationData("dig", "Chemical Waste Zone", 609),
+    "Big Bone Bay - Dig Spot":                              UT2LocationData("dig", "Big Bone Bay", 610),
+    "Stardrop Tree - Dig Spot":                             UT2LocationData("dig", "Stardrop Tree", 611),
 
     # Silly
     # "Rest Zone - PISS AND SHIT FM":                         UT2LocationData("silly", "Rest Zone", 1001),

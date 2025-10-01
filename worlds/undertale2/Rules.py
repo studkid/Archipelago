@@ -141,6 +141,8 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
                 lambda state: state.has("Progressive Fishing Spot", player, 3)
         multiworld.get_entrance("Melonbread Cove -> Pudding", player).access_rule =\
                 lambda state: state.has("Progressive Fishing Spot", player, 5)
+        multiworld.get_location("Beach - Piss and Shit FM HQ", player).access_rule =\
+                lambda state: state.has("Progressive Fishing Spot", player, 6)
         multiworld.get_entrance("Greenhorn Shore -> Rust Gear Gulf", player).access_rule =\
                 lambda state: state.has("Rust Ticket", player) and state.has("Progressive Fishing Spot", player, 4)
         multiworld.get_entrance("Greenhorn Shore -> Chemical Waste Zone", player).access_rule =\
@@ -148,7 +150,7 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
         multiworld.get_entrance("Greenhorn Shore -> Big Bone Bay", player).access_rule =\
                 lambda state: state.has("Bone Ticket", player) and state.has("Progressive Fishing Spot", player, 4)
         multiworld.get_entrance("Greenhorn Shore -> Stardrop Tree", player).access_rule =\
-                lambda state: state.has("Star Ticket", player) and state.has("Progressive Fishing Spot", player, 4)
+                lambda state: state.has("Star Ticket", player) and state.has("Progressive Fishing Spot", player, 4)       
         
     else:    
         multiworld.get_entrance("Greenhorn Shore -> Rust Gear Gulf", player).access_rule =\
@@ -166,6 +168,10 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
             lambda state: can_get_fish(state, "Rubber Duckie", player)
     multiworld.get_location("Beach - Pudding Pond Can Trade", player).access_rule =\
             lambda state: can_get_fish(state, "Empty Can", player)
+    multiworld.get_location("Stardrop Tree - Shyren Pisces Trade Chest", player).access_rule =\
+            lambda state: state.can_reach("Big Bone Bay - Shyren Undyne Jr Trade", "Location", player)
+    multiworld.get_location("Big Bone Bay - Shyren Undyne Jr Trade", player).access_rule =\
+            lambda state: state.can_reach("Chemical Waste Zone - Shyren Pagliacci Chest", "Location", player)
         
     if options.aqariumsanity == AquariumSanity.option_true:
         for name, data in fish_data.items():

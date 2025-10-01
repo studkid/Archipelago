@@ -4,7 +4,7 @@ from BaseClasses import Tutorial, Region, ItemClassification
 from worlds.AutoWorld import WebWorld, World
 from .Items import UT2Item, UT2ItemData, event_item_table, get_items_by_category, item_table
 from .Locations import UT2Location, location_table
-from .Options import UT2Options, ProgMonkKey, RelaxRankNeedsPass
+from .Options import UT2Options, ProgMonkKey, RelaxRankNeedsPass, ShuffleFishingMissions
 from .Regions import create_regions
 from .Rules import set_rules
 
@@ -42,6 +42,9 @@ class UT2World(World):
             item_table["Relax Pass"] = UT2ItemData("misc prog", 311, ItemClassification.progression, 1)
             self.multiworld.push_precollected(self.create_item("Relax Pass Off"))
 
+        if self.options.shuffle_fish_mission == ShuffleFishingMissions.option_false:
+            self.multiworld.push_precollected(self.create_item("Fishing Mission Off"))
+
         for name, data in item_table.items():
             quantity = data.max_quantity
 
@@ -58,6 +61,9 @@ class UT2World(World):
                 continue
 
             if data.category == "card" and self.options.cardsanity != 2:
+                continue
+
+            if name == "Progressive Fishing Spot" and self.options.shuffle_fish_mission == ShuffleFishingMissions.option_false:
                 continue
 
             item_pool += [self.create_item(name) for _ in range(0, quantity)]
