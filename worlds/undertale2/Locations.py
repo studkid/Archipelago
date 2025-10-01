@@ -45,10 +45,16 @@ location_table: Dict[str, UT2LocationData] = {
     "Beach - DIE HARD II Drop #2":                          UT2LocationData("drop", "Beach Relax 6", 112),
     "Beach - Travis Touchdown Drop #1":                     UT2LocationData("drop", "Beach Relax 7", 113),
     "Beach - Travis Touchdown Drop #2":                     UT2LocationData("drop", "Beach Relax 7", 114),
-    "Beach - Joqua La Boques Drop #1":                      UT2LocationData("drop", "Beach Entry", 115),
-    "Beach - Joqua La Boques Drop #2":                      UT2LocationData("drop", "Beach Entry", 116),
+    "Beach - Joqua La Boques Drop #1":                      UT2LocationData("drop", "Beach Post Boss", 115),
+    "Beach - Joqua La Boques Drop #2":                      UT2LocationData("drop", "Beach Post Boss", 116),
     "Miku Zone - Hatsune Miku Drop":                        UT2LocationData("drop", "Miku Zone", 117),
     "Beach - The Ra Men Drop":                              UT2LocationData("drop", "Beach Post Boss", 118),
+    "Archives - Wise Dummy Drop":                           UT2LocationData("drop", "Beach Post Boss", 119),
+    "Toriel's House - Cavort Drop":                         UT2LocationData("drop", "Toriel House", 120),
+    "Toriel's House - Kibitz Drop":                         UT2LocationData("drop", "Toriel House", 121),
+    "Toriel's House - Rollick Drop":                        UT2LocationData("drop", "Toriel House", 122),
+    "Toriel's House - Madame Tutoriel MK1 Drop":            UT2LocationData("drop", "Toriel House", 123),
+    "Mario Zone - Mario Drop":                              UT2LocationData("drop", "Mario Zone", 124),
 
     # Shops
     "Nicky Coinflip Ruins - Paper hat Purchase":            UT2LocationData("shop", "Ruins Main", 201),
@@ -138,6 +144,17 @@ location_table: Dict[str, UT2LocationData] = {
     "Beach - Helper Mimic Cave":                            UT2LocationData("pickup", "Beach Post Boss", 59),
     "Miku Zone - Robo Miku Chest":                          UT2LocationData("pickup", "Miku Zone", 60),
 
+    "Toriel's House - Entry Red Coin":                      UT2LocationData("pickup", "Toriel House", 61),
+    "Toriel's House - Hallway Red Coin 1":                  UT2LocationData("pickup", "Toriel House", 62),
+    "Toriel's House - Hallway Red Coin 2":                  UT2LocationData("pickup", "Toriel House", 63),
+    "Toriel's House - Your Room Red Coin":                  UT2LocationData("pickup", "Toriel House", 64),
+    "Toriel's House - Toriel's Room Red Coin":              UT2LocationData("pickup", "Toriel House", 65),
+    "Toriel's House - Kitchen Red Coin":                    UT2LocationData("pickup", "Toriel House", 66),
+    "Toriel's House - Living Room Red Coin 1":              UT2LocationData("pickup", "Toriel House", 67),
+    "Toriel's House - Living Room Red Coin 2":              UT2LocationData("pickup", "Toriel House", 68),
+    "Toriel's House - Chef Muletambo Gift":                 UT2LocationData("pickup", "Toriel Roof", 69),
+    "Toriel's House - Nice Cream Guy Gift":                 UT2LocationData("pickup", "Toriel Roof", 70),
+
     # Enemies
     "#1 Flowey Card":                                       UT2LocationData("boss", "Landing", 301),
     "#2 Froggit Card":                                      UT2LocationData("enemy", "Ruins Main", 302),
@@ -168,7 +185,20 @@ location_table: Dict[str, UT2LocationData] = {
     "#26 Jinx&Punchbuggy Card":                             UT2LocationData("boss", "Beach Entry", 326),
     "#27 The Ra Men Card":                                  UT2LocationData("boss", "Beach Post Boss", 327),
     "#28 Shiteyanyo Card":                                  UT2LocationData("enemy", "Miku Zone", 328),
-    "#28 Hatsune Miku Card":                                UT2LocationData("boss", "Miku Zone", 329),
+    "#29 Hatsune Miku Card":                                UT2LocationData("boss", "Miku Zone", 329),
+    "#30 Brainrot Card":                                    UT2LocationData("enemy", "Toriel House", 330),
+    "#31 Homer Mimic Card":                                 UT2LocationData("boss", "Toriel House", 331),
+    "#32 Cavort Card":                                      UT2LocationData("boss", "Toriel House", 332),
+    "#33 Kibitz Card":                                      UT2LocationData("boss", "Toriel House", 333),
+    "#34 Rollick Card":                                     UT2LocationData("boss", "Toriel House", 334),
+    "#35 Goomba Card":                                      UT2LocationData("enemy", "Mario Zone", 335),
+    "#36 Mario Card":                                       UT2LocationData("boss", "Mario Zone", 336),
+    "#37 Tutariel Card":                                    UT2LocationData("boss", "Toriel Roof", 337),
+    "#38 Safety Tapio Card":                                UT2LocationData("boss", "Toriel Roof", 338),
+    "#39 Locke Card":                                       UT2LocationData("boss", "Toriel Roof", 339),
+    "#40 Madame Tutariel MK1 Card":                         UT2LocationData("boss", "Toriel Roof", 340),
+
+    "#44 The Wise Dummy Card":                              UT2LocationData("boss", "Beach Post Boss", 344),
 
     "#47 Roqua La Boques Card":                             UT2LocationData("boss", "Beach Post Boss", 347),
     "#48 Rouxian Rouxlette Card":                           UT2LocationData("boss", "Beach Relax 1", 348),
@@ -263,5 +293,6 @@ location_table: Dict[str, UT2LocationData] = {
 event_location_table: Dict[str, UT2LocationData] = {
     "Lancer Encounter":                                     UT2LocationData("event", "Archives Back"),
     "Hotden Reached":                                       UT2LocationData("event", "Hotden"),
-    "Cirno Defeated":                                       UT2LocationData("event", "Prison Office")
+    "Cirno Defeated":                                       UT2LocationData("event", "Prison Office"),
+    "Tutariel Defeated":                                    UT2LocationData("event", "Toriel Roof"),
 }

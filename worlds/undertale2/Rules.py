@@ -193,6 +193,12 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
     multiworld.get_entrance("Beach Entry -> Miku Zone", player).access_rule =\
             lambda state: state.has("Vocal Key", player)
     
+    # Toriel ------------------------------------------------------------------------------
+    multiworld.get_entrance("Toriel House -> Toriel Roof", player).access_rule =\
+            lambda state: state.has("Tutariel Key", player, 3)
+    multiworld.get_entrance("Toriel House -> Mario Zone", player).access_rule =\
+            lambda state: state.has("Red Coin", player, 8) and state.has("Decision Chosen", player)
+    
     # Win Condition -----------------------------------------------------------------------
     multiworld.completion_condition[player] = lambda state: state.can_reach("Cirno Defeated", "Location", player)
     

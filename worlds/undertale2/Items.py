@@ -69,6 +69,8 @@ item_table: Dict[str, UT2ItemData] = {
     "Joqua's Trowel":                       UT2ItemData("weapon", 210, ItemClassification.progression),
     "Aluminum Club":                        UT2ItemData("weapon", 211, ItemClassification.useful),
     "Scathach's Toothpick":                 UT2ItemData("weapon", 212, ItemClassification.useful),
+    "Cypress Stick":                        UT2ItemData("weapon", 213, ItemClassification.useful),
+    "Kyouko's Horn":                        UT2ItemData("weapon", 214, ItemClassification.useful),
 
     # Key Items
     "Gold Key":                             UT2ItemData("key", 301, ItemClassification.progression),
@@ -91,6 +93,8 @@ item_table: Dict[str, UT2ItemData] = {
     "Bone Ticket":                          UT2ItemData("misc prog", 318, ItemClassification.progression),
     "Star Ticket":                          UT2ItemData("misc prog", 319, ItemClassification.progression),
     "Vocal Key":                            UT2ItemData("misc prog", 320, ItemClassification.progression),
+    "Tutariel Key":                         UT2ItemData("misc prog", 321, ItemClassification.progression, 3),
+    "Red Coin":                             UT2ItemData("misc prog", 322, ItemClassification.progression, 8),
 
     # Junk
     "EXP breeze badge!!!":                  UT2ItemData("trinket", 1001, ItemClassification.filler),
@@ -131,6 +135,7 @@ item_table: Dict[str, UT2ItemData] = {
     "Frogueslab IV":                        UT2ItemData("filler", 1036, ItemClassification.filler),
     "Kiss on the Cheek":                    UT2ItemData("filler", 1037, ItemClassification.filler, 4, 1),
     "Apple Core":                           UT2ItemData("filler", 1038, ItemClassification.filler),
+    "Kyouko's Blood":                       UT2ItemData("filler", 1039, ItemClassification.filler),
 
     # Settings
     "Relax Pass Off":                       UT2ItemData("filler", 90001, ItemClassification.filler, 0),
@@ -141,4 +146,5 @@ event_item_table: Dict[str, UT2ItemData] = {
     "Lancer Encountered":                   UT2ItemData("event", classification=ItemClassification.progression),
     "Hotden Reached":                       UT2ItemData("event", classification=ItemClassification.progression),
     "Prison Destroyed":                     UT2ItemData("event", classification=ItemClassification.progression),
+    "Decision Chosen":                      UT2ItemData("event", classification=ItemClassification.progression),
 }

@@ -113,3 +113,6 @@ class UT2World(World):
         
         self.multiworld.get_location("Cirno Defeated", self.player).place_locked_item(
             self.create_event("Prison Destroyed"))
+        
+        self.multiworld.get_location("Tutariel Defeated", self.player).place_locked_item(
+            self.create_event("Decision Chosen"))
