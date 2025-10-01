@@ -18,7 +18,7 @@ fish_data: Dict[str, List[str]] = {
     "Blobfish Buddy":       ["Pudding"],
     "Haliberd":             ["Pudding"],
     "Goldfish Cracker":     ["Pudding"],
-    "Mechanical Crap":      ["Rust Gear Gulf"],
+    "Mechanical Carp":      ["Rust Gear Gulf"],
     "Cum Buddy":            ["Rust Gear Gulf"],
     "Son of Lokey":         ["Rust Gear Gulf", "Stardrop Tree"],
     "Pagliacci":            ["Chemical Waste Zone"],
