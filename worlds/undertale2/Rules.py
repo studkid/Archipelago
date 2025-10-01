@@ -12,7 +12,7 @@ def has_all(state: CollectionState, player: int, items: List[str]) -> bool:
     return True
 
 def party_count(state: CollectionState, player: int) -> int:
-    party = ["Fabio", "sans", "Nazrin"]
+    party = ["Fabio", "sans", "Nazrin", "Eclaire"]
     count = 1
 
     for _, name in enumerate(party):
@@ -172,6 +172,8 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
             lambda state: state.can_reach("Big Bone Bay - Shyren Undyne Jr Trade", "Location", player)
     multiworld.get_location("Big Bone Bay - Shyren Undyne Jr Trade", player).access_rule =\
             lambda state: state.can_reach("Chemical Waste Zone - Shyren Pagliacci Chest", "Location", player)
+    multiworld.get_location("Beach - Eclaire", player).access_rule =\
+            lambda state: can_get_fish(state, "Taiyaki", player)
         
     if options.aqariumsanity == AquariumSanity.option_true:
         for name, data in fish_data.items():

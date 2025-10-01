@@ -28,6 +28,7 @@ location_table: Dict[str, UT2LocationData] = {
     "Ruins - sans":                                         UT2LocationData("party", "Ruins Tree", 3),
     "Swamp - Save Monk Key":                                UT2LocationData("party", "Swamp", 4),
     "Prison - Nazrin":                                      UT2LocationData("party", "Prison Cells", 5),
+    "Beach - Eclaire":                                      UT2LocationData("party", "Beach Entry", 6),
 
     # Enemy Drops
     "Ruins - Scopestablook Drop":                           UT2LocationData("drop", "Scopestablook", 101),
