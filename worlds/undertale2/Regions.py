@@ -14,7 +14,7 @@ def create_regions(multiworld: MultiWorld, player: int, options: UT2Options):
         "Menu":                     UT2RegionData(None, ["Landing", "Special Enemies"]),
         "Special Enemies":          UT2RegionData([], []),
 
-        "Landing":                  UT2RegionData([], ["Ruins Main"]),
+        "Landing":                  UT2RegionData([], ["Ruins Main", "Warehouse"]),
         "Ruins Main":               UT2RegionData([], ["Ruins Sewers", "Scopestablook", "Rest Zone"]),
         "Ruins Sewers":             UT2RegionData([], ["Ruins Lake"]),
         "Rest Zone":                UT2RegionData([], []),
@@ -65,6 +65,8 @@ def create_regions(multiworld: MultiWorld, player: int, options: UT2Options):
         
         "Server":                   UT2RegionData([], ["Server Settings"]),
         "Server Settings":          UT2RegionData([], []),
+
+        "Warehouse":                UT2RegionData([], []),
     }
 
     for name, data in location_table.items():

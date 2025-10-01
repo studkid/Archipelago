@@ -64,7 +64,7 @@ item_table: Dict[str, UT2ItemData] = {
     "Nutcracker":                           UT2ItemData("weapon", 203, ItemClassification.useful),
     "Madame's Chalice":                     UT2ItemData("weapon", 204, ItemClassification.useful),
     "Prison Shank":                         UT2ItemData("weapon", 205, ItemClassification.useful),
-    "Empty Gun":                            UT2ItemData("weapon", 206, ItemClassification.useful),
+    "Empty Gun":                            UT2ItemData("weapon", 206, ItemClassification.progression),
     "Gun":                                  UT2ItemData("weapon", 207, ItemClassification.useful),
     "Blood Berry":                          UT2ItemData("weapon", 208, ItemClassification.useful),
     "Fishing rod":                          UT2ItemData("weapon", 209, ItemClassification.useful),

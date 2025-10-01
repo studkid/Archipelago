@@ -224,6 +224,10 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
                 lambda state: state.has("Mtech Brainlinq", player)
         multiworld.get_entrance("Server -> Server Settings", player).access_rule =\
                 lambda state: has_all(state, player, ["38384201", "37482826", "38383838", "38421037", "11092696", "42042142", "83229978", "62828473", "80784838"])
+        
+        # Warehouse
+        multiworld.get_entrance("Landing -> Warehouse", player).access_rule =\
+                lambda state: state.has("Empty Gun", player) and state.has("Lulliby Active")
     
     # Win Condition -----------------------------------------------------------------------
     if options.ending_goal == EndingGoal.option_fake_ending:
