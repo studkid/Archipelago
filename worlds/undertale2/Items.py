@@ -30,6 +30,8 @@ item_table: Dict[str, UT2ItemData] = {
     "Progressive Monk Key":                 UT2ItemData("key", 3, ItemClassification.progression, 2),
     "sans":                                 UT2ItemData("party", 4, ItemClassification.progression),
     "Nazrin":                               UT2ItemData("party", 5, ItemClassification.progression),
+    "Eclaire":                              UT2ItemData("party", 6, ItemClassification.progression),
+    "Grindy":                               UT2ItemData("party", 7, ItemClassification.progression),
 
     # Armor
     "Paper hat":                            UT2ItemData("head", 101, ItemClassification.useful),
@@ -96,10 +98,25 @@ item_table: Dict[str, UT2ItemData] = {
     "Tutariel Key":                         UT2ItemData("misc prog", 321, ItemClassification.progression, 3),
     "Red Coin":                             UT2ItemData("misc prog", 322, ItemClassification.progression, 8),
     "#X ??? ??? ??? ???":                   UT2ItemData("misc prog", 323, ItemClassification.progression),
-    "Fake Passport":                        UT2ItemData("misc prog", 325, ItemClassification.progression),
+    "Fake Passport":                        UT2ItemData("misc prog", 324, ItemClassification.progression),
+
+    "Numpad Keycap":                        UT2ItemData("pgmisc prog", 324, ItemClassification.progression, 3),
+    "Mtech Brainlinq":                      UT2ItemData("pgmisc prog", 325, ItemClassification.progression),
+    "Toriel's DNA":                         UT2ItemData("pgmisc prog", 326, ItemClassification.progression),
+    "#0 Placeholdio":                       UT2ItemData("pgmisc prog", 327, ItemClassification.progression),
+    "38384201":                             UT2ItemData("pgcode", 328, ItemClassification.progression),
+    "37482826":                             UT2ItemData("pgcode", 329, ItemClassification.progression),
+    "38383838":                             UT2ItemData("pgcode", 330, ItemClassification.progression),
+    "38421037":                             UT2ItemData("pgcode", 331, ItemClassification.progression),
+    "11092696":                             UT2ItemData("pgcode", 332, ItemClassification.progression),
+    "42042142":                             UT2ItemData("pgcode", 333, ItemClassification.progression),
+    "83229978":                             UT2ItemData("pgcode", 334, ItemClassification.progression),
+    "62828473":                             UT2ItemData("pgcode", 335, ItemClassification.progression),
+    "80784838":                             UT2ItemData("pgcode", 336, ItemClassification.progression),
+    "#-1 Death Metal":                      UT2ItemData("pgcode", 337, ItemClassification.progression),
 
     # Junk
-    "EXP breeze badge!!!":                  UT2ItemData("trinket", 1001, ItemClassification.filler),
+    "EXP breeze badge!!!":                  UT2ItemData("filler", 1001, ItemClassification.filler),
     "PEZ candy":                            UT2ItemData("filler", 1002, ItemClassification.filler, 0, 6),
     "10 DOLLARS":                           UT2ItemData("filler", 1003, ItemClassification.filler, 0, 5),
     "Soap-P":                               UT2ItemData("filler", 1004, ItemClassification.filler),
@@ -153,4 +170,5 @@ event_item_table: Dict[str, UT2ItemData] = {
     "Prison Destroyed":                     UT2ItemData("event", classification=ItemClassification.progression),
     "Decision Chosen":                      UT2ItemData("event", classification=ItemClassification.progression),
     "Pope Plays Undertale 2":               UT2ItemData("event", classification=ItemClassification.progression),
+    "Lulliby Active":                       UT2ItemData("event", classification=ItemClassification.progression),
 }

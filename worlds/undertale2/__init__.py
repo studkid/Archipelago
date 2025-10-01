@@ -30,6 +30,15 @@ class UT2World(World):
     topology_present = True
     required_client_version = (0, 5, 0)
     web = UT2Web()
+    item_name_groups = {
+        "Party": {name for name, data in item_table.items() if data.category == "party"},
+        "Head Armor": {name for name, data in item_table.items() if data.category == "head"},
+        "Body Armor": {name for name, data in item_table.items() if data.category == "body"},
+        "Eyewear": {name for name, data in item_table.items() if data.category == "eyewear"},
+        "Trinket": {name for name, data in item_table.items() if data.category == "trinket"},
+        "Weapon": {name for name, data in item_table.items() if data.category == "weapon"},
+        "Code Thing": {name for name, data in item_table.items() if data.category == "pgcode"},
+    }
 
     item_name_to_id = {name: data.code for name, data in item_table.items() if data.code is not None}
     location_name_to_id = {name: data.code for name, data in location_table.items() if data.code is not None}
@@ -63,10 +72,10 @@ class UT2World(World):
             elif data.category == "progkey" and self.options.progressive_monkkey != ProgMonkKey.option_true:
                 continue
 
-            if data.category == "card" and self.options.cardsanity != 2:
+            if name == "Progressive Fishing Spot" and self.options.shuffle_fish_mission == ShuffleFishingMissions.option_false:
                 continue
 
-            if name == "Progressive Fishing Spot" and self.options.shuffle_fish_mission == ShuffleFishingMissions.option_false:
+            if data.category[:2] == "pg" and self.options.ending_goal == UT2Options.ending_goal.option_fake_ending:
                 continue
 
             item_pool += [self.create_item(name) for _ in range(0, quantity)]
@@ -122,3 +131,6 @@ class UT2World(World):
         
         self.multiworld.get_location("Fake Ending", self.player).place_locked_item(
             self.create_event("Pope Plays Undertale 2"))
+        
+        self.multiworld.get_location("Lulliby Setting", self.player).place_locked_item(
+            self.create_event("Lulliby Active"))

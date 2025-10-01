@@ -159,6 +159,25 @@ location_table: Dict[str, UT2LocationData] = {
     "Black Market - Ricky Coinflip Gift":                   UT2LocationData("pickup", "Exit", 71),
     "Black Market - Chest":                                 UT2LocationData("pickup", "Exit", 72),
 
+    "Toriel's House - Hallway Keycap":                      UT2LocationData("pgpickup", "Toriel House", 73),
+    "Toriel's House - Your Room Keycap":                    UT2LocationData("pgpickup", "Toriel House", 74),
+    "Toriel's House - Kitchen Keycap":                      UT2LocationData("pgpickup", "Toriel House", 75),
+    "Toriel's House - Basement Floor Item":                 UT2LocationData("pgpickup", "Toriel Basement", 76),
+    "Toriel's House - Basement Table Item":                 UT2LocationData("pgpickup", "Toriel Basement", 77),
+    
+    "Server - /maindir Code Thing":                         UT2LocationData("pgpickup", "Server", 78),
+    "Server - /maindir/stuff Code Thing":                   UT2LocationData("pgpickup", "Server", 79),
+    "Server - /asdgajahsk Code Thing":                      UT2LocationData("pgpickup", "Server", 80),
+    "Server - /safe/privateDONTfuckingtouch Code Thing":    UT2LocationData("pgpickup", "Server", 81),
+    "Server - /safe/visualboyadvance Code Thing":           UT2LocationData("pgpickup", "Server", 82),
+    "Server - /etc Code Thing":                             UT2LocationData("pgpickup", "Server", 83),
+    "Server - /docs Code Thing":                            UT2LocationData("pgpickup", "Server", 84),
+    "Server - /docs/Coolfolder Code Thing":                 UT2LocationData("pgpickup", "Server", 85),
+    "Server - /docs/Art Code Thing":                        UT2LocationData("pgpickup", "Server", 86),
+    "Server - /maindir/project11/givplcs.exe":              UT2LocationData("pgpickup", "Server", 87),
+    
+    "Ashburg - Nitori Gift":                                UT2LocationData("pgpickup", "Exit", 88),
+
     # Enemies
     "#1 Flowey Card":                                       UT2LocationData("boss", "Landing", 301),
     "#2 Froggit Card":                                      UT2LocationData("enemy", "Ruins Main", 302),
@@ -201,9 +220,12 @@ location_table: Dict[str, UT2LocationData] = {
     "#38 Safety Tapio Card":                                UT2LocationData("boss", "Toriel Roof", 338),
     "#39 Locke Card":                                       UT2LocationData("boss", "Toriel Roof", 339),
     "#40 Madame Tutariel MK1 Card":                         UT2LocationData("boss", "Toriel Roof", 340),
-
+    "#41 Kyouko Kasodani Card":                             UT2LocationData("boss", "Toriel Roof", 341),
+    "#42 Spark Card":                                       UT2LocationData("boss", "Toriel Roof", 342),
+    "#43 Gilded☆Bingus Card":                              UT2LocationData("boss", "Toriel Roof", 343),
     "#44 The Wise Dummy Card":                              UT2LocationData("boss", "Beach Post Boss", 344),
-
+    "#45 Pestilence Card":                                  UT2LocationData("pgenemy", "Server", 345),
+    "#46 backflip.exe Card":                                UT2LocationData("pgboss", "Server Settings", 346),
     "#47 Roqua La Boques Card":                             UT2LocationData("boss", "Beach Post Boss", 347),
     "#48 Rouxian Rouxlette Card":                           UT2LocationData("boss", "Beach Relax 1", 348),
     "#49 Plami Card":                                       UT2LocationData("boss", "Beach Relax 2", 349),
@@ -288,10 +310,7 @@ location_table: Dict[str, UT2LocationData] = {
 
     # Silly
     # "Rest Zone - PISS AND SHIT FM":                         UT2LocationData("silly", "Rest Zone", 1001),
-    # "Hotden - Naughty Child Wiggler":                       UT2LocationData("silly", "Hotden", 1002),
-
-    # Prison
-    
+    # "Hotden - Naughty Child Wiggler":                       UT2LocationData("silly", "Hotden", 1002), 
 }
 
 event_location_table: Dict[str, UT2LocationData] = {
@@ -299,5 +318,6 @@ event_location_table: Dict[str, UT2LocationData] = {
     "Hotden Reached":                                       UT2LocationData("event", "Hotden"),
     "Cirno Defeated":                                       UT2LocationData("event", "Prison Office"),
     "Tutariel Defeated":                                    UT2LocationData("event", "Toriel Roof"),
-    "Fake Ending":                                          UT2LocationData("event", "Toriel Roof"),
+    "Fake Ending":                                          UT2LocationData("event", "Exit Back"),
+    "Lulliby Setting":                                      UT2LocationData("event", "Server Settings"),
 }

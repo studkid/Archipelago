@@ -202,8 +202,26 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
     # Exit ------------------------------------------------------------------------------
     multiworld.get_entrance("Beach Post Boss -> Exit", player).access_rule =\
             lambda state: state.has("Decision Chosen", player)
-    multiworld.get_location("Fake Ending", player).access_rule =\
+    multiworld.get_entrance("Exit -> Exit Back", player).access_rule =\
             lambda state: state.has("Fake Passport", player)
+    
+    # Post Game ------------------------------------------------------------------------------
+    if options.ending_goal != EndingGoal.option_fake_ending:
+        multiworld.get_location("Toriel's House - Hallway Keycap", player).access_rule =\
+                lambda state: state.has("Pope Plays Undertale 2", player)
+        multiworld.get_location("Toriel's House - Your Room Keycap", player).access_rule =\
+                lambda state: state.has("Pope Plays Undertale 2", player)
+        multiworld.get_location("Toriel's House - Kitchen Keycap", player).access_rule =\
+                lambda state: state.has("Pope Plays Undertale 2", player)
+        multiworld.get_location("Ashburg - Nitori Gift", player).access_rule =\
+                lambda state: state.has("Lulliby Active", player)
+        
+        multiworld.get_entrance("Toriel House -> Toriel Basement", player).access_rule =\
+                lambda state: state.has("Numpad Keycap", player, 3)
+        multiworld.get_entrance("Toriel Roof -> Server", player).access_rule =\
+                lambda state: state.has("Mtech Brainlinq", player)
+        multiworld.get_entrance("Server -> Server Settings", player).access_rule =\
+                lambda state: has_all(state, player, ["38384201", "37482826", "38383838", "38421037", "11092696", "42042142", "83229978", "62828473", "80784838"])
     
     # Win Condition -----------------------------------------------------------------------
     if options.ending_goal == EndingGoal.option_fake_ending:
