@@ -1,6 +1,6 @@
 from typing import List
 from BaseClasses import CollectionState, MultiWorld, Location, Region, Item
-from .Options import UT2Options, CardSanity, RequireNazrin, AquariumSanity, ShuffleFishingMissions, RelaxRankNeedsPass
+from .Options import UT2Options, CardSanity, RequireNazrin, AquariumSanity, ShuffleFishingMissions, RelaxRankNeedsPass, EndingGoal
 from .Locations import location_table
 from .MiscData import fish_data, fish_quests
 
@@ -199,6 +199,13 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
     multiworld.get_entrance("Toriel House -> Mario Zone", player).access_rule =\
             lambda state: state.has("Red Coin", player, 8) and state.has("Decision Chosen", player)
     
+    # Exit ------------------------------------------------------------------------------
+    multiworld.get_entrance("Beach Post Boss -> Exit", player).access_rule =\
+            lambda state: state.has("Decision Chosen", player)
+    multiworld.get_location("Fake Ending", player).access_rule =\
+            lambda state: state.has("Fake Passport", player)
+    
     # Win Condition -----------------------------------------------------------------------
-    multiworld.completion_condition[player] = lambda state: state.can_reach("Cirno Defeated", "Location", player)
+    if options.ending_goal == EndingGoal.option_fake_ending:
+        multiworld.completion_condition[player] = lambda state: state.can_reach("Fake Ending", "Location", player)
     

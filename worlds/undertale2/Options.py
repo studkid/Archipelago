@@ -2,6 +2,15 @@ from Options import Choice, Range, Toggle, DeathLink, DefaultOnToggle, OptionSet
 
 from dataclasses import dataclass
 
+class EndingGoal(Choice):
+    """
+    Choose which ending you want for your goal
+    Fake Ending - Cross the border to Ashburg and watch the fake out credits.
+    """
+    display_name = "Ending Goal"
+    option_fake_ending = 0
+    default = 0
+
 class ProgMonkKey(Choice):
     """
     Makes the gold, silver, bronze and monk key progressive.
@@ -11,6 +20,7 @@ class ProgMonkKey(Choice):
     option_false = 0
     option_true = 1
     option_monk_key_only = 2
+    default = 2
 
 class RelaxRankNeedsPass(DefaultOnToggle):
     """
@@ -52,6 +62,7 @@ class AquariumSanity(Toggle):
 
 @dataclass
 class UT2Options(PerGameCommonOptions):
+    ending_goal: EndingGoal
     progressive_monkkey: ProgMonkKey
     shuffle_relax: RelaxRankNeedsPass
     shuffle_fish_mission: ShuffleFishingMissions

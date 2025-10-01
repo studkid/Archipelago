@@ -95,6 +95,8 @@ item_table: Dict[str, UT2ItemData] = {
     "Vocal Key":                            UT2ItemData("misc prog", 320, ItemClassification.progression),
     "Tutariel Key":                         UT2ItemData("misc prog", 321, ItemClassification.progression, 3),
     "Red Coin":                             UT2ItemData("misc prog", 322, ItemClassification.progression, 8),
+    "#X ??? ??? ??? ???":                   UT2ItemData("misc prog", 323, ItemClassification.progression),
+    "Fake Passport":                        UT2ItemData("misc prog", 325, ItemClassification.progression),
 
     # Junk
     "EXP breeze badge!!!":                  UT2ItemData("trinket", 1001, ItemClassification.filler),
@@ -140,6 +142,9 @@ item_table: Dict[str, UT2ItemData] = {
     # Settings
     "Relax Pass Off":                       UT2ItemData("filler", 90001, ItemClassification.filler, 0),
     "Fishing Mssion Off":                   UT2ItemData("filler", 90002, ItemClassification.filler, 0),
+    "Fake Ending Goal":                     UT2ItemData("filler", 90003, ItemClassification.filler, 0),
+    # "Fishing Mssion Off":                   UT2ItemData("filler", 90002, ItemClassification.filler, 0),
+    # "Fishing Mssion Off":                   UT2ItemData("filler", 90002, ItemClassification.filler, 0),
 }
 
 event_item_table: Dict[str, UT2ItemData] = {
@@ -147,4 +152,5 @@ event_item_table: Dict[str, UT2ItemData] = {
     "Hotden Reached":                       UT2ItemData("event", classification=ItemClassification.progression),
     "Prison Destroyed":                     UT2ItemData("event", classification=ItemClassification.progression),
     "Decision Chosen":                      UT2ItemData("event", classification=ItemClassification.progression),
+    "Pope Plays Undertale 2":               UT2ItemData("event", classification=ItemClassification.progression),
 }

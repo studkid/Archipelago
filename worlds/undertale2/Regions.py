@@ -52,11 +52,12 @@ def create_regions(multiworld: MultiWorld, player: int, options: UT2Options):
         "Chemical Waste Zone":      UT2RegionData([], []),
         "Big Bone Bay":             UT2RegionData([], []),
         "Stardrop Tree":            UT2RegionData([], []),
-        "Beach Post Boss":          UT2RegionData([], ["Toriel House"]),
+        "Beach Post Boss":          UT2RegionData([], ["Toriel House", "Exit"]),
         "Miku Zone":                UT2RegionData([], []),
         "Toriel House":             UT2RegionData([], ["Toriel Roof", "Mario Zone"]),
         "Toriel Roof":              UT2RegionData([], []),
         "Mario Zone":               UT2RegionData([], []),
+        "Exit":                     UT2RegionData([], []),
     }
 
     for name, data in location_table.items():

@@ -4,7 +4,7 @@ from BaseClasses import Tutorial, Region, ItemClassification
 from worlds.AutoWorld import WebWorld, World
 from .Items import UT2Item, UT2ItemData, event_item_table, get_items_by_category, item_table
 from .Locations import UT2Location, location_table
-from .Options import UT2Options, ProgMonkKey, RelaxRankNeedsPass, ShuffleFishingMissions
+from .Options import UT2Options, ProgMonkKey, RelaxRankNeedsPass, ShuffleFishingMissions, EndingGoal
 from .Regions import create_regions
 from .Rules import set_rules
 
@@ -44,6 +44,9 @@ class UT2World(World):
 
         if self.options.shuffle_fish_mission == ShuffleFishingMissions.option_false:
             self.multiworld.push_precollected(self.create_item("Fishing Mission Off"))
+
+        if self.options.ending_goal == EndingGoal.option_fake_ending:
+            self.multiworld.push_precollected(self.create_item("Fake Ending Goal"))
 
         for name, data in item_table.items():
             quantity = data.max_quantity
@@ -116,3 +119,6 @@ class UT2World(World):
         
         self.multiworld.get_location("Tutariel Defeated", self.player).place_locked_item(
             self.create_event("Decision Chosen"))
+        
+        self.multiworld.get_location("Fake Ending", self.player).place_locked_item(
+            self.create_event("Pope Plays Undertale 2"))

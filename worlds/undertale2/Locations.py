@@ -29,6 +29,7 @@ location_table: Dict[str, UT2LocationData] = {
     "Swamp - Save Monk Key":                                UT2LocationData("party", "Swamp", 4),
     "Prison - Nazrin":                                      UT2LocationData("party", "Prison Cells", 5),
     "Beach - Eclaire":                                      UT2LocationData("party", "Beach Entry", 6),
+    "Black Market - Grindy":                                UT2LocationData("party", "Exit", 7),
 
     # Enemy Drops
     "Ruins - Scopestablook Drop":                           UT2LocationData("drop", "Scopestablook", 101),
@@ -154,6 +155,9 @@ location_table: Dict[str, UT2LocationData] = {
     "Toriel's House - Living Room Red Coin 2":              UT2LocationData("pickup", "Toriel House", 68),
     "Toriel's House - Chef Muletambo Gift":                 UT2LocationData("pickup", "Toriel Roof", 69),
     "Toriel's House - Nice Cream Guy Gift":                 UT2LocationData("pickup", "Toriel Roof", 70),
+
+    "Black Market - Ricky Coinflip Gift":                   UT2LocationData("pickup", "Exit", 71),
+    "Black Market - Chest":                                 UT2LocationData("pickup", "Exit", 72),
 
     # Enemies
     "#1 Flowey Card":                                       UT2LocationData("boss", "Landing", 301),
@@ -295,4 +299,5 @@ event_location_table: Dict[str, UT2LocationData] = {
     "Hotden Reached":                                       UT2LocationData("event", "Hotden"),
     "Cirno Defeated":                                       UT2LocationData("event", "Prison Office"),
     "Tutariel Defeated":                                    UT2LocationData("event", "Toriel Roof"),
+    "Fake Ending":                                          UT2LocationData("event", "Toriel Roof"),
 }
