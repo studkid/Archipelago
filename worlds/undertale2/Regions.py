@@ -3,7 +3,7 @@ from typing import Dict, List, NamedTuple, Optional
 from BaseClasses import MultiWorld, Region
 from .Locations import UT2Location, location_table, event_location_table
 from Options import Choice
-from .Options import UT2Options
+from .Options import UT2Options, AquariumSanity, ShuffleFishingMissions, RelaxRankNeedsPass, EndingGoal
 
 class UT2RegionData(NamedTuple):
     locations: Optional[List[str]]
@@ -60,8 +60,8 @@ def create_regions(multiworld: MultiWorld, player: int, options: UT2Options):
         "Toriel Roof":              UT2RegionData([], ["Server"]),
         "Toriel Basement":          UT2RegionData([], []),
         "Mario Zone":               UT2RegionData([], []),
-        "Exit":                     UT2RegionData([], []),
-        "Exit Back":                UT2RegionData([], ["Exit Back"]),
+        "Exit":                     UT2RegionData([], ["Exit Back"]),
+        "Exit Back":                UT2RegionData([], []),
         
         "Server":                   UT2RegionData([], ["Server Settings"]),
         "Server Settings":          UT2RegionData([], []),
@@ -74,13 +74,13 @@ def create_regions(multiworld: MultiWorld, player: int, options: UT2Options):
             continue
         if data.category == "boss" or data.category == "pgboss" and options.cardsanity < 1:
             continue
-        if data.category == "relax" and options.shuffle_relax == UT2Options.shuffle_relax.option_false:
+        if data.category == "relax" and options.shuffle_relax == RelaxRankNeedsPass.option_false:
             continue
-        if data.category == "fishing" and options.shuffle_fish_mission == UT2Options.shuffle_fish_mission.option_false:
+        if data.category == "fishing" and options.shuffle_fish_mission == ShuffleFishingMissions.option_false:
             continue
-        if data.category == "aquarium" and options.aqariumsanity == UT2Options.aqariumsanity.option_false:
+        if data.category == "aquarium" and options.aqariumsanity == AquariumSanity.option_false:
             continue
-        if data.category[:2] == "pg" and options.ending_goal == UT2Options.ending_goal.option_fake_ending:
+        if data.category[:2] == "pg" and options.ending_goal == EndingGoal.option_fake_ending:
             continue
 
         regions[data.region].locations.append(name)

@@ -75,7 +75,7 @@ class UT2World(World):
             if name == "Progressive Fishing Spot" and self.options.shuffle_fish_mission == ShuffleFishingMissions.option_false:
                 continue
 
-            if data.category[:2] == "pg" and self.options.ending_goal == UT2Options.ending_goal.option_fake_ending:
+            if data.category[:2] == "pg" and self.options.ending_goal == EndingGoal.option_fake_ending:
                 continue
 
             item_pool += [self.create_item(name) for _ in range(0, quantity)]
@@ -134,3 +134,9 @@ class UT2World(World):
         
         self.multiworld.get_location("Lulliby Setting", self.player).place_locked_item(
             self.create_event("Lulliby Active"))
+        
+    def fill_slot_data(self):
+        options_dict = self.options.as_dict("ending_goal", casing="camel")
+        return {
+            **options_dict,
+        }

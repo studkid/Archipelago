@@ -82,7 +82,7 @@ item_table: Dict[str, UT2ItemData] = {
     "Progressive Key":                      UT2ItemData("progkey", 304, ItemClassification.progression, 5),
     "Anime catboy transformation potion":   UT2ItemData("misc prog", 305, ItemClassification.progression),
     "Library Card":                         UT2ItemData("misc prog", 306, ItemClassification.progression),
-    "Odd Key":                              UT2ItemData("misc prog", 307, ItemClassification.progression, 2),
+    "Odd Key":                              UT2ItemData("misc prog", 307, ItemClassification.progression, 3),
     "Puzzle Key":                           UT2ItemData("misc prog", 308, ItemClassification.progression),
     "Prison Key":                           UT2ItemData("misc prog", 309, ItemClassification.progression),
     "Feelings Key":                         UT2ItemData("useful", 310, ItemClassification.useful),
@@ -159,7 +159,7 @@ item_table: Dict[str, UT2ItemData] = {
 
     # Settings
     "Relax Pass Off":                       UT2ItemData("filler", 90001, ItemClassification.filler, 0),
-    "Fishing Mssion Off":                   UT2ItemData("filler", 90002, ItemClassification.filler, 0),
+    "Fishing Mission Off":                  UT2ItemData("filler", 90002, ItemClassification.filler, 0),
     "Fake Ending Goal":                     UT2ItemData("filler", 90003, ItemClassification.filler, 0),
     # "Fishing Mssion Off":                   UT2ItemData("filler", 90002, ItemClassification.filler, 0),
     # "Fishing Mssion Off":                   UT2ItemData("filler", 90002, ItemClassification.filler, 0),

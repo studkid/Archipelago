@@ -108,8 +108,9 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
             lambda state: has_all(state, player, ["Puzzle Key"])
     multiworld.get_location("Prison - Marylin Reward #2", player).access_rule =\
             lambda state: has_all(state, player, ["Puzzle Key"])
-    multiworld.get_location("#20 Marylin Card", player).access_rule =\
-            lambda state: has_all(state, player, ["Puzzle Key"])
+    if options.cardsanity != CardSanity.option_false:
+        multiworld.get_location("#20 Marylin Card", player).access_rule =\
+                lambda state: has_all(state, player, ["Puzzle Key"])
     
     multiworld.get_entrance("Prison Cells -> Prison Kitchen", player).access_rule =\
             lambda state: state.has("Prison Key", player)
@@ -155,7 +156,9 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
         multiworld.get_entrance("Greenhorn Shore -> Big Bone Bay", player).access_rule =\
                 lambda state: state.has("Bone Ticket", player) and state.has("Progressive Fishing Spot", player, 4)
         multiworld.get_entrance("Greenhorn Shore -> Stardrop Tree", player).access_rule =\
-                lambda state: state.has("Star Ticket", player) and state.has("Progressive Fishing Spot", player, 4)       
+                lambda state: state.has("Star Ticket", player) and state.has("Progressive Fishing Spot", player, 4)     
+        multiworld.get_location("Beach - Greenhorn Shore Chest", player).access_rule =\
+            lambda state: state.has("Progressive Fishing Spot", player, 2)  
         
     else:    
         multiworld.get_entrance("Greenhorn Shore -> Rust Gear Gulf", player).access_rule =\
@@ -167,8 +170,6 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
         multiworld.get_entrance("Greenhorn Shore -> Stardrop Tree", player).access_rule =\
                 lambda state: state.has("Star Ticket", player)
     
-    multiworld.get_location("Beach - Greenhorn Shore Chest", player).access_rule =\
-            lambda state: state.has("Progressive Fishing Spot", player, 2)
     multiworld.get_location("Beach - Melonbread Cove Chest", player).access_rule =\
             lambda state: can_get_fish(state, "Rubber Duckie", player)
     multiworld.get_location("Beach - Pudding Pond Can Trade", player).access_rule =\
