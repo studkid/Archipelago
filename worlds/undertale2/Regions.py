@@ -3,7 +3,7 @@ from typing import Dict, List, NamedTuple, Optional
 from BaseClasses import MultiWorld, Region
 from .Locations import UT2Location, location_table, event_location_table
 from Options import Choice
-from .Options import UT2Options, AquariumSanity, ShuffleFishingMissions, RelaxRankNeedsPass, EndingGoal
+from .Options import UT2Options, AquariumSanity, ShuffleFishingMissions, RelaxRankNeedsPass, EndingGoal, CardSanity
 
 class UT2RegionData(NamedTuple):
     locations: Optional[List[str]]
@@ -70,9 +70,9 @@ def create_regions(multiworld: MultiWorld, player: int, options: UT2Options):
     }
 
     for name, data in location_table.items():
-        if data.category == "enemy" or data.category == "pgenemy" and options.cardsanity < 2:
+        if (data.category == "enemy" or data.category == "pgenemy") and not options.cardsanity == CardSanity.option_all:
             continue
-        if data.category == "boss" or data.category == "pgboss" and options.cardsanity < 1:
+        if (data.category == "boss" or data.category == "pgboss") and options.cardsanity == CardSanity.option_false:
             continue
         if data.category == "relax" and options.shuffle_relax == RelaxRankNeedsPass.option_false:
             continue

@@ -5,7 +5,7 @@ from dataclasses import dataclass
 class EndingGoal(Choice):
     """
     Choose which ending you want for your goal
-    Fake Ending - Cross the border to Ashburg and watch the fake out credits.
+    Fake Ending - Cross the border to Ashburg and seeing the credits.
     """
     display_name = "Ending Goal"
     option_fake_ending = 0

@@ -15,14 +15,14 @@ class UT2Web(WebWorld):
         "Multiworld Setup Guide",
         "A guide to setting up the Undertale 2 Randomizer on your computer.",
         "English",
-        "",
-        "",
+        "en_Undertale2.md",
+        "setup/en",
         ["studkid"]
     )]
 
 class UT2World(World):
     """
-    
+    UNDERTALE II: Revenge of the Robots is the new awesome sequel to UNDERTALE everyone has been talking about for the past few decades. It's totally not a FANGAME OR ANYTHING. 
     """
     game = "Undertale 2"
     options_dataclass = UT2Options
