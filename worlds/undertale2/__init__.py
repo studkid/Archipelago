@@ -135,6 +135,9 @@ class UT2World(World):
         self.multiworld.get_location("Lulliby Setting", self.player).place_locked_item(
             self.create_event("Lulliby Active"))
         
+        self.multiworld.get_location("Marisa Battle", self.player).place_locked_item(
+            self.create_event("Marisa Defeated"))
+        
     def fill_slot_data(self):
         options_dict = self.options.as_dict("ending_goal", casing="camel")
         return {

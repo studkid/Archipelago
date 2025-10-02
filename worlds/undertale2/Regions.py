@@ -66,7 +66,9 @@ def create_regions(multiworld: MultiWorld, player: int, options: UT2Options):
         "Server":                   UT2RegionData([], ["Server Settings"]),
         "Server Settings":          UT2RegionData([], []),
 
-        "Warehouse":                UT2RegionData([], []),
+        "Warehouse":                UT2RegionData([], ["Marisa Hall"]),
+        "Marisa Hall":              UT2RegionData([], ["Heaven"]),
+        "Heaven":                   UT2RegionData([], []),
     }
 
     for name, data in location_table.items():
@@ -81,6 +83,8 @@ def create_regions(multiworld: MultiWorld, player: int, options: UT2Options):
         if data.category == "aquarium" and options.aqariumsanity == AquariumSanity.option_false:
             continue
         if data.category[:2] == "pg" and options.ending_goal == EndingGoal.option_fake_ending:
+            continue
+        if data.region == "Heaven" and options.ending_goal == EndingGoal.option_marisa_kirisame:
             continue
 
         regions[data.region].locations.append(name)

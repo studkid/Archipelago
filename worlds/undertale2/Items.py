@@ -57,6 +57,8 @@ item_table: Dict[str, UT2ItemData] = {
     "Aluminum Hat":                         UT2ItemData("head", 121, ItemClassification.useful),
     "Aluminum Badge":                       UT2ItemData("trinket", 122, ItemClassification.useful),
     "Ra Men Abs":                           UT2ItemData("body", 123, ItemClassification.useful),
+    "Lullaby Bells":                        UT2ItemData("trinket", 124, ItemClassification.progression),
+    "Lullaby Helmet":                       UT2ItemData("trinket", 125, ItemClassification.progression),
 
     # Weapons
     "Lucky Crowbar":                        UT2ItemData("weapon", 201, ItemClassification.progression),
@@ -65,7 +67,7 @@ item_table: Dict[str, UT2ItemData] = {
     "Madame's Chalice":                     UT2ItemData("weapon", 204, ItemClassification.useful),
     "Prison Shank":                         UT2ItemData("weapon", 205, ItemClassification.useful),
     "Empty Gun":                            UT2ItemData("weapon", 206, ItemClassification.progression),
-    "Gun":                                  UT2ItemData("weapon", 207, ItemClassification.useful),
+    "Gun":                                  UT2ItemData("weapon", 207, ItemClassification.progression),
     "Blood Berry":                          UT2ItemData("weapon", 208, ItemClassification.useful),
     "Fishing rod":                          UT2ItemData("weapon", 209, ItemClassification.useful),
     "Joqua's Trowel":                       UT2ItemData("weapon", 210, ItemClassification.progression),
@@ -74,6 +76,9 @@ item_table: Dict[str, UT2ItemData] = {
     "Cypress Stick":                        UT2ItemData("weapon", 213, ItemClassification.useful),
     "Kyouko's Horn":                        UT2ItemData("weapon", 214, ItemClassification.useful),
     "Splacer":                              UT2ItemData("weapon", 215, ItemClassification.useful),
+    "Rusty Shard":                          UT2ItemData("weapon", 216, ItemClassification.useful),
+    "Replica Gun":                          UT2ItemData("weapon", 217, ItemClassification.useful),
+    "Lullaby Sword":                        UT2ItemData("weapon", 218, ItemClassification.progression),
 
     # Key Items
     "Gold Key":                             UT2ItemData("key", 301, ItemClassification.progression),
@@ -101,20 +106,22 @@ item_table: Dict[str, UT2ItemData] = {
     "#X ??? ??? ??? ???":                   UT2ItemData("misc prog", 323, ItemClassification.progression),
     "Fake Passport":                        UT2ItemData("misc prog", 324, ItemClassification.progression),
 
-    "Numpad Keycap":                        UT2ItemData("pgmisc prog", 324, ItemClassification.progression, 3),
-    "Mtech Brainlinq":                      UT2ItemData("pgmisc prog", 325, ItemClassification.progression),
-    "Toriel's DNA":                         UT2ItemData("pgmisc prog", 326, ItemClassification.progression),
-    "#0 Placeholdio":                       UT2ItemData("pgmisc prog", 327, ItemClassification.progression),
-    "38384201":                             UT2ItemData("pgcode", 328, ItemClassification.progression),
-    "37482826":                             UT2ItemData("pgcode", 329, ItemClassification.progression),
-    "38383838":                             UT2ItemData("pgcode", 330, ItemClassification.progression),
-    "38421037":                             UT2ItemData("pgcode", 331, ItemClassification.progression),
-    "11092696":                             UT2ItemData("pgcode", 332, ItemClassification.progression),
-    "42042142":                             UT2ItemData("pgcode", 333, ItemClassification.progression),
-    "83229978":                             UT2ItemData("pgcode", 334, ItemClassification.progression),
-    "62828473":                             UT2ItemData("pgcode", 335, ItemClassification.progression),
-    "80784838":                             UT2ItemData("pgcode", 336, ItemClassification.progression),
-    "#-1 Death Metal":                      UT2ItemData("pgcode", 337, ItemClassification.progression),
+    "Numpad Keycap":                        UT2ItemData("pgmisc prog", 325, ItemClassification.progression, 3),
+    "Mtech Brainlinq":                      UT2ItemData("pgmisc prog", 326, ItemClassification.progression),
+    "Toriel's DNA":                         UT2ItemData("pgmisc prog", 327, ItemClassification.progression),
+    "#0 Placeholdio":                       UT2ItemData("pgmisc prog", 328, ItemClassification.progression),
+    "38384201":                             UT2ItemData("pgcode", 329, ItemClassification.progression),
+    "37482826":                             UT2ItemData("pgcode", 330, ItemClassification.progression),
+    "38383838":                             UT2ItemData("pgcode", 331, ItemClassification.progression),
+    "38421037":                             UT2ItemData("pgcode", 332, ItemClassification.progression),
+    "11092696":                             UT2ItemData("pgcode", 333, ItemClassification.progression),
+    "42042142":                             UT2ItemData("pgcode", 334, ItemClassification.progression),
+    "83229978":                             UT2ItemData("pgcode", 335, ItemClassification.progression),
+    "62828473":                             UT2ItemData("pgcode", 336, ItemClassification.progression),
+    "80784838":                             UT2ItemData("pgcode", 337, ItemClassification.progression),
+    "#-1 Death Metal":                      UT2ItemData("pgmisc prog", 338, ItemClassification.progression),
+
+    "Petsigrabber":                         UT2ItemData("pgcode", 339, ItemClassification.progression),
 
     # Junk
     "EXP breeze badge!!!":                  UT2ItemData("filler", 1001, ItemClassification.filler),
@@ -156,12 +163,16 @@ item_table: Dict[str, UT2ItemData] = {
     "Kiss on the Cheek":                    UT2ItemData("filler", 1037, ItemClassification.filler, 4, 1),
     "Apple Core":                           UT2ItemData("filler", 1038, ItemClassification.filler),
     "Kyouko's Blood":                       UT2ItemData("filler", 1039, ItemClassification.filler),
+    "Monster Zero Ultra White":             UT2ItemData("filler", 1040, ItemClassification.filler, 0, 1),
+    "Nico's Diary":                         UT2ItemData("filler", 1041, ItemClassification.filler),
+    "Nim's Diary":                          UT2ItemData("filler", 1042, ItemClassification.filler),
+    "Otta's Diary":                         UT2ItemData("filler", 1043, ItemClassification.filler),
 
     # Settings
     "Relax Pass Off":                       UT2ItemData("filler", 90001, ItemClassification.filler, 0),
     "Fishing Mission Off":                  UT2ItemData("filler", 90002, ItemClassification.filler, 0),
     "Fake Ending Goal":                     UT2ItemData("filler", 90003, ItemClassification.filler, 0),
-    # "Fishing Mssion Off":                   UT2ItemData("filler", 90002, ItemClassification.filler, 0),
+    "Marisa Kirisame Goal":                 UT2ItemData("filler", 90004, ItemClassification.filler, 0),
     # "Fishing Mssion Off":                   UT2ItemData("filler", 90002, ItemClassification.filler, 0),
 }
 
@@ -172,4 +183,5 @@ event_item_table: Dict[str, UT2ItemData] = {
     "Decision Chosen":                      UT2ItemData("event", classification=ItemClassification.progression),
     "Pope Plays Undertale 2":               UT2ItemData("event", classification=ItemClassification.progression),
     "Lulliby Active":                       UT2ItemData("event", classification=ItemClassification.progression),
+    "Marisa Defeated":                      UT2ItemData("event", classification=ItemClassification.progression),
 }

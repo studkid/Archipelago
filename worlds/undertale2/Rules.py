@@ -53,7 +53,7 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
                         lambda state: state.has("Joqua's Trowel", player)
             if name == "#59 Gilded☆Bingus Card":
                 continue
-            if data.category != "enemy":
+            if data.category != "enemy" or data.category != "pgenemy":
                 continue
             if name == "#11 Lancer Card":
                 multiworld.get_location(name, player).access_rule = \
@@ -228,9 +228,13 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
         
         # Warehouse
         multiworld.get_entrance("Landing -> Warehouse", player).access_rule =\
-                lambda state: state.has("Empty Gun", player) and state.has("Lulliby Active")
+                lambda state: has_all(state, player, ["Empty Gun", "Gun", "Lulliby Active"])
+        multiworld.get_entrance("Warehouse -> Marsia Hall", player).access_rule =\
+                lambda state: has_all(state, player, ["Lullaby Bells", "Lullaby Sword", "Lullaby Helmet"])
     
     # Win Condition -----------------------------------------------------------------------
     if options.ending_goal == EndingGoal.option_fake_ending:
         multiworld.completion_condition[player] = lambda state: state.can_reach("Fake Ending", "Location", player)
+    elif options.ending_goal == EndingGoal.option_marisa_kirisame:
+        multiworld.completion_condition[player] = lambda state: state.can_reach("Marisa Battle", "Location", player)
     

@@ -57,6 +57,12 @@ location_table: Dict[str, UT2LocationData] = {
     "Toriel's House - Madame Tutoriel MK1 Drop":            UT2LocationData("drop", "Toriel House", 123),
     "Mario Zone - Mario Drop":                              UT2LocationData("drop", "Mario Zone", 124),
     "Swamp - Spark Drop":                                   UT2LocationData("drop", "Spark Chamber", 125),
+    "Warehouse - DIEHARD III Drop #1":                      UT2LocationData("drop", "Warehouse", 126),
+    "Warehouse - DIEHARD III Drop #2":                      UT2LocationData("drop", "Warehouse", 127),
+    "Warehouse - DIEHARD IV Drop #1":                       UT2LocationData("drop", "Warehouse", 128),
+    "Warehouse - DIEHARD IV Drop #2":                       UT2LocationData("drop", "Warehouse", 129),
+    "Warehouse - DIEHARD V Drop #1":                        UT2LocationData("drop", "Warehouse", 130),
+    "Warehouse - DIEHARD V Drop #2":                        UT2LocationData("drop", "Warehouse", 131),
 
     # Shops
     "Nicky Coinflip Ruins - Paper hat Purchase":            UT2LocationData("shop", "Ruins Main", 201),
@@ -88,6 +94,9 @@ location_table: Dict[str, UT2LocationData] = {
     "Fishing Shop - Fisherman's haste Purchase":            UT2LocationData("shop", "Greenhorn Shore", 224),
     "Fishing Shop - Aquarium key Purchase":                 UT2LocationData("shop", "Greenhorn Shore", 225),
     "Miku Zone - MikuBoard Purchase":                       UT2LocationData("shop", "Miku Zone", 226),
+    
+    "Warehouse - Rusty Shard Purchase":                     UT2LocationData("shop", "Warehouse", 227),
+    "Warehouse - Replica Gun Purchase":                     UT2LocationData("shop", "Warehouse", 228),
 
     # Item Pickups
     "Landing - In the Void":                                UT2LocationData("pickup", "Landing", 10),
@@ -179,6 +188,8 @@ location_table: Dict[str, UT2LocationData] = {
     
     "Ashburg - Nitori Gift":                                UT2LocationData("pgpickup", "Exit", 88),
 
+    "Heaven - Pet Shop Gift":                               UT2LocationData("pgpickup", "Heaven", 89),
+
     # Enemies
     "#1 Flowey Card":                                       UT2LocationData("boss", "Landing", 301),
     "#2 Froggit Card":                                      UT2LocationData("enemy", "Ruins Main", 302),
@@ -189,7 +200,7 @@ location_table: Dict[str, UT2LocationData] = {
     "#7 Table Mimic Card":                                  UT2LocationData("boss", "Ruins Lake", 307),
     "#8 Dust Bunny Card":                                   UT2LocationData("enemy", "Archives Pit", 308),
     "#9 Minesweeper Card":                                  UT2LocationData("enemy", "Archives Pit", 309),
-    "#10 Greater Guaglione Card":                           UT2LocationData("enemy", "Archives Pit", 310),   
+    "#10 Greater Guaglione Card":                           UT2LocationData("boss", "Archives Pit", 310),   
     "#11 Lancer Card":                                      UT2LocationData("enemy", "Special Enemies", 311),
     "#12 Whimsoot Card":                                    UT2LocationData("enemy", "Archives Back", 312),
     "#13 Smolderpot Card":                                  UT2LocationData("enemy", "Archives Back", 313),
@@ -220,7 +231,7 @@ location_table: Dict[str, UT2LocationData] = {
     "#37 Tutariel Card":                                    UT2LocationData("boss", "Toriel Roof", 337),
     "#38 Safety Tapio Card":                                UT2LocationData("boss", "Toriel Roof", 338),
     "#39 Locke Card":                                       UT2LocationData("boss", "Toriel Roof", 339),
-    "#40 Madame Tutariel MK1 Card":                         UT2LocationData("boss", "Toriel Roof", 340),
+    "#40 Madame Tutariel MK2 Card":                         UT2LocationData("boss", "Toriel Roof", 340),
     "#41 Kyouko Kasodani Card":                             UT2LocationData("boss", "Toriel Roof", 341),
     "#42 Spark Card":                                       UT2LocationData("boss", "Spark Chamber", 342),
     "#43 Gilded☆Bingus Card":                              UT2LocationData("enemy", "Ruins Lake", 343),
@@ -235,10 +246,18 @@ location_table: Dict[str, UT2LocationData] = {
     "#52 Metal_Gnome Card":                                 UT2LocationData("boss", "Beach Relax 5", 352),
     "#53 DIE HARD II Card":                                 UT2LocationData("boss", "Beach Relax 6", 353),
     "#54 Travis Touchdown Card":                            UT2LocationData("boss", "Beach Relax 7", 354),
+    # "#55 Jamanda Friglounge Card":                          UT2LocationData("pgboss", "Beach Relax 7", 355),
+    "#56 08K Card":                                         UT2LocationData("pgenemy", "Warehouse", 356),
+    "#57 DIE HARD III Card":                                UT2LocationData("pgboss", "Warehouse", 357),
+    "#58 It's You Card":                                    UT2LocationData("pgboss", "Warehouse", 358),
+    "#59 DIEHARD IV Card":                                  UT2LocationData("pgboss", "Warehouse", 359),
+    "#60 DIEHARD V Card":                                   UT2LocationData("pgboss", "Warehouse", 360),
+    # "#61 Marisa Kirisame Card":                             UT2LocationData("pgboss", "Beach Relax 7", 361),
+    # "#62 Seriph Card":                                      UT2LocationData("pgboss", "Beach Relax 7", 361),
 
     # Special
-    "Church - Play Cooking Minigame 1 Time":                UT2LocationData("minigame", "Hotden", 401),
-    "Church - Play Cooking Minigame 5 Times":               UT2LocationData("minigame", "Hotden", 402), 
+    "Church - Play Cooking Minigame":                       UT2LocationData("minigame", "Hotden", 401),
+    "Church - Perfect Cooking Minigame":                    UT2LocationData("minigame", "Hotden", 402), 
 
     "Beach - Relax Rank Up 1":                              UT2LocationData("relax", "Beach Relax 1", 403),
     "Beach - Relax Rank Up 2":                              UT2LocationData("relax", "Beach Relax 2", 404),
@@ -319,4 +338,5 @@ event_location_table: Dict[str, UT2LocationData] = {
     "Tutariel Defeated":                                    UT2LocationData("event", "Toriel Roof"),
     "Fake Ending":                                          UT2LocationData("event", "Exit Back"),
     "Lulliby Setting":                                      UT2LocationData("event", "Server Settings"),
+    "Marisa Battle":                                        UT2LocationData("event", "Marisa Hall")
 }

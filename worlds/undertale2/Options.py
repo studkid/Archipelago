@@ -6,9 +6,11 @@ class EndingGoal(Choice):
     """
     Choose which ending you want for your goal
     Fake Ending - Cross the border to Ashburg and seeing the credits.
+    Marisa Kirisame - Defeat Marisa Kirisame.
     """
     display_name = "Ending Goal"
     option_fake_ending = 0
+    option_marisa_kirisame = 1
     default = 0
 
 class ProgMonkKey(Choice):

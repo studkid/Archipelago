@@ -9,7 +9,7 @@ Shop locations will have a seperate "AP Shop" menu to send those checks out.  Sh
 Goal can be determined by your yaml settings.  Current goal options are:
 - `Fake Ending` - Triggered upon going through the border and seeing the credits
 
-If `Fake Ending` is chosen, any locations post goal will be automatically removed from the location pool.
+Locations only accessible post goal will be automatically excluded.
 
 ## What other changes are made to the base game?
 Added a few new NPCs to allow for backtracking, namely:
@@ -20,6 +20,10 @@ Due to the new backtrack path to the prison, homer guards and prison ticks now h
 Aquarium donations no longer have to be done in order, it will instead automatically take any fish that still need to be donated out of your inventory.
 
 If `shuffle_relax` is enabled, you will need an additional `Relax Pass` to fight the next relax boss.
+
+Character swap orbs start unlocked from the beginning, instead of unlocking just before Cirno.
+
+Gilded☆Bingus in the Ruins Lake has it's encounter chance dropped from 1/100 -> 1/20.
 
 ## Is there a tracker?
 [Universal Tracker](https://github.com/FarisTheAncient/Archipelago/releases/latest) is supported and has an embedded map tracker available.
