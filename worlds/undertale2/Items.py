@@ -196,5 +196,5 @@ event_item_table: Dict[str, UT2ItemData] = {
     "Spark Defeated":                       UT2ItemData("event", classification=ItemClassification.progression),
     "Jamanda Defeated":                     UT2ItemData("event", classification=ItemClassification.progression),
     "Froguelass Defeated":                  UT2ItemData("event", classification=ItemClassification.progression),
-    "Ra Men Defeated":                  UT2ItemData("event", classification=ItemClassification.progression),
+    "Ra Men Defeated":                      UT2ItemData("event", classification=ItemClassification.progression),
 }
