@@ -89,6 +89,8 @@ def create_regions(multiworld: MultiWorld, player: int, options: UT2Options):
             continue
         if data.region == "Heaven" and options.ending_goal == EndingGoal.option_marisa_kirisame:
             continue
+        if data.region == "Post Game" and options.ending_goal != EndingGoal.option_all_completion_bonus:
+            continue
 
         regions[data.region].locations.append(name)
 
