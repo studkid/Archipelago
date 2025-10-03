@@ -121,12 +121,13 @@ item_table: Dict[str, UT2ItemData] = {
     "62828473":                             UT2ItemData("pgcode", 336, ItemClassification.progression),
     "80784838":                             UT2ItemData("pgcode", 337, ItemClassification.progression),
     "#-1 Death Metal":                      UT2ItemData("pgmisc prog", 338, ItemClassification.progression),
-    "Wishgem":                              UT2ItemData("pgmisc prog", 340, ItemClassification.progression),
+    "Wishgem":                              UT2ItemData("pgcompletion", 340, ItemClassification.progression_deprioritized_skip_balancing),
     "Petsigrabber":                         UT2ItemData("pgmisc prog", 341, ItemClassification.progression),
-    "Flynn":                                UT2ItemData("pgmisc prog", 342, ItemClassification.progression),
-    "Otta":                                 UT2ItemData("pgmisc prog", 343, ItemClassification.progression),
-    "Nico":                                 UT2ItemData("pgmisc prog", 344, ItemClassification.progression),
-    "Nim":                                  UT2ItemData("pgmisc prog", 345, ItemClassification.progression),
+    "Flynn":                                UT2ItemData("pgcompletion", 342, ItemClassification.progression_deprioritized_skip_balancing),
+    "Otta":                                 UT2ItemData("pgcompletion", 343, ItemClassification.progression_deprioritized_skip_balancing),
+    "Nico":                                 UT2ItemData("pgcompletion", 344, ItemClassification.progression_deprioritized_skip_balancing),
+    "Nim":                                  UT2ItemData("pgcompletion", 345, ItemClassification.progression_deprioritized_skip_balancing),
+    "Bergo's Shopping List":                UT2ItemData("pgcompletion", 346, ItemClassification.progression_deprioritized_skip_balancing),
 
     # Junk
     "EXP breeze badge!!!":                  UT2ItemData("filler", 1001, ItemClassification.filler),
@@ -172,6 +173,7 @@ item_table: Dict[str, UT2ItemData] = {
     "Nico's Diary":                         UT2ItemData("filler", 1041, ItemClassification.filler),
     "Nim's Diary":                          UT2ItemData("filler", 1042, ItemClassification.filler),
     "Otta's Diary":                         UT2ItemData("filler", 1043, ItemClassification.filler),
+    "CHIBIPANETON":                         UT2ItemData("filler", 1044, ItemClassification.filler),
 
     # Settings
     "Relax Pass Off":                       UT2ItemData("filler", 90001, ItemClassification.filler, 0),
@@ -194,4 +196,5 @@ event_item_table: Dict[str, UT2ItemData] = {
     "Spark Defeated":                       UT2ItemData("event", classification=ItemClassification.progression),
     "Jamanda Defeated":                     UT2ItemData("event", classification=ItemClassification.progression),
     "Froguelass Defeated":                  UT2ItemData("event", classification=ItemClassification.progression),
+    "Ra Men Defeated":                  UT2ItemData("event", classification=ItemClassification.progression),
 }

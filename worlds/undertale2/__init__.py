@@ -38,6 +38,7 @@ class UT2World(World):
         "Trinket": {name for name, data in item_table.items() if data.category == "trinket"},
         "Weapon": {name for name, data in item_table.items() if data.category == "weapon"},
         "Code Thing": {name for name, data in item_table.items() if data.category == "pgcode"},
+        "Completion Items": {name for name, data in item_table.items() if data.category == "pgcompletion"},
     }
 
     item_name_to_id = {name: data.code for name, data in item_table.items() if data.code is not None}
@@ -152,6 +153,9 @@ class UT2World(World):
         
         self.multiworld.get_location("Froguelass Battle", self.player).place_locked_item(
             self.create_event("Froguelass Defeated"))
+        
+        self.multiworld.get_location("Ra Men Battle", self.player).place_locked_item(
+            self.create_event("Ra Men Defeated"))
         
     def fill_slot_data(self):
         options_dict = self.options.as_dict("ending_goal", casing="camel")

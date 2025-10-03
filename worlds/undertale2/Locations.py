@@ -95,8 +95,9 @@ location_table: Dict[str, UT2LocationData] = {
     "Fishing Shop - Aquarium key Purchase":                 UT2LocationData("shop", "Greenhorn Shore", 225),
     "Miku Zone - MikuBoard Purchase":                       UT2LocationData("shop", "Miku Zone", 226),
     
-    "Warehouse - Rusty Shard Purchase":                     UT2LocationData("shop", "Warehouse", 227),
-    "Warehouse - Replica Gun Purchase":                     UT2LocationData("shop", "Warehouse", 228),
+    "Warehouse - Rusty Shard Purchase":                     UT2LocationData("pgshop", "Warehouse", 227),
+    "Warehouse - Replica Gun Purchase":                     UT2LocationData("pgshop", "Warehouse", 228),
+    "Hotden - Mystery Shop":                                UT2LocationData("pgshop", "Hotden", 229),
 
     # Item Pickups
     "Landing - In the Void":                                UT2LocationData("pickup", "Landing", 10),
@@ -357,4 +358,5 @@ event_location_table: Dict[str, UT2LocationData] = {
     "Spark Battle":                                         UT2LocationData("event", "Spark Chamber"),
     "Jamanda Battle":                                       UT2LocationData("event", "Beach Relax 8"),
     "Froguelass Battle":                                    UT2LocationData("event", "Frogue Chamber"),
+    "Ra Men Battle":                                        UT2LocationData("event", "Beach Post Boss"),
 }

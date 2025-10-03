@@ -293,9 +293,9 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
         multiworld.completion_condition[player] = lambda state: state.can_reach("Seriph Battle", "Location", player)
     elif options.ending_goal == EndingGoal.option_all_completion_bonus:
         multiworld.completion_condition[player] =\
-            lambda state: state.can_reach("Seriph Battle", "Location", player) and \
-                          state.can_reach("Beach - Fishing Mission 11") and \
+            lambda state: state.can_reach("Beach - Fishing Mission 11", "Location", player) and \
                           can_reach_fish(state, player, options) == 38 and \
-                          state.has_all(["Eclaire", "Grindy", "Spark Defeated", "Jamanda Defeated", "Wishgem", "Petsigrabber"], player)
+                          state.has_all(["Eclaire", "Grindy", "Spark Defeated", "Jamanda Defeated", "Wishgem", "Petsigrabber",
+                                         "Flynn", "Otta", "Nico", "Nim", "Bergo's Shopping List", "Ra Men Defeated", "Seraph Defeated"], player)
                           
     
