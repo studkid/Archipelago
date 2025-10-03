@@ -47,6 +47,9 @@ def can_get_fish(state: CollectionState, name: str, player: int) -> bool:
     return False
 
 def can_reach_cards(state: CollectionState, player: int, options: UT2Options) -> bool:
+    if options.ending_goal != EndingGoal.option_all_completion_bonus:
+        return False
+
     if options.cardsanity == CardSanity.option_all:
         for _, name in enumerate(enemy_locations):
             if not state.can_reach(name, "Location", player):
@@ -86,6 +89,8 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
     # Card Sanity -----------------------------------------------------------------------
     if options.cardsanity == CardSanity.option_all and options.require_nazrin == RequireNazrin.option_true:
         for _, name in enumerate(enemy_locations):
+            if name == "#62 Seriph Card" and options.ending_goal != EndingGoal.option_all_completion_bonus:
+                continue
             if name == "#59 Gilded☆Bingus Card":
                 continue
             if name == "#11 Lancer Card":
@@ -269,7 +274,7 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
         # Warehouse
         multiworld.get_entrance("Landing -> Warehouse", player).access_rule =\
             lambda state: has_all(state, player, ["Empty Gun", "Gun", "Lulliby Active"])
-        multiworld.get_entrance("Warehouse -> Marsia Hall", player).access_rule =\
+        multiworld.get_entrance("Warehouse -> Marisa Hall", player).access_rule =\
             lambda state: has_all(state, player, ["Lullaby Bells", "Lullaby Sword", "Lullaby Helmet"])
         multiworld.get_location("Warehouse - Patchmare Trade", player).access_rule =\
             lambda state: state.has("Mimic's adieu", player, 2)

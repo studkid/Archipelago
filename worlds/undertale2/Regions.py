@@ -61,8 +61,8 @@ def create_regions(multiworld: MultiWorld, player: int, options: UT2Options):
         "Toriel Roof":              UT2RegionData([], ["Server"]),
         "Toriel Basement":          UT2RegionData([], []),
         "Mario Zone":               UT2RegionData([], []),
-        "Exit":                     UT2RegionData([], ["Exit Back"]),
-        "Exit Back":                UT2RegionData([], ["Flowey Room"]),
+        "Exit":                     UT2RegionData([], ["Exit Back", "Flowey Room"]),
+        "Exit Back":                UT2RegionData([], []),
         "Flowey Room":              UT2RegionData([], []),
         
         "Server":                   UT2RegionData([], ["Server Settings"]),
@@ -89,7 +89,7 @@ def create_regions(multiworld: MultiWorld, player: int, options: UT2Options):
             continue
         if data.region == "Heaven" and options.ending_goal == EndingGoal.option_marisa_kirisame:
             continue
-        if data.region == "Post Game" and options.ending_goal != EndingGoal.option_all_completion_bonus:
+        if (data.region == "Post Game" or data.category[:2] == "pm") and options.ending_goal != EndingGoal.option_all_completion_bonus:
             continue
 
         regions[data.region].locations.append(name)
