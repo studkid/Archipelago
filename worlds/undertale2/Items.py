@@ -42,10 +42,10 @@ item_table: Dict[str, UT2ItemData] = {
     "Chef's Kiss":                          UT2ItemData("trinket", 106, ItemClassification.useful),
     "Chef's Hat":                           UT2ItemData("head", 107, ItemClassification.useful),
     "Cool Shades":                          UT2ItemData("eyewear", 108, ItemClassification.useful),
-    "Ice crystals":                         UT2ItemData("body", 109, ItemClassification.useful),
+    "Ice crystals":                         UT2ItemData("body", 109, ItemClassification.progression),
     "Prisonmaster pauldrons":               UT2ItemData("trinket", 110, ItemClassification.useful),
     "Rouxian Lapel":                        UT2ItemData("trinket", 111, ItemClassification.useful),
-    "Mimic's adieu":                        UT2ItemData("trinket", 112, ItemClassification.useful),
+    "Mimic's adieu":                        UT2ItemData("trinket", 112, ItemClassification.progression, 2),
     "Sunflower":                            UT2ItemData("eyewear", 113, ItemClassification.useful),
     "Fisherman's hat":                      UT2ItemData("head", 114, ItemClassification.useful),
     "\"WOMEN WANT ME FISH FEAR ME\" hat":   UT2ItemData("head", 115, ItemClassification.useful),
@@ -59,6 +59,7 @@ item_table: Dict[str, UT2ItemData] = {
     "Ra Men Abs":                           UT2ItemData("body", 123, ItemClassification.useful),
     "Lullaby Bells":                        UT2ItemData("trinket", 124, ItemClassification.progression),
     "Lullaby Helmet":                       UT2ItemData("trinket", 125, ItemClassification.progression),
+    "Mimic's Solong":                       UT2ItemData("trinket", 126, ItemClassification.progression),
 
     # Weapons
     "Lucky Crowbar":                        UT2ItemData("weapon", 201, ItemClassification.progression),
@@ -91,7 +92,7 @@ item_table: Dict[str, UT2ItemData] = {
     "Puzzle Key":                           UT2ItemData("misc prog", 308, ItemClassification.progression),
     "Prison Key":                           UT2ItemData("misc prog", 309, ItemClassification.progression),
     "Feelings Key":                         UT2ItemData("useful", 310, ItemClassification.useful),
-    "Relax Pass":                           UT2ItemData("misc prog", 311, ItemClassification.progression, 7),
+    "Relax Pass":                           UT2ItemData("misc prog", 311, ItemClassification.progression, 8),
     "Membership Card":                      UT2ItemData("misc prog", 312, ItemClassification.progression),
     "Fisherman's haste":                    UT2ItemData("misc prog", 313, ItemClassification.useful),
     "Aquarium key":                         UT2ItemData("misc prog", 314, ItemClassification.progression),
@@ -120,8 +121,12 @@ item_table: Dict[str, UT2ItemData] = {
     "62828473":                             UT2ItemData("pgcode", 336, ItemClassification.progression),
     "80784838":                             UT2ItemData("pgcode", 337, ItemClassification.progression),
     "#-1 Death Metal":                      UT2ItemData("pgmisc prog", 338, ItemClassification.progression),
-
-    "Petsigrabber":                         UT2ItemData("pgcode", 339, ItemClassification.progression),
+    "Wishgem":                              UT2ItemData("pgmisc prog", 340, ItemClassification.progression),
+    "Petsigrabber":                         UT2ItemData("pgmisc prog", 341, ItemClassification.progression),
+    "Flynn":                                UT2ItemData("pgmisc prog", 342, ItemClassification.progression),
+    "Otta":                                 UT2ItemData("pgmisc prog", 343, ItemClassification.progression),
+    "Nico":                                 UT2ItemData("pgmisc prog", 344, ItemClassification.progression),
+    "Nim":                                  UT2ItemData("pgmisc prog", 345, ItemClassification.progression),
 
     # Junk
     "EXP breeze badge!!!":                  UT2ItemData("filler", 1001, ItemClassification.filler),
@@ -173,7 +178,8 @@ item_table: Dict[str, UT2ItemData] = {
     "Fishing Mission Off":                  UT2ItemData("filler", 90002, ItemClassification.filler, 0),
     "Fake Ending Goal":                     UT2ItemData("filler", 90003, ItemClassification.filler, 0),
     "Marisa Kirisame Goal":                 UT2ItemData("filler", 90004, ItemClassification.filler, 0),
-    # "Fishing Mssion Off":                   UT2ItemData("filler", 90002, ItemClassification.filler, 0),
+    "True Ending Goal":                     UT2ItemData("filler", 90005, ItemClassification.filler, 0),
+    "All Completion Bonus Goal":            UT2ItemData("filler", 90006, ItemClassification.filler, 0),
 }
 
 event_item_table: Dict[str, UT2ItemData] = {
@@ -184,4 +190,8 @@ event_item_table: Dict[str, UT2ItemData] = {
     "Pope Plays Undertale 2":               UT2ItemData("event", classification=ItemClassification.progression),
     "Lulliby Active":                       UT2ItemData("event", classification=ItemClassification.progression),
     "Marisa Defeated":                      UT2ItemData("event", classification=ItemClassification.progression),
+    "Seraph Defeated":                      UT2ItemData("event", classification=ItemClassification.progression),
+    "Spark Defeated":                       UT2ItemData("event", classification=ItemClassification.progression),
+    "Jamanda Defeated":                     UT2ItemData("event", classification=ItemClassification.progression),
+    "Froguelass Defeated":                  UT2ItemData("event", classification=ItemClassification.progression),
 }

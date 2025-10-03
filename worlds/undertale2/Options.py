@@ -7,10 +7,14 @@ class EndingGoal(Choice):
     Choose which ending you want for your goal
     Fake Ending - Cross the border to Ashburg and seeing the credits.
     Marisa Kirisame - Defeat Marisa Kirisame.
+    True Ending - Defeat Seriph and leave Itoi Island
+    All Completion Bonus - Finish the True Ending with 13/13 Ending bonuses
     """
     display_name = "Ending Goal"
     option_fake_ending = 0
     option_marisa_kirisame = 1
+    option_true_ending = 2
+    option_all_completion_bonus = 3
     default = 0
 
 class ProgMonkKey(Choice):

@@ -120,6 +120,7 @@ location_table: Dict[str, UT2LocationData] = {
     "Archives Chimeny - Magic Glass Chest":                 UT2LocationData("pickup", "Archives Back", 27),
     "Church - Chef Chest":                                  UT2LocationData("pickup", "Hotden", 28),
     "Archives Frogue Chamber - Odd Key":                    UT2LocationData("pickup", "Frogue Chamber", 29),
+    "Hotden - Paneton Gift":                                UT2LocationData("pickup", "Hotden", 96),
 
     "Swamp - Upper Chest":                                  UT2LocationData("pickup", "Swamp", 30),
     "Swamp - Lower Chest":                                  UT2LocationData("pickup", "Swamp", 31),
@@ -188,7 +189,13 @@ location_table: Dict[str, UT2LocationData] = {
     
     "Ashburg - Nitori Gift":                                UT2LocationData("pgpickup", "Exit", 88),
 
-    "Heaven - Pet Shop Gift":                               UT2LocationData("pgpickup", "Heaven", 89),
+    "Warehouse - Patchmare Trade":                          UT2LocationData("pgpickup", "Warehouse", 89),
+    "Warehouse - Froguelass Gift":                          UT2LocationData("pgpickup", "Warehouse", 90),
+    "Heaven - Pet Shop Gift":                               UT2LocationData("pgpickup", "Heaven", 91),
+    "Toriel's House - Flynn":                               UT2LocationData("pgpickup", "Post Game", 92),
+    "Toriel's House - Nico":                                UT2LocationData("pgpickup", "Post Game", 93),
+    "Toriel's House - Otta":                                UT2LocationData("pgpickup", "Post Game", 94),
+    "Warehouse - Nim":                                      UT2LocationData("pgpickup", "Post Game", 95),
 
     # Enemies
     "#1 Flowey Card":                                       UT2LocationData("boss", "Landing", 301),
@@ -246,14 +253,14 @@ location_table: Dict[str, UT2LocationData] = {
     "#52 Metal_Gnome Card":                                 UT2LocationData("boss", "Beach Relax 5", 352),
     "#53 DIE HARD II Card":                                 UT2LocationData("boss", "Beach Relax 6", 353),
     "#54 Travis Touchdown Card":                            UT2LocationData("boss", "Beach Relax 7", 354),
-    # "#55 Jamanda Friglounge Card":                          UT2LocationData("pgboss", "Beach Relax 7", 355),
+    "#55 Jamanda Friglounge Card":                          UT2LocationData("pgboss", "Beach Relax 7", 355),
     "#56 08K Card":                                         UT2LocationData("pgenemy", "Warehouse", 356),
     "#57 DIE HARD III Card":                                UT2LocationData("pgboss", "Warehouse", 357),
     "#58 It's You Card":                                    UT2LocationData("pgboss", "Warehouse", 358),
     "#59 DIEHARD IV Card":                                  UT2LocationData("pgboss", "Warehouse", 359),
     "#60 DIEHARD V Card":                                   UT2LocationData("pgboss", "Warehouse", 360),
-    # "#61 Marisa Kirisame Card":                             UT2LocationData("pgboss", "Beach Relax 7", 361),
-    # "#62 Seriph Card":                                      UT2LocationData("pgboss", "Beach Relax 7", 361),
+    "#61 Marisa Kirisame Card":                             UT2LocationData("pgboss", "Marisa Hall", 361),
+    "#62 Seriph Card":                                      UT2LocationData("pgboss", "Heaven", 362),
 
     # Special
     "Church - Play Cooking Minigame":                       UT2LocationData("minigame", "Hotden", 401),
@@ -310,6 +317,13 @@ location_table: Dict[str, UT2LocationData] = {
     "Aquarium - Leviathan":                                 UT2LocationData("aquarium", "Aquarium", 528),
     "Aquarium - Pisces":                                    UT2LocationData("aquarium", "Aquarium", 529),
     "Aquarium - Tsuchinoko":                                UT2LocationData("aquarium", "Aquarium", 530),
+    "Aquarium - Morsel":                                    UT2LocationData("pgaquarium", "Aquarium", 531),
+    "Aquarium - Expio":                                     UT2LocationData("pgaquarium", "Aquarium", 532),
+    "Aquarium - Soupie":                                    UT2LocationData("pgaquarium", "Aquarium", 533),
+    "Aquarium - Rezzie":                                    UT2LocationData("pgaquarium", "Aquarium", 534),
+    "Aquarium - Mem-F":                                     UT2LocationData("pgaquarium", "Aquarium", 535),
+    "Aquarium - Mem-Y":                                     UT2LocationData("pgaquarium", "Aquarium", 536),
+    "Aquarium - Mem-G":                                     UT2LocationData("pgaquarium", "Aquarium", 537),
 
     # Dig Spots
     "Beach - Greenhorn Shore Dig Spot":                     UT2LocationData("dig", "Greenhorn Shore", 601),
@@ -338,5 +352,9 @@ event_location_table: Dict[str, UT2LocationData] = {
     "Tutariel Defeated":                                    UT2LocationData("event", "Toriel Roof"),
     "Fake Ending":                                          UT2LocationData("event", "Exit Back"),
     "Lulliby Setting":                                      UT2LocationData("event", "Server Settings"),
-    "Marisa Battle":                                        UT2LocationData("event", "Marisa Hall")
+    "Marisa Battle":                                        UT2LocationData("event", "Marisa Hall"),
+    "Seraph Battle":                                        UT2LocationData("event", "Heaven"),
+    "Spark Battle":                                         UT2LocationData("event", "Spark Chamber"),
+    "Jamanda Battle":                                       UT2LocationData("event", "Beach Relax 8"),
+    "Froguelass Battle":                                    UT2LocationData("event", "Frogue Chamber"),
 }

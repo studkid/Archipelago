@@ -43,7 +43,8 @@ def create_regions(multiworld: MultiWorld, player: int, options: UT2Options):
         "Beach Relax 4":            UT2RegionData([], ["Beach Relax 5"]),
         "Beach Relax 5":            UT2RegionData([], ["Beach Relax 6"]),
         "Beach Relax 6":            UT2RegionData([], ["Beach Relax 7"]),
-        "Beach Relax 7":            UT2RegionData([], []),
+        "Beach Relax 7":            UT2RegionData([], ["Beach Relax 8"]),
+        "Beach Relax 8":            UT2RegionData([], []),
         "Greenhorn Shore":          UT2RegionData([], ["Breadcrumb Bay", "Rust Gear Gulf", "Aquarium", "Big Bone Bay", "Chemical Waste Zone", "Stardrop Tree"]),
         "Breadcrumb Bay":           UT2RegionData([], ["Melonbread Cove"]),
         "Melonbread Cove":          UT2RegionData([], ["Pudding"]),
@@ -61,14 +62,16 @@ def create_regions(multiworld: MultiWorld, player: int, options: UT2Options):
         "Toriel Basement":          UT2RegionData([], []),
         "Mario Zone":               UT2RegionData([], []),
         "Exit":                     UT2RegionData([], ["Exit Back"]),
-        "Exit Back":                UT2RegionData([], []),
+        "Exit Back":                UT2RegionData([], ["Flowey Room"]),
+        "Flowey Room":              UT2RegionData([], []),
         
         "Server":                   UT2RegionData([], ["Server Settings"]),
         "Server Settings":          UT2RegionData([], []),
 
         "Warehouse":                UT2RegionData([], ["Marisa Hall"]),
         "Marisa Hall":              UT2RegionData([], ["Heaven"]),
-        "Heaven":                   UT2RegionData([], []),
+        "Heaven":                   UT2RegionData([], ["Post Game"]),
+        "Post Game":                UT2RegionData([], []),
     }
 
     for name, data in location_table.items():

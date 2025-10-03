@@ -78,6 +78,9 @@ class UT2World(World):
             if data.category[:2] == "pg" and self.options.ending_goal == EndingGoal.option_fake_ending:
                 continue
 
+            if (name == "Flynn" or name == "Otta" or name == "Nico" or name == "Nim") and self.options.ending_goal != EndingGoal.option_all_completion_bonus:
+                continue
+
             item_pool += [self.create_item(name) for _ in range(0, quantity)]
 
         # Fill any empty locations with filler items.
@@ -137,6 +140,18 @@ class UT2World(World):
         
         self.multiworld.get_location("Marisa Battle", self.player).place_locked_item(
             self.create_event("Marisa Defeated"))
+        
+        self.multiworld.get_location("Seraph Battle", self.player).place_locked_item(
+            self.create_event("Seraph Defeated"))
+        
+        self.multiworld.get_location("Spark Battle", self.player).place_locked_item(
+            self.create_event("Spark Defeated"))
+        
+        self.multiworld.get_location("Jamanda Battle", self.player).place_locked_item(
+            self.create_event("Jamanda Defeated"))
+        
+        self.multiworld.get_location("Froguelass Battle", self.player).place_locked_item(
+            self.create_event("Froguelass Defeated"))
         
     def fill_slot_data(self):
         options_dict = self.options.as_dict("ending_goal", casing="camel")
