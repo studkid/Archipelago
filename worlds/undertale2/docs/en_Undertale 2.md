@@ -25,6 +25,8 @@ Character swap orbs start unlocked from the beginning, instead of unlocking just
 
 Gilded☆Bingus in the Ruins Lake has it's encounter chance dropped from 1/100 -> 1/20.
 
+P Capsules are now non consumable
+
 ## Is there a tracker?
 [Universal Tracker](https://github.com/FarisTheAncient/Archipelago/releases/latest) is supported and has an embedded map tracker available.
 

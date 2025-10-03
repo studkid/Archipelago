@@ -57,6 +57,12 @@ class UT2World(World):
 
         if self.options.ending_goal == EndingGoal.option_fake_ending:
             self.multiworld.push_precollected(self.create_item("Fake Ending Goal"))
+        elif self.options.ending_goal == EndingGoal.option_marisa_kirisame:
+            self.multiworld.push_precollected(self.create_item("Marisa Kirisame Goal"))
+        elif self.options.ending_goal == EndingGoal.option_true_ending:
+            self.multiworld.push_precollected(self.create_item("True Ending Goal"))
+        elif self.options.ending_goal == EndingGoal.option_all_completion_bonus:
+            self.multiworld.push_precollected(self.create_item("All Completion Bonus Goal"))
 
         for name, data in item_table.items():
             quantity = data.max_quantity

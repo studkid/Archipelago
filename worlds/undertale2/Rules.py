@@ -60,7 +60,7 @@ def can_reach_cards(state: CollectionState, player: int, options: UT2Options) ->
             if not state.can_reach(name, "Location", player):
                 return False
             
-    if not has_all("#X ??? ??? ??? ???", "#-1 Death Metal", "#0 Placeholdio"):
+    if not state.has_all(["#X ??? ??? ??? ???", "#-1 Death Metal", "#0 Placeholdio"], player):
         return False
     
     return True
@@ -68,15 +68,18 @@ def can_reach_cards(state: CollectionState, player: int, options: UT2Options) ->
 def can_reach_fish(state: CollectionState, player: int) -> int:
     donations = 0
     
-    for _, data in fish_data:
+    for _, data in fish_data.items():
         for __, name in enumerate(data):
             if state.can_reach(name, "Region", player):
-                donations =+ 1
+                donations += 1
+                break
 
     return donations
 
 def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
     for name, data in location_table.items():
+        if data.category[:2] == "pg" and options.ending_goal == EndingGoal.option_fake_ending:
+            continue
         if options.cardsanity != CardSanity.option_false and (data.category == "boss" or data.category == "pgboss"):
             boss_locations.append(name)
         elif options.cardsanity == CardSanity.option_all and (data.category == "card" or data.category == "pgenemy"):
@@ -230,6 +233,11 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
         
     if options.aqariumsanity == AquariumSanity.option_true:
         for name, data in fish_data.items():
+            if data[0] == "Heaven" and options.ending_goal < 2:
+                continue
+            if data[0] == "Flowey Room" and options.ending_goal != EndingGoal.option_all_completion_bonus:
+                continue
+            
             multiworld.get_location("Aquarium - " + name, player).access_rule =\
             lambda state: can_get_fish(state, name, player)
             
@@ -290,12 +298,18 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
     elif options.ending_goal == EndingGoal.option_marisa_kirisame:
         multiworld.completion_condition[player] = lambda state: state.can_reach("Marisa Battle", "Location", player)
     elif options.ending_goal == EndingGoal.option_true_ending:
-        multiworld.completion_condition[player] = lambda state: state.can_reach("Seriph Battle", "Location", player)
+        multiworld.completion_condition[player] = lambda state: state.can_reach("Seraph Battle", "Location", player)
     elif options.ending_goal == EndingGoal.option_all_completion_bonus:
-        multiworld.completion_condition[player] =\
-            lambda state: state.can_reach("Beach - Fishing Mission 11", "Location", player) and \
-                          can_reach_fish(state, player, options) == 38 and \
-                          state.has_all(["Eclaire", "Grindy", "Spark Defeated", "Jamanda Defeated", "Wishgem", "Petsigrabber",
-                                         "Flynn", "Otta", "Nico", "Nim", "Bergo's Shopping List", "Ra Men Defeated", "Seraph Defeated"], player)
+        if options.shuffle_fish_mission == ShuffleFishingMissions.option_true:
+            multiworld.completion_condition[player] =\
+                lambda state: state.can_reach("Beach - Fishing Mission 11", "Location", player) and \
+                              can_reach_fish(state, player) == 37 and \
+                              state.has_all(["Eclaire", "Grindy", "Spark Defeated", "Jamanda Defeated", "Wishgem", "Petsigrabber",
+                                             "Flynn", "Otta", "Nico", "Nim", "Bergo's Shopping List", "Ra Men Defeated", "Seraph Defeated"], player)
+        else:
+            multiworld.completion_condition[player] =\
+                lambda state: can_reach_fish(state, player) == 37 and \
+                              state.has_all(["Eclaire", "Grindy", "Spark Defeated", "Jamanda Defeated", "Wishgem", "Petsigrabber",
+                                             "Flynn", "Otta", "Nico", "Nim", "Bergo's Shopping List", "Ra Men Defeated", "Seraph Defeated"], player)
                           
     

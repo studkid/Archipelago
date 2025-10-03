@@ -59,7 +59,7 @@ item_table: Dict[str, UT2ItemData] = {
     "Ra Men Abs":                           UT2ItemData("body", 123, ItemClassification.useful),
     "Lullaby Bells":                        UT2ItemData("trinket", 124, ItemClassification.progression),
     "Lullaby Helmet":                       UT2ItemData("trinket", 125, ItemClassification.progression),
-    "Mimic's Solong":                       UT2ItemData("trinket", 126, ItemClassification.progression),
+    "Mimic's Solong":                       UT2ItemData("trinket", 126, ItemClassification.useful),
 
     # Weapons
     "Lucky Crowbar":                        UT2ItemData("weapon", 201, ItemClassification.progression),
@@ -109,7 +109,6 @@ item_table: Dict[str, UT2ItemData] = {
 
     "Numpad Keycap":                        UT2ItemData("pgmisc prog", 325, ItemClassification.progression, 3),
     "Mtech Brainlinq":                      UT2ItemData("pgmisc prog", 326, ItemClassification.progression),
-    "Toriel's DNA":                         UT2ItemData("pgmisc prog", 327, ItemClassification.progression),
     "#0 Placeholdio":                       UT2ItemData("pgmisc prog", 328, ItemClassification.progression),
     "38384201":                             UT2ItemData("pgcode", 329, ItemClassification.progression),
     "37482826":                             UT2ItemData("pgcode", 330, ItemClassification.progression),
@@ -170,10 +169,11 @@ item_table: Dict[str, UT2ItemData] = {
     "Apple Core":                           UT2ItemData("filler", 1038, ItemClassification.filler),
     "Kyouko's Blood":                       UT2ItemData("filler", 1039, ItemClassification.filler),
     "Monster Zero Ultra White":             UT2ItemData("filler", 1040, ItemClassification.filler, 0, 1),
-    "Nico's Diary":                         UT2ItemData("filler", 1041, ItemClassification.filler),
-    "Nim's Diary":                          UT2ItemData("filler", 1042, ItemClassification.filler),
-    "Otta's Diary":                         UT2ItemData("filler", 1043, ItemClassification.filler),
+    "Nico's Diary":                         UT2ItemData("pgfiller", 1041, ItemClassification.filler),
+    "Nim's Diary":                          UT2ItemData("pgfiller", 1042, ItemClassification.filler),
+    "Otta's Diary":                         UT2ItemData("pgfiller", 1043, ItemClassification.filler),
     "CHIBIPANETON":                         UT2ItemData("filler", 1044, ItemClassification.filler),
+    "Toriel's DNA":                         UT2ItemData("pgfiller", 1045, ItemClassification.filler),
 
     # Settings
     "Relax Pass Off":                       UT2ItemData("filler", 90001, ItemClassification.filler, 0),
