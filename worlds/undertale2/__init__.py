@@ -154,8 +154,8 @@ class UT2World(World):
         self.multiworld.get_location("Spark Battle", self.player).place_locked_item(
             self.create_event("Spark Defeated"))
         
-        self.multiworld.get_location("Jamanda Battle", self.player).place_locked_item(
-            self.create_event("Jamanda Defeated"))
+        self.multiworld.get_location("Travis Battle", self.player).place_locked_item(
+            self.create_event("Travis Defeated"))
         
         self.multiworld.get_location("Froguelass Battle", self.player).place_locked_item(
             self.create_event("Froguelass Defeated"))

@@ -127,6 +127,7 @@ item_table: Dict[str, UT2ItemData] = {
     "Nico":                                 UT2ItemData("pgcompletion", 344, ItemClassification.progression_deprioritized_skip_balancing),
     "Nim":                                  UT2ItemData("pgcompletion", 345, ItemClassification.progression_deprioritized_skip_balancing),
     "Bergo's Shopping List":                UT2ItemData("pgcompletion", 346, ItemClassification.progression_deprioritized_skip_balancing),
+    "[Human]":                              UT2ItemData("pgcompletion", 347, ItemClassification.progression_deprioritized_skip_balancing),
 
     # Junk
     "EXP breeze badge!!!":                  UT2ItemData("filler", 1001, ItemClassification.filler),
@@ -194,7 +195,7 @@ event_item_table: Dict[str, UT2ItemData] = {
     "Marisa Defeated":                      UT2ItemData("event", classification=ItemClassification.progression),
     "Seraph Defeated":                      UT2ItemData("event", classification=ItemClassification.progression),
     "Spark Defeated":                       UT2ItemData("event", classification=ItemClassification.progression),
-    "Jamanda Defeated":                     UT2ItemData("event", classification=ItemClassification.progression),
+    "Travis Defeated":                      UT2ItemData("event", classification=ItemClassification.progression),
     "Froguelass Defeated":                  UT2ItemData("event", classification=ItemClassification.progression),
     "Ra Men Defeated":                      UT2ItemData("event", classification=ItemClassification.progression),
 }

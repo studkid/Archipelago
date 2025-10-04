@@ -291,6 +291,9 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
         
         multiworld.get_entrance("Exit -> Flowey Room", player).access_rule =\
             lambda state: can_reach_cards(state, player, options)
+        
+        multiworld.get_location("Read Bergo's Shopping List", player).access_rule =\
+            lambda state: state.has("Bergo's Shopping List", player)
     
     # Win Condition -----------------------------------------------------------------------
     if options.ending_goal == EndingGoal.option_fake_ending:
@@ -304,12 +307,12 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
             multiworld.completion_condition[player] =\
                 lambda state: state.can_reach("Beach - Fishing Mission 11", "Location", player) and \
                               can_reach_fish(state, player) == 37 and \
-                              state.has_all(["Eclaire", "Grindy", "Spark Defeated", "Jamanda Defeated", "Wishgem", "Petsigrabber",
+                              state.has_all(["Eclaire", "Grindy", "Spark Defeated", "Travis Defeated", "Wishgem", "Petsigrabber",
                                              "Flynn", "Otta", "Nico", "Nim", "Bergo's Shopping List", "Ra Men Defeated", "Seraph Defeated"], player)
         else:
             multiworld.completion_condition[player] =\
                 lambda state: can_reach_fish(state, player) == 37 and \
-                              state.has_all(["Eclaire", "Grindy", "Spark Defeated", "Jamanda Defeated", "Wishgem", "Petsigrabber",
-                                             "Flynn", "Otta", "Nico", "Nim", "Bergo's Shopping List", "Ra Men Defeated", "Seraph Defeated"], player)
+                              state.has_all(["Eclaire", "Grindy", "Spark Defeated", "Travis Defeated", "Wishgem", "Petsigrabber",
+                                             "Flynn", "Otta", "Nico", "Nim", "[Human]", "Ra Men Defeated", "Seraph Defeated"], player)
                           
     

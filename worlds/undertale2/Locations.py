@@ -197,6 +197,7 @@ location_table: Dict[str, UT2LocationData] = {
     "Toriel's House - Nico":                                UT2LocationData("pgpickup", "Post Game", 93),
     "Toriel's House - Otta":                                UT2LocationData("pgpickup", "Post Game", 94),
     "Warehouse - Nim":                                      UT2LocationData("pgpickup", "Post Game", 95),
+    "Read Bergo's Shopping List":                           UT2LocationData("pgpickup", "Landing", 97),
 
     # Enemies
     "#1 Flowey Card":                                       UT2LocationData("boss", "Landing", 301),
@@ -356,7 +357,7 @@ event_location_table: Dict[str, UT2LocationData] = {
     "Marisa Battle":                                        UT2LocationData("event", "Marisa Hall"),
     "Seraph Battle":                                        UT2LocationData("event", "Heaven"),
     "Spark Battle":                                         UT2LocationData("event", "Spark Chamber"),
-    "Jamanda Battle":                                       UT2LocationData("event", "Beach Relax 8"),
+    "Travis Battle":                                        UT2LocationData("event", "Beach Relax 7"),
     "Froguelass Battle":                                    UT2LocationData("event", "Frogue Chamber"),
     "Ra Men Battle":                                        UT2LocationData("event", "Beach Post Boss"),
 }
