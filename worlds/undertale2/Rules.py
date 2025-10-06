@@ -82,7 +82,7 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
             continue
         if options.cardsanity != CardSanity.option_false and (data.category == "boss" or data.category == "pgboss"):
             boss_locations.append(name)
-        elif options.cardsanity == CardSanity.option_all and (data.category == "card" or data.category == "pgenemy"):
+        elif options.cardsanity == CardSanity.option_all and (data.category == "enemy" or data.category == "pgenemy"):
             enemy_locations.append(name)
         
         if data.category == "dig":
@@ -111,9 +111,9 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
     elif options.cardsanity == CardSanity.option_all:
         multiworld.get_location("#11 Lancer Card", player).access_rule = \
             lambda state: state.has("Lancer Encountered", player)
-        multiworld.get_location(name, player).access_rule = \
+        multiworld.get_location("#22 Angler Card", player).access_rule = \
             lambda state: can_get_fish(state, "Angler", player)
-        multiworld.get_location(name, player).access_rule = \
+        multiworld.get_location("#23 Angeler Card", player).access_rule = \
             lambda state: can_get_fish(state, "Angeler", player)
 
     # Ruins -----------------------------------------------------------------------
