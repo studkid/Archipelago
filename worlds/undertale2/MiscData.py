@@ -38,6 +38,7 @@ fish_data: Dict[str, List[str]] = {
     "Mem-F":                ["Flowey Room"],
     "Mem-Y":                ["Flowey Room"],
     "Mem-G":                ["Flowey Room"],
+    "Wrangler":             ["Flowey Room"]
 }
 
 fish_quests: List[str] = ["Sega Bass", "Fugu Fish", "Rotten Mackerel", "Luvdisc", "Tuna Sashimi", "Goldfish Cracker", "Essicated Angler", "Pagliacci", "Whale Shark Onesie", "Leviathan", "Tsuchinoko"]

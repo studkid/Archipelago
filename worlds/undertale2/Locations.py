@@ -326,6 +326,7 @@ location_table: Dict[str, UT2LocationData] = {
     "Aquarium - Mem-F":                                     UT2LocationData("pmaquarium", "Aquarium", 535),
     "Aquarium - Mem-Y":                                     UT2LocationData("pmaquarium", "Aquarium", 536),
     "Aquarium - Mem-G":                                     UT2LocationData("pmaquarium", "Aquarium", 537),
+    "Aquarium - Wrangler":                                  UT2LocationData("pmaquarium", "Aquarium", 538),
 
     # Dig Spots
     "Beach - Greenhorn Shore Dig Spot":                     UT2LocationData("dig", "Greenhorn Shore", 601),

@@ -237,14 +237,17 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
                 continue
             if data[0] == "Flowey Room" and options.ending_goal != EndingGoal.option_all_completion_bonus:
                 continue
+            if name == "Wrangler" and options.ending_goal != EndingGoal.option_all_completion_bonus:
+                multiworld.get_location("Aquarium - " + name, player).access_rule =\
+                    lambda state: can_get_fish(state, name, player) and can_reach_fish(state, player) >= 37
             
             multiworld.get_location("Aquarium - " + name, player).access_rule =\
-            lambda state: can_get_fish(state, name, player)
+                lambda state: can_get_fish(state, name, player)
             
     if options.shuffle_fish_mission == ShuffleFishingMissions.option_true:
         for i, name in enumerate(fish_quests):
             multiworld.get_location("Beach - Fishing Mission " + str(i + 1), player).access_rule =\
-            lambda state: can_get_fish(state, name, player)
+                lambda state: can_get_fish(state, name, player)
             
     multiworld.get_entrance("Beach Entry -> Miku Zone", player).access_rule =\
         lambda state: state.has("Vocal Key", player)
@@ -306,12 +309,12 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
         if options.shuffle_fish_mission == ShuffleFishingMissions.option_true:
             multiworld.completion_condition[player] =\
                 lambda state: state.can_reach("Beach - Fishing Mission 11", "Location", player) and \
-                              can_reach_fish(state, player) == 37 and \
+                              can_reach_fish(state, player) == 38 and \
                               state.has_all(["Eclaire", "Grindy", "Spark Defeated", "Travis Defeated", "Wishgem", "Petsigrabber",
                                              "Flynn", "Otta", "Nico", "Nim", "Bergo's Shopping List", "Ra Men Defeated", "Seraph Defeated"], player)
         else:
             multiworld.completion_condition[player] =\
-                lambda state: can_reach_fish(state, player) == 37 and \
+                lambda state: can_reach_fish(state, player) == 38 and \
                               state.has_all(["Eclaire", "Grindy", "Spark Defeated", "Travis Defeated", "Wishgem", "Petsigrabber",
                                              "Flynn", "Otta", "Nico", "Nim", "[Human]", "Ra Men Defeated", "Seraph Defeated"], player)
                           
