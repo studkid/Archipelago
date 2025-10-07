@@ -206,7 +206,7 @@ location_table: Dict[str, UT2LocationData] = {
     "#4 Scopestablook Card":                                UT2LocationData("boss", "Scopestablook", 304),
     "#5 Peatrooper Card":                                   UT2LocationData("enemy", "Ruins Lake", 305),
     "#6 Helper Mimic Card":                                 UT2LocationData("enemy", "Archives Sewers", 306),
-    "#7 Table Mimic Card":                                  UT2LocationData("boss", "Ruins Lake", 307),
+    "#7 Table Mimic Card":                                  UT2LocationData("boss", "Ruins Tree", 307),
     "#8 Dust Bunny Card":                                   UT2LocationData("enemy", "Archives Pit", 308),
     "#9 Minesweeper Card":                                  UT2LocationData("enemy", "Archives Pit", 309),
     "#10 Greater Guaglione Card":                           UT2LocationData("boss", "Archives Back", 310),   

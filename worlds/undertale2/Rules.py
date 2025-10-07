@@ -124,6 +124,12 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
     multiworld.get_entrance("Ruins Lake -> Ruins Tree", player).access_rule = \
         lambda state: has_all(state, player, ["Gold Key", "Silver Key", "Bronze Key", "Progressive Monk Key"])\
                           or state.has("Progressive Key", player, 4)
+    multiworld.get_location("Ruins - Lake Silver Key", player).access_rule =\
+        lambda state: state.has("Bronze Key", player) or state.has("Progressive Key", player, 1)
+    multiworld.get_location("Ruins - Lake Gold Key", player).access_rule =\
+        lambda state: state.has("Silver Key", player) or state.has("Progressive Key", player, 2)
+    multiworld.get_location("Ruins - Lake Monk Key", player).access_rule =\
+        lambda state: state.has("Gold Key", player) or state.has("Progressive Key", player, 3)
 
     # Archives -----------------------------------------------------------------------
     multiworld.get_entrance("Archives Pit -> Archives Sewers", player).access_rule = \
