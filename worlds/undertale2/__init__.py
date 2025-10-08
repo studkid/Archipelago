@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, ClassVar
 
 from BaseClasses import Tutorial, Region, ItemClassification
 from worlds.AutoWorld import WebWorld, World
@@ -7,6 +7,7 @@ from .Locations import UT2Location, location_table
 from .Options import UT2Options, ProgMonkKey, RelaxRankNeedsPass, ShuffleFishingMissions, EndingGoal
 from .Regions import create_regions
 from .Rules import set_rules
+from .ut_map.map_page_index import map_page_index
 
 
 class UT2Web(WebWorld):
@@ -39,6 +40,14 @@ class UT2World(World):
         "Weapon": {name for name, data in item_table.items() if data.category == "weapon"},
         "Code Thing": {name for name, data in item_table.items() if data.category == "pgcode"},
         "Completion Items": {name for name, data in item_table.items() if data.category == "pgcompletion"},
+    }
+
+    tracker_world: ClassVar = {
+        "map_page_folder": "ut_map",
+        "map_page_maps": "maps.json",
+        "map_page_locations": "locations.json",
+        "map_page_setting_key": "{player}_{team}_undertale2_area",
+        "map_page_index": map_page_index
     }
 
     item_name_to_id = {name: data.code for name, data in item_table.items() if data.code is not None}
