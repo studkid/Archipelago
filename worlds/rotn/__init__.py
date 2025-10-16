@@ -79,11 +79,13 @@ class RotNWorld(World):
             if victory_song_keys:
                 chosen_song_index = self.random.randrange(0, len(victory_song_keys))
                 self.victory_song_name = victory_song_keys[chosen_song_index][1]
+                self.victory_song_type = self.rift_collection.song_items[self.victory_song_name].type
                 # Replace the chosen goal song's index with the index from the full list we saved earlier.
                 chosen_song_index = victory_song_keys[chosen_song_index][0]
             else:
                 chosen_song_index = self.random.randrange(0, len(available_song_keys))
                 self.victory_song_name = available_song_keys[chosen_song_index]
+                self.victory_song_type = self.rift_collection.song_items[self.victory_song_name].type
             del available_song_keys[chosen_song_index]
 
             count_needed_for_start = max(0, starter_song_count - len(self.starting_songs))
@@ -259,11 +261,12 @@ class RotNWorld(World):
     def fill_slot_data(self):
         return {
             "victoryLocation": self.victory_song_name,
+            "victoryType": self.victory_song_type,
             "diamondWinCount": self.get_diamond_win_count(),
             "gradeNeeded": self.options.grade_needed.value,
             "fullComboNeeded": self.options.full_combo_needed.value,
             "remixes": self.options.include_remix.value,
             "minigameMode": self.options.include_minigames.value,
             "bossMode": self.options.include_boss_battle.value,
-            "finalSongIDs": self.final_song_ids
+            "finalSongIDs": self.final_song_ids,
         }
