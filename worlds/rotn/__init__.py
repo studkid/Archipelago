@@ -30,6 +30,7 @@ class RotNWorld(World):
 
     topology_present = False
     web = RotNWeb()
+    ut_can_gen_without_yaml = True
 
     rift_collection = RotNCollections()
     filler_item_names = list(rift_collection.filler_items.keys())
@@ -39,11 +40,24 @@ class RotNWorld(World):
     location_name_to_id = {name: code for name, code in rift_collection.location_names_to_id.items()}
 
     victory_song_name: str = ""
-    starting_songs: List[str]
+    victory_song_type: int = 0
+    starting_songs: List[str] = []
     included_songs: List[str]
+    final_song_ids: set[int] = set()
     location_count: int
 
     def generate_early(self):
+        # Universal Tracker Support
+        re_gen_passthrough = getattr(self.multiworld, "re_gen_passthrough", {})
+        if re_gen_passthrough and self.game in re_gen_passthrough:
+            slot_data: dict[str, any] = re_gen_passthrough[self.game]
+
+            if "finalSongIDs" in slot_data:
+                final = slot_data.get("finalSongIDs", [])
+                self.included_songs = [key for key, song in self.rift_collection.song_items.items() if song.song_name in final]
+                self.location_count = len(self.included_songs) * 2
+            return
+        
         min_diff = min(self.options.min_intensity.value, self.options.max_intensity.value)
         max_diff = max(self.options.min_intensity.value, self.options.max_intensity.value)
 
@@ -147,6 +161,7 @@ class RotNWorld(World):
             return RotNFixedItem(name, ItemClassification.filler, filler, self.player)
         
         song = self.rift_collection.song_items[name]
+        self.final_song_ids.add(song.song_name)
         return RotNSongItem(name, self.player, song)
     
     def get_filler_item_name(self):
@@ -217,15 +232,11 @@ class RotNWorld(World):
         all_selected_locations.extend(included_song_copy)
 
         # Adds 2 item locations per song/album to the menu region.
-        for i in range(0, len(all_selected_locations)):
-            name = all_selected_locations[i]
-            loc1 = RotNLocation(self.player,  name + "-0", self.rift_collection.song_locations[name + "-0"], menu_region)
-            loc1.access_rule = lambda state, place=name: state.has(place, self.player)
-            menu_region.locations.append(loc1)
-
-            loc2 = RotNLocation(self.player,  name + "-1", self.rift_collection.song_locations[name + "-1"], menu_region)
-            loc2.access_rule = lambda state, place=name: state.has(place, self.player)
-            menu_region.locations.append(loc2)
+        for name in all_selected_locations:
+            for j in range(2):
+                loc = RotNLocation(self.player, f"{name}-{j}", self.rift_collection.song_locations[f"{name}-{j}"], menu_region)
+                loc.access_rule = lambda state, item=name: state.has(item, self.player)
+                menu_region.locations.append(loc)
 
     def set_rules(self) -> None:
         self.multiworld.completion_condition[self.player] = lambda state: \
@@ -241,6 +252,10 @@ class RotNWorld(World):
         diamond_count = self.get_diamond_count()
         return max(1, floor(diamond_count * multiplier))
     
+    @staticmethod
+    def interpret_slot_data(slot_data: dict[str, any]) -> dict[str, any]:
+        return slot_data
+    
     def fill_slot_data(self):
         return {
             "victoryLocation": self.victory_song_name,
@@ -250,4 +265,5 @@ class RotNWorld(World):
             "remixes": self.options.include_remix.value,
             "minigameMode": self.options.include_minigames.value,
             "bossMode": self.options.include_boss_battle.value,
+            "finalSongIDs": self.final_song_ids
         }
