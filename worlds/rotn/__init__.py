@@ -249,6 +249,7 @@ class RotNWorld(World):
             "victoryLocation": self.victory_song_name,
             "diamondWinCount": self.get_diamond_win_count(),
             "gradeNeeded": self.options.grade_needed.value,
+            "fullComboNeeded": self.options.full_combo_needed.value,
             "remixes": self.options.include_remix.value,
             "minigameMode": self.options.include_minigames.value,
             "bossMode": self.options.include_boss_battle.value,

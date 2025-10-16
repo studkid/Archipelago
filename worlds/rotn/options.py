@@ -108,9 +108,7 @@ class MaxDifficulty(Choice):
 
 class GradeNeeded(Choice):
     """
-    Not Yet Implemented
-
-    Required grade that needs to be achieved to send a check
+    Grade required on song completion to send a check
     """
     display_name = "Grade Needed"
     option_Any = 0
@@ -120,6 +118,13 @@ class GradeNeeded(Choice):
     option_S = 4
     option_S_Plus = 5
     default = 0
+    
+class FullComboNeeded(Toggle):
+    """
+    Requires a full combo on song completion to send a check
+    """
+    display_name = "Full Combo Needed"
+    default = False
 
 class DiamondCountPercentage(Range):
     """Percentage of filler item to be replaced with diamonds."""
@@ -175,6 +180,7 @@ class RotNOptions(PerGameCommonOptions):
     min_difficulty: MinDifficulty
     max_difficulty: MaxDifficulty
     grade_needed: GradeNeeded
+    full_combo_needed: FullComboNeeded
     diamond_count_percentage: DiamondCountPercentage
     diamond_win_percentage: DiamondWinPercentage
     include_songs: IncludeSongs
