@@ -51,9 +51,6 @@ class RotNWorld(World):
         goal_song_pool = self.options.goal_song_pool.value
 
         while True:
-            if self.options.min_difficulty.value > self.options.max_difficulty.value:
-                raise OptionError("Max song difficulty is higher then min song difficulty.")
-
             available_song_keys = self.rift_collection.getSongsWithSettings(self.options, min_diff, max_diff)
             available_song_keys = self.handle_plando(available_song_keys)
 

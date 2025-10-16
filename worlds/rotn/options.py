@@ -1,4 +1,4 @@
-from Options import Toggle, Range, Choice, DeathLink, ItemSet, OptionSet, PerGameCommonOptions, OptionGroup, Removed
+from Options import Toggle, Range, Choice, ItemSet, OptionSet, PerGameCommonOptions
 from dataclasses import dataclass
 from .RiftCollections import RotNCollections
 
@@ -65,6 +65,15 @@ class IncludeBossBattles(Choice):
     option_true = 1
     option_Split = 2
 
+class DifficultyOption(OptionSet):
+    """
+    Determines what difficulties to be selected for song filtering (Rhythm Rifts only)
+    This setting will not force you to play on any of the selected difficulties and intened to be used with the following intensity settings
+    """
+    display_name = "Difficulty Selection"
+    default = ["Easy", "Medium", "Hard", "Impossible"]
+    valid_keys = ["Easy", "Medium", "Hard", "Impossible"]
+
 class MinIntensity(Range):
     """ 
     Ensures chosen rhythm rift will have a chart with an intensity value higher than this value (Rhythm Rifts only)
@@ -83,32 +92,9 @@ class MaxIntensity(Range):
     default = 30
     display_name = "Maximum Intensity"
 
-class MinDifficulty(Choice):
-    """
-    Minimum difficulty level for intensity range for filtering (Rhythm Rifts only)
-    This setting will still allow any difficulty to be beaten to send a check
-    """
-    display_name = "Minimum Difficulty"
-    option_Easy = 0
-    option_Medium = 1
-    option_Hard = 2
-    option_Impossible = 3
-
-class MaxDifficulty(Choice):
-    """
-    Maximum difficulty level for intensity range for filtering (Rhythm Rifts only)
-    This setting will still allow any difficulty to be beaten to send a check
-    """
-    display_name = "Maximum Difficulty"
-    option_Easy = 0
-    option_Medium = 1
-    option_Hard = 2
-    option_Impossible = 3
-    default = 3
-
 class GradeNeeded(Choice):
     """
-    Grade required on song completion to send a check
+    Minimum Grade required on song completion to send a check
     """
     display_name = "Grade Needed"
     option_Any = 0
@@ -175,10 +161,9 @@ class RotNOptions(PerGameCommonOptions):
     include_remix: IncludeRemixMode
     include_minigames: IncludeMinigames
     include_boss_battle: IncludeBossBattles
+    difficulty_option: DifficultyOption
     min_intensity: MinIntensity
     max_intensity: MaxIntensity
-    min_difficulty: MinDifficulty
-    max_difficulty: MaxDifficulty
     grade_needed: GradeNeeded
     full_combo_needed: FullComboNeeded
     diamond_count_percentage: DiamondCountPercentage
