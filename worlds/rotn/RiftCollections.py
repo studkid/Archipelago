@@ -256,3 +256,20 @@ class RotNCollections:
             return True
 
         return False
+    
+    def getItemNameGroups(self) -> Dict[str, str]:
+        "Rhythm Rift" = {name for name, data, in self.song_items.items() if data.type == "Rift"}
+        "Remix Rift" = {name for name, data, in self.song_items.items() if data.type == "Remix"}
+        "Minigame" = {name for name, data, in self.song_items.items() if data.type == "Minigame"}
+        "Bossbattle" = {name for name, data, in self.song_items.items() if data.type == "Boss"}
+
+        "Base Songs" = {name for name, data, in self.song_items.items() if data.DLC == "base"}
+        "Meat Boy" = {name for name, data, in self.song_items.items() if data.DLC == "MeatBoy"}
+        "Anniversary" = {name for name, data, in self.song_items.items() if data.DLC == "Anniversary"}
+        "FreeDLC" = {name for name, data, in self.song_items.items() if data.DLC == "FreeDLC"}
+        "Celeste" = {name for name, data, in self.song_items.items() if data.DLC == "Celeste"}
+        "Pizza Tower" = {name for name, data, in self.song_items.items() if data.DLC == "Pizza Tower"}
+        "Hatsune Miku" = {name for name, data, in self.song_items.items() if data.DLC == "Hatsune Miku"}
+        "Hololive" = {name for name, data, in self.song_items.items() if data.DLC == "Hololive"}
+        "Everhood" = {name for name, data, in self.song_items.items() if data.DLC == "Everhood"}
+        "Monstercat" = {name for name, data, in self.song_items.items() if data.DLC == "Monstercat"}
