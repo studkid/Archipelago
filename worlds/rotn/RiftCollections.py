@@ -112,38 +112,39 @@ class RotNCollections:
 
     DLC: List[str] = [
         "Celeste",
+        "Pizza Tower",
+        "Hatsune Miku",
+        "Hololive",
+        "Everhood",
+        "Monstercat",
+
         "Resurrections (dannyBstyle Remix)",
         "Scattered and Lost",
         "Reach for the Summit",
         "Confronting Myself",
         "Resurrections",
 
-        "Pizza Tower",
         "It's Pizza Time!",
         "The Death That I Deservioli",
         "Unexpectancy, Pt. 3",
         "World Wide Noise",
 
-        "Hatsune Miku",
         "M@GICAL☆CURE! LOVE ♥ SHOT!",
         "Intergalactic Bound",
         "Just 1dB Louder",
         "MikuFiesta",
         "Radiant Revival",
 
-        "Hololive",
         "BIBBIDIBA",
         "Play Dice!",
         "Ahoy!! 我ら宝鐘海賊団☆",
         "Carbonated Love",
 
-        "Everhood",
         "The Final Battle",
         "Feisty Flowers",
         "Revenge",
         "Why Oh You Are LOVE",
 
-        "Monstercat",
         "Crab Rave",
         "Final Boss",
         "New Game",
