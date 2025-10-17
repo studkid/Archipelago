@@ -181,9 +181,9 @@ class RotNCollections:
             self.song_items[key + " (Remix)"] = SongData(data.code + 1000, data.song_name, data.DLC, data.diff_easy, data.diff_medium, data.diff_hard, data.diff_impossible, "Remix")
 
         for key, data in self.EXTRA_DATA.items():
-            self.song_items[key] = SongData(data.code, key, data.DLC, -1, -1, -1, -1, data.DLC)
-            self.song_items[key + " (Medium)"] = SongData(data.code + 1, key, data.DLC, -1, -1, -1, -1, data.DLC)
-            self.song_items[key + " (Hard)"] = SongData(data.code + 1, key, data.DLC, -1, -1, -1, -1, data.DLC)
+            self.song_items[key] = SongData(data.code, key, data.DLC, 1, 0, 0, 0, data.DLC)
+            self.song_items[key + " (Medium)"] = SongData(data.code + 1, key, data.DLC, 0, 1, 0, 0, data.DLC)
+            self.song_items[key + " (Hard)"] = SongData(data.code + 1, key, data.DLC, 0, 0, 1, 0, data.DLC)
 
         self.item_names_to_id.update({name: data.code for name, data in self.song_items.items()})
 
@@ -211,16 +211,16 @@ class RotNCollections:
 
         for key, data in self.song_items.items():
             if data.DLC == "Minigame":
-                if options.include_minigames == 1 and data.diff == 0:
+                if options.include_minigames == 1 and data.diff_easy == 1:
                     filtered_list.append(key)
-                elif options.include_minigames == 2 and data.diff != 0:
+                elif options.include_minigames == 2 and data.diff_easy == 0:
                     filtered_list.append(key)
                 continue
 
             if data.DLC == "Boss":
-                if options.include_boss_battle == 1 and data.diff == 0:
+                if options.include_boss_battle == 1 and data.diff_easy == 1:
                     filtered_list.append(key)
-                elif options.include_boss_battle == 2 and data.diff != 0:
+                elif options.include_boss_battle == 2 and data.diff_easy == 0:
                     filtered_list.append(key)
                 continue
             
@@ -262,7 +262,7 @@ class RotNCollections:
             "Rhythm Rift": {name for name, data, in self.song_items.items() if data.type == "Rift"},
             "Remix Rift": {name for name, data, in self.song_items.items() if data.type == "Remix"},
             "Minigame": {name for name, data, in self.song_items.items() if data.type == "Minigame"},
-            "Bossbattle": {name for name, data, in self.song_items.items() if data.type == "Boss"},
+            "Boss Battle": {name for name, data, in self.song_items.items() if data.type == "Boss"},
 
             "Base Songs": {name for name, data, in self.song_items.items() if data.DLC == "base"},
             "Meat Boy": {name for name, data, in self.song_items.items() if data.DLC == "MeatBoy"},
