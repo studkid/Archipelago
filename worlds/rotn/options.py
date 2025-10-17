@@ -1,4 +1,4 @@
-from Options import Toggle, Range, Choice, ItemSet, OptionSet, PerGameCommonOptions
+from Options import Toggle, Range, Choice, ItemSet, OptionSet, PerGameCommonOptions, OptionGroup
 from dataclasses import dataclass
 from .RiftCollections import RotNCollections
 
@@ -151,6 +151,25 @@ class GoalSongPool(ItemSet):
     If empty, the goal song will be chosen randomly from all included songs."""
     verify_item_name = True
     display_name = "Goal Song Pool"
+
+rotn_option_groups = [
+    OptionGroup("Song Pool Settings", [
+        DLCMusicPacks,
+        IncludeRemixMode,
+        IncludeBossBattles,
+        IncludeMinigames,
+        IncludeSongs,
+        ExcludeSongs,
+        GoalSongPool,
+    ]),
+    OptionGroup("Difficulty Settings", [
+        DifficultyOption,
+        MinIntensity,
+        MaxIntensity,
+        GradeNeeded,
+        FullComboNeeded,
+    ]),
+]
 
 @dataclass
 class RotNOptions(PerGameCommonOptions):

@@ -4,7 +4,7 @@ from typing import List, ClassVar, Type
 from math import floor
 from Options import PerGameCommonOptions, OptionError
 
-from .options import RotNOptions
+from .options import RotNOptions, rotn_option_groups
 from .RiftCollections import RotNCollections
 from .items import RotNSongItem, RotNFixedItem
 from .locations import RotNLocation
@@ -19,6 +19,8 @@ class RotNWeb(WebWorld):
         "setup/en",
         ["studkid"]
     )]
+
+    option_groups = rotn_option_groups
 
 class RotNWorld(World):
     """
