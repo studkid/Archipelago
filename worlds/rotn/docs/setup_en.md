@@ -1,5 +1,6 @@
 # Setup Guide
 ## Requirements
+- [Rift of the Necrodancer](https://store.steampowered.com/app/2073250/Rift_of_the_NecroDancer/) from Steam
 - [RiftArchipelago](https://github.com/studkid/RiftArchipelago/releases) mod from the github releases.
 
 ## Installation
