@@ -82,8 +82,8 @@ class RotNCollections:
         "Crab Rave": SongData(113, "Crab Rave", "Monstercat", 5, 11, 18, 24),
         "Final Boss": SongData(114, "Final Boss", "Monstercat", 2, 9, 17, 25),
         "New Game": SongData(115, "New Game", "Monstercat", 6, 11, 19, 25),
-        "Play": SongData(116, "Play", "Monstercat", 6, 11, 16, 26),
-        "Waiting for you (feat. Joanna Jones)": SongData(117, "Waiting for you (feat. Joanna Jones)", "Monstercat", 5, 11, 16, 22),
+        "PLAY": SongData(116, "PLAY", "Monstercat", 6, 11, 16, 26),
+        "Waiting For You (feat. Joanna Jones)": SongData(117, "Waiting for you (feat. Joanna Jones)", "Monstercat", 5, 11, 16, 22),
     }
 
     EXTRA_DATA: Dict[str, ExtraSongData] = {
@@ -148,8 +148,8 @@ class RotNCollections:
         "Crab Rave",
         "Final Boss",
         "New Game",
-        "Play",
-        "Waiting for you (feat. Joanna Jones)",
+        "PLAY",
+        "Waiting For You (feat. Joanna Jones)",
     ]
 
     song_locations: Dict[str, int] = {}
