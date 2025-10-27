@@ -3,7 +3,7 @@ from typing import Dict, List, NamedTuple, Optional
 from BaseClasses import MultiWorld, Region
 from .Locations import UT2Location, location_table, event_location_table
 from Options import Choice
-from .Options import UT2Options, AquariumSanity, ShuffleFishingMissions, RelaxRankNeedsPass, EndingGoal, CardSanity
+from .Options import UT2Options, AquariumSanity, ShuffleFishingMissions, RelaxRankNeedsPass, EndingGoal, CardSanity, EarlyBeach
 
 class UT2RegionData(NamedTuple):
     locations: Optional[List[str]]
@@ -73,6 +73,9 @@ def create_regions(multiworld: MultiWorld, player: int, options: UT2Options):
         "Heaven":                   UT2RegionData([], ["Post Game"]),
         "Post Game":                UT2RegionData([], []),
     }
+
+    if options.early_beach != EarlyBeach.option_false:
+        regions["Rest Zone"].exits.append("Beach Entry")
 
     for name, data in location_table.items():
         if (data.category == "enemy" or data.category == "pgenemy") and not options.cardsanity == CardSanity.option_all:

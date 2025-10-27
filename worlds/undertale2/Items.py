@@ -129,6 +129,8 @@ item_table: Dict[str, UT2ItemData] = {
     "Bergo's Shopping List":                UT2ItemData("pgcompletion", 346, ItemClassification.progression_deprioritized_skip_balancing),
     "[Human]":                              UT2ItemData("pgcompletion", 347, ItemClassification.progression_deprioritized_skip_balancing),
 
+    # "Honeycomb Beach Access"              UT2ItemData("misc prog", 348, ItemClassification.progression)
+
     # Junk
     "EXP breeze badge!!!":                  UT2ItemData("filler", 1001, ItemClassification.filler),
     "PEZ candy":                            UT2ItemData("filler", 1002, ItemClassification.filler, 0, 6),

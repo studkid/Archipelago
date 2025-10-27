@@ -4,7 +4,7 @@ from BaseClasses import Tutorial, Region, ItemClassification
 from worlds.AutoWorld import WebWorld, World
 from .Items import UT2Item, UT2ItemData, event_item_table, get_items_by_category, item_table
 from .Locations import UT2Location, location_table
-from .Options import UT2Options, ProgMonkKey, RelaxRankNeedsPass, ShuffleFishingMissions, EndingGoal
+from .Options import UT2Options, ProgLokeyKey, RelaxRankNeedsPass, ShuffleFishingMissions, EndingGoal, EarlyBeach
 from .Regions import create_regions
 from .Rules import set_rules
 from .ut_map.map_page_index import map_page_index
@@ -64,6 +64,9 @@ class UT2World(World):
         if self.options.shuffle_fish_mission == ShuffleFishingMissions.option_false:
             self.multiworld.push_precollected(self.create_item("Fishing Mission Off"))
 
+        if self.options.early_beach == EarlyBeach.option_item:
+            item_table["Honeycomb Beach Access"] = UT2ItemData("misc prog", 348, ItemClassification.progression)
+
         if self.options.ending_goal == EndingGoal.option_fake_ending:
             self.multiworld.push_precollected(self.create_item("Fake Ending Goal"))
         elif self.options.ending_goal == EndingGoal.option_marisa_kirisame:
@@ -80,12 +83,12 @@ class UT2World(World):
             if data.category == "Filler":
                 continue
 
-            if data.category == "key" and not name == "Progressive Monk Key" and self.options.progressive_monkkey == ProgMonkKey.option_monk_key_only:
+            if data.category == "key" and not name == "Progressive Monk Key" and self.options.progressive_lokey_key == ProgLokeyKey.option_vanilla:
                 continue
 
-            if data.category == "key" and self.options.progressive_monkkey == ProgMonkKey.option_true:
+            if data.category == "key" and self.options.progressive_lokey_key == ProgLokeyKey.option_true:
                 continue
-            elif data.category == "progkey" and self.options.progressive_monkkey != ProgMonkKey.option_true:
+            elif data.category == "progkey" and self.options.progressive_lokey_key != ProgLokeyKey.option_true:
                 continue
 
             if name == "Progressive Fishing Spot" and self.options.shuffle_fish_mission == ShuffleFishingMissions.option_false:
@@ -124,7 +127,7 @@ class UT2World(World):
     def create_regions(self):
         create_regions(self.multiworld, self.player, self.options)
         self._place_events()
-        if self.options.progressive_monkkey == ProgMonkKey.option_monk_key_only:
+        if self.options.progressive_lokey_key == ProgLokeyKey.option_vanilla:
             self.multiworld.get_location("Ruins - Lake Gold Key", self.player).place_locked_item(
                             self.create_item("Gold Key"))
             self.multiworld.get_location("Ruins - Lake Silver Key", self.player).place_locked_item(

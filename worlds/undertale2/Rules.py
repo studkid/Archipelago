@@ -236,6 +236,9 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
         lambda state: can_get_fish(state, "Taiyaki", player)
     multiworld.get_location("Beach - Helper Mimic Cave", player).access_rule = \
                     lambda state: state.has("Joqua's Trowel", player)
+    
+    multiworld.get_entrance("Beach Entry -> Beach Post Boss", player).access_rule =\
+        lambda state: state.has("Prison Destroyed", player)
         
     if options.aqariumsanity == AquariumSanity.option_true:
         for name, data in fish_data.items():
