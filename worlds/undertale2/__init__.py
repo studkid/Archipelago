@@ -65,7 +65,9 @@ class UT2World(World):
             self.multiworld.push_precollected(self.create_item("Fishing Mission Off"))
 
         if self.options.early_beach == EarlyBeach.option_item:
-            item_table["Honeycomb Beach Access"] = UT2ItemData("misc prog", 348, ItemClassification.progression)
+            item_table["Honeycomb Beach Access"].count = 1
+        elif self.options.early_beach == EarlyBeach.option_true:
+            self.multiworld.push_precollected(self.create_item("Honeycomb Beach Access"))
 
         if self.options.ending_goal == EndingGoal.option_fake_ending:
             self.multiworld.push_precollected(self.create_item("Fake Ending Goal"))
@@ -135,8 +137,8 @@ class UT2World(World):
             self.multiworld.get_location("Ruins - Lake Bronze Key", self.player).place_locked_item(
                             self.create_item("Bronze Key"))
             
-        from Utils import visualize_regions
-        visualize_regions(self.multiworld.get_region("Menu", self.player), "my_world.puml")
+        # from Utils import visualize_regions
+        # visualize_regions(self.multiworld.get_region("Menu", self.player), "my_world.puml")
 
     def _place_events(self):
         self.multiworld.get_location("Lancer Encounter", self.player).place_locked_item(
