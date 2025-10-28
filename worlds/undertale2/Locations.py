@@ -199,6 +199,9 @@ location_table: Dict[str, UT2LocationData] = {
     "Warehouse - Nim":                                      UT2LocationData("pgpickup", "Post Game", 95),
     "Read Bergo's Shopping List":                           UT2LocationData("pgpickup", "Landing", 97),
 
+    "Ruins - Knockdown Peatroopers":                        UT2LocationData("pickup", "Ruins Lake", 98),
+    "Archives - Wise Dummy Skill":                          UT2LocationData("pickup", "Beach Post Boss", 99),
+
     # Enemies
     "#1 Flowey Card":                                       UT2LocationData("boss", "Landing", 301),
     "#2 Froggit Card":                                      UT2LocationData("enemy", "Ruins Main", 302),

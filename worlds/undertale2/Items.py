@@ -57,9 +57,10 @@ item_table: Dict[str, UT2ItemData] = {
     "Aluminum Hat":                         UT2ItemData("head", 121, ItemClassification.useful),
     "Aluminum Badge":                       UT2ItemData("trinket", 122, ItemClassification.useful),
     "Ra Men Abs":                           UT2ItemData("body", 123, ItemClassification.useful),
-    "Lullaby Bells":                        UT2ItemData("trinket", 124, ItemClassification.progression),
-    "Lullaby Helmet":                       UT2ItemData("trinket", 125, ItemClassification.progression),
-    "Mimic's Solong":                       UT2ItemData("trinket", 126, ItemClassification.useful),
+    "Lullaby Bells":                        UT2ItemData("pgtrinket", 124, ItemClassification.progression),
+    "Lullaby Helmet":                       UT2ItemData("pgtrinket", 125, ItemClassification.progression),
+    "Mimic's Solong":                       UT2ItemData("pgrinket", 126, ItemClassification.useful),
+    "Pea Helmet":                           UT2ItemData("head", 127, ItemClassification.useful),
 
     # Weapons
     "Lucky Crowbar":                        UT2ItemData("weapon", 201, ItemClassification.progression),
@@ -79,7 +80,7 @@ item_table: Dict[str, UT2ItemData] = {
     "Splacer":                              UT2ItemData("weapon", 215, ItemClassification.useful),
     "Rusty Shard":                          UT2ItemData("weapon", 216, ItemClassification.useful),
     "Replica Gun":                          UT2ItemData("weapon", 217, ItemClassification.useful),
-    "Lullaby Sword":                        UT2ItemData("weapon", 218, ItemClassification.progression),
+    "Lullaby Sword":                        UT2ItemData("pgweapon", 218, ItemClassification.progression),
 
     # Key Items
     "Gold Key":                             UT2ItemData("key", 301, ItemClassification.progression),
@@ -130,6 +131,9 @@ item_table: Dict[str, UT2ItemData] = {
     "[Human]":                              UT2ItemData("pgcompletion", 347, ItemClassification.progression_deprioritized_skip_balancing),
 
     "Honeycomb Beach Access":               UT2ItemData("misc prog", 348, ItemClassification.progression, 0),
+
+    # Skills
+    "Rezz":                                 UT2ItemData("useful", 400, ItemClassification.useful),
 
     # Junk
     "EXP breeze badge!!!":                  UT2ItemData("filler", 1001, ItemClassification.filler),
