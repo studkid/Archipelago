@@ -4,7 +4,7 @@ from BaseClasses import Tutorial, Region, ItemClassification
 from worlds.AutoWorld import WebWorld, World
 from .Items import UT2Item, UT2ItemData, event_item_table, get_items_by_category, item_table
 from .Locations import UT2Location, location_table
-from .Options import UT2Options, ProgLokeyKey, RelaxRankNeedsPass, ShuffleFishingMissions, EndingGoal, EarlyBeach, StartingCharacter
+from .Options import UT2Options, ProgLokeyKey, RelaxRankNeedsPass, ShuffleFishingMissions, EndingGoal, EarlyBeach, StartingCharacter, LevelSanity
 from .Regions import create_regions
 from .Rules import set_rules
 from .ut_map.map_page_index import map_page_index
@@ -63,6 +63,9 @@ class UT2World(World):
 
         if self.options.shuffle_fish_mission == ShuffleFishingMissions.option_false:
             self.multiworld.push_precollected(self.create_item("Fishing Mission Off"))
+
+        if self.options.levelsanity == LevelSanity.option_true:
+            self.multiworld.push_precollected(self.create_item("Levelsanity"))
 
         if self.options.early_beach == EarlyBeach.option_item:
             item_table["Honeycomb Beach Access"]._replace(max_quantity = 1)

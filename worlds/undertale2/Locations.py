@@ -347,7 +347,54 @@ location_table: Dict[str, UT2LocationData] = {
     "Beach - Outside Ra Dig Spot":                          UT2LocationData("dig", "Beach Post Boss", 613),
 
     # Levelsanity
-    # "Frisk - Level 1":                                      UT2LocationData("level", "Beach Post Boss", 700),
+    "Frisk - Level 2":                                      UT2LocationData("level", "Early Levelsanity", 701),
+    "Frisk - Level 3":                                      UT2LocationData("level", "Early Levelsanity", 702),
+    "Frisk - Level 4":                                      UT2LocationData("level", "Mid Levelsanity", 703),
+    "Frisk - Level 5":                                      UT2LocationData("level", "Mid Levelsanity", 704),
+    "Frisk - Level 6":                                      UT2LocationData("level", "Late Levelsanity", 705),
+    "Frisk - Level 7":                                      UT2LocationData("level", "Late Levelsanity", 706),
+
+    "Fabio - Level 2":                                      UT2LocationData("level", "Early Levelsanity", 711),
+    "Fabio - Level 3":                                      UT2LocationData("level", "Early Levelsanity", 712),
+    "Fabio - Level 4":                                      UT2LocationData("level", "Mid Levelsanity", 713),
+    "Fabio - Level 5":                                      UT2LocationData("level", "Mid Levelsanity", 714),
+    "Fabio - Level 6":                                      UT2LocationData("level", "Late Levelsanity", 715),
+    "Fabio - Level 7":                                      UT2LocationData("level", "Late Levelsanity", 716),
+
+    "sans - Level 2":                                       UT2LocationData("level", "Early Levelsanity", 721),
+    "sans - Level 3":                                       UT2LocationData("level", "Early Levelsanity", 722),
+    "sans - Level 4":                                       UT2LocationData("level", "Mid Levelsanity", 723),
+    "sans - Level 5":                                       UT2LocationData("level", "Mid Levelsanity", 724),
+    "sans - Level 6":                                       UT2LocationData("level", "Late Levelsanity", 725),
+    "sans - Level 7":                                       UT2LocationData("level", "Late Levelsanity", 726),
+
+    "Nazrin - Level 2":                                     UT2LocationData("level", "Early Levelsanity", 731),
+    "Nazrin - Level 3":                                     UT2LocationData("level", "Early Levelsanity", 732),
+    "Nazrin - Level 4":                                     UT2LocationData("level", "Mid Levelsanity", 733),
+    "Nazrin - Level 5":                                     UT2LocationData("level", "Mid Levelsanity", 734),
+    "Nazrin - Level 6":                                     UT2LocationData("level", "Late Levelsanity", 735),
+    "Nazrin - Level 7":                                     UT2LocationData("level", "Late Levelsanity", 736),
+
+    "Eclaire - Level 2":                                    UT2LocationData("level", "Early Levelsanity", 741),
+    "Eclaire - Level 3":                                    UT2LocationData("level", "Early Levelsanity", 742),
+    "Eclaire - Level 4":                                    UT2LocationData("level", "Mid Levelsanity", 743),
+    "Eclaire - Level 5":                                    UT2LocationData("level", "Mid Levelsanity", 744),
+    "Eclaire - Level 6":                                    UT2LocationData("level", "Late Levelsanity", 745),
+    "Eclaire - Level 7":                                    UT2LocationData("level", "Late Levelsanity", 746),
+
+    "Monk Key - Level 2":                                   UT2LocationData("level", "Early Levelsanity", 751),
+    "Monk Key - Level 3":                                   UT2LocationData("level", "Early Levelsanity", 752),
+    "Monk Key - Level 4":                                   UT2LocationData("level", "Mid Levelsanity", 753),
+    "Monk Key - Level 5":                                   UT2LocationData("level", "Mid Levelsanity", 754),
+    "Monk Key - Level 6":                                   UT2LocationData("level", "Late Levelsanity", 755),
+    "Monk Key - Level 7":                                   UT2LocationData("level", "Late Levelsanity", 756),
+
+    "Grindy - Level 2":                                     UT2LocationData("level", "Early Levelsanity", 761),
+    "Grindy - Level 3":                                     UT2LocationData("level", "Early Levelsanity", 762),
+    "Grindy - Level 4":                                     UT2LocationData("level", "Mid Levelsanity", 763),
+    "Grindy - Level 5":                                     UT2LocationData("level", "Mid Levelsanity", 764),
+    "Grindy - Level 6":                                     UT2LocationData("level", "Late Levelsanity", 765),
+    "Grindy - Level 7":                                     UT2LocationData("level", "Late Levelsanity", 766),
 
     # Silly
     # "Rest Zone - PISS AND SHIT FM":                         UT2LocationData("silly", "Rest Zone", 1001),

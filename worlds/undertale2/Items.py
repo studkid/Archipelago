@@ -189,6 +189,7 @@ item_table: Dict[str, UT2ItemData] = {
     "Marisa Kirisame Goal":                 UT2ItemData("filler", 90004, ItemClassification.filler, 0),
     "True Ending Goal":                     UT2ItemData("filler", 90005, ItemClassification.filler, 0),
     "All Completion Bonus Goal":            UT2ItemData("filler", 90006, ItemClassification.filler, 0),
+    "Levelsanity":                          UT2ItemData("filler", 90007, ItemClassification.filler, 0),
 }
 
 event_item_table: Dict[str, UT2ItemData] = {

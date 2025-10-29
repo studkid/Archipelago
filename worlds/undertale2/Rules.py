@@ -1,6 +1,6 @@
 from typing import List
 from BaseClasses import CollectionState, MultiWorld, Location, Region, Item
-from .Options import UT2Options, CardSanity, RequireNazrin, AquariumSanity, ShuffleFishingMissions, RelaxRankNeedsPass, EndingGoal
+from .Options import UT2Options, CardSanity, RequireNazrin, AquariumSanity, ShuffleFishingMissions, RelaxRankNeedsPass, EndingGoal, LevelSanity
 from .Locations import location_table
 from .MiscData import fish_data, fish_quests
 
@@ -15,8 +15,8 @@ def has_all(state: CollectionState, player: int, items: List[str]) -> bool:
     return True
 
 def party_count(state: CollectionState, player: int) -> int:
-    party = ["Fabio", "sans", "Nazrin", "Eclaire"]
-    count = 1
+    party = ["Frisk", "Fabio", "sans", "Nazrin", "Eclaire"]
+    count = 0
 
     for _, name in enumerate(party):
         if state.has(name, player):
@@ -115,6 +115,29 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
             lambda state: can_get_fish(state, "Angler", player)
         multiworld.get_location("#23 Angeler Card", player).access_rule = \
             lambda state: can_get_fish(state, "Angeler", player)
+        
+    # Levelsanity -----------------------------------------------------------------------
+    if options.levelsanity == LevelSanity.option_true:
+        multiworld.get_entrance("Early Levelsanity -> Mid Levelsanity") =\
+            lambda state: state.has("Prison Destroyed")
+        multiworld.get_entrance("Mid Levelsanity -> Late Levelsanity") =\
+            lambda state: state.has("Decision Chosen")
+
+        for i in range(2,8):
+            multiworld.get_location("Frisk - Level " + str(i), player).access_rule =\
+                    lambda state: state.has("Frisk", player)
+            multiworld.get_location("Fabio - Level " + str(i), player).access_rule =\
+                    lambda state: state.has("Fabio", player)
+            multiworld.get_location("sans - Level " + str(i), player).access_rule =\
+                    lambda state: state.has("sans", player)
+            multiworld.get_location("Nazrin - Level " + str(i), player).access_rule =\
+                    lambda state: state.has("Nazrin", player)
+            multiworld.get_location("Eclaire - Level " + str(i), player).access_rule =\
+                    lambda state: state.has("Eclaire", player)
+            multiworld.get_location("Monk Key - Level " + str(i), player).access_rule =\
+                lambda state: state.has("Progressive Monk Key", player, 2)
+            multiworld.get_location("Grindy - Level " + str(i), player).access_rule =\
+                    lambda state: state.has("Grindy", player)
 
     # Ruins -----------------------------------------------------------------------
     multiworld.get_entrance("Ruins Main -> Ruins Sewers", player).access_rule = \
@@ -123,7 +146,7 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
         lambda state: can_beat_snopestablook(state, player)
     multiworld.get_entrance("Ruins Lake -> Ruins Tree", player).access_rule = \
         lambda state: has_all(state, player, ["Gold Key", "Silver Key", "Bronze Key", "Progressive Monk Key"])\
-                          or state.has("Progressive Key", player, 4)
+                          or (state.has("Progressive Key", player, 3) and state.has("Progressive Monk Key", player))
     multiworld.get_location("Ruins - Lake Silver Key", player).access_rule =\
         lambda state: state.has("Gold Key", player) or state.has("Progressive Key", player, 1)
     multiworld.get_location("Ruins - Lake Bronze Key", player).access_rule =\

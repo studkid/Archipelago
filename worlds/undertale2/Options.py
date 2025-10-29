@@ -20,6 +20,7 @@ class EndingGoal(Choice):
 class StartingCharacter(Choice):
     """
     Selects your starting party member.
+    May cause issues with some events, use with caution.
     """
     display_name = "Starting Character"
     option_frisk = 0
@@ -90,6 +91,13 @@ class AquariumSanity(Toggle):
     """
     display_name = "Aquariumsanity"
 
+class LevelSanity(Toggle):
+    """
+    Adds level ups per party member as a location.
+    Additionally shuffles level up moves into the pool.
+    """
+    display_name = "Levelsanity"
+
 @dataclass
 class UT2Options(PerGameCommonOptions):
     ending_goal: EndingGoal
@@ -101,3 +109,4 @@ class UT2Options(PerGameCommonOptions):
     cardsanity: CardSanity
     require_nazrin: RequireNazrin
     aqariumsanity: AquariumSanity
+    levelsanity: LevelSanity
