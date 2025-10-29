@@ -1,6 +1,6 @@
 from typing import List
 from BaseClasses import CollectionState, MultiWorld, Location, Region, Item
-from .Options import UT2Options, CardSanity, RequireNazrin, AquariumSanity, ShuffleFishingMissions, RelaxRankNeedsPass, EndingGoal, LevelSanity
+from .Options import UT2Options, CardSanity, RequireNegotiation, AquariumSanity, ShuffleFishingMissions, RelaxRankNeedsPass, EndingGoal, LevelSanity
 from .Locations import location_table
 from .MiscData import fish_data, fish_quests
 
@@ -76,6 +76,12 @@ def can_reach_fish(state: CollectionState, player: int) -> int:
 
     return donations
 
+def can_negotiate(state: CollectionState, player: int, levelsanity: bool):
+    if levelsanity:
+        return state.has_all(["Nazrin", "Frisk", "Mouse in your Pocket"])
+    else: 
+        state.has_all(["Nazrin", "Frisk"])
+
 def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
     for name, data in location_table.items():
         if data.category[:2] == "pg" and options.ending_goal == EndingGoal.option_fake_ending:
@@ -90,24 +96,25 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
                 lambda state: state.has("Joqua's Trowel", player)
             
     # Card Sanity -----------------------------------------------------------------------
-    if options.cardsanity == CardSanity.option_all and options.require_nazrin == RequireNazrin.option_true:
+    if options.cardsanity == CardSanity.option_all and options.require_nazrin == RequireNegotiation.option_true:
         for _, name in enumerate(enemy_locations):
+            levelsanity = options.levelsanity == LevelSanity.option_true
             if name == "#62 Seriph Card" and options.ending_goal != EndingGoal.option_all_completion_bonus:
                 continue
             if name == "#59 Gilded☆Bingus Card":
                 continue
             if name == "#11 Lancer Card":
                 multiworld.get_location(name, player).access_rule = \
-                    lambda state: state.has("Nazrin", player) and state.has("Lancer Encountered", player)
+                    lambda state: can_negotiate(state, player, levelsanity) and state.has("Lancer Encountered")
             if name == "#22 Angler Card":
                 multiworld.get_location(name, player).access_rule = \
-                    lambda state: state.has("Nazrin", player) and can_get_fish(state, "Angler", player)
+                    lambda state: can_negotiate(state, player, levelsanity) and can_get_fish(state, "Angler", player)
             if name == "#23 Angeler Card":
                 multiworld.get_location(name, player).access_rule = \
-                    lambda state: state.has("Nazrin", player) and can_get_fish(state, "Angeler", player)
+                    lambda state: can_negotiate(state, player, levelsanity) and can_get_fish(state, "Angeler", player)
             
             multiworld.get_location(name, player).access_rule = \
-                lambda state: state.has("Nazrin", player)
+                lambda state: can_negotiate(state, player, levelsanity)
     elif options.cardsanity == CardSanity.option_all:
         multiworld.get_location("#11 Lancer Card", player).access_rule = \
             lambda state: state.has("Lancer Encountered", player)
@@ -118,10 +125,10 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
         
     # Levelsanity -----------------------------------------------------------------------
     if options.levelsanity == LevelSanity.option_true:
-        multiworld.get_entrance("Early Levelsanity -> Mid Levelsanity") =\
-            lambda state: state.has("Prison Destroyed")
-        multiworld.get_entrance("Mid Levelsanity -> Late Levelsanity") =\
-            lambda state: state.has("Decision Chosen")
+        multiworld.get_entrance("Early Levelsanity -> Mid Levelsanity", player).access_rule =\
+            lambda state: state.has("Prison Destroyed", player)
+        multiworld.get_entrance("Mid Levelsanity -> Late Levelsanity", player).access_rule =\
+            lambda state: state.has("Decision Chosen", player)
 
         for i in range(2,8):
             multiworld.get_location("Frisk - Level " + str(i), player).access_rule =\

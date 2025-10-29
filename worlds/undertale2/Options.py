@@ -78,9 +78,10 @@ class CardSanity(Choice):
     option_bosses_only = 1
     option_all = 2
 
-class RequireNazrin(DefaultOnToggle):
+class RequireNegotiation(DefaultOnToggle):
     """
-    Require Nazrin and Mousey Help to obtain non guarenteed enemy cards
+    Require ability to use negotiation to obtain non guarenteed enemy cards
+    Requires Frisk, Nazrin and Mouse in your Pocket
     Does nothing if cardsanity is not set to all
     """
     display_name = "Require Nazrin"
@@ -107,6 +108,6 @@ class UT2Options(PerGameCommonOptions):
     shuffle_relax: RelaxRankNeedsPass
     shuffle_fish_mission: ShuffleFishingMissions
     cardsanity: CardSanity
-    require_nazrin: RequireNazrin
+    require_nazrin: RequireNegotiation
     aqariumsanity: AquariumSanity
     levelsanity: LevelSanity

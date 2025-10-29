@@ -130,10 +130,42 @@ item_table: Dict[str, UT2ItemData] = {
     "Bergo's Shopping List":                UT2ItemData("pgcompletion", 346, ItemClassification.progression_deprioritized_skip_balancing),
     "[Human]":                              UT2ItemData("pgcompletion", 347, ItemClassification.progression_deprioritized_skip_balancing),
 
-    "Honeycomb Beach Access":               UT2ItemData("misc prog", 348, ItemClassification.progression, 0),
+    "Honeycomb Beach Access":               UT2ItemData("misc prog", 348, ItemClassification.progression),
 
     # Skills
-    "Rezz":                                 UT2ItemData("useful", 400, ItemClassification.useful),
+    "Rezz":                                 UT2ItemData("skill", 400, ItemClassification.useful),
+
+    "Breathing Exercise":                   UT2ItemData("lvskill", 401, ItemClassification.useful),
+    "Finger Guns":                          UT2ItemData("lvskill", 402, ItemClassification.useful),
+    "Helping Hand":                         UT2ItemData("lvskill", 403, ItemClassification.progression),
+    "Stepstool":                            UT2ItemData("lvskill", 404, ItemClassification.useful),
+    "Determination":                        UT2ItemData("lvskill", 405, ItemClassification.useful),
+    "Frisk (Skill)":                        UT2ItemData("lvskill", 406, ItemClassification.useful),
+    "Jump":                                 UT2ItemData("lvskill", 407, ItemClassification.useful),
+
+    "Borrow Stuffing":                      UT2ItemData("lvskill", 408, ItemClassification.useful),
+    "Cooperation":                          UT2ItemData("lvskill", 409, ItemClassification.progression),
+    "Meatshield":                           UT2ItemData("lvskill", 410, ItemClassification.useful),
+    "Attrahander":                          UT2ItemData("lvskill", 411, ItemClassification.useful),
+    "Dummyspin":                            UT2ItemData("lvskill", 412, ItemClassification.useful),
+    "Auto-Piledriver":                      UT2ItemData("lvskill", 413, ItemClassification.useful),
+
+    "Scrambled Egg":                        UT2ItemData("lvskill", 414, ItemClassification.useful),
+    "You're Blue Now":                      UT2ItemData("lvskill", 415, ItemClassification.useful),
+    "Backpat":                              UT2ItemData("lvskill", 416, ItemClassification.progression),
+    "Ghastly Blast":                        UT2ItemData("lvskill", 417, ItemClassification.useful),
+    "Sidestep":                             UT2ItemData("lvskill", 418, ItemClassification.useful),
+    "Papyrus' Odd Dance":                   UT2ItemData("lvskill", 419, ItemClassification.useful),
+
+    "Papyrus' Odd Dance":                   UT2ItemData("lvskill", 420, ItemClassification.useful),
+    "Mouse in your Pocket":                 UT2ItemData("lvskill", 421, ItemClassification.progression),
+    "Mass Grave":                           UT2ItemData("lvskill", 422, ItemClassification.useful),
+    "Speedcraft":                           UT2ItemData("lvskill", 423, ItemClassification.useful),
+    "Sneedle":                              UT2ItemData("lvskill", 424, ItemClassification.useful),
+
+    "Raidho":                               UT2ItemData("lvskill", 425, ItemClassification.useful),
+    "Wunjo":                                UT2ItemData("lvskill", 426, ItemClassification.useful),
+    "Berkano":                              UT2ItemData("lvskill", 427, ItemClassification.useful),
 
     # Junk
     "EXP breeze badge!!!":                  UT2ItemData("filler", 1001, ItemClassification.filler),

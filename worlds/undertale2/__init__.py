@@ -40,6 +40,7 @@ class UT2World(World):
         "Weapon": {name for name, data in item_table.items() if data.category == "weapon"},
         "Code Thing": {name for name, data in item_table.items() if data.category == "pgcode"},
         "Completion Items": {name for name, data in item_table.items() if data.category == "pgcompletion"},
+        "Skills": {name for name, data in item_table.items() if data.category == "skill" or data.category == "lvskill"},
     }
 
     tracker_world: ClassVar = {
@@ -56,6 +57,7 @@ class UT2World(World):
     def create_items(self):
         item_pool: List[UT2Item] = []
         total_locations = len(self.multiworld.get_unfilled_locations(self.player))
+        starting_char = None
 
         if self.options.shuffle_relax == RelaxRankNeedsPass.option_false:
             item_table["Relax Pass"] = UT2ItemData("misc prog", 311, ItemClassification.progression, 1)
@@ -69,8 +71,6 @@ class UT2World(World):
 
         if self.options.early_beach == EarlyBeach.option_item:
             item_table["Honeycomb Beach Access"]._replace(max_quantity = 1)
-        elif self.options.early_beach == EarlyBeach.option_true:
-            self.multiworld.push_precollected(self.create_item("Honeycomb Beach Access"))
 
         if self.options.ending_goal == EndingGoal.option_fake_ending:
             self.multiworld.push_precollected(self.create_item("Fake Ending Goal"))
@@ -83,26 +83,22 @@ class UT2World(World):
 
         if self.options.starting_character == StartingCharacter.option_frisk:
             self.multiworld.push_precollected(self.create_item("Frisk"))
-            item_table["Frisk"]._replace(max_quantity = 0)
+            starting_char = "Frisk"
         elif self.options.starting_character == StartingCharacter.option_fabio:
             self.multiworld.push_precollected(self.create_item("Fabio"))
-            item_table["Fabio"]._replace(max_quantity = 0)
+            starting_char = "Fabio"
         elif self.options.starting_character == StartingCharacter.option_sans:
             self.multiworld.push_precollected(self.create_item("sans"))
-            item_table["sans"]._replace(max_quantity = 0)
+            starting_char = "sans"
         elif self.options.starting_character == StartingCharacter.option_nazrin:
             self.multiworld.push_precollected(self.create_item("Nazrin"))
-            item_table["Nazrin"]._replace(max_quantity = 0)
+            starting_char = "Nazrin"
         elif self.options.starting_character == StartingCharacter.option_eclaire:
             self.multiworld.push_precollected(self.create_item("Eclaire"))
-            item_table["Eclaire"]._replace(max_quantity = 0)
+            starting_char = "Eclaire"
 
         for name, data in item_table.items():
             quantity = data.max_quantity
-
-            # Ignore filler, it will be added in a later stage.
-            if data.category == "Filler":
-                continue
 
             if data.category == "key" and self.options.progressive_lokey_key != ProgLokeyKey.option_false:
                 continue
@@ -116,6 +112,15 @@ class UT2World(World):
                 continue
 
             if (name == "Flynn" or name == "Otta" or name == "Nico" or name == "Nim") and self.options.ending_goal != EndingGoal.option_all_completion_bonus:
+                continue
+
+            if name == starting_char:
+                continue
+
+            if self.options.early_beach != EarlyBeach.option_true:
+                continue
+
+            if data.category == "lvskill" and self.options.levelsanity != LevelSanity.option_true:
                 continue
 
             item_pool += [self.create_item(name) for _ in range(0, quantity)]
