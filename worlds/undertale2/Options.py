@@ -1,4 +1,4 @@
-from Options import Choice, Range, Toggle, DeathLink, DefaultOnToggle, OptionSet, PerGameCommonOptions
+from Options import Choice, Toggle, DefaultOnToggle, PerGameCommonOptions
 
 from dataclasses import dataclass
 
@@ -16,6 +16,18 @@ class EndingGoal(Choice):
     option_true_ending = 2
     option_all_completion_bonus = 3
     default = 1
+
+class StartingCharacter(Choice):
+    """
+    Selects your starting party member.
+    """
+    display_name = "Starting Character"
+    option_frisk = 0
+    option_fabio = 1
+    option_sans = 2
+    option_nazrin = 3
+    option_eclaire = 4
+    default = 0
 
 class ProgLokeyKey(Choice):
     """
@@ -81,6 +93,7 @@ class AquariumSanity(Toggle):
 @dataclass
 class UT2Options(PerGameCommonOptions):
     ending_goal: EndingGoal
+    starting_character: StartingCharacter
     progressive_lokey_key: ProgLokeyKey
     early_beach: EarlyBeach
     shuffle_relax: RelaxRankNeedsPass

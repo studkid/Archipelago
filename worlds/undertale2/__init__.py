@@ -4,7 +4,7 @@ from BaseClasses import Tutorial, Region, ItemClassification
 from worlds.AutoWorld import WebWorld, World
 from .Items import UT2Item, UT2ItemData, event_item_table, get_items_by_category, item_table
 from .Locations import UT2Location, location_table
-from .Options import UT2Options, ProgLokeyKey, RelaxRankNeedsPass, ShuffleFishingMissions, EndingGoal, EarlyBeach
+from .Options import UT2Options, ProgLokeyKey, RelaxRankNeedsPass, ShuffleFishingMissions, EndingGoal, EarlyBeach, StartingCharacter
 from .Regions import create_regions
 from .Rules import set_rules
 from .ut_map.map_page_index import map_page_index
@@ -65,7 +65,7 @@ class UT2World(World):
             self.multiworld.push_precollected(self.create_item("Fishing Mission Off"))
 
         if self.options.early_beach == EarlyBeach.option_item:
-            item_table["Honeycomb Beach Access"].count = 1
+            item_table["Honeycomb Beach Access"]._replace(max_quantity = 1)
         elif self.options.early_beach == EarlyBeach.option_true:
             self.multiworld.push_precollected(self.create_item("Honeycomb Beach Access"))
 
@@ -78,6 +78,22 @@ class UT2World(World):
         elif self.options.ending_goal == EndingGoal.option_all_completion_bonus:
             self.multiworld.push_precollected(self.create_item("All Completion Bonus Goal"))
 
+        if self.options.starting_character == StartingCharacter.option_frisk:
+            self.multiworld.push_precollected(self.create_item("Frisk"))
+            item_table["Frisk"]._replace(max_quantity = 0)
+        elif self.options.starting_character == StartingCharacter.option_fabio:
+            self.multiworld.push_precollected(self.create_item("Fabio"))
+            item_table["Fabio"]._replace(max_quantity = 0)
+        elif self.options.starting_character == StartingCharacter.option_sans:
+            self.multiworld.push_precollected(self.create_item("sans"))
+            item_table["sans"]._replace(max_quantity = 0)
+        elif self.options.starting_character == StartingCharacter.option_nazrin:
+            self.multiworld.push_precollected(self.create_item("Nazrin"))
+            item_table["Nazrin"]._replace(max_quantity = 0)
+        elif self.options.starting_character == StartingCharacter.option_eclaire:
+            self.multiworld.push_precollected(self.create_item("Eclaire"))
+            item_table["Eclaire"]._replace(max_quantity = 0)
+
         for name, data in item_table.items():
             quantity = data.max_quantity
 
@@ -85,10 +101,7 @@ class UT2World(World):
             if data.category == "Filler":
                 continue
 
-            if data.category == "key" and not name == "Progressive Monk Key" and self.options.progressive_lokey_key == ProgLokeyKey.option_vanilla:
-                continue
-
-            if data.category == "key" and self.options.progressive_lokey_key == ProgLokeyKey.option_true:
+            if data.category == "key" and self.options.progressive_lokey_key != ProgLokeyKey.option_false:
                 continue
             elif data.category == "progkey" and self.options.progressive_lokey_key != ProgLokeyKey.option_true:
                 continue

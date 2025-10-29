@@ -346,6 +346,9 @@ location_table: Dict[str, UT2LocationData] = {
     "Beach - S Room Dig Spot":                              UT2LocationData("dig", "Beach Entry", 612),
     "Beach - Outside Ra Dig Spot":                          UT2LocationData("dig", "Beach Post Boss", 613),
 
+    # Levelsanity
+    # "Frisk - Level 1":                                      UT2LocationData("level", "Beach Post Boss", 700),
+
     # Silly
     # "Rest Zone - PISS AND SHIT FM":                         UT2LocationData("silly", "Rest Zone", 1001),
     # "Hotden - Naughty Child Wiggler":                       UT2LocationData("silly", "Hotden", 1002), 

@@ -25,9 +25,9 @@ def get_items_by_category(category: str) -> Dict[str, UT2ItemData]:
 
 item_table: Dict[str, UT2ItemData] = {
     # Party Members
-    # "Frisk":                    UT2ItemData("party", 1, ItemClassification.progression),
+    "Frisk":                                UT2ItemData("party", 1, ItemClassification.progression),
     "Fabio":                                UT2ItemData("party", 2, ItemClassification.progression),
-    "Progressive Monk Key":                 UT2ItemData("key", 3, ItemClassification.progression, 2),
+    "Progressive Monk Key":                 UT2ItemData("party", 3, ItemClassification.progression, 2),
     "sans":                                 UT2ItemData("party", 4, ItemClassification.progression),
     "Nazrin":                               UT2ItemData("party", 5, ItemClassification.progression),
     "Eclaire":                              UT2ItemData("party", 6, ItemClassification.progression),
