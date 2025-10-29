@@ -202,7 +202,7 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
         lambda state: state.has("Prison Destroyed", player)    
             
     multiworld.get_entrance("Beach Entry -> Beach Relax 1", player).access_rule =\
-        lambda state: state.has("Relax Pass", player, 1)
+        lambda state: state.has("Relax Pass", player, 1) and party_count(state, player) == 4
     if options.shuffle_relax == RelaxRankNeedsPass.option_true:
         multiworld.get_entrance("Beach Relax 1 -> Beach Relax 2", player).access_rule =\
             lambda state: state.has("Relax Pass", player, 2)
@@ -325,7 +325,7 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
         multiworld.get_entrance("Landing -> Warehouse", player).access_rule =\
             lambda state: has_all(state, player, ["Empty Gun", "Gun", "Lulliby Active"])
         multiworld.get_entrance("Warehouse -> Marisa Hall", player).access_rule =\
-            lambda state: has_all(state, player, ["Lullaby Bells", "Lullaby Sword", "Lullaby Helmet"])
+            lambda state: has_all(state, player, ["Lullaby Bells", "Lullaby Sword", "Lullaby Helmet", "Frisk"])
         multiworld.get_location("Warehouse - Patchmare Trade", player).access_rule =\
             lambda state: state.has("Mimic's adieu", player, 2)
         multiworld.get_location("Warehouse - Froguelass Gift", player).access_rule =\

@@ -117,7 +117,7 @@ class UT2World(World):
             if name == starting_char:
                 continue
 
-            if self.options.early_beach != EarlyBeach.option_true:
+            if name == "Honeycomb Beach Access" and self.options.early_beach != EarlyBeach.option_item:
                 continue
 
             if data.category == "lvskill" and self.options.levelsanity != LevelSanity.option_true:
