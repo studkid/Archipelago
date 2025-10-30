@@ -315,7 +315,7 @@ location_table: Dict[str, UT2LocationData] = {
     "Aquarium - Pagliacci":                                 UT2LocationData("aquarium", "Aquarium", 521),
     "Aquarium - Blinky":                                    UT2LocationData("aquarium", "Aquarium", 522),
     "Aquarium - Undyne JR":                                 UT2LocationData("aquarium", "Aquarium", 523),
-    "Aquarium - Whale Sharke Onesie":                       UT2LocationData("aquarium", "Aquarium", 524),
+    "Aquarium - Whale Shark Onesie":                        UT2LocationData("aquarium", "Aquarium", 524),
     "Aquarium - Angeler":                                   UT2LocationData("aquarium", "Aquarium", 525),
     "Aquarium - Sansfish":                                  UT2LocationData("aquarium", "Aquarium", 526),
     "Aquarium - Angelfish":                                 UT2LocationData("aquarium", "Aquarium", 527),

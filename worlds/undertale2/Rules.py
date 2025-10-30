@@ -253,7 +253,11 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
             lambda state: state.has("Bone Ticket", player)
         multiworld.get_entrance("Greenhorn Shore -> Stardrop Tree", player).access_rule =\
             lambda state: state.has("Star Ticket", player)
+        multiworld.get_location("Beach - Piss and Shit FM HQ", player).access_rule =\
+            lambda state: can_get_fish(state, "Pagliacci", player) and can_get_fish(state, "Whale Shark Onesie", player) and can_get_fish(state, "Leviathan", player) and can_get_fish(state, "Tsuchinoko", player)
     
+    multiworld.get_entrance("Greenhorn Shore -> Aquarium", player).access_rule =\
+        lambda state: state.has("Aquarium Key", player)
     multiworld.get_location("Beach - Melonbread Cove Chest", player).access_rule =\
         lambda state: can_get_fish(state, "Rubber Duckie", player)
     multiworld.get_location("Beach - Pudding Pond Can Trade", player).access_rule =\
@@ -276,7 +280,7 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
                 continue
             if data[0] == "Flowey Room" and options.ending_goal != EndingGoal.option_all_completion_bonus:
                 continue
-            if name == "Wrangler" and options.ending_goal != EndingGoal.option_all_completion_bonus:
+            if name == "Wrangler" and options.ending_goal == EndingGoal.option_all_completion_bonus:
                 multiworld.get_location("Aquarium - " + name, player).access_rule =\
                     lambda state: can_get_fish(state, name, player) and can_reach_fish(state, player) >= 37
             

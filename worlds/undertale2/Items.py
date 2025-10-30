@@ -96,7 +96,7 @@ item_table: Dict[str, UT2ItemData] = {
     "Relax Pass":                           UT2ItemData("misc prog", 311, ItemClassification.progression, 8),
     "Membership Card":                      UT2ItemData("misc prog", 312, ItemClassification.progression),
     "Fisherman's haste":                    UT2ItemData("misc prog", 313, ItemClassification.useful),
-    "Aquarium key":                         UT2ItemData("misc prog", 314, ItemClassification.progression),
+    "Aquarium Key":                         UT2ItemData("misc prog", 314, ItemClassification.progression),
     "Progressive Fishing Spot":             UT2ItemData("misc prog", 315, ItemClassification.progression, 6),
     "Rust Ticket":                          UT2ItemData("misc prog", 316, ItemClassification.progression),
     "Waste Ticket":                         UT2ItemData("misc prog", 317, ItemClassification.progression),
