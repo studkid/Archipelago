@@ -78,7 +78,7 @@ def can_reach_fish(state: CollectionState, player: int) -> int:
 
 def can_negotiate(state: CollectionState, player: int, levelsanity: bool):
     if levelsanity:
-        return state.has_all(["Nazrin", "Frisk", "Mouse in your Pocket"])
+        return state.has_all(["Nazrin", "Frisk", "Mouse in your Pocket"], player)
     else: 
         state.has_all(["Nazrin", "Frisk"])
 
@@ -276,13 +276,17 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
         
     if options.aqariumsanity == AquariumSanity.option_true:
         for name, data in fish_data.items():
-            if data[0] == "Heaven" and options.ending_goal < 2:
+            if data[0] == "Heaven" and options.ending_goal < EndingGoal.option_true_ending:
                 continue
             if data[0] == "Flowey Room" and options.ending_goal != EndingGoal.option_all_completion_bonus:
                 continue
-            if name == "Wrangler" and options.ending_goal == EndingGoal.option_all_completion_bonus:
-                multiworld.get_location("Aquarium - " + name, player).access_rule =\
-                    lambda state: can_get_fish(state, name, player) and can_reach_fish(state, player) >= 37
+            if name == "Wrangler":
+                if options.ending_goal != EndingGoal.option_all_completion_bonus:
+                    continue
+                else:
+                    multiworld.get_location("Aquarium - " + name, player).access_rule =\
+                        lambda state: can_reach_fish(state, player) >= 37
+                    continue
             
             multiworld.get_location("Aquarium - " + name, player).access_rule =\
                 lambda state: can_get_fish(state, name, player)
@@ -335,8 +339,9 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
         multiworld.get_location("Warehouse - Froguelass Gift", player).access_rule =\
             lambda state: state.has("Froguelass Defeated", player)
         
-        multiworld.get_entrance("Exit -> Flowey Room", player).access_rule =\
-            lambda state: can_reach_cards(state, player, options)
+        if options.ending_goal == EndingGoal.option_all_completion_bonus:
+            multiworld.get_entrance("Exit -> Flowey Room", player).access_rule =\
+                lambda state: can_reach_cards(state, player, options)
         
         multiworld.get_location("Read Bergo's Shopping List", player).access_rule =\
             lambda state: state.has("Bergo's Shopping List", player)
