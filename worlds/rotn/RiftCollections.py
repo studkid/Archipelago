@@ -45,7 +45,7 @@ class RotNCollections:
         "Got Danged": SongData(83, "TrackName_DLC_Apricot02", "MeatBoy", 5, 12, 20, 30),
         "Bootus Bleez": SongData(84, "TrackName_DLC_Apricot03", "MeatBoy", 6, 10, 19, 29),
         #Celeste
-        "Resurrections (dannyBstyle Remix)": SongData(85, "TrackName_DLC_Banana01", "FreeDLC", 6, 10, 17, 27),
+        "Resurrections (dannyBstyle Remix)": SongData(85, "TrackName_DLC_Banana01", "Free Promo", 6, 10, 17, 27),
         "Scattered and Lost": SongData(86, "Scattered and Lost", "Celeste", 4, 8, 16, 25),
         "Reach for the Summit": SongData(87, "Reach for the Summit", "Celeste", 7, 11, 18, 30),
         "Confronting Myself": SongData(88, "Confronting Myself", "Celeste", 6, 9, 17, 26),
@@ -60,20 +60,20 @@ class RotNCollections:
         "Unexpectancy, Pt. 3": SongData(95, "Unexpectancy, Pt. 3", "Pizza Tower", 8, 16, 21, 29),
         "World Wide Noise": SongData(96, "World Wide Noise", "Pizza Tower", 5, 10, 19, 28),
         #Miku
-        "Too Real": SongData(97, "Too Real", "FreeDLC", 4, 9, 16, 25),
+        "Too Real": SongData(97, "Too Real", "Free Promo", 4, 9, 16, 25),
         "M@GICAL☆CURE! LOVE ♥ SHOT!": SongData(98, "M@GICAL☆CURE! LOVE ♥ SHOT!", "Hatsune Miku", 5, 11, 18, 26),
         "Intergalactic Bound": SongData(99, "Intergalactic Bound", "Hatsune Miku", 3, 8, 15, 23),
         "Just 1dB Louder": SongData(100, "Just 1dB Louder", "Hatsune Miku", 4, 11, 18, 26),
         "MikuFiesta": SongData(101, "MikuFiesta", "Hatsune Miku", 3, 9, 16, 24),
         "Radiant Revival": SongData(102, "Radiant Revival", "Hatsune Miku", 4, 7, 16, 23),
         #Hololive
-        "REFLECT": SongData(103, "REFLECT", "FreeDLC", 7, 12, 17, 23),
+        "REFLECT": SongData(103, "REFLECT", "Free Promo", 7, 12, 17, 23),
         "BIBBIDIBA": SongData(104, "BIBBIDIBA", "Hololive", 4, 9, 14, 22),
         "Play Dice!": SongData(105, "Play Dice!", "Hololive", 8, 13, 19, 25),
         "Ahoy!! 我ら宝鐘海賊団☆": SongData(106, "Ahoy!! 我ら宝鐘海賊団☆", "Hololive", 7, 14, 20, 30),
         "Carbonated Love": SongData(107, "Carbonated Love", "Hololive", 5, 10, 15, 23),
         #Everhood
-        "Powers Of Destruction": SongData(108, "Powers of Destruction", "FreeDLC", 7, 11, 14, 20),
+        "Powers Of Destruction": SongData(108, "Powers of Destruction", "Free Promo", 7, 11, 14, 20),
         "The Final Battle": SongData(109, "The Final Battle", "Everhood", 6, 10, 16, 22),
         "Feisty Flowers": SongData(110, "Feisty Flowers", "Everhood", 5, 10, 19, 29),
         "Revenge": SongData(111, "Revenge", "Everhood", 5, 12, 20, 29),
@@ -84,6 +84,13 @@ class RotNCollections:
         "New Game": SongData(115, "New Game", "Monstercat", 6, 11, 19, 25),
         "PLAY": SongData(116, "PLAY", "Monstercat", 6, 11, 16, 26),
         "Waiting For You (feat. Joanna Jones)": SongData(117, "Waiting for you (feat. Joanna Jones)", "Monstercat", 5, 11, 16, 22),
+        #Shovel Knight
+        "Main Theme": SongData(118, "Main Theme", "Free Promo", 4, 9, 17, 24),
+        "La Danse Macabre (Lich Yard)": SongData(119, "La Danse Macabre (Lich Yard)", "Shovel Knight", 5, 7, 20, 27),
+        "Strike the Earth! (Plains of Passage)": SongData(120, "Strike the Earth! (Plains of Passage)", "Shovel Knight", 2, 8, 16, 27),
+        "In the Halls of the Usurper (Pridemoor Keep)": SongData(121, "In the Halls of the Usurper (Pridemoor Keep)", "Shovel Knight", 5, 9, 17, 22),
+        "High Above the Land (The Flying Machine)": SongData(122, "High Above the Land (The Flying Machine)", "Shovel Knight", 4, 7, 16, 21),
+        "An Underlying Problem (The Lost City)": SongData(123, "An Underlying Problem (The Lost City)", "Shovel Knight", 4, 11, 18, 23),
     }
 
     EXTRA_DATA: Dict[str, ExtraSongData] = {
@@ -105,7 +112,7 @@ class RotNCollections:
         "Base",
         "MeatBoy",
         "Anniversary",
-        "FreeDLC",
+        "Free Promo",
         "Minigame",
         "Boss"
     ]
@@ -117,6 +124,7 @@ class RotNCollections:
         "Hololive",
         "Everhood",
         "Monstercat",
+        "Shovel Knight",
 
         "Resurrections (dannyBstyle Remix)",
         "Scattered and Lost",
@@ -150,6 +158,13 @@ class RotNCollections:
         "New Game",
         "PLAY",
         "Waiting For You (feat. Joanna Jones)",
+
+        "Main Theme",
+        "La Danse Macabre (Lich Yard)",
+        "Strike the Earth! (Plains of Passage)",
+        "In the Halls of the Usurper (Pridemoor Keep)",
+        "High Above the Land (The Flying Machine)",
+        "An Underlying Problem (The Lost City)",
     ]
 
     song_locations: Dict[str, int] = {}
@@ -268,7 +283,7 @@ class RotNCollections:
             "Base Songs": {name for name, data, in self.song_items.items() if data.DLC == "base"},
             "Meat Boy": {name for name, data, in self.song_items.items() if data.DLC == "MeatBoy"},
             "Anniversary": {name for name, data, in self.song_items.items() if data.DLC == "Anniversary"},
-            "FreeDLC": {name for name, data, in self.song_items.items() if data.DLC == "FreeDLC"},
+            "Free Promo": {name for name, data, in self.song_items.items() if data.DLC == "Free Promo"},
             "Celeste": {name for name, data, in self.song_items.items() if data.DLC == "Celeste"},
             "Pizza Tower": {name for name, data, in self.song_items.items() if data.DLC == "Pizza Tower"},
             "Hatsune Miku": {name for name, data, in self.song_items.items() if data.DLC == "Hatsune Miku"},

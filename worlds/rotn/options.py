@@ -7,7 +7,7 @@ class DLCMusicPacks(OptionSet):
     Choose which DLC Packs will be included in the pool of chooseable songs.
     Both individual songs and dlc pack names work.
 
-    Current DLC Pack Groups: ["Celeste", "Pizza Tower", "Hatsune Miku", "Hololive", "Everhood", "Monstercat"]
+    Current DLC Pack Groups: ["Celeste", "Pizza Tower", "Hatsune Miku", "Hololive", "Everhood", "Monstercat", "Shovel Knight]
     """
     display_name = "DLC Packs"
     valid_keys = [dlc for dlc in RotNCollections.DLC]
