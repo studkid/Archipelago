@@ -305,7 +305,151 @@
                         "y": 158
                     }
                 ]
+            },
+			{
+				"name": "Ruins - Knockdown Peatroopers",
+				"sections": [
+                    { "name": "Ruins - Knockdown Peatroopers" }
+                ],
+				"map_locations": [
+                    {
+                        "map": "Ruins",
+                        "x": 1105,
+                        "y": 218
+                    }
+                ]
             }
 		]
-	}
+	},
+    {
+        "name": "Archives",
+        "children": [
+            {
+				"name": "Archives - Basement Bart",
+				"sections": [
+                    { "name": "Archives - Basement Bart" }
+                ],
+				"map_locations": [
+                    {
+                        "map": "Archives",
+                        "x": 580,
+                        "y": 1392
+                    }
+                ]
+            },
+            {
+				"name": "Archives - Broom Closet Lower Chest",
+				"sections": [
+                    { "name": "Archives - Broom Closet Lower Chest" }
+                ],
+				"map_locations": [
+                    {
+                        "map": "Archives",
+                        "x": 1077,
+                        "y": 1379
+                    }
+                ]
+            },
+            {
+				"name": "Archives - Broom Closet Upper Chest",
+				"sections": [
+                    { "name": "Archives - Broom Closet Upper Chest" }
+                ],
+				"map_locations": [
+                    {
+                        "map": "Archives",
+                        "x": 1001,
+                        "y": 1126
+                    }
+                ]
+            },
+            {
+				"name": "Archives - Broom Closet Upper Chest",
+				"sections": [
+                    { "name": "Archives Chimeny - Magic Glass Chest" }
+                ],
+				"map_locations": [
+                    {
+                        "map": "Archives",
+                        "x": 816,
+                        "y": 1697
+                    }
+                ]
+            },
+            {
+				"name": "Church - Chef Chest",
+				"sections": [
+                    { "name": "Church - Chef Chest" }
+                ],
+				"map_locations": [
+                    {
+                        "map": "Archives",
+                        "x": 472,
+                        "y": 578
+                    }
+                ]
+            },
+            {
+				"name": "Archives Frogue Chamber",
+				"sections": [
+                    { "name": "Archives Frogue Chamber - Odd Key" },
+                    { "name": "Archives Frogue Chamber - Froguelass Drop" },
+                    { "name": "#17 Froguelass Card" }
+                ],
+				"map_locations": [
+                    {
+                        "map": "Archives",
+                        "x": 869,
+                        "y": 1172
+                    }
+                ]
+            },
+            {
+				"name": "#10 Greater Guaglione Card",
+				"sections": [
+                    { "name": "#10 Greater Guaglione Card" }
+                ],
+				"map_locations": [
+                    {
+                        "map": "Archives",
+                        "x": 594,
+                        "y": 1303
+                    }
+                ]
+            },
+            {
+				"name": "Archives - Wise Dummy",
+				"sections": [
+                    { "name": "Archives - Wise Dummy Skill" },
+                    { "name": "Archives - Wise Dummy Drop" },
+                    { "name": "#44 The Wise Dummy Card" }
+                ],
+				"map_locations": [
+                    {
+                        "map": "Archives",
+                        "x": 388,
+                        "y": 444
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Beach",
+        "children": [
+            
+        ]
+    },
+    {
+        "name": "Toriel",
+        "children": [
+            
+        ]
+    },
+    {
+        "name": "Warehouse",
+        "children": [
+            
+        ]
+    }
 ]
