@@ -96,7 +96,7 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
                 lambda state: state.has("Joqua's Trowel", player)
             
     # Card Sanity -----------------------------------------------------------------------
-    if options.cardsanity == CardSanity.option_all and options.require_nazrin == RequireNegotiation.option_true:
+    if options.cardsanity == CardSanity.option_all and options.require_negotiation == RequireNegotiation.option_true:
         for _, name in enumerate(enemy_locations):
             levelsanity = options.levelsanity == LevelSanity.option_true
             if name == "#62 Seriph Card" and options.ending_goal != EndingGoal.option_all_completion_bonus:

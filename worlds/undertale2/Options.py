@@ -84,7 +84,7 @@ class RequireNegotiation(DefaultOnToggle):
     Requires Frisk, Nazrin and Mouse in your Pocket
     Does nothing if cardsanity is not set to all
     """
-    display_name = "Require Nazrin"
+    display_name = "Require Negotiation"
 
 class AquariumSanity(Toggle):
     """
@@ -108,6 +108,6 @@ class UT2Options(PerGameCommonOptions):
     shuffle_relax: RelaxRankNeedsPass
     shuffle_fish_mission: ShuffleFishingMissions
     cardsanity: CardSanity
-    require_nazrin: RequireNegotiation
+    require_negotiation: RequireNegotiation
     aqariumsanity: AquariumSanity
     levelsanity: LevelSanity
