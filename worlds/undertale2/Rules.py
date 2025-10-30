@@ -41,7 +41,7 @@ def can_beat_cirno(state: CollectionState, player: int) -> bool:
 
 def can_beat_superboss(state: CollectionState, player: int, levelsanity: bool) -> bool:
     if levelsanity:
-        return state.has_all(["sans", "Frisk", "Backpat", "Scrambled Egg"], player)
+        return state.has_all(["sans", "Frisk", "Backpat"], player)
     else: 
         return state.has_all(["sans", "Frisk"], player)
 
