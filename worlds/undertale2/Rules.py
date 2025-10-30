@@ -229,7 +229,7 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
             lambda state: state.has("Ice crystals", player) or state.has("Nazrin", player) # Nazrin for crafting a New Year's Eve Bomb
     
     multiworld.get_entrance("Beach Entry -> Greenhorn Shore", player).access_rule =\
-        lambda state: state.has("Membership Card", player)
+        lambda state: state.has_all(["Membership Card", "Frisk"], player)
     if options.shuffle_fish_mission == ShuffleFishingMissions.option_true:
         multiworld.get_entrance("Greenhorn Shore -> Breadcrumb Bay", player).access_rule =\
             lambda state: state.has("Progressive Fishing Spot", player)
