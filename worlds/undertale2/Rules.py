@@ -76,11 +76,11 @@ def can_reach_fish(state: CollectionState, player: int) -> int:
 
     return donations
 
-def can_negotiate(state: CollectionState, player: int, levelsanity: bool):
+def can_negotiate(state: CollectionState, player: int, levelsanity: bool) -> bool:
     if levelsanity:
         return state.has_all(["Nazrin", "Frisk", "Mouse in your Pocket"], player)
     else: 
-        state.has_all(["Nazrin", "Frisk"], player)
+        return state.has_all(["Nazrin", "Frisk"], player)
 
 def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
     for name, data in location_table.items():
@@ -101,7 +101,7 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
             levelsanity = options.levelsanity == LevelSanity.option_true
             if name == "#62 Seriph Card" and options.ending_goal != EndingGoal.option_all_completion_bonus:
                 continue
-            if name == "#59 Gilded☆Bingus Card":
+            if name == "#43 Gilded☆Bingus Card":
                 continue
             if name == "#11 Lancer Card":
                 multiworld.get_location(name, player).access_rule = \
