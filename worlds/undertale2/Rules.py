@@ -39,6 +39,12 @@ def can_beat_froguelass(state: CollectionState, player: int) -> bool:
 def can_beat_cirno(state: CollectionState, player: int) -> bool:
     return party_count(state, player) >= 4
 
+def can_beat_superboss(state: CollectionState, player: int, levelsanity: bool) -> bool:
+    if levelsanity:
+        return state.has_all(["sans", "Frisk", "Backpat", "Scrambled Egg"], player)
+    else: 
+        return state.has_all(["sans", "Frisk"], player)
+
 def can_get_fish(state: CollectionState, name: str, player: int) -> bool:
     for _, region in enumerate(fish_data[name]):
         if state.can_reach(region, "Region", player):
@@ -260,6 +266,8 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
         lambda state: state.has("Aquarium Key", player)
     multiworld.get_location("Beach - Melonbread Cove Chest", player).access_rule =\
         lambda state: can_get_fish(state, "Rubber Duckie", player)
+    multiworld.get_location("Beach - Melonbread Cove Dig Spot Island", player).access_rule =\
+        lambda state: can_get_fish(state, "Rubber Duckie", player)
     multiworld.get_location("Beach - Pudding Pond Can Trade", player).access_rule =\
         lambda state: can_get_fish(state, "Empty Can", player)
     multiworld.get_location("Stardrop Tree - Shyren Pisces Trade Chest", player).access_rule =\
@@ -345,6 +353,8 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
         
         multiworld.get_location("Read Bergo's Shopping List", player).access_rule =\
             lambda state: state.has("Bergo's Shopping List", player)
+        multiworld.get_location("Hotden Mystery Shop - Bergo's Shopping List Purchase", player).access_rule =\
+            lambda state: state.has("Lulliby Active", player)
     
     # Win Condition -----------------------------------------------------------------------
     if options.ending_goal == EndingGoal.option_fake_ending:

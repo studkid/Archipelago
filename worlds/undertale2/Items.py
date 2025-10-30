@@ -157,7 +157,7 @@ item_table: Dict[str, UT2ItemData] = {
     "Sidestep":                             UT2ItemData("lvskill", 418, ItemClassification.useful),
     "Papyrus' Odd Dance":                   UT2ItemData("lvskill", 419, ItemClassification.useful),
 
-    "Papyrus' Odd Dance":                   UT2ItemData("lvskill", 420, ItemClassification.useful),
+    "Patchwork":                            UT2ItemData("lvskill", 420, ItemClassification.useful),
     "Mouse in your Pocket":                 UT2ItemData("lvskill", 421, ItemClassification.progression),
     "Mass Grave":                           UT2ItemData("lvskill", 422, ItemClassification.useful),
     "Speedcraft":                           UT2ItemData("lvskill", 423, ItemClassification.useful),
