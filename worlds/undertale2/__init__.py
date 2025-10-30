@@ -28,7 +28,7 @@ class UT2World(World):
     game = "Undertale 2"
     options_dataclass = UT2Options
     options: UT2Options
-    topology_present = True
+    topology_present = False
     required_client_version = (0, 5, 0)
     web = UT2Web()
     item_name_groups = {

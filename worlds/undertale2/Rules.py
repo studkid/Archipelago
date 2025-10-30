@@ -102,6 +102,10 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
                 lambda state: state.has("Joqua's Trowel", player)
             
     # Card Sanity -----------------------------------------------------------------------
+    if options.cardsanity != CardSanity.option_false:
+        multiworld.get_location("#27 The Ra Men Card", player).access_rule =\
+            lambda state: can_beat_superboss(state, player, options.levelsanity == LevelSanity.option_true)
+
     if options.cardsanity == CardSanity.option_all and options.require_negotiation == RequireNegotiation.option_true:
         for _, name in enumerate(enemy_locations):
             levelsanity = options.levelsanity == LevelSanity.option_true
@@ -300,15 +304,32 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
                 lambda state: can_get_fish(state, name, player)
             
     if options.shuffle_fish_mission == ShuffleFishingMissions.option_true:
-        for i, name in enumerate(fish_quests):
-            multiworld.get_location("Beach - Fishing Mission " + str(i + 1), player).access_rule =\
-                lambda state: can_get_fish(state, name, player)
-            
+        multiworld.get_location("Beach - Fishing Mission 1", player).access_rule =\
+                lambda state: can_get_fish(state, fish_quests[0], player)
+        multiworld.get_location("Beach - Fishing Mission 2", player).access_rule =\
+                lambda state: can_get_fish(state, fish_quests[1], player) and state.can_reach("Beach - Fishing Mission 1" , "Location", player)
+        multiworld.get_location("Beach - Fishing Mission 3", player).access_rule =\
+                lambda state: can_get_fish(state, fish_quests[2], player) and state.can_reach("Beach - Fishing Mission 2" , "Location", player)
+        multiworld.get_location("Beach - Fishing Mission 4", player).access_rule =\
+                lambda state: can_get_fish(state, fish_quests[3], player) and state.can_reach("Beach - Fishing Mission 3" , "Location", player)
+        multiworld.get_location("Beach - Fishing Mission 5", player).access_rule =\
+                lambda state: can_get_fish(state, fish_quests[4], player) and state.can_reach("Beach - Fishing Mission 4" , "Location", player)
+        multiworld.get_location("Beach - Fishing Mission 6", player).access_rule =\
+                lambda state: can_get_fish(state, fish_quests[5], player) and state.can_reach("Beach - Fishing Mission 5" , "Location", player)
+        multiworld.get_location("Beach - Fishing Mission 7", player).access_rule =\
+                lambda state: can_get_fish(state, fish_quests[6], player) and state.can_reach("Beach - Fishing Mission 6" , "Location", player)
+        multiworld.get_location("Beach - Fishing Mission 8", player).access_rule =\
+                lambda state: can_get_fish(state, fish_quests[7], player) and state.can_reach("Beach - Fishing Mission 7" , "Location", player)
+        multiworld.get_location("Beach - Fishing Mission 9", player).access_rule =\
+                lambda state: can_get_fish(state, fish_quests[8], player) and state.can_reach("Beach - Fishing Mission 8" , "Location", player)
+        multiworld.get_location("Beach - Fishing Mission 10", player).access_rule =\
+                lambda state: can_get_fish(state, fish_quests[9], player) and state.can_reach("Beach - Fishing Mission 9" , "Location", player)
+        multiworld.get_location("Beach - Fishing Mission 11", player).access_rule =\
+                lambda state: can_get_fish(state, fish_quests[10], player) and state.can_reach("Beach - Fishing Mission 10" , "Location", player)
+
     multiworld.get_entrance("Beach Entry -> Miku Zone", player).access_rule =\
         lambda state: state.has("Vocal Key", player)
     multiworld.get_location("Beach - The Ra Men Drop", player).access_rule =\
-        lambda state: can_beat_superboss(state, player, options.levelsanity == LevelSanity.option_true)
-    multiworld.get_location("#27 The Ra Men Card", player).access_rule =\
         lambda state: can_beat_superboss(state, player, options.levelsanity == LevelSanity.option_true)
     
     # Toriel ------------------------------------------------------------------------------
@@ -362,11 +383,11 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
     
     # Win Condition -----------------------------------------------------------------------
     if options.ending_goal == EndingGoal.option_fake_ending:
-        multiworld.completion_condition[player] = lambda state: state.can_reach("Fake Ending", "Location", player)
+        multiworld.completion_condition[player] = lambda state: state.has("Pope Plays Undertale 2", player)
     elif options.ending_goal == EndingGoal.option_marisa_kirisame:
-        multiworld.completion_condition[player] = lambda state: state.can_reach("Marisa Battle", "Location", player)
+        multiworld.completion_condition[player] = lambda state: state.has("Marisa Defeated", player)
     elif options.ending_goal == EndingGoal.option_true_ending:
-        multiworld.completion_condition[player] = lambda state: state.can_reach("Seraph Battle", "Location", player)
+        multiworld.completion_condition[player] = lambda state: state.has("Seraph Defeated", player)
     elif options.ending_goal == EndingGoal.option_all_completion_bonus:
         if options.shuffle_fish_mission == ShuffleFishingMissions.option_true:
             multiworld.completion_condition[player] =\

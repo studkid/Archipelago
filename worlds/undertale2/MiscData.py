@@ -41,4 +41,4 @@ fish_data: Dict[str, List[str]] = {
     "Wrangler":             ["Flowey Room"]
 }
 
-fish_quests: List[str] = ["Sega Bass", "Fugu Fish", "Rotten Mackerel", "Luvdisc", "Tuna Sashimi", "Goldfish Cracker", "Essicated Angler", "Pagliacci", "Whale Shark Onesie", "Leviathan", "Tsuchinoko"]
+fish_quests: List[str] = ["Sega Bass", "Fugu Fish", "Rotten Mackerel", "Luvdisc", "Tuna Sashimi", "Goldfish Cracker", "Angler", "Pagliacci", "Whale Shark Onesie", "Leviathan", "Tsuchinoko"]
