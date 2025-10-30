@@ -182,7 +182,7 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
     multiworld.get_entrance("Ruins Tree -> Swamp", player).access_rule =\
         lambda state: state.has("Hotden Reached", player)
     multiworld.get_entrance("Swamp -> Spark Chamber", player).access_rule =\
-            lambda state: state.has("Odd Key", player, 3)
+            lambda state: state.has("Odd Key", player, 3) and can_beat_superboss(state, player, options.levelsanity == LevelSanity.option_true)
     
     # Prison -----------------------------------------------------------------------
     multiworld.get_entrance("Hotden -> Prison Cells", player).access_rule =\
@@ -306,6 +306,10 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
             
     multiworld.get_entrance("Beach Entry -> Miku Zone", player).access_rule =\
         lambda state: state.has("Vocal Key", player)
+    multiworld.get_location("Beach - The Ra Men Drop", player).access_rule =\
+        lambda state: can_beat_superboss(state, player, options.levelsanity == LevelSanity.option_true)
+    multiworld.get_location("#27 The Ra Men Card", player).access_rule =\
+        lambda state: can_beat_superboss(state, player, options.levelsanity == LevelSanity.option_true)
     
     # Toriel ------------------------------------------------------------------------------
     multiworld.get_entrance("Toriel House -> Toriel Roof", player).access_rule =\
