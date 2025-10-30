@@ -80,7 +80,7 @@ def can_negotiate(state: CollectionState, player: int, levelsanity: bool):
     if levelsanity:
         return state.has_all(["Nazrin", "Frisk", "Mouse in your Pocket"], player)
     else: 
-        state.has_all(["Nazrin", "Frisk"])
+        state.has_all(["Nazrin", "Frisk"], player)
 
 def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
     for name, data in location_table.items():
