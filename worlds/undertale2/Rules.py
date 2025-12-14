@@ -1,6 +1,6 @@
 from typing import List
 from BaseClasses import CollectionState, MultiWorld, Location, Region, Item
-from .Options import UT2Options, CardSanity, RequireNegotiation, AquariumSanity, ShuffleFishingMissions, RelaxRankNeedsPass, EndingGoal, LevelSanity
+from .Options import UT2Options, CardSanity, RequireNegotiation, AquariumSanity, ShuffleFishingMissions, RelaxRankNeedsPass, EndingGoal, LevelSanity, EarlyBeach
 from .Locations import location_table
 from .MiscData import fish_data, fish_quests
 
@@ -331,6 +331,10 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
         lambda state: state.has("Vocal Key", player)
     multiworld.get_location("Beach - The Ra Men Drop", player).access_rule =\
         lambda state: can_beat_superboss(state, player, options.levelsanity == LevelSanity.option_true)
+    
+    if options.early_beach != EarlyBeach.option_item:
+        multiworld.get_entrance("Rest Zone -> Beach Entry").access_rule =\
+            lambda state: state.has("Honeycomb Beach Access")
     
     # Toriel ------------------------------------------------------------------------------
     multiworld.get_entrance("Toriel House -> Toriel Roof", player).access_rule =\
