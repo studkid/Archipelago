@@ -134,7 +134,7 @@ class RotNCollections:
         "Everhood",
         "Monstercat",
         "Shovel Knight",
-        "Friday Night Funkin'"
+        "Friday Night Funkin'",
 
         "Resurrections (dannyBstyle Remix)",
         "Scattered and Lost",
@@ -175,7 +175,7 @@ class RotNCollections:
         "In the Halls of the Usurper (Pridemoor Keep)",
         "High Above the Land (The Flying Machine)",
         "An Underlying Problem (The Lost City)",
-        
+
         "Blammed",
         "Stress",
         "Darnell",
