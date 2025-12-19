@@ -339,7 +339,7 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
     multiworld.get_location("Beach - The Ra Men Drop", player).access_rule =\
         lambda state: can_beat_superboss(state, player, options.levelsanity == LevelSanity.option_true)
     
-    if options.early_beach != EarlyBeach.option_item:
+    if options.early_beach == EarlyBeach.option_item:
         multiworld.get_entrance("Rest Zone -> Beach Entry", player).access_rule =\
             lambda state: state.has("Honeycomb Beach Access")
     
