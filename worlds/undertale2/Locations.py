@@ -83,8 +83,8 @@ location_table: Dict[str, UT2LocationData] = {
     "P-Capsule Hotden Seller - Yoko-P Purchase":            UT2LocationData("shop", "Hotden", 215),
     "P-Capsule Hotden Seller - Wadda-P Purchase":           UT2LocationData("shop", "Hotden", 216),
     
-    "Nicky Coinflip Prison - Prison shank Purchase":        UT2LocationData("shop", "Prison Kitchen", 217),     
-    "Nicky Coinflip Prison - Cool shades Purchase":         UT2LocationData("shop", "Prison Kitchen", 218),
+    "Nicky Coinflip Prison - Prison shank Purchase":        UT2LocationData("shop", "Prison Cells", 217),     
+    "Nicky Coinflip Prison - Cool shades Purchase":         UT2LocationData("shop", "Prison Cells", 218),
     
     "P-Capsule Beach Seller - Yeller-P Purchase":           UT2LocationData("shop", "Beach Entry", 219),      
     "P-Capsule Beach Seller - Blues-P Purchase":            UT2LocationData("shop", "Beach Entry", 220),      
