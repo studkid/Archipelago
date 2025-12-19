@@ -341,7 +341,7 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
     
     if options.early_beach == EarlyBeach.option_item:
         multiworld.get_entrance("Rest Zone -> Beach Entry", player).access_rule =\
-            lambda state: state.has("Honeycomb Beach Access")
+            lambda state: state.has("Honeycomb Beach Access", player)
     
     # Toriel ------------------------------------------------------------------------------
     multiworld.get_entrance("Toriel House -> Toriel Roof", player).access_rule =\
