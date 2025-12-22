@@ -108,6 +108,8 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
     if options.cardsanity != CardSanity.option_false:
         multiworld.get_location("#27 The Ra Men Card", player).access_rule =\
             lambda state: can_beat_superboss(state, player, options.levelsanity == LevelSanity.option_true)
+        multiworld.get_location("#29 Hatsune Miku Card", player).access_rule =\
+            lambda state: can_beat_miku(state, player)
 
     if options.cardsanity == CardSanity.option_all and options.require_negotiation == RequireNegotiation.option_true:
         for _, name in enumerate(enemy_locations):
@@ -332,8 +334,6 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
 
     multiworld.get_entrance("Beach Entry -> Miku Zone", player).access_rule =\
         lambda state: state.has("Vocal Key", player)
-    multiworld.get_location("#29 Hatsune Miku Card", player).access_rule =\
-        lambda state: can_beat_miku(state, player)
     multiworld.get_location("Miku Zone - Hatsune Miku Drop", player).access_rule =\
         lambda state: can_beat_miku(state, player)
     multiworld.get_location("Beach - The Ra Men Drop", player).access_rule =\
