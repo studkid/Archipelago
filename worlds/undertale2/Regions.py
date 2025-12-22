@@ -97,7 +97,7 @@ def create_regions(multiworld: MultiWorld, player: int, options: UT2Options):
             continue
         if (data.region == "Post Game" or data.category[:2] == "pm") and options.ending_goal != EndingGoal.option_all_completion_bonus:
             continue
-        if data.region == "Levelsanity" and options.levelsanity != LevelSanity.option_true:
+        if data.category == "level" and options.levelsanity != LevelSanity.option_true:
             continue
 
         regions[data.region].locations.append(name)
