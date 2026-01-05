@@ -194,33 +194,30 @@ class RotNWorld(World):
         if items_left <= 0:
             return
 
-        # When it comes to filling remaining spaces, we have 2 options. A useless filler or additional songs.
-        # First fill 50% with the filler. The rest is to be duplicate songs.
-        filler_count = floor(items_left * (self.options.duplicate_song_percentage / 100))
-        items_left -= filler_count
-
-        for _ in range(0, filler_count):
-            self.multiworld.itempool.append(self.create_item(self.get_filler_item_name()))
-
-        # All remaining spots are filled with duplicate songs. Duplicates are set to useful instead of progression
-        # to cut down on the number of progression items that Muse Dash puts into the pool.
+        # Fill dupe songs
+        dupe_count = floor(items_left * (self.options.duplicate_song_percentage // 100))
+        items_left -= dupe_count
 
         # This is for the extraordinary case of needing to fill a lot of items.
-        while items_left > len(song_keys_in_pool):
+        while dupe_count > len(song_keys_in_pool):
             for key in song_keys_in_pool:
                 item = self.create_item(key)
                 item.classification = ItemClassification.useful
                 self.multiworld.itempool.append(item)
 
-            items_left -= len(song_keys_in_pool)
+            dupe_count -= len(song_keys_in_pool)
             continue
 
         # Otherwise add a random assortment of songs
         self.random.shuffle(song_keys_in_pool)
-        for i in range(0, items_left):
+        for i in range(0, dupe_count):
             item = self.create_item(song_keys_in_pool[i])
             item.classification = ItemClassification.useful
             self.multiworld.itempool.append(item)
+
+        # Fill remaining filler
+        for _ in range(0, item_count):
+            self.multiworld.itempool.append(self.create_item(self.get_filler_item_name()))
 
     def create_regions(self) -> None:
         menu_region = Region("Menu", self.player, self.multiworld)
