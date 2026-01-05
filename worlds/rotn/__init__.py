@@ -2,6 +2,7 @@ from BaseClasses import Tutorial, Region, Item, ItemClassification
 from worlds.AutoWorld import WebWorld, World
 from typing import List, ClassVar, Type
 from math import floor
+import typing
 from Options import PerGameCommonOptions, OptionError
 
 from .options import RotNOptions, rotn_option_groups
@@ -255,6 +256,10 @@ class RotNWorld(World):
         multiplier = self.options.diamond_win_percentage.value / 100.0
         diamond_count = self.get_diamond_count()
         return max(1, floor(diamond_count * multiplier))
+    
+    def write_spoiler_header(self, spoiler_handle: typing.TextIO):
+        spoiler_handle.write(f"Selected Goal Song:              {self.victory_song_name}\n")
+        spoiler_handle.write(f"Diamonds Needed for Goal:        {self.get_diamond_win_count()}\n")
     
     @staticmethod
     def interpret_slot_data(slot_data: dict[str, any]) -> dict[str, any]:
