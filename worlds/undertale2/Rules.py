@@ -279,14 +279,18 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
         lambda state: can_get_fish(state, "Rubber Duckie", player)
     multiworld.get_location("Beach - Pudding Pond Can Trade", player).access_rule =\
         lambda state: can_get_fish(state, "Empty Can", player)
-    multiworld.get_location("Stardrop Tree - Shyren Pisces Trade Chest", player).access_rule =\
+    multiworld.get_location("Stardrop Tree - Shyren Pisces Trade 1", player).access_rule =\
+        lambda state: state.can_reach("Big Bone Bay - Shyren Undyne Jr Trade", "Location", player)
+    multiworld.get_location("Stardrop Tree - Shyren Pisces Trade 2", player).access_rule =\
         lambda state: state.can_reach("Big Bone Bay - Shyren Undyne Jr Trade", "Location", player)
     multiworld.get_location("Big Bone Bay - Shyren Undyne Jr Trade", player).access_rule =\
-        lambda state: state.can_reach("Chemical Waste Zone - Shyren Pagliacci Chest", "Location", player)
+        lambda state: state.can_reach("Chemical Waste Zone - Shyren Pagliacci", "Location", player)
     multiworld.get_location("Beach - Eclaire", player).access_rule =\
         lambda state: can_get_fish(state, "Taiyaki", player)
     multiworld.get_location("Beach - Helper Mimic Cave", player).access_rule = \
                     lambda state: state.has("Joqua's Trowel", player)
+    multiworld.get_location("Chemical Waste Zone - Xavier Cum Buddy Trade", player).access_rule =\
+        lambda state: can_get_fish(state, "Cum Buddy", player)
     
     multiworld.get_entrance("Beach Entry -> Beach Post Boss", player).access_rule =\
         lambda state: state.has("Prison Destroyed", player)

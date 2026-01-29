@@ -151,9 +151,9 @@ location_table: Dict[str, UT2LocationData] = {
     "Big Bone Bay - Angeler Trade Chest":                   UT2LocationData("pickup", "Big Bone Bay", 53),
     "Rust Gear Gulf - Can Trade Chest":                     UT2LocationData("pickup", "Rust Gear Gulf", 54),
     "Chemical Waste Zone - Can Trade Chest":                UT2LocationData("pickup", "Chemical Waste Zone", 55),
-    "Chemical Waste Zone - Shyren Pagliacci Chest":         UT2LocationData("pickup", "Chemical Waste Zone", 56),
-    "Stardrop Tree - Shyren Pisces Trade Chest":            UT2LocationData("pickup", "Stardrop Tree", 57),
-    "Stardrop Tree - Can Trade Chest":                      UT2LocationData("pickup", "Stardrop Tree", 58),
+    "Chemical Waste Zone - Shyren Pagliacci":               UT2LocationData("pickup", "Chemical Waste Zone", 56),
+    "Stardrop Tree - Shyren Pisces Trade 1":                UT2LocationData("pickup", "Stardrop Tree", 57),
+    "Stardrop Tree - Can Trade":                            UT2LocationData("pickup", "Stardrop Tree", 58),
     "Beach - Helper Mimic Cave":                            UT2LocationData("pickup", "Beach Post Boss", 59),
     "Miku Zone - Robo Miku Chest":                          UT2LocationData("pickup", "Miku Zone", 60),
 
@@ -201,6 +201,9 @@ location_table: Dict[str, UT2LocationData] = {
 
     "Ruins - Knockdown Peatroopers":                        UT2LocationData("pickup", "Ruins Lake", 98),
     "Archives - Wise Dummy Skill":                          UT2LocationData("pickup", "Beach Post Boss", 99),
+
+    "Stardrop Tree - Shyren Pisces Trade 2":                UT2LocationData("pickup", "Stardrop Tree", 100),
+    "Chemical Waste Zone - Xavier Cum Buddy Trade":         UT2LocationData("pickup", "Chemical Waste Zone", 101),
 
     # Enemies
     "#1 Flowey Card":                                       UT2LocationData("boss", "Landing", 301),
