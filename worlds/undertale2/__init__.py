@@ -1,6 +1,7 @@
 from typing import List, ClassVar
 
-from BaseClasses import Tutorial, Region, ItemClassification
+from BaseClasses import Tutorial, Region, ItemClassification, CollectionState
+from NetUtils import JSONMessagePart
 from worlds.AutoWorld import WebWorld, World
 from .Items import UT2Item, UT2ItemData, event_item_table, get_items_by_category, item_table
 from .Locations import UT2Location, location_table

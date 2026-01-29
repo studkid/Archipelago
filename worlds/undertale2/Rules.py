@@ -1,5 +1,5 @@
 from typing import List
-from BaseClasses import CollectionState, MultiWorld, Location, Region, Item
+from BaseClasses import CollectionState, MultiWorld
 from .Options import UT2Options, CardSanity, RequireNegotiation, AquariumSanity, ShuffleFishingMissions, RelaxRankNeedsPass, EndingGoal, LevelSanity, EarlyBeach
 from .Locations import location_table
 from .MiscData import fish_data, fish_quests
@@ -306,7 +306,7 @@ def set_rules(multiworld: MultiWorld, player: int, options: UT2Options):
                     continue
             
             multiworld.get_location("Aquarium - " + name, player).access_rule =\
-                lambda state: can_get_fish(state, name, player)
+                lambda state, n=name: can_get_fish(state, n, player)
             
     if options.shuffle_fish_mission == ShuffleFishingMissions.option_true:
         multiworld.get_location("Beach - Fishing Mission 1", player).access_rule =\
