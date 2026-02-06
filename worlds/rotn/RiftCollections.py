@@ -215,7 +215,7 @@ class RotNCollections:
         for key, data in self.EXTRA_DATA.items():
             self.song_items[key] = SongData(data.code, key, data.DLC, 1, 0, 0, 0, data.DLC)
             self.song_items[key + " (Medium)"] = SongData(data.code + 1, key, data.DLC, 0, 1, 0, 0, data.DLC)
-            self.song_items[key + " (Hard)"] = SongData(data.code + 1, key, data.DLC, 0, 0, 1, 0, data.DLC)
+            self.song_items[key + " (Hard)"] = SongData(data.code + 2, key, data.DLC, 0, 0, 1, 0, data.DLC)
 
         self.item_names_to_id.update({name: data.code for name, data in self.song_items.items()})
 
