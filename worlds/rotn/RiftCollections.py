@@ -296,7 +296,7 @@ class RotNCollections:
             "Minigame": {name for name, data, in self.song_items.items() if data.type == "Minigame"},
             "Boss Battle": {name for name, data, in self.song_items.items() if data.type == "Boss"},
 
-            "Base Songs": {name for name, data, in self.song_items.items() if data.DLC == "base"},
+            "Base Songs": {name for name, data, in self.song_items.items() if data.DLC == "Base"},
             "Meat Boy": {name for name, data, in self.song_items.items() if data.DLC == "MeatBoy"},
             "Anniversary": {name for name, data, in self.song_items.items() if data.DLC == "Anniversary"},
             "Free Promo": {name for name, data, in self.song_items.items() if data.DLC == "Free Promo"},
