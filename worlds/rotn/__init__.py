@@ -53,6 +53,7 @@ class RotNWorld(World):
     location_count: int
 
     def generate_early(self):
+        logger = logging.getLogger("RotN")
         # Universal Tracker Support
         re_gen_passthrough = getattr(self.multiworld, "re_gen_passthrough", {})
         if re_gen_passthrough and self.game in re_gen_passthrough:
@@ -64,6 +65,10 @@ class RotNWorld(World):
                 self.location_count = len(self.included_songs) * 2
             return
         
+        if len(self.options.difficulty_option.value) == 0:
+            self.options.difficulty_option.value = self.options.difficulty_option.default
+            logger.warning(f"\nWarning: {self.player_name} has no difficulties selected in difficulty_option.  They should fix their yaml.\nResetting to default value to continue gen.")
+
         min_diff = min(self.options.min_intensity.value, self.options.max_intensity.value)
         max_diff = max(self.options.min_intensity.value, self.options.max_intensity.value)
 
@@ -112,7 +117,6 @@ class RotNWorld(World):
                 min_diff -= 1
             
         if filter_error:
-            logger = logging.getLogger("RotN")
             logger.warning(f"\nWarning: {self.player_name}'s song filtering settings were too restrictive.  {self.player_name} should fix their yaml settings.\nGeneration will continue with the following difficulty ranges ({min_diff} - {max_diff}).")
 
         self.create_song_pool(final_song_list)
