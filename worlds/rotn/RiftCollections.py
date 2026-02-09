@@ -100,6 +100,8 @@ class RotNCollections:
         "Senpai": SongData(129, "Senpai", "Friday Night Funkin'", 2, 10, 16, 24),
         #Unbeatable
         "WORN OUT TAPES [tally-ho version]": SongData(130, "WORN OUT TAPES [tally-ho version]", "Free Promo", 5, 12, 16, 25),
+        #Rift Anniversary
+        "Portabellohead": SongData(131, "Portabellohead", "Free Promo", 3, 8, 13, 18, False),
     }
 
     EXTRA_DATA: Dict[str, ExtraSongData] = {
