@@ -1,4 +1,4 @@
-from BaseClasses import Tutorial, Region, Item, ItemClassification
+from BaseClasses import Tutorial, Region, Item, ItemClassification, logging
 from worlds.AutoWorld import WebWorld, World
 from typing import List, ClassVar, Type
 from math import floor
@@ -69,6 +69,7 @@ class RotNWorld(World):
 
         starter_song_count = self.options.starting_song_count.value
         goal_song_pool = self.options.goal_song_pool.value
+        filter_error = False
 
         while True:
             available_song_keys = self.rift_collection.getSongsWithSettings(self.options, min_diff, max_diff)
@@ -102,12 +103,17 @@ class RotNWorld(World):
 
             # If the above fails, we want to adjust the difficulty thresholds.
             # Easier first, then harder
+            filter_error = True
             if min_diff <= 1 and max_diff >= 40:
                 raise OptionError("Failed to find enough songs, even with maximum difficulty thresholds.  (Did you exclude too many songs?)")
             elif min_diff <= 1:
                 max_diff += 1
             else:
                 min_diff -= 1
+            
+        if filter_error:
+            logger = logging.getLogger("RotN")
+            logger.warning(f"\nWarning: {self.player_name}'s song filtering settings were too restrictive.  {self.player_name} should fix their yaml settings.\nGeneration will continue with the following difficulty ranges ({min_diff} - {max_diff}).")
 
         self.create_song_pool(final_song_list)
 
