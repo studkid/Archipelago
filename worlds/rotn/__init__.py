@@ -95,8 +95,8 @@ class RotNWorld(World):
             del available_song_keys[chosen_song_index]
 
             count_needed_for_start = max(0, starter_song_count - len(self.starting_songs))
-            if len(available_song_keys) + len(self.included_songs) >= count_needed_for_start + 11:
-                final_song_list = available_song_keys
+            if len(available_song_keys) >= count_needed_for_start + 11:
+                final_song_list = [s for s in available_song_keys if s not in self.included_songs]
                 break
 
             # If the above fails, we want to adjust the difficulty thresholds.
@@ -114,8 +114,6 @@ class RotNWorld(World):
             self.multiworld.push_precollected(self.create_item(song))
 
     def handle_plando(self, available_song_keys: List[str]) -> List[str]:
-        song_items = self.rift_collection.song_items
-
         start_items = self.options.start_inventory.value.keys()
         include_songs = self.options.include_songs.value
         exclude_songs = self.options.exclude_songs.value
@@ -124,7 +122,7 @@ class RotNWorld(World):
         self.included_songs = [s for s in include_songs if s in available_song_keys and s not in self.starting_songs]
 
         return [s for s in available_song_keys if s not in start_items
-                and s not in include_songs and s not in exclude_songs]
+                and s not in exclude_songs]
     
     def create_song_pool(self, available_song_keys: List[str]):
         starting_song_count = self.options.starting_song_count.value
