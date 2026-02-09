@@ -74,30 +74,31 @@ class RotNWorld(World):
             available_song_keys = self.rift_collection.getSongsWithSettings(self.options, min_diff, max_diff)
             available_song_keys = self.handle_plando(available_song_keys)
 
-            # Find the proposed goal songs and add them to a new list
-            victory_song_keys = []
-            for goal_song_canidate in goal_song_pool:
-                for index, available_song in enumerate(available_song_keys):
-                    if goal_song_canidate == available_song:
-                        # Include the canidates correlating index to the full list for later use
-                        victory_song_keys.append([index, available_song])
+            if len(available_song_keys) > 0:
+                # Find the proposed goal songs and add them to a new list
+                victory_song_keys = []
+                for goal_song_canidate in goal_song_pool:
+                    for index, available_song in enumerate(available_song_keys):
+                        if goal_song_canidate == available_song:
+                            # Include the canidates correlating index to the full list for later use
+                            victory_song_keys.append([index, available_song])
 
-            if victory_song_keys:
-                chosen_song_index = self.random.randrange(0, len(victory_song_keys))
-                self.victory_song_name = victory_song_keys[chosen_song_index][1]
-                self.victory_song_type = self.rift_collection.song_items[self.victory_song_name].type
-                # Replace the chosen goal song's index with the index from the full list we saved earlier.
-                chosen_song_index = victory_song_keys[chosen_song_index][0]
-            else:
-                chosen_song_index = self.random.randrange(0, len(available_song_keys))
-                self.victory_song_name = available_song_keys[chosen_song_index]
-                self.victory_song_type = self.rift_collection.song_items[self.victory_song_name].type
-            del available_song_keys[chosen_song_index]
+                if victory_song_keys:
+                    chosen_song_index = self.random.randrange(0, len(victory_song_keys))
+                    self.victory_song_name = victory_song_keys[chosen_song_index][1]
+                    self.victory_song_type = self.rift_collection.song_items[self.victory_song_name].type
+                    # Replace the chosen goal song's index with the index from the full list we saved earlier.
+                    chosen_song_index = victory_song_keys[chosen_song_index][0]
+                else:
+                    chosen_song_index = self.random.randrange(0, len(available_song_keys))
+                    self.victory_song_name = available_song_keys[chosen_song_index]
+                    self.victory_song_type = self.rift_collection.song_items[self.victory_song_name].type
+                del available_song_keys[chosen_song_index]
 
-            count_needed_for_start = max(0, starter_song_count - len(self.starting_songs))
-            if len(available_song_keys) >= count_needed_for_start + 11:
-                final_song_list = [s for s in available_song_keys if s not in self.included_songs]
-                break
+                count_needed_for_start = max(0, starter_song_count - len(self.starting_songs))
+                if len(available_song_keys) >= count_needed_for_start + 11:
+                    final_song_list = [s for s in available_song_keys if s not in self.included_songs]
+                    break
 
             # If the above fails, we want to adjust the difficulty thresholds.
             # Easier first, then harder
