@@ -1,4 +1,5 @@
 from .items import SongData, ExtraSongData
+from .datagen import extractModDataToJson
 from typing import Dict, List, Set
 from collections import ChainMap
 
@@ -6,7 +7,7 @@ class RotNCollections:
     DIAMOND_NAME: str = "Diamond"
     DIAMOND_CODE: int = 1
 
-    # Thanks to DeamonHunter for genning this info
+    # Thanks to DeamonHunter for genning most of this info
     SONG_DATA: Dict[str, SongData] = {
         "Disco Disaster": SongData(50, "TrackName_DiscoDisaster", "Base", 1, 4, 7, 22),
         "Elusional": SongData(51, "TrackName_Elusional", "Base", 2, 6, 11, 21),
@@ -210,6 +211,8 @@ class RotNCollections:
     def __init__(self) -> None:
         self.item_names_to_id[self.DIAMOND_NAME] = self.DIAMOND_CODE
 
+        mod_data = extractModDataToJson()
+
         for key, data in self.SONG_DATA.items():
             self.song_items[key] = data
             self.song_items[key + " (Remix)"] = SongData(data.code + 1000, data.song_name, data.DLC, data.diff_easy, data.diff_medium, data.diff_hard, data.diff_impossible, "Remix")
@@ -297,6 +300,10 @@ class RotNCollections:
             "Remix Rift": {name for name, data, in self.song_items.items() if data.type == "Remix"},
             "Minigame": {name for name, data, in self.song_items.items() if data.type == "Minigame"},
             "Boss Battle": {name for name, data, in self.song_items.items() if data.type == "Boss"},
+
+            "Vanilla": {name for name, data, in self.song_items.items() if data.DLC != "Workshop" or data.DLC != "local"},
+            "Workshop": {name for name, data, in self.song_items.items() if data.DLC == "Workshop"},
+            "Local": {name for name, data, in self.song_items.items() if data.DLC == "Local"},
 
             "Base Songs": {name for name, data, in self.song_items.items() if data.DLC == "Base"},
             "Meat Boy": {name for name, data, in self.song_items.items() if data.DLC == "MeatBoy"},

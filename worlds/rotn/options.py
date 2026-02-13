@@ -1,4 +1,4 @@
-from Options import Toggle, Range, Choice, ItemSet, OptionSet, PerGameCommonOptions, OptionGroup
+from Options import Toggle, Range, Choice, ItemSet, OptionSet, PerGameCommonOptions, OptionGroup, FreeText, Visibility
 from dataclasses import dataclass
 from .RiftCollections import RotNCollections
 
@@ -77,6 +77,7 @@ class DifficultyOption(OptionSet):
 class MinIntensity(Range):
     """ 
     Ensures chosen rhythm rift will have a chart with an intensity value higher than this value (Rhythm Rifts only)
+    Note: Highest intensity song in vanilla is 30
     """
     range_start = 1
     range_end = 40
@@ -86,10 +87,11 @@ class MinIntensity(Range):
 class MaxIntensity(Range):
     """
     Ensures chosen rhythm rift will have a chart with an intensity value lower than this value (Rhythm Rifts only)
+    Note: Highest intensity song in vanilla is 30
     """
     range_start = 1
     range_end = 40
-    default = 30
+    default = 40
     display_name = "Maximum Intensity"
 
 class GradeNeeded(Choice):
@@ -147,10 +149,23 @@ class ExcludeSongs(ItemSet):
     display_name = "Exclude Songs"
 
 class GoalSongPool(ItemSet):
-    """Songs listed here will randomly chosen to be the final song.
-    If empty, the goal song will be chosen randomly from all included songs."""
+    """
+    Songs listed here will randomly chosen to be the final song.
+    If empty, the goal song will be chosen randomly from all included songs.
+    """
     verify_item_name = True
     display_name = "Goal Song Pool"
+
+class ModData(FreeText):
+    """
+    Experimental: Custom songs to add to the pool.  If you want to use this, ppen the custom songs menu
+    with the mod active and paste the contents of the /Output/CustomSongs.json file here.
+
+    Note: Any songs with intensity ratings outside of the range -1 - 40 will be automatically changed to fit this range
+    If this is an issue, exclude them instead
+    """
+    default = ''
+    visibility = Visibility.template | Visibility.spoiler
 
 rotn_option_groups = [
     OptionGroup("Song Pool Settings", [
@@ -161,6 +176,7 @@ rotn_option_groups = [
         IncludeSongs,
         ExcludeSongs,
         GoalSongPool,
+        ModData,
     ]),
     OptionGroup("Difficulty Settings", [
         DifficultyOption,
@@ -190,3 +206,4 @@ class RotNOptions(PerGameCommonOptions):
     include_songs: IncludeSongs
     exclude_songs: ExcludeSongs
     goal_song_pool: GoalSongPool
+    rotn_mod_data: ModData
