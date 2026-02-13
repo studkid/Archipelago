@@ -96,7 +96,7 @@ class RotNCollections:
         "Blammed": SongData(125, "Blammed", "Friday Night Funkin'", 7, 12, 18, 25),
         "Stress": SongData(126, "Stress", "Friday Night Funkin'", 7, 15, 21, 28),
         "Darnell": SongData(127, "Darnell", "Friday Night Funkin'", 6, 10, 19, 27),
-        "Ugh": SongData(185, "Ugh", "Friday Night Funkin'", 5, 12, 17, 24),
+        "Ugh": SongData(128, "Ugh", "Friday Night Funkin'", 5, 12, 17, 24),
         "Senpai": SongData(129, "Senpai", "Friday Night Funkin'", 2, 10, 16, 24),
         #Unbeatable
         "WORN OUT TAPES [tally-ho version]": SongData(130, "WORN OUT TAPES [tally-ho version]", "Free Promo", 5, 12, 16, 25),
