@@ -2,10 +2,19 @@ from .items import SongData, ExtraSongData
 from .datagen import extractModDataToJson
 from typing import Dict, List, Set
 from collections import ChainMap
+from BaseClasses import logging
 
 class RotNCollections:
     DIAMOND_NAME: str = "Diamond"
     DIAMOND_CODE: int = 1
+    logger = logging.getLogger("RotN")
+
+    # Current ID reservations
+    # 1 - 59 Diamonds + filler/traps
+    # 50 - 999 Rhythm Rifts (Supports max 474 Songs)
+    # 1050 - 1999 Remix Rifts
+    # 2000 - 2099 Minigames
+    # 2100 - 2199 Boss Battles
 
     # Thanks to DeamonHunter for genning most of this info
     SONG_DATA: Dict[str, SongData] = {
@@ -126,7 +135,9 @@ class RotNCollections:
         "Anniversary",
         "Free Promo",
         "Minigame",
-        "Boss"
+        "Boss",
+        "Workshop",
+        "Local"
     ]
 
     DLC: List[str] = [
@@ -213,6 +224,55 @@ class RotNCollections:
 
         mod_data = extractModDataToJson()
 
+        self.mod_remaps: dict[int, dict[str, list]] = {}
+
+        if mod_data:
+            seen_mod_song_ids = set()
+
+            for slot_index, data_dict in enumerate(mod_data):
+                for song_name, dict_data in data_dict.items():
+                    data = SongData(int(dict_data["code"]), song_name, dict_data["DLC"], int(dict_data["diff_easy"]) if dict_data["diff_easy"] else None, int(dict_data["diff_medium"]) if dict_data["diff_medium"] else  None, 
+                                    int(dict_data["diff_hard"]) if dict_data["diff_hard"] else  None, int(dict_data["diff_impossible"]) if dict_data["diff_impossible"] else  None)
+                    if not isinstance(song_name, str) or not isinstance(data, SongData):
+                        logging.warning(f"Skipping {song_name}")
+                        continue
+
+                    if data.DLC == "Local":
+                        data = SongData(data.code * 5000 + (1000 * slot_index), data.song_name, data.DLC, data.diff_easy, data.diff_medium, data.diff_hard, data.diff_impossible)
+
+                    if song_name in self.song_items:
+                        logging.warning(f"{song_name} previously mapped to base ID, skipping")
+                        continue
+
+                    song_id = data.code
+
+                    if song_id in seen_mod_song_ids:
+                        if data.code in self.mod_remaps and song_name in self.mod_remaps[data.code]:
+                            logging.warning(f"{song_name} already remapped to {self.mod_remaps[data.code][song_name]}")
+                            continue
+
+                        resolve = {i for i in range(data.code + 2, data.code + 10)}
+                        resolve -= seen_mod_song_ids
+                        new_slots = sorted(resolve)[0:2]
+
+                        if len(new_slots) != 2:
+                            raise Exception(f"Could not remap conflict of {song_name} (out of slots)\n"
+                                                f"{self.mod_remaps[data.code]}")
+                        logging.warning(f"Remapped {song_name} to {new_slots}")
+
+                        song_id = new_slots[0]
+                        seen_mod_song_ids.update(new_slots)
+
+                        self.mod_remaps.setdefault(song_name, {})
+                        self.mod_remaps[data.code][song_name] = new_slots
+
+                    seen_mod_song_ids.add(song_id)
+                    seen_mod_song_ids.add(song_id + 1)
+
+                    self.song_items[song_name] = data
+                    self.song_locations[f"{song_name}-0"] = song_id
+                    self.song_locations[f"{song_name}-1"] = song_id + 1
+
         for key, data in self.SONG_DATA.items():
             self.song_items[key] = data
             self.song_items[key + " (Remix)"] = SongData(data.code + 1000, data.song_name, data.DLC, data.diff_easy, data.diff_medium, data.diff_hard, data.diff_impossible, "Remix")
@@ -267,19 +327,19 @@ class RotNCollections:
             if not self.songMatchesDlcFilter(data, dlc_songs):
                 continue
 
-            if data.diff_easy != -1 and "Easy" in options.difficulty_option and diff_lower <= data.diff_easy <= diff_higher:
+            if data.diff_easy != None and "Easy" in options.difficulty_option and diff_lower <= data.diff_easy <= diff_higher:
                 filtered_list.append(key)
                 continue
 
-            if data.diff_medium != -1 and "Medium" in options.difficulty_option and diff_lower <= data.diff_medium <= diff_higher:
+            if data.diff_medium != None and "Medium" in options.difficulty_option and diff_lower <= data.diff_medium <= diff_higher:
                 filtered_list.append(key)
                 continue
 
-            if data.diff_hard != -1 and "Hard" in options.difficulty_option and diff_lower <= data.diff_hard <= diff_higher:
+            if data.diff_hard != None and "Hard" in options.difficulty_option and diff_lower <= data.diff_hard <= diff_higher:
                 filtered_list.append(key)
                 continue
 
-            if data.diff_impossible != -1 and "Impossible" in options.difficulty_option and diff_lower <= data.diff_impossible <= diff_higher:
+            if data.diff_impossible != None and "Impossible" in options.difficulty_option and diff_lower <= data.diff_impossible <= diff_higher:
                 filtered_list.append(key)
                 continue
 

@@ -8,7 +8,7 @@ from BaseClasses import logging
 from .items import SongData
 from typing import Dict, List
 
-def extractModDataToJson() -> List[dict[str, SongData]]:
+def extractModDataToJson() -> List[dict[str, Dict]]:
         """
         Extracts mod data from YAML files and converts it to SongData
         Taken and modified from the Project Diva Megamix apworld https://github.com/Cynichill/DivaAPworld/blob/main/DataHandler.py#L170

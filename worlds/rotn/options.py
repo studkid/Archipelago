@@ -165,7 +165,7 @@ class ModData(FreeText):
     If this is an issue, exclude them instead
     """
     default = ''
-    visibility = Visibility.template | Visibility.spoiler
+    visibility = Visibility.template
 
 rotn_option_groups = [
     OptionGroup("Song Pool Settings", [
