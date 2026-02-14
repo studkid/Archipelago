@@ -238,7 +238,7 @@ class RotNCollections:
                         continue
 
                     if data.DLC == "Local":
-                        data = SongData(data.code * 5000 + (1000 * slot_index), data.song_name, data.DLC, data.diff_easy, data.diff_medium, data.diff_hard, data.diff_impossible)
+                        data = SongData(data.code + 5000 + (1000 * slot_index), data.song_name, data.DLC, data.diff_easy, data.diff_medium, data.diff_hard, data.diff_impossible)
 
                     if song_name in self.song_items:
                         logging.warning(f"{song_name} previously mapped to base ID, skipping")
@@ -247,24 +247,25 @@ class RotNCollections:
                     song_id = data.code
 
                     if song_id in seen_mod_song_ids:
-                        if data.code in self.mod_remaps and song_name in self.mod_remaps[data.code]:
-                            logging.warning(f"{song_name} already remapped to {self.mod_remaps[data.code][song_name]}")
+                        if song_id in self.mod_remaps and song_name in self.mod_remaps[song_id]:
+                            logging.warning(f"{song_name} already remapped to {self.mod_remaps[song_id][song_name]}")
                             continue
 
-                        resolve = {i for i in range(data.code + 2, data.code + 10)}
+                        resolve = {i for i in range(song_id + 2, song_id + 10)}
                         resolve -= seen_mod_song_ids
                         new_slots = sorted(resolve)[0:2]
 
                         if len(new_slots) != 2:
                             raise Exception(f"Could not remap conflict of {song_name} (out of slots)\n"
-                                                f"{self.mod_remaps[data.code]}")
+                                                f"{self.mod_remaps[song_id]}")
                         logging.warning(f"Remapped {song_name} to {new_slots}")
 
                         song_id = new_slots[0]
                         seen_mod_song_ids.update(new_slots)
 
                         self.mod_remaps.setdefault(song_name, {})
-                        self.mod_remaps[data.code][song_name] = new_slots
+                        self.mod_remaps[song_id]= {}
+                        self.mod_remaps[song_id][song_name] = new_slots
 
                     seen_mod_song_ids.add(song_id)
                     seen_mod_song_ids.add(song_id + 1)
