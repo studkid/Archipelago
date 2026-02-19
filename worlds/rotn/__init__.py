@@ -1,4 +1,5 @@
 from BaseClasses import Tutorial, Region, Item, ItemClassification, logging
+from Options import Optional, Option
 from worlds.AutoWorld import WebWorld, World
 from typing import List, ClassVar, Type
 from math import floor
@@ -56,6 +57,8 @@ class RotNWorld(World):
     final_song_ids: set[int] = set()
     location_count: int
 
+    ut_can_gen_without_yaml = True
+
     def generate_early(self):
         logger = logging.getLogger("RotN")
         # Universal Tracker Support
@@ -67,6 +70,14 @@ class RotNWorld(World):
                 final = slot_data.get("finalSongIDs", [])
                 self.included_songs = [key for key, song in self.rift_collection.song_items.items() if song.song_id in final]
                 self.location_count = len(self.included_songs) * 2
+
+            slot_options: dict[str, any] = slot_data.get("options", {})
+
+            for key, value in slot_options.items():
+                opt: Optional[Option] = getattr(self.options, key, None)
+                if opt is not None:
+                    # You can also set .value directly but that won't work if you have OptionSets
+                    setattr(self.options, key, opt.from_any(value))
             return
         
         if len(self.options.difficulty_option.value) == 0:
@@ -140,7 +151,7 @@ class RotNWorld(World):
         for song in include_songs:
             if song in available_song_keys and song not in self.starting_songs:
                 if self.random.randint(1, 100) < self.options.include_songs_percentage.value:
-                    self.included_songs = song
+                    self.included_songs.append(song)
 
         return [s for s in available_song_keys if s not in start_items
                 and s not in exclude_songs]
@@ -298,4 +309,7 @@ class RotNWorld(World):
             "modData": {pack: [[song[0], song[1]] for song in songs if song[1] in self.final_song_ids]
                         for pack, songs in self.player_mod_data.items()},
             "modRemap": self.player_mod_remap,
+
+            # Might not be able to trim this slot data out as most of this info is already in slot data already
+            "options": self.options.as_dict("duplicate_song_percentage", "diamond_count_percentage", "diamond_win_percentage")
         }
