@@ -112,6 +112,7 @@ class RotNCollections:
         "WORN OUT TAPES [tally-ho version]": SongData(130, "WORN OUT TAPES [tally-ho version]", "Free Promo", 5, 12, 16, 25),
         #Rift Anniversary
         "Portabellohead": SongData(131, "Portabellohead", "Free Promo", 3, 8, 13, 18, False),
+        "March of the Profane": SongData(132, "March of the Profane", "Free Promo", 5, 12, 17, 24, False),
     }
 
     EXTRA_DATA: Dict[str, ExtraSongData] = {
