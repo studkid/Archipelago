@@ -136,7 +136,12 @@ class RotNWorld(World):
         exclude_songs = self.options.exclude_songs.value
 
         self.starting_songs = [s for s in start_items if s in available_song_keys]
-        self.included_songs = [s for s in include_songs if s in available_song_keys and s not in self.starting_songs]
+        # self.included_songs = [s for s in include_songs if s in available_song_keys and s not in self.starting_songs]
+
+        for song in include_songs:
+            if song in available_song_keys and song not in self.starting_songs:
+                if self.random.randint(1, 100) < self.options.include_songs_percentage.value:
+                    self.included_songs = song
 
         return [s for s in available_song_keys if s not in start_items
                 and s not in exclude_songs]
