@@ -181,6 +181,7 @@ rotn_option_groups = [
         DiamondCountPercentage,
         DiamondWinPercentage,
         StartingSongs,
+        AdditionalSongs,
         DuplicateSongPercentage,
     ]),
     OptionGroup("Song Choice Settings", [
