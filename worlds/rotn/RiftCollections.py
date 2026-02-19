@@ -219,6 +219,8 @@ class RotNCollections:
     item_names_to_id: ChainMap = ChainMap({}, filler_items)
     location_names_to_id: ChainMap = ChainMap(song_locations)
 
+    modId_to_name: Dict[str, str] = {}
+
     def __init__(self) -> None:
         self.item_names_to_id[self.DIAMOND_NAME] = self.DIAMOND_CODE
 
@@ -228,23 +230,27 @@ class RotNCollections:
 
         if mod_data:
             seen_mod_song_ids = set()
+            seen_mod_item_ids = set()
 
             for slot_index, data_dict in enumerate(mod_data):
                 for song_name, dict_data in data_dict.items():
-                    data = SongData(int(dict_data["code"]), song_name, dict_data["DLC"], int(dict_data["diff_easy"]) if dict_data["diff_easy"] else None, int(dict_data["diff_medium"]) if dict_data["diff_medium"] else  None, 
+                    data = SongData(int(dict_data["code"]), dict_data["song_id"], dict_data["DLC"], int(dict_data["diff_easy"]) if dict_data["diff_easy"] else None, int(dict_data["diff_medium"]) if dict_data["diff_medium"] else  None, 
                                     int(dict_data["diff_hard"]) if dict_data["diff_hard"] else  None, int(dict_data["diff_impossible"]) if dict_data["diff_impossible"] else  None)
                     if not isinstance(song_name, str) or not isinstance(data, SongData):
                         logging.warning(f"Skipping {song_name}")
                         continue
 
                     if data.DLC == "Local":
-                        data = SongData(data.code + 5000 + (1000 * slot_index), data.song_name, data.DLC, data.diff_easy, data.diff_medium, data.diff_hard, data.diff_impossible)
+                        new_code = data.code + 5000 + (1000 * slot_index)
+                        data = SongData(new_code, data.song_id, data.DLC, data.diff_easy, data.diff_medium, data.diff_hard, data.diff_impossible)
+                        self.mod_remaps[data.song_id] = {}
+                        self.mod_remaps[data.song_id][song_name] = [new_code, new_code + 1]
 
                     if song_name in self.song_items:
                         logging.warning(f"{song_name} previously mapped to base ID, skipping")
                         continue
 
-                    song_id = data.code
+                    song_id = data.song_id
 
                     if song_id in seen_mod_song_ids:
                         if song_id in self.mod_remaps and song_name in self.mod_remaps[song_id]:
@@ -260,23 +266,24 @@ class RotNCollections:
                                                 f"{self.mod_remaps[song_id]}")
                         logging.warning(f"Remapped {song_name} to {new_slots}")
 
-                        song_id = new_slots[0]
-                        seen_mod_song_ids.update(new_slots)
+                        data.code = new_slots[0]
+                        seen_mod_item_ids.update(new_slots)
 
-                        self.mod_remaps.setdefault(song_name, {})
-                        self.mod_remaps[song_id]= {}
+                        self.mod_remaps.setdefault(song_id, {})
+                        self.mod_remaps[song_id] = {}
                         self.mod_remaps[song_id][song_name] = new_slots
 
-                    seen_mod_song_ids.add(song_id)
-                    seen_mod_song_ids.add(song_id + 1)
+                    seen_mod_song_ids.add(data.code)
+                    seen_mod_song_ids.add(data.code + 1)
 
                     self.song_items[song_name] = data
-                    self.song_locations[f"{song_name}-0"] = song_id
-                    self.song_locations[f"{song_name}-1"] = song_id + 1
+                    self.song_locations[f"{song_name}-0"] = data.code
+                    self.song_locations[f"{song_name}-1"] = data.code + 1
+                    self.modId_to_name[song_id] = song_name
 
         for key, data in self.SONG_DATA.items():
             self.song_items[key] = data
-            self.song_items[key + " (Remix)"] = SongData(data.code + 1000, data.song_name, data.DLC, data.diff_easy, data.diff_medium, data.diff_hard, data.diff_impossible, "Remix")
+            self.song_items[key + " (Remix)"] = SongData(data.code + 1000, data.song_id, data.DLC, data.diff_easy, data.diff_medium, data.diff_hard, data.diff_impossible, "Remix")
 
         for key, data in self.EXTRA_DATA.items():
             self.song_items[key] = SongData(data.code, key, data.DLC, 1, 0, 0, 0, data.DLC)
@@ -303,7 +310,7 @@ class RotNCollections:
             self.song_locations[f"{name} (Hard)-1"] = location_id_index + 5
             location_id_index += 6
 
-    def getSongsWithSettings(self, options, diff_lower: int, diff_higher:int) -> List[str]:
+    def getSongsWithSettings(self, options, diff_lower: int, diff_higher:int, mod_data: Dict) -> List[str]:
         dlc_songs = options.dlc_songs
         filtered_list = []
 
@@ -323,6 +330,10 @@ class RotNCollections:
                 continue
             
             if data.type == "Remix" and not options.include_remix:
+                continue
+
+            # Skip modded songs not meant for current player
+            if (data.DLC == "Workshop" or data.DLC == "Local") and key not in mod_data.keys():
                 continue
 
             if not self.songMatchesDlcFilter(data, dlc_songs):
@@ -350,7 +361,7 @@ class RotNCollections:
         if song.DLC in self.FREE_PACKS:
             return True
 
-        if song.DLC in dlc_songs or song.song_name in dlc_songs:
+        if song.DLC in dlc_songs or song.song_id in dlc_songs:
             return True
 
         return False

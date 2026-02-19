@@ -9,6 +9,7 @@ from .options import RotNOptions, rotn_option_groups
 from .RiftCollections import RotNCollections
 from .items import RotNSongItem, RotNFixedItem
 from .locations import RotNLocation
+from .datagen import getPlayerSpecificIds
 
 class RotNWeb(WebWorld):
     theme = "stone"
@@ -45,10 +46,13 @@ class RotNWorld(World):
     location_name_to_id = {name: code for name, code in rift_collection.location_names_to_id.items()}
     item_name_groups = rift_collection.getItemNameGroups()
 
+    player_mod_data = {}
+    player_mod_ids = {}
+    player_mod_remmap = {}
     victory_song_name: str = ""
     victory_song_type: int = 0
     starting_songs: List[str] = []
-    included_songs: List[str]
+    included_songs: List[str] = []
     final_song_ids: set[int] = set()
     location_count: int
 
@@ -61,7 +65,7 @@ class RotNWorld(World):
 
             if "finalSongIDs" in slot_data:
                 final = slot_data.get("finalSongIDs", [])
-                self.included_songs = [key for key, song in self.rift_collection.song_items.items() if song.song_name in final]
+                self.included_songs = [key for key, song in self.rift_collection.song_items.items() if song.song_id in final]
                 self.location_count = len(self.included_songs) * 2
             return
         
@@ -76,8 +80,10 @@ class RotNWorld(World):
         goal_song_pool = self.options.goal_song_pool.value
         filter_error = False
 
+        self.player_mod_data, self.player_mod_ids, self.player_mod_remap = getPlayerSpecificIds(self.options.rotn_mod_data.value, self.rift_collection.mod_remaps)
+
         while True:
-            available_song_keys = self.rift_collection.getSongsWithSettings(self.options, min_diff, max_diff)
+            available_song_keys = self.rift_collection.getSongsWithSettings(self.options, min_diff, max_diff, self.player_mod_data)
             available_song_keys = self.handle_plando(available_song_keys)
 
             if len(available_song_keys) > 0:
@@ -178,7 +184,7 @@ class RotNWorld(World):
             return RotNFixedItem(name, ItemClassification.filler, filler, self.player)
         
         song = self.rift_collection.song_items[name]
-        self.final_song_ids.add(song.song_name)
+        self.final_song_ids.add(song.song_id)
         return RotNSongItem(name, self.player, song)
     
     def get_filler_item_name(self):
@@ -285,4 +291,7 @@ class RotNWorld(World):
             "minigameMode": self.options.include_minigames.value,
             "bossMode": self.options.include_boss_battle.value,
             "finalSongIDs": self.final_song_ids,
+            "modData": {pack: [[song[0], song[1]] for song in songs if song[1] in self.final_song_ids]
+                        for pack, songs in self.player_mod_data.items()},
+            "modRemap": self.player_mod_remap,
         }
