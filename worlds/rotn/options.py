@@ -128,12 +128,21 @@ class DiamondWinPercentage(Range):
     default = 80
     display_name = "Diamonds Needed to Win"
 
+class IncludeSongsPercentage(Range):
+    """
+    Percentage chance for songs in the included list to be chosen.
+    """
+    range_start = 0
+    range_end = 100
+    default = 100
+    display_name = "Include Songs Percentage"
+
 class IncludeSongs(ItemSet):
     """
-    These songs will be guaranteed to show up within the seed.
-    - You must have the DLC enabled to play those songs.
-    - Difficulty options will not affect these songs.
-    - If there are too many included songs, this will act as a whitelist ignoring song difficulty.
+    These songs will be guaranteed* to show up within the seed.
+    - You must have the DLC or respective game mode enabled for these songs to actually be picked.
+    - Difficulty options will affect these songs.
+    - *Changing Include Songs Percentage from 100% will make it no longer guarenteed.
     """
     verify_item_name = True
     display_name = "Include Songs"
@@ -168,23 +177,32 @@ class ModData(FreeText):
     visibility = Visibility.template
 
 rotn_option_groups = [
-    OptionGroup("Song Pool Settings", [
+    OptionGroup("Game Length Settings", [
+        DiamondCountPercentage,
+        DiamondWinPercentage,
+        StartingSongs,
+        DuplicateSongPercentage,
+    ]),
+    OptionGroup("Song Choice Settings", [
         DLCMusicPacks,
         IncludeRemixMode,
         IncludeBossBattles,
         IncludeMinigames,
+        IncludeSongsPercentage,
         IncludeSongs,
         ExcludeSongs,
         GoalSongPool,
         ModData,
     ]),
-    OptionGroup("Difficulty Settings", [
+    OptionGroup("Difficulty Filtering Settings", [
         DifficultyOption,
         MinIntensity,
         MaxIntensity,
+    ]),
+    OptionGroup("Difficulty Modifiers", [
         GradeNeeded,
         FullComboNeeded,
-    ]),
+    ])
 ]
 
 @dataclass
@@ -203,6 +221,7 @@ class RotNOptions(PerGameCommonOptions):
     full_combo_needed: FullComboNeeded
     diamond_count_percentage: DiamondCountPercentage
     diamond_win_percentage: DiamondWinPercentage
+    include_songs_percentage: IncludeSongsPercentage
     include_songs: IncludeSongs
     exclude_songs: ExcludeSongs
     goal_song_pool: GoalSongPool
