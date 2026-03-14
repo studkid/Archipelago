@@ -397,15 +397,15 @@ class RotNCollections:
             "Meat Boy": {name for name, data, in self.song_items.items() if data.DLC == "MeatBoy"},
             "Anniversary": {name for name, data, in self.song_items.items() if data.DLC == "Anniversary"},
             "Free DLC": {name for name, data, in self.song_items.items() if data.DLC == "Free DLC" or data.DLC == "MeatBoy" or data.DLC == "Anniversary"},
-            "Celeste": {name for name, data, in self.song_items.items() if data.DLC == "Celeste" or name == "Resurrections (dannyBstyle Remix)"},
+            "Celeste": {name for name, data, in self.song_items.items() if data.DLC == "Celeste" or "Resurrections (dannyBstyle Remix)" in name},
             "Pizza Tower": {name for name, data, in self.song_items.items() if data.DLC == "Pizza Tower"},
-            "Hatsune Miku": {name for name, data, in self.song_items.items() if data.DLC == "Hatsune Miku" or name == "Too Real"},
-            "Hololive": {name for name, data, in self.song_items.items() if data.DLC == "Hololive" or name == "REFLECT"},
-            "Everhood": {name for name, data, in self.song_items.items() if data.DLC == "Everhood" or name == "Powers Of Destruction"},
+            "Hatsune Miku": {name for name, data, in self.song_items.items() if data.DLC == "Hatsune Miku" or "Too Real" in name},
+            "Hololive": {name for name, data, in self.song_items.items() if data.DLC == "Hololive" or "REFLECT" in name},
+            "Everhood": {name for name, data, in self.song_items.items() if data.DLC == "Everhood" or "Powers Of Destruction" in name},
             "Monstercat": {name for name, data, in self.song_items.items() if data.DLC == "Monstercat"},
-            "Shovel Knight": {name for name, data, in self.song_items.items() if data.DLC == "Shovel Knight" or name == "Main Theme"},
-            "Friday Night Funkin'": {name for name, data, in self.song_items.items() if data.DLC == "Friday Night Funkin'" or name == "Dad Battle"},
-            "VA-11 HALL-A": {name for name, data, in self.song_items.items() if data.DLC == "VA-11 HALL-A" or name == "YLIAD"},
+            "Shovel Knight": {name for name, data, in self.song_items.items() if data.DLC == "Shovel Knight" or "Main Theme" in name},
+            "Friday Night Funkin'": {name for name, data, in self.song_items.items() if data.DLC == "Friday Night Funkin'" or "Dad Battle" in name},
+            "VA-11 HALL-A": {name for name, data, in self.song_items.items() if data.DLC == "VA-11 HALL-A" or "YLIAD" in name},
         }
 
         return groups
