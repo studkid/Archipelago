@@ -374,6 +374,9 @@ class RotNCollections:
         return filtered_list
     
     def songMatchesDlcFilter(self, song: SongData, dlc_songs: Set[str]) -> bool:
+        if "All" in dlc_songs:
+            return True
+
         if song.DLC in self.FREE_PACKS:
             return True
 
