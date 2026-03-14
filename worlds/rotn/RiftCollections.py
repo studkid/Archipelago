@@ -251,14 +251,14 @@ class RotNCollections:
             for slot_index, data_dict in enumerate(mod_data):
                 for song_name, dict_data in data_dict.items():
                     data = SongData(int(dict_data["code"]), dict_data["song_id"], dict_data["DLC"], int(dict_data["diff_easy"]) if dict_data["diff_easy"] else None, int(dict_data["diff_medium"]) if dict_data["diff_medium"] else  None, 
-                                    int(dict_data["diff_hard"]) if dict_data["diff_hard"] else  None, int(dict_data["diff_impossible"]) if dict_data["diff_impossible"] else  None)
+                                    int(dict_data["diff_hard"]) if dict_data["diff_hard"] else  None, int(dict_data["diff_impossible"]) if dict_data["diff_impossible"] else  None, "Custom")
                     if not isinstance(song_name, str) or not isinstance(data, SongData):
                         logging.warning(f"Skipping {song_name}")
                         continue
 
                     if data.DLC == "Local":
                         new_code = data.code + 5000 + (1000 * slot_index)
-                        data = SongData(new_code, data.song_id, data.DLC, data.diff_easy, data.diff_medium, data.diff_hard, data.diff_impossible)
+                        data = SongData(new_code, data.song_id, data.DLC, data.diff_easy, data.diff_medium, data.diff_hard, data.diff_impossible, "Custom")
                         self.mod_remaps[data.song_id] = {}
                         self.mod_remaps[data.song_id][song_name] = [new_code, new_code + 1]
 
