@@ -114,7 +114,7 @@ class RotNCollections:
         "Portabellohead": SongData(131, "Portabellohead", "Anniversary", 3, 8, 13, 18, False),
         "March of the Profane": SongData(132, "March of the Profane", "Anniversary", 5, 12, 17, 24, False),
         #Spin Rhythm
-        "The Magician": SongData(133, "The Magician", "CustomCounterpartNative", 4, 12, 17, 25, False),
+        "The Magician": SongData(133, "The Magician", "Free DLC", 4, 12, 17, 25, False),
         #VA-11 HALL-A
         "Digital Drive": SongData(134, "Digital Drive", "VA-11 HALL-A", 3, 6, 18, 24, False),
         "Every Day is Night": SongData(135, "Every Day is Night", "VA-11 HALL-A", 3, 8, 14, 22, False),
