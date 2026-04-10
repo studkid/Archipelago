@@ -289,6 +289,10 @@ class RotNWorld(World):
         return max(1, floor(song_count * multiplier))
     
     def get_diamond_win_count(self) -> int:
+        re_gen_passthrough = getattr(self.multiworld, "re_gen_passthrough", {})
+        if re_gen_passthrough and self.game in re_gen_passthrough:
+            return re_gen_passthrough[self.game].get("diamondWinCount")
+        
         multiplier = self.options.diamond_win_percentage.value / 100.0
         diamond_count = self.get_diamond_count()
         return max(1, floor(diamond_count * multiplier))
