@@ -122,12 +122,12 @@ class RotNCollections:
         "YLIAD": SongData(137, "YLIAD", "Free DLC", 4, 8, 14, 20, False),
         "Welcome to VA-11 HALL-A": SongData(138, "Welcome to VA-11 HALL-A", "VA-11 HALL-A", 2, 8, 13, 21, False),
         #Undertale
-        "Spider Dance": SongData(155, "Spider Dance", "Free DLC", 2, 6, 13, 18, False),
-        "Hopes and Dreams": SongData(156, "Hopes and Dreams", "Undertale", 3, 9, 15, 19, False),
-        "Death by Glamour": SongData(157, "Death by Glamour", "Undertale", 5, 13, 16, 24, False),
-        "Bergentrückung / Asgore": SongData(158, "Bergentrückung / Asgore", "Undertale", 4, 10, 15, 21, False),
-        "Battle Against a True Hero": SongData(159, "Battle Against a True Hero", "Undertale", 5, 11, 17, 26, False),
-        "MEGALOVANIA": SongData(160, "MEGALOVANIA", "Undertale", 5, 11, 17, 25, False),
+        "Spider Dance": SongData(139, "Spider Dance", "Free DLC", 2, 6, 13, 18, False),
+        "Hopes and Dreams": SongData(140, "Hopes and Dreams", "Undertale", 3, 9, 15, 19, False),
+        "Death by Glamour": SongData(141, "Death by Glamour", "Undertale", 5, 13, 16, 24, False),
+        "Bergentrückung / Asgore": SongData(142, "Bergentrückung / Asgore", "Undertale", 4, 10, 15, 21, False),
+        "Battle Against a True Hero": SongData(143, "Battle Against a True Hero", "Undertale", 5, 11, 17, 26, False),
+        "MEGALOVANIA": SongData(144, "MEGALOVANIA", "Undertale", 5, 11, 17, 25, False),
     }
 
     EXTRA_DATA: Dict[str, ExtraSongData] = {
