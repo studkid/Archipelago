@@ -119,7 +119,10 @@ class RotNWorld(World):
                     chosen_song_index = self.random.randrange(0, len(available_song_keys))
                     self.victory_song_name = available_song_keys[chosen_song_index]
                     self.victory_song_type = self.rift_collection.song_items[self.victory_song_name].type
+                #Remove goal song from 
                 del available_song_keys[chosen_song_index]
+                if self.victory_song_name in self.included_songs:
+                    self.included_songs.remove(self.victory_song_name)
 
                 count_needed_for_start = max(0, starter_song_count - len(self.starting_songs))
                 if len(available_song_keys) >= count_needed_for_start + 11:
