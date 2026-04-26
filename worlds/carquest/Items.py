@@ -4,10 +4,11 @@ from BaseClasses import Item, ItemClassification, Optional
 class CarQuestItem(Item):
     game: str = "Car Quest"
 
-class       CarQuestItemData(NamedTuple):
+class CarQuestItemData(NamedTuple):
     category: str
     code: Optional[int] = None
     classification: ItemClassification = ItemClassification.filler
+    amount: int = 1
 
 def get_items_by_category(category: str) -> Dict[str, CarQuestItemData]:
     item_dict: Dict[str, CarQuestItemData] = {}
@@ -35,6 +36,12 @@ item_table: Dict[str, CarQuestItemData] = {
     "Hub: South Portal Secondary Ramp":             CarQuestItemData("secret", 14, ItemClassification.progression),
     "Hub: South Portal Bridge":                     CarQuestItemData("secret", 15, ItemClassification.progression),
     "Hub: Pool Drain Door":                         CarQuestItemData("secret", 16, ItemClassification.progression),
+    "Hub: Progressive Pool":                        CarQuestItemData("secret", 17, ItemClassification.progression, 2),
+    "Hub: Start Room Right Door":                   CarQuestItemData("secret", 18, ItemClassification.progression),
+    "Hub: Pool Push Block":                         CarQuestItemData("secret", 19, ItemClassification.progression),
+    "Hub: South East Artifact Blocker":             CarQuestItemData("secret", 20, ItemClassification.progression),
+    "Hub: North West Artifact Blocker":             CarQuestItemData("secret", 21, ItemClassification.progression),
+    "Hub: Pool Vault Portal Unlock":                CarQuestItemData("secret", 22, ItemClassification.progression),
 
     # Simple
     "Simple: Exit Bridge":                          CarQuestItemData("secret", 101, ItemClassification.progression),
@@ -50,4 +57,11 @@ item_table: Dict[str, CarQuestItemData] = {
     "Desert: Fixit Shop Door":                      CarQuestItemData("secret", 125, ItemClassification.progression),
     "Desert: Fixit Shop Fence":                     CarQuestItemData("secret", 126, ItemClassification.progression),
     "Desert: Exit Ramp":                            CarQuestItemData("secret", 127, ItemClassification.progression),
+
+    # Slider
+    "Slider: Start Ramp":                           CarQuestItemData("secret", 131, ItemClassification.progression),
+    "Slider: Left Push Block Unlock":               CarQuestItemData("secret", 132, ItemClassification.progression),
+    "Slider: Right Push Block Unlock":              CarQuestItemData("secret", 133, ItemClassification.progression),
+    "Slider: Left Push Block Unlock":               CarQuestItemData("secret", 134, ItemClassification.progression),
+    "Slider: Exit Ramp Unlock":                     CarQuestItemData("secret", 135, ItemClassification.progression),
 }

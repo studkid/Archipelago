@@ -21,6 +21,7 @@ def get_locations_by_category(category: str) -> Dict[str, CarQuestLocationData]:
 simpleOffset = 600
 cubesOffset = simpleOffset + 50
 desertOffset = cubesOffset + 50
+sliderOffset = desertOffset + 150
 
 location_table: Dict[str, CarQuestLocationData] = {
     # Hub
@@ -42,6 +43,12 @@ location_table: Dict[str, CarQuestLocationData] = {
     "Hub: Ramp Near South Portal Artifact":             CarQuestLocationData("Artifact", "Hub South Portal", 11), 
     "Hub: North Pool Vault Room Artifact":              CarQuestLocationData("Artifact", "Hub Vault", 12), 
     "Hub: Inside Ramp Near South Portal Artifact":      CarQuestLocationData("Artifact", "Hub South Portal", 13), 
+    "Hub: Pool Drain Artifact":                         CarQuestLocationData("Artifact", "Hub Pool Area", 14),
+    "Hub: Drained Pool Jump Artifact":                  CarQuestLocationData("Artifact", "Hub Drained Pool", 15),
+    "Hub: Throne Room Exterior Artifact":               CarQuestLocationData("Artifact", "Hub Throne Room Exterior", 16),
+    "Hub: South West Artifact":                         CarQuestLocationData("Artifact", "Hub Pool Area", 17), # Needs Drained Pool
+    "Hub: South East Artifact":                         CarQuestLocationData("Artifact", "Hub Pool Area", 18), # Needs Drained Pool
+    "Hub: North West Artifact":                         CarQuestLocationData("Artifact", "Hub Pool Area", 19), # Needs Drained Pool
 
     # Simple
     # 2 Secrets
@@ -74,4 +81,15 @@ location_table: Dict[str, CarQuestLocationData] = {
     "Desert: Fixit Shop Interior Artifact":             CarQuestLocationData("Artifact", "Fixit Shop Main", desertOffset + 6),
     "Desert: Fixit Shop Fence Artifact":                CarQuestLocationData("Artifact", "Fixit Shop Fence", desertOffset + 7),
     "Desert: Exit Reward Artifact":                     CarQuestLocationData("Artifact", "Fixit Shop Main", desertOffset + 8),
+
+    # Slider
+    # 6 Secrets
+    # 32 Power Cells
+    # 1 Token
+    "Slider: Front Right Artifact":                     CarQuestLocationData("Artifact", "Slider Start", sliderOffset + 1),
+    "Slider: Lower Back Artifact":                      CarQuestLocationData("Artifact", "Slider Lower Back", sliderOffset + 2),
+    "Slider: Upper Left Artifact":                      CarQuestLocationData("Artifact", "Slider Upper Left", sliderOffset + 3),
+    "Slider: Upper Right Artifact":                     CarQuestLocationData("Artifact", "Slider Upper Right", sliderOffset + 4),
+    "Slider: Upper Upper Left Artifact":                CarQuestLocationData("Artifact", "Slider Upper Left", sliderOffset + 5),
+    "Slider: Exit Reward Artifact":                     CarQuestLocationData("Artifact", "Slider Exit", sliderOffset + 6),
 }
