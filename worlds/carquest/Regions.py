@@ -11,11 +11,11 @@ def create_regions(multiworld: MultiWorld, player: int):
     regions: Dict[str, CarQuestRegionData] = {
         # Hub
         "Menu":                              CarQuestRegionData(None, ["Hub Start"]),
-        "Hub Start":                         CarQuestRegionData([], ["Hub Simple Portal Path", "Hub Throne Room Exterior"]),
+        "Hub Start":                         CarQuestRegionData([], ["Hub Simple Portal Path", "Hub Throne Room Exterior",  "Hub Central Bridge"]),
         "Hub Simple Portal Path":            CarQuestRegionData([], ["Simple Square Area", "Hub Pool Area"]),
         "Hub Pool Area":                     CarQuestRegionData([], ["Hub Upper Uni Alleyway", "Hub South Pool Deadend Path",
                                                                      "Floating Cube Area", "Hub Cube Monument", "Hub South Portal",
-                                                                     "Hub Vault", "Hub Drained Pool"]),
+                                                                     "Hub Vault", "Hub Drained Pool", "Hub University Exterior"]),
         "Hub Upper Uni Alleyway":            CarQuestRegionData([], None),
         "Hub South Pool Deadend Path":       CarQuestRegionData([], None),
         "Hub Museum":                        CarQuestRegionData([], None),
@@ -23,7 +23,10 @@ def create_regions(multiworld: MultiWorld, player: int):
         "Hub South Portal":                  CarQuestRegionData([], ["Fixit Shop Main"]),
         "Hub Vault":                         CarQuestRegionData([], ["Slider Start"]),
         "Hub Drained Pool":                  CarQuestRegionData([], None),
-        "Hub Throne Room Exterior":          CarQuestRegionData([], []),
+        "Hub Throne Room East Exterior":     CarQuestRegionData([], ["Hub Throne Room West Exterior"]),
+        "Hub Throne Room West Exterior":     CarQuestRegionData([], None),
+        "Hub Central Bridge":                CarQuestRegionData([], ["Maze Start"]),
+        "Hub University Exterior":           CarQuestRegionData([], []),
 
         # Simple
         "Simple Square Area":                CarQuestRegionData([], None),
@@ -43,4 +46,12 @@ def create_regions(multiworld: MultiWorld, player: int):
         "Slider Upper Left":                 CarQuestRegionData([], None),
         "Slider Upper Right":                CarQuestRegionData([], ["Slider Exit"]),
         "Slider Exit":                       CarQuestRegionData([], None),
+
+        # Maze
+        "Maze Start":                        CarQuestRegionData([], ["Maze Exterior Walls", "Maze Cave"]),
+        "Maze Exterior Walls":               CarQuestRegionData([], ["Maze Interior Walls"]),
+        "Maze Interior Walls":               CarQuestRegionData([], ["Maze Cave", "Maze Interior Walls Upper"]),
+        "Maze Cave":                         CarQuestRegionData([], []),
+        "Maze Interior Walls Upper":         CarQuestRegionData([], ["Maze Interior Walls Bridge"]),
+        "Maze Interior Walls Bridge":        CarQuestRegionData([], None),
     }
