@@ -25,14 +25,29 @@ item_table: Dict[str, CarQuestItemData] = {
     "Hub: North Pool Jump Ramp":                    CarQuestItemData("secret", 4, ItemClassification.progression),
     "Hub: South Pool Artifact Block":               CarQuestItemData("secret", 5, ItemClassification.progression),
     "Hub: Upper University Alleyway Access":        CarQuestItemData("secret", 6, ItemClassification.progression),
-    "Hub: Tree Slalom Unlock":                      CarQuestItemData("secret", 7, ItemClassification.progression),
-    "Hub: Museum Unlock":                           CarQuestItemData("secret", 8, ItemClassification.progression),
-    "Hub: North Pool Portal Access":                CarQuestItemData("secret", 9, ItemClassification.progression),
-    "Hub: Cube Monument Access":                    CarQuestItemData("secret", 10, ItemClassification.progression),
+    "Hub: South Pool Deadend Door":                 CarQuestItemData("secret", 7, ItemClassification.progression),
+    "Hub: Tree Slalom Unlock":                      CarQuestItemData("secret", 8, ItemClassification.progression),
+    "Hub: Museum Unlock":                           CarQuestItemData("secret", 9, ItemClassification.progression),
+    "Hub: North Pool Portal Access":                CarQuestItemData("secret", 10, ItemClassification.progression),
+    "Hub: Cube Monument Access":                    CarQuestItemData("secret", 11, ItemClassification.progression),
+    "Hub: South Portal Ramp Door":                  CarQuestItemData("secret", 12, ItemClassification.progression),
+    "Hub: North Pool Vault Door":                   CarQuestItemData("secret", 13, ItemClassification.progression),
+    "Hub: South Portal Secondary Ramp":             CarQuestItemData("secret", 14, ItemClassification.progression),
+    "Hub: South Portal Bridge":                     CarQuestItemData("secret", 15, ItemClassification.progression),
+    "Hub: Pool Drain Door":                         CarQuestItemData("secret", 16, ItemClassification.progression),
 
     # Simple
     "Simple: Exit Bridge":                          CarQuestItemData("secret", 101, ItemClassification.progression),
 
     # Cubes
-    "Cubes: Exit Bridge":                           CarQuestItemData("secret", 102, ItemClassification.progression),
+    "Cubes: Exit Bridge":                           CarQuestItemData("secret", 111, ItemClassification.progression),
+
+    # Desert
+    "Desert: South West Mound":                     CarQuestItemData("secret", 121, ItemClassification.progression),
+    "Desert: Shop Cave Door":                       CarQuestItemData("secret", 122, ItemClassification.progression),
+    "Desert: North West Mount":                     CarQuestItemData("secret", 123, ItemClassification.progression),
+    "Desert: South East Mount":                     CarQuestItemData("secret", 124, ItemClassification.progression),
+    "Desert: Fixit Shop Door":                      CarQuestItemData("secret", 125, ItemClassification.progression),
+    "Desert: Fixit Shop Fence":                     CarQuestItemData("secret", 126, ItemClassification.progression),
+    "Desert: Exit Ramp":                            CarQuestItemData("secret", 127, ItemClassification.progression),
 }

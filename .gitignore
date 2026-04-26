@@ -196,3 +196,8 @@ _speedups.html
 .LSOverride
 Thumbs.db
 [Dd]esktop.ini
+
+# Fuzzer
+fuzz.py
+/fuzz_output/
+/hooks/
