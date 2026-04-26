@@ -8,7 +8,7 @@ class CarQuestItemData(NamedTuple):
     category: str
     code: Optional[int] = None
     classification: ItemClassification = ItemClassification.filler
-    amount: int = 1
+    max_quantity: int = 1
 
 def get_items_by_category(category: str) -> Dict[str, CarQuestItemData]:
     item_dict: Dict[str, CarQuestItemData] = {}
@@ -88,4 +88,7 @@ item_table: Dict[str, CarQuestItemData] = {
     "Maze: Lower Artifact Wall":                    CarQuestItemData("secret", mazeOffset + 4, ItemClassification.progression),
     "Maze: Interior Wall Bridge":                   CarQuestItemData("secret", mazeOffset + 5, ItemClassification.progression),
     "Maze: Exit Door":                              CarQuestItemData("secret", mazeOffset + 6, ItemClassification.progression),
+
+    # Filler
+    "Energy Cell":                                  CarQuestItemData("filler", 10001, ItemClassification.filler),
 }

@@ -2,20 +2,21 @@ from typing import Dict, List, NamedTuple, Optional
 
 from BaseClasses import MultiWorld, Region
 from .Locations import CarQuestLocation, location_table
+from .Options import CarQuestOptions
 
 class CarQuestRegionData(NamedTuple):
     locations: Optional[List[str]]
     exits: Optional[List[str]]
 
-def create_regions(multiworld: MultiWorld, player: int):
+def create_regions(multiworld: MultiWorld, player: int, options: CarQuestOptions):
     regions: Dict[str, CarQuestRegionData] = {
         # Hub
         "Menu":                              CarQuestRegionData(None, ["Hub Start"]),
-        "Hub Start":                         CarQuestRegionData([], ["Hub Simple Portal Path", "Hub Throne Room Exterior",  "Hub Central Bridge"]),
+        "Hub Start":                         CarQuestRegionData([], ["Hub Simple Portal Path", "Hub Throne Room East Exterior",  "Hub Central Bridge"]),
         "Hub Simple Portal Path":            CarQuestRegionData([], ["Simple Square Area", "Hub Pool Area"]),
         "Hub Pool Area":                     CarQuestRegionData([], ["Hub Upper Uni Alleyway", "Hub South Pool Deadend Path",
                                                                      "Floating Cube Area", "Hub Cube Monument", "Hub South Portal",
-                                                                     "Hub Vault", "Hub Drained Pool", "Hub University Exterior"]),
+                                                                     "Hub Vault", "Hub Drained Pool", "Hub University Exterior", "Hub Museum"]),
         "Hub Upper Uni Alleyway":            CarQuestRegionData([], None),
         "Hub South Pool Deadend Path":       CarQuestRegionData([], None),
         "Hub Museum":                        CarQuestRegionData([], None),
@@ -55,3 +56,30 @@ def create_regions(multiworld: MultiWorld, player: int):
         "Maze Interior Walls Upper":         CarQuestRegionData([], ["Maze Interior Walls Bridge"]),
         "Maze Interior Walls Bridge":        CarQuestRegionData([], None),
     }
+
+    for name, data in location_table.items():
+        regions[data.region].locations.append(name)
+
+    for name, data in regions.items():
+        multiworld.regions.append(create_region(multiworld, player, name, data))
+        
+    for name, data in regions.items():
+        if(data.exits == None):
+            continue
+        connect_regions(multiworld, player, name, data)
+
+def create_region(multiworld: MultiWorld, player: int, name: str, data: CarQuestRegionData):
+    region = Region(name, player, multiworld)
+    if data.locations:
+        for loc_name in data.locations:
+            loc_data = location_table.get(loc_name)
+            location = CarQuestLocation(player, loc_name, loc_data.code if loc_data else None, region)
+            region.locations.append(location)
+
+    return region
+    
+def connect_regions(multiworld: MultiWorld, player: int, source: str, data: CarQuestRegionData, rule=None):
+    for _, target in enumerate(data.exits):
+        sourceRegion = multiworld.get_region(source, player)
+        targetRegion = multiworld.get_region(target, player)
+        sourceRegion.connect(targetRegion, rule=rule)

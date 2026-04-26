@@ -41,19 +41,19 @@ location_table: Dict[str, CarQuestLocationData] = {
     "Hub: South Pool Deadend Artifact":                 CarQuestLocationData("Artifact", "Hub South Pool Deadend Path", 7), 
     "Hub: Tree Slalom Reward Artifact":                 CarQuestLocationData("Artifact", "Hub Pool Area", 8), # Needs "Hub: Tree Slalom Unlock"
     "Hub: Museum Artifact":                             CarQuestLocationData("Artifact", "Hub Museum", 9),
-    "Hub: Cube Monument Artifact":                      CarQuestLocationData("Artifact", "Cube Monument", 10),
+    "Hub: Cube Monument Artifact":                      CarQuestLocationData("Artifact", "Hub Cube Monument", 10),
     "Hub: Ramp Near South Portal Artifact":             CarQuestLocationData("Artifact", "Hub South Portal", 11), 
     "Hub: North Pool Vault Room Artifact":              CarQuestLocationData("Artifact", "Hub Vault", 12), 
     "Hub: Inside Ramp Near South Portal Artifact":      CarQuestLocationData("Artifact", "Hub South Portal", 13), 
     "Hub: Pool Drain Artifact":                         CarQuestLocationData("Artifact", "Hub Pool Area", 14),
     "Hub: Drained Pool Jump Artifact":                  CarQuestLocationData("Artifact", "Hub Drained Pool", 15),
-    "Hub: Throne Room Exterior Artifact":               CarQuestLocationData("Artifact", "Hub Throne Room East Exterior", 16),
+    "Hub: Throne Exterior Near Museum Piece Artifact":  CarQuestLocationData("Artifact", "Hub Throne Room East Exterior", 16),
     "Hub: Pool South West Artifact":                    CarQuestLocationData("Artifact", "Hub Pool Area", 17), # Needs Drained Pool
     "Hub: Pool South East Artifact":                    CarQuestLocationData("Artifact", "Hub Pool Area", 18), # Needs Drained Pool
     "Hub: Pool North West Artifact":                    CarQuestLocationData("Artifact", "Hub Pool Area", 19), # Needs Drained Pool
     "Hub: Pool Center Artifact":                        CarQuestLocationData("Artifact", "Hub Pool Area", 20), # Needs Refilled Pool
-    "Hub: Throne Room Exterior Museum Piece":           CarQuestLocationData("Museum", "Hub Throne Room West Exterior", 21),
-    "Hub: Throne Room Exterior Artifact":               CarQuestLocationData("Artifact", "Hub Throne Room West Exterior", 22),
+    "Hub: Throne Exterior Museum Piece":                CarQuestLocationData("Museum", "Hub Throne Room West Exterior", 21),
+    "Hub: Throne Exterior Artifact":                    CarQuestLocationData("Artifact", "Hub Throne Room West Exterior", 22),
     "Hub: Lookout Artifact":                            CarQuestLocationData("Artifact", "Hub Central Bridge", 23),
     "Hub: Central Bridge East Ramp Artifact":           CarQuestLocationData("Artifact", "Hub Central Bridge", 24),
     "Hub: University Exterior Artifact":                CarQuestLocationData("Artifact", "Hub University Exterior", 25),
@@ -87,7 +87,7 @@ location_table: Dict[str, CarQuestLocationData] = {
     "Desert: South West Mound Artifact":                CarQuestLocationData("Artifact", "Fixit Shop Main", desertOffset + 2),
     "Desert: Shop Cave Artifact":                       CarQuestLocationData("Artifact", "Fixit Shop Cave", desertOffset + 3),
     "Desert: North West Mound Artifact":                CarQuestLocationData("Artifact", "Fixit Shop Main", desertOffset + 4),
-    "Desert: South West Mound Artifact":                CarQuestLocationData("Artifact", "Fixit Shop Main", desertOffset + 5),
+    "Desert: South East Mound Artifact":                CarQuestLocationData("Artifact", "Fixit Shop Main", desertOffset + 5),
     "Desert: Fixit Shop Interior Artifact":             CarQuestLocationData("Artifact", "Fixit Shop Main", desertOffset + 6),
     "Desert: Fixit Shop Fence Artifact":                CarQuestLocationData("Artifact", "Fixit Shop Fence", desertOffset + 7),
     "Desert: Exit Reward Artifact":                     CarQuestLocationData("Artifact", "Fixit Shop Main", desertOffset + 8),
