@@ -1,5 +1,4 @@
 from typing import Dict
-from enum import Enum
 from ..items import SongData
 
 SONG_DATA: Dict[str, SongData] = {
