@@ -30,7 +30,7 @@ class UT2World(World):
     options_dataclass = UT2Options
     options: UT2Options
     topology_present = False
-    required_client_version = (0, 5, 0)
+    required_client_version = (0, 6, 7)
     web = UT2Web()
     item_name_groups = {
         "Party": {name for name, data in item_table.items() if data.category == "party"},
