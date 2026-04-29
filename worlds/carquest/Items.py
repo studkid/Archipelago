@@ -23,6 +23,7 @@ cubesOffset = simpleOffset + 10
 desertOffset = cubesOffset + 10
 sliderOffset = desertOffset + 10
 mazeOffset = sliderOffset + 10
+glassOffset = mazeOffset + 10
 
 item_table: Dict[str, CarQuestItemData] = {
     # Hub
@@ -56,6 +57,18 @@ item_table: Dict[str, CarQuestItemData] = {
     "Hub: Pool North East Blocker":                 CarQuestItemData("secret", 28, ItemClassification.progression),
     "Hub: Central Bridge Portal Bridge":            CarQuestItemData("secret", 29, ItemClassification.progression),
     "Hub: Exterior University Wall Door":           CarQuestItemData("secret", 30, ItemClassification.progression),
+    "Hub: Ramp Near Simple Portal":                 CarQuestItemData("secret", 31, ItemClassification.progression),
+    "Hub: Secondary Univery Wall Door":             CarQuestItemData("secret", 32, ItemClassification.progression),
+    "Hub: Blocker Near Whale Bridge":               CarQuestItemData("secret", 33, ItemClassification.progression),
+    "Hub: Whale Bridge":                            CarQuestItemData("secret", 34, ItemClassification.progression),
+    "Hub: Colloseum Bridge":                        CarQuestItemData("secret", 35, ItemClassification.progression),
+    "Hub: Colloseum Podeum Extension":              CarQuestItemData("secret", 36, ItemClassification.progression),
+    "Hub: Start Area Back Removal":                 CarQuestItemData("secret", 37, ItemClassification.progression),
+    "Hub: Colloseum Exterior Wall Doors":           CarQuestItemData("secret", 38, ItemClassification.progression),
+    "Hub: Colloseum Push Block Unlock":             CarQuestItemData("secret", 39, ItemClassification.progression),
+    "Hub: Colloseum Podoium Door":                  CarQuestItemData("secret", 40, ItemClassification.progression),
+    "Hub: Colloseum Podium Ramp":                   CarQuestItemData("secret", 41, ItemClassification.progression),
+    "Hub: Ramp to Light Puzzle":                    CarQuestItemData("secret", 42, ItemClassification.progression),
 
     "Hub: Sun Museum Glass":                        CarQuestItemData("museum", 90, ItemClassification.progression),
 
@@ -88,6 +101,10 @@ item_table: Dict[str, CarQuestItemData] = {
     "Maze: Lower Artifact Wall":                    CarQuestItemData("secret", mazeOffset + 4, ItemClassification.progression),
     "Maze: Interior Wall Bridge":                   CarQuestItemData("secret", mazeOffset + 5, ItemClassification.progression),
     "Maze: Exit Door":                              CarQuestItemData("secret", mazeOffset + 6, ItemClassification.progression),
+
+    # Glass Box
+    "Glass Box: Useless Block":                     CarQuestItemData("secret", glassOffset + 1, ItemClassification.progression),
+    "Glass Box: Exit Bridge":                       CarQuestItemData("secret", glassOffset + 2, ItemClassification.progression),
 
     # Filler
     "Energy Cell":                                  CarQuestItemData("filler", 10001, ItemClassification.filler),

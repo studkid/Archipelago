@@ -23,6 +23,7 @@ cubesOffset = simpleOffset + 50
 desertOffset = cubesOffset + 50
 sliderOffset = desertOffset + 150
 mazeOffset = sliderOffset + 50
+glassOffset = mazeOffset + 50
 
 location_table: Dict[str, CarQuestLocationData] = {
     # Hub
@@ -37,7 +38,7 @@ location_table: Dict[str, CarQuestLocationData] = {
     "Hub: North Pool Secret Door Artifact":             CarQuestLocationData("Artifact", "Hub Pool Area", 3), # Needs "Hub: North Pool Small Secret Door"
     "Hub: North Pool Jump Ramp":                        CarQuestLocationData("Artifact", "Hub Pool Area", 4), # Needs "Hub: North Pool Jump Ramp"
     "Hub: Tree Slalom Start Artifact":                  CarQuestLocationData("Artifact", "Hub Pool Area", 5), # Needs "Hub: South Pool Artifact Block"
-    "Hub: Upper University Alleyway Artifact":          CarQuestLocationData("Artifact", "Hub Pool Area", 6), 
+    "Hub: Upper University Alleyway Artifact":          CarQuestLocationData("Artifact", "Hub Upper Uni Alleyway", 6), 
     "Hub: South Pool Deadend Artifact":                 CarQuestLocationData("Artifact", "Hub South Pool Deadend Path", 7), 
     "Hub: Tree Slalom Reward Artifact":                 CarQuestLocationData("Artifact", "Hub Pool Area", 8), # Needs "Hub: Tree Slalom Unlock"
     "Hub: Museum Artifact":                             CarQuestLocationData("Artifact", "Hub Museum", 9),
@@ -59,6 +60,17 @@ location_table: Dict[str, CarQuestLocationData] = {
     "Hub: University Exterior Artifact":                CarQuestLocationData("Artifact", "Hub University Exterior", 25),
     "Hub: Central Bridge West Ramp Artifact":           CarQuestLocationData("Artifact", "Hub Central Bridge", 26),
     "Hub: Pool North East Artifact":                    CarQuestLocationData("Artifact", "Hub Pool Area", 27),
+    "Hub: Alley Push Ramp Artifact":                    CarQuestLocationData("Artifact", "Hub Pool Area", 28), # Needs "Hub: Exterior University Wall Door"
+    "Hub: Upper Alley Bridge Near Throne Artifact":     CarQuestLocationData("Artifact", "Hub Upper Pool Perimeter", 29),
+    "Hub: Lower Artifact Near Whale Bridge":            CarQuestLocationData("Artifact", "Hub Lower Whale Lookout", 30),
+    "Hub: Upper Artifact Near Whale Bridge":            CarQuestLocationData("Artifact", "Hub Lower Whale Lookout", 31),
+    "Hub: Whale Bridge Artifact":                       CarQuestLocationData("Artifact", "Hub Whale Bridge", 32),
+    "Hub: Colloseum Hidden in Push Block Artifact":     CarQuestLocationData("Artifact", "Hub Colloseum", 33),
+    "Hub: Colloseum Podeum Artifact":                   CarQuestLocationData("Artifact", "Hub Colloseum", 34),
+    "Hub: Start Area Jump Artifact":                    CarQuestLocationData("Artifact", "Hub Start", 35),
+    "Hub: Behind Colloseum Artifact":                   CarQuestLocationData("Artifact", "Hub Colloseum Exterior", 36),
+    "Hub: Near Rich Portal Artifact":                   CarQuestLocationData("Artifact", "Hub Colloseum Podium", 37),
+    "Hub: Inside Podeum Artifact":                      CarQuestLocationData("Artifact", "Hub Colloseum", 38),
 
     # Simple
     # 2 Secrets
@@ -105,6 +117,7 @@ location_table: Dict[str, CarQuestLocationData] = {
     "Slider: Exit Reward Artifact":                     CarQuestLocationData("Artifact", "Slider Exit", sliderOffset + 6),
 
     # Maze
+    # 7 Secrets
     "Maze: First Artifact":                             CarQuestLocationData("Artifact", "Maze Start", mazeOffset + 1),
     "Maze: On Wall Near Start Artifact":                CarQuestLocationData("Artifact", "Maze Exterior Walls", mazeOffset + 2),
     "Maze: Cave Artifact":                              CarQuestLocationData("Artifact", "Maze Cave", mazeOffset + 3),
@@ -112,4 +125,14 @@ location_table: Dict[str, CarQuestLocationData] = {
     "Maze: Hidden Drop Off Artifact":                   CarQuestLocationData("Artifact", "Maze Interior Walls Upper", mazeOffset + 5),
     "Maze: On Wall Near Exit Artifact":                 CarQuestLocationData("Artifact", "Maze Interior Walls Bridge", mazeOffset + 6),
     "Maze: Exit Reward Artifact":                       CarQuestLocationData("Artifact", "Maze Interior Walls", mazeOffset + 7),
+
+    # Glass Cube
+    # 3 Secrets
+    # 40 Power Cells
+    # 10 Mega Power Cells
+    # 2 Tokens
+    # 55 Total
+    "Glass Cube: Top Artifact":                       CarQuestLocationData("Artifact", "Glass Box", glassOffset + 1),
+    "Glass Cube: Bottom Artifact":                    CarQuestLocationData("Artifact", "Glass Box", glassOffset + 2),
+    "Glass Cube: Exit Reward":                        CarQuestLocationData("Artifact", "Glass Box Exit", glassOffset + 3),
 }
