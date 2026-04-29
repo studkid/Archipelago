@@ -28,17 +28,19 @@ def create_regions(multiworld: MultiWorld, player: int, options: CarQuestOptions
         "Hub Drained Pool":                  CarQuestRegionData([], None),
         "Hub Throne Room East Exterior":     CarQuestRegionData([], ["Hub Throne Room West Exterior", "Hub Floating Islands Path"]),
         "Hub Throne Room West Exterior":     CarQuestRegionData([], None),
-        "Hub Central Bridge":                CarQuestRegionData([], ["Maze Start"]),
+        "Hub Central Bridge":                CarQuestRegionData([], ["Maze Start", "Hub Lookout Long Path"]),
         "Hub University Exterior":           CarQuestRegionData([], ["Hub Lower Whale Lookout"]),
-        "Hub Upper Pool Perimeter":          CarQuestRegionData([], ["Hub Light Puzzle Area", "Hub Throne Room East Exterior"]),
+        "Hub Upper Pool Perimeter":          CarQuestRegionData([], ["Hub Light Puzzle Area", "Hub Throne Room East Exterior", "Hub Start Outlook"]),
         "Hub Lower Whale Lookout":           CarQuestRegionData([], ["Hub Whale Bridge"]),
-        "Hub Whale Bridge":                  CarQuestRegionData([], []),
+        "Hub Whale Bridge":                  CarQuestRegionData([], ["Ocean Main"]),
         "Hub Colloseum":                     CarQuestRegionData([], ["Hub Colloseum Exterior", "Hub Colloseum Podium"]),
         "Hub Colloseum Exterior":            CarQuestRegionData([], None),
         "Hub Colloseum Podium":              CarQuestRegionData([], ["Hub Colloseum Middle Level", "Rich Area"]),
         "Hub Colloseum Middle Level":        CarQuestRegionData([], ["Glass Box"]),
         "Hub Light Puzzle Area":             CarQuestRegionData([], []),
         "Hub Floating Islands Path":         CarQuestRegionData([], ["Sands Main"]),
+        "Hub Lookout Long Path":             CarQuestRegionData([], []),
+        "Hub Start Outlook":                 CarQuestRegionData([], None),
 
         # Simple
         "Simple Square Area":                CarQuestRegionData([], None),
@@ -75,6 +77,10 @@ def create_regions(multiworld: MultiWorld, player: int, options: CarQuestOptions
         "Sands Main":                        CarQuestRegionData([], ["Sands North Exterior Walls", "Sands South Exterior Walls"]),
         "Sands North Exterior Walls":        CarQuestRegionData([], []),
         "Sands South Exterior Walls":        CarQuestRegionData([], ["Sands North Exterior Walls"]),
+
+        # Ocean
+        "Ocean Main":                        CarQuestRegionData([], ["Ocean Inside Fort"]),
+        "Ocean Inside Fort":                 CarQuestRegionData([], []),
 
         # Rich
         "Rich Area":                         CarQuestRegionData([], None),

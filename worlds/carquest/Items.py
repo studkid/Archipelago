@@ -25,6 +25,7 @@ sliderOffset = desertOffset + 10
 mazeOffset = sliderOffset + 10
 glassOffset = mazeOffset + 10
 sandsOffset = glassOffset + 10
+oceanOffset = sandsOffset + 10
 
 item_table: Dict[str, CarQuestItemData] = {
     # Hub
@@ -72,7 +73,9 @@ item_table: Dict[str, CarQuestItemData] = {
     "Hub: Ramp to Light Puzzle":                    CarQuestItemData("secret", 42, ItemClassification.progression),
     "Hub: Top Path Floating Islands":               CarQuestItemData("secret", 43, ItemClassification.progression),
     "Hub: Bottom Path Floating Islands":            CarQuestItemData("secret", 44, ItemClassification.progression),
-    "Hub: Lookout Long Path":                       CarQuestItemData("secret", 45, ItemClassification.progression),
+    "Hub: Lookout Long Path Door":                  CarQuestItemData("secret", 45, ItemClassification.progression),
+    "Hub: Whales and Central Dead End Door":        CarQuestItemData("secret", 46, ItemClassification.progression),
+    "Hub: Start Outlook Door":                      CarQuestItemData("secret", 47, ItemClassification.progression),
 
     "Hub: Sun Museum Glass":                        CarQuestItemData("museum", 90, ItemClassification.progression),
 
@@ -120,6 +123,18 @@ item_table: Dict[str, CarQuestItemData] = {
     "Sands: North East Door":                       CarQuestItemData("secret", sandsOffset + 7, ItemClassification.progression),
     "Sands: Reveal King Artifact":                  CarQuestItemData("secret", sandsOffset + 8, ItemClassification.progression),
     "Sands: Exit Reward Reveal":                    CarQuestItemData("secret", sandsOffset + 9, ItemClassification.progression),
+
+    # Ocean
+    "Ocean: Vulcano Slope":                         CarQuestItemData("secret", oceanOffset + 1, ItemClassification.progression),
+    "Ocean: Fort Bottom Ramp":                      CarQuestItemData("secret", oceanOffset + 2, ItemClassification.progression),
+    "Ocean: Fort Middle Ramp":                      CarQuestItemData("secret", oceanOffset + 3, ItemClassification.progression),
+    "Ocean: Raise Hill Near Exit":                  CarQuestItemData("secret", oceanOffset + 4, ItemClassification.progression),
+    "Ocean: Fort Top Ramp":                         CarQuestItemData("secret", oceanOffset + 5, ItemClassification.progression),
+    "Ocean: Raise Fish Ring Rock":                  CarQuestItemData("secret", oceanOffset + 6, ItemClassification.progression),
+    "Ocean: Raise Fish Ring Ramp":                  CarQuestItemData("secret", oceanOffset + 7, ItemClassification.progression),
+    "Ocean: Pirate Ship Repair":                    CarQuestItemData("secret", oceanOffset + 8, ItemClassification.progression),
+    "Ocean: Shoot Cannon":                          CarQuestItemData("secret", oceanOffset + 9, ItemClassification.progression),
+    "Ocean: Ring Bell":                             CarQuestItemData("secret", oceanOffset + 10, ItemClassification.progression),
 
     # Filler
     "Energy Cell":                                  CarQuestItemData("filler", 10001, ItemClassification.filler),

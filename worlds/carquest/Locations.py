@@ -25,6 +25,7 @@ sliderOffset = desertOffset + 150
 mazeOffset = sliderOffset + 50
 glassOffset = mazeOffset + 50
 sandOffset = glassOffset + 60
+oceanOffset = sandOffset + 140
 
 location_table: Dict[str, CarQuestLocationData] = {
     # Hub
@@ -74,7 +75,10 @@ location_table: Dict[str, CarQuestLocationData] = {
     "Hub: Inside Podeum Artifact":                      CarQuestLocationData("Artifact", "Hub Colloseum", 38),
     "Hub: Upper Light Puzzle Artifact":                 CarQuestLocationData("Artifact", "Hub Light Puzzle Area", 39),
     "Hub: Floating Island Artifact":                    CarQuestLocationData("Artifact", "Hub Upper Pool Perimeter", 40),
-    "Hub: Upper Pool Dead End Path":                    CarQuestLocationData("Artifact", "Hub Upper Pool Perimeter", 41),
+    "Hub: Upper Pool Dead End Path Artifact":           CarQuestLocationData("Artifact", "Hub Upper Pool Perimeter", 41),
+    "Hub: Long Lookout Alley Artifact":                 CarQuestLocationData("Artifact", "Hub Lookout Long Path", 42),
+    "Hub: Central Path Dead End Artifact":              CarQuestLocationData("Artifact", "Hub Central Bridge", 43),
+    "Hub: Start Lookout Artifact":                      CarQuestLocationData("Artifact", "Hub Start Outlook", 44),
 
     # Simple
     # 2 Secrets
@@ -157,4 +161,21 @@ location_table: Dict[str, CarQuestLocationData] = {
     "Sands: North East Door Artifact":                CarQuestLocationData("Artifact", "Sands Main", sandOffset + 9),
     "Sands: King Head Artifact":                      CarQuestLocationData("Artifact", "Sands Main", sandOffset + 10),
     "Sands: Exit Reward Artifact":                    CarQuestLocationData("Artifact", "Sands Main", sandOffset + 11),
+
+    # Ocean
+    # 11 Secrets
+    # 103 Power Cells
+    # 2 Tokens
+    # 116 Total
+    "Ocean: Shipwreck Artifact":                      CarQuestLocationData("Artifact", "Ocean Main", oceanOffset + 1),
+    "Ocean: Top of Vulcano Artifact":                 CarQuestLocationData("Artifact", "Ocean Main", oceanOffset + 2),
+    "Ocean: Outer Fort Bottom Artifact":              CarQuestLocationData("Artifact", "Ocean Main", oceanOffset + 3),
+    "Ocean: Outer Fort Middle Artifact":              CarQuestLocationData("Artifact", "Ocean Main", oceanOffset + 4),
+    "Ocean: Hill Near Portal Artifact":               CarQuestLocationData("Artifact", "Ocean Main", oceanOffset + 5),
+    "Ocean: Insaide Fort Artifact":                   CarQuestLocationData("Artifact", "Ocean Inside Fort", oceanOffset + 6),
+    "Ocean: Artifact Near Bell":                      CarQuestLocationData("Artifact", "Ocean Main", oceanOffset + 7),
+    "Ocean: Fish Circle Jump Artifact":               CarQuestLocationData("Artifact", "Ocean Main", oceanOffset + 8),
+    "Ocean: Inside Pirate Ship Artifact":             CarQuestLocationData("Artifact", "Ocean Main", oceanOffset + 9),
+    "Ocean: Inside Vulcano Artifact":                 CarQuestLocationData("Artifact", "Ocean Main", oceanOffset + 10),
+    "Ocean: Whale Artifact":                          CarQuestLocationData("Artifact", "Ocean Main", oceanOffset + 11),
 }
