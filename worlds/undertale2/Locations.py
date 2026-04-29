@@ -117,7 +117,6 @@ location_table: Dict[str, UT2LocationData] = {
     "Archives - Basement Bart":                             UT2LocationData("pickup", "Archives Pit", 23),
     "Archives - Broom Closet Lower Chest":                  UT2LocationData("pickup", "Archives Pit", 24),
     "Archives - Broom Closet Upper Chest":                  UT2LocationData("pickup", "Archives Pit", 25),
-    # "Archives Sewer - Shop Math Token":                     UT2LocationData("pickup", "Archives Sewers", 26),
     "Archives Chimeny - Magic Glass Chest":                 UT2LocationData("pickup", "Archives Back", 27),
     "Church - Chef Chest":                                  UT2LocationData("pickup", "Hotden", 28),
     "Archives Frogue Chamber - Odd Key":                    UT2LocationData("pickup", "Frogue Chamber", 29),
@@ -203,7 +202,7 @@ location_table: Dict[str, UT2LocationData] = {
     "Archives - Wise Dummy Skill":                          UT2LocationData("pickup", "Beach Post Boss", 99),
 
     "Stardrop Tree - Shyren Pisces Trade 2":                UT2LocationData("pickup", "Stardrop Tree", 100),
-    "Chemical Waste Zone - Xavier Cum Buddy Trade":         UT2LocationData("pickup", "Chemical Waste Zone", 101),
+    "Chemical Waste Zone - Xavier Cum Buddy Trade":         UT2LocationData("pickup", "Chemical Waste Zone", 26),
 
     # Enemies
     "#1 Flowey Card":                                       UT2LocationData("boss", "Landing", 301),
