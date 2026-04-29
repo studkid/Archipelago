@@ -11,7 +11,7 @@ from .ChuniCollections import ChuniCollections
 from .items import ChuniSongItem, ChuniFixedItem
 from .locations import ChuniLocation
 
-class RotNWeb(WebWorld):
+class ChuniWeb(WebWorld):
     theme = "stone"
     tutorials = [Tutorial(
         "Multiworld Setup Guide",
@@ -24,7 +24,7 @@ class RotNWeb(WebWorld):
 
     option_groups = chuni_option_groups
 
-class RotNWorld(World):
+class ChuniWorld(World):
     """
     Placeholder
     """
@@ -33,7 +33,7 @@ class RotNWorld(World):
     options: ChuniOptions
 
     topology_present = False
-    web = RotNWeb()
+    web = ChuniWeb()
     ut_can_gen_without_yaml = True
 
     chuni_collection = ChuniCollections()

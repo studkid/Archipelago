@@ -1,9 +1,9 @@
 from test.bases import WorldTestBase
-from .. import RotNWorld
+from .. import ChuniWorld
 from typing import cast
 
 class RotNTestBase(WorldTestBase):
     game = "Rift of the Necrodancer"
 
-    def get_world(self) -> RotNWorld:
-        return cast(RotNWorld, self.multiworld.worlds[1])
+    def get_world(self) -> ChuniWorld:
+        return cast(ChuniWorld, self.multiworld.worlds[1])

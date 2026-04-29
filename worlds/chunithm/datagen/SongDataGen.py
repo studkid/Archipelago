@@ -34,7 +34,7 @@ with request.urlopen("https://dp4p6x0xfi5o9.cloudfront.net/chunithm/data.json") 
             if song["sheets"][0]["regions"]["intl"]:
                 regions.append('intl')
 
-            file.write(f"    \"{title}\":  SongData({i + 1}, \"{title}\", \"{version}\", \"{cat}\", {regions}, {difficulties}),\n")
+            file.write(f"    \"{title}\":  SongData({i + 10}, \"{title}\", \"{version}\", \"{cat}\", {regions}, {difficulties}),\n")
         file.write("}")
 
         file.write("\n\ngroups = {\n")
