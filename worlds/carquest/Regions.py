@@ -26,17 +26,19 @@ def create_regions(multiworld: MultiWorld, player: int, options: CarQuestOptions
         "Hub South Portal":                  CarQuestRegionData([], ["Fixit Shop Main"]),
         "Hub Vault":                         CarQuestRegionData([], ["Slider Start"]),
         "Hub Drained Pool":                  CarQuestRegionData([], None),
-        "Hub Throne Room East Exterior":     CarQuestRegionData([], ["Hub Throne Room West Exterior"]),
+        "Hub Throne Room East Exterior":     CarQuestRegionData([], ["Hub Throne Room West Exterior", "Hub Floating Islands Path"]),
         "Hub Throne Room West Exterior":     CarQuestRegionData([], None),
         "Hub Central Bridge":                CarQuestRegionData([], ["Maze Start"]),
         "Hub University Exterior":           CarQuestRegionData([], ["Hub Lower Whale Lookout"]),
-        "Hub Upper Pool Perimeter":          CarQuestRegionData([], []),
+        "Hub Upper Pool Perimeter":          CarQuestRegionData([], ["Hub Light Puzzle Area", "Hub Throne Room East Exterior"]),
         "Hub Lower Whale Lookout":           CarQuestRegionData([], ["Hub Whale Bridge"]),
         "Hub Whale Bridge":                  CarQuestRegionData([], []),
         "Hub Colloseum":                     CarQuestRegionData([], ["Hub Colloseum Exterior", "Hub Colloseum Podium"]),
         "Hub Colloseum Exterior":            CarQuestRegionData([], None),
         "Hub Colloseum Podium":              CarQuestRegionData([], ["Hub Colloseum Middle Level", "Rich Area"]),
         "Hub Colloseum Middle Level":        CarQuestRegionData([], ["Glass Box"]),
+        "Hub Light Puzzle Area":             CarQuestRegionData([], []),
+        "Hub Floating Islands Path":         CarQuestRegionData([], ["Sands Main"]),
 
         # Simple
         "Simple Square Area":                CarQuestRegionData([], None),
@@ -68,6 +70,11 @@ def create_regions(multiworld: MultiWorld, player: int, options: CarQuestOptions
         # Glass Box
         "Glass Box":                         CarQuestRegionData([], ["Glass Box Exit"]),
         "Glass Box Exit":                    CarQuestRegionData([], None),
+
+        # Sands of Fallen Kings
+        "Sands Main":                        CarQuestRegionData([], ["Sands North Exterior Walls", "Sands South Exterior Walls"]),
+        "Sands North Exterior Walls":        CarQuestRegionData([], []),
+        "Sands South Exterior Walls":        CarQuestRegionData([], ["Sands North Exterior Walls"]),
 
         # Rich
         "Rich Area":                         CarQuestRegionData([], None),

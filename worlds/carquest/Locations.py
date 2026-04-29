@@ -24,6 +24,7 @@ desertOffset = cubesOffset + 50
 sliderOffset = desertOffset + 150
 mazeOffset = sliderOffset + 50
 glassOffset = mazeOffset + 50
+sandOffset = glassOffset + 60
 
 location_table: Dict[str, CarQuestLocationData] = {
     # Hub
@@ -71,6 +72,9 @@ location_table: Dict[str, CarQuestLocationData] = {
     "Hub: Behind Colloseum Artifact":                   CarQuestLocationData("Artifact", "Hub Colloseum Exterior", 36),
     "Hub: Near Rich Portal Artifact":                   CarQuestLocationData("Artifact", "Hub Colloseum Podium", 37),
     "Hub: Inside Podeum Artifact":                      CarQuestLocationData("Artifact", "Hub Colloseum", 38),
+    "Hub: Upper Light Puzzle Artifact":                 CarQuestLocationData("Artifact", "Hub Light Puzzle Area", 39),
+    "Hub: Floating Island Artifact":                    CarQuestLocationData("Artifact", "Hub Upper Pool Perimeter", 40),
+    "Hub: Upper Pool Dead End Path":                    CarQuestLocationData("Artifact", "Hub Upper Pool Perimeter", 41),
 
     # Simple
     # 2 Secrets
@@ -135,4 +139,22 @@ location_table: Dict[str, CarQuestLocationData] = {
     "Glass Cube: Top Artifact":                       CarQuestLocationData("Artifact", "Glass Box", glassOffset + 1),
     "Glass Cube: Bottom Artifact":                    CarQuestLocationData("Artifact", "Glass Box", glassOffset + 2),
     "Glass Cube: Exit Reward":                        CarQuestLocationData("Artifact", "Glass Box Exit", glassOffset + 3),
+
+    # Sands of Fallen Kings
+    # 11 Secrets
+    # 100 Power Cells
+    # 6 Mega Power Cells
+    # 2 Tokens
+    # 119 Total
+    "Sands: Artifact Under South East Roof":          CarQuestLocationData("Artifact", "Sands Main", sandOffset + 1),
+    "Sands: South East Tower Artifact":               CarQuestLocationData("Artifact", "Sands Main", sandOffset + 2),
+    "Sands: Exterior Wall Artifact":                  CarQuestLocationData("Artifact", "Sands North Exterior Walls", sandOffset + 3),
+    "Sands: Exterior Wall Tower Artifact":            CarQuestLocationData("Artifact", "Sands South Exterior Walls", sandOffset + 4),
+    "Sands: Artifact Inside South East Tower":        CarQuestLocationData("Artifact", "Sands Main", sandOffset + 5),
+    "Sands: Artifact Under Fallen Tower Roof":        CarQuestLocationData("Artifact", "Sands Main", sandOffset + 6),
+    "Sands: North East Tower Artifact":               CarQuestLocationData("Artifact", "Sands Main", sandOffset + 7),
+    "Sands: Artifact Under South West Roof":          CarQuestLocationData("Artifact", "Sands Main", sandOffset + 8),
+    "Sands: North East Door Artifact":                CarQuestLocationData("Artifact", "Sands Main", sandOffset + 9),
+    "Sands: King Head Artifact":                      CarQuestLocationData("Artifact", "Sands Main", sandOffset + 10),
+    "Sands: Exit Reward Artifact":                    CarQuestLocationData("Artifact", "Sands Main", sandOffset + 11),
 }

@@ -24,6 +24,7 @@ desertOffset = cubesOffset + 10
 sliderOffset = desertOffset + 10
 mazeOffset = sliderOffset + 10
 glassOffset = mazeOffset + 10
+sandsOffset = glassOffset + 10
 
 item_table: Dict[str, CarQuestItemData] = {
     # Hub
@@ -69,6 +70,9 @@ item_table: Dict[str, CarQuestItemData] = {
     "Hub: Colloseum Podoium Door":                  CarQuestItemData("secret", 40, ItemClassification.progression),
     "Hub: Colloseum Podium Ramp":                   CarQuestItemData("secret", 41, ItemClassification.progression),
     "Hub: Ramp to Light Puzzle":                    CarQuestItemData("secret", 42, ItemClassification.progression),
+    "Hub: Top Path Floating Islands":               CarQuestItemData("secret", 43, ItemClassification.progression),
+    "Hub: Bottom Path Floating Islands":            CarQuestItemData("secret", 44, ItemClassification.progression),
+    "Hub: Lookout Long Path":                       CarQuestItemData("secret", 45, ItemClassification.progression),
 
     "Hub: Sun Museum Glass":                        CarQuestItemData("museum", 90, ItemClassification.progression),
 
@@ -105,6 +109,17 @@ item_table: Dict[str, CarQuestItemData] = {
     # Glass Box
     "Glass Box: Useless Block":                     CarQuestItemData("secret", glassOffset + 1, ItemClassification.progression),
     "Glass Box: Exit Bridge":                       CarQuestItemData("secret", glassOffset + 2, ItemClassification.progression),
+
+    # Sands of Fallen Kings
+    "Sands: Exterior Walls Access":                 CarQuestItemData("secret", sandsOffset + 1, ItemClassification.progression),
+    "Sands: Lower South West Tower":                CarQuestItemData("secret", sandsOffset + 2, ItemClassification.progression),
+    "Sands: Lower North East Tower":                CarQuestItemData("secret", sandsOffset + 3, ItemClassification.progression),
+    "Sands: South East Tower Access":               CarQuestItemData("secret", sandsOffset + 4, ItemClassification.progression),
+    "Sands: Move Fallen Tower Roof":                CarQuestItemData("secret", sandsOffset + 5, ItemClassification.progression),
+    "Sands: Raise Exit Platform":                   CarQuestItemData("secret", sandsOffset + 6, ItemClassification.progression),
+    "Sands: North East Door":                       CarQuestItemData("secret", sandsOffset + 7, ItemClassification.progression),
+    "Sands: Reveal King Artifact":                  CarQuestItemData("secret", sandsOffset + 8, ItemClassification.progression),
+    "Sands: Exit Reward Reveal":                    CarQuestItemData("secret", sandsOffset + 9, ItemClassification.progression),
 
     # Filler
     "Energy Cell":                                  CarQuestItemData("filler", 10001, ItemClassification.filler),
