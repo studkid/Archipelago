@@ -55,19 +55,20 @@ with request.urlopen("https://dp4p6x0xfi5o9.cloudfront.net/maimai/data.json") as
                     id_offset = id_offset + 1
                     file.write(f"    \"{title} (dx)\":  SongData({i + 1 + id_offset}, \"{title}\", \"{version}\", \"{cat}\", \"dx\", {regions}, {dx_difficulties}),\n")
                     
-                    songInfo = {
+                    songInfoStd = {
                         "version": version,
                         "category": cat,
                         "regions": regions,
                         "difficulties": std_difficulties,
                     }
-                    songInfo = {
+                    songInfoDx = {
                         "version": version,
                         "category": cat,
                         "regions": regions,
                         "difficulties": dx_difficulties,
                     }
-                    songList[title] = songInfo
+                    songList[f"{title} (std)"] = songInfoStd
+                    songList[f"{title} (dx)"] = songInfoDx
                     continue
                     
                 else:
@@ -78,6 +79,7 @@ with request.urlopen("https://dp4p6x0xfi5o9.cloudfront.net/maimai/data.json") as
                         "regions": regions,
                         "difficulties": std_difficulties,
                     }
+                    songList[title] = songInfo
 
             if len(dx_difficulties) == 5:
                 file.write(f"    \"{title}\":  SongData({i + 1 + id_offset}, \"{title}\", \"{version}\", \"{cat}\", \"dx\", {regions}, {dx_difficulties}),\n")
@@ -87,6 +89,7 @@ with request.urlopen("https://dp4p6x0xfi5o9.cloudfront.net/maimai/data.json") as
                     "regions": regions,
                     "difficulties": dx_difficulties,
                 }
+                songList[title] = songInfo
 
             
         file.write("}")
