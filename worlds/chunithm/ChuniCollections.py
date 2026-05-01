@@ -15,7 +15,7 @@ class ChuniCollections:
     song_items: Dict[str, SongData] = {}
 
     filler_items: Dict[str, int] = {
-        "Critical Justice": 1,
+        "Critical Justice": 2,
     }
 
     filler_weights: Dict[str, int] = {

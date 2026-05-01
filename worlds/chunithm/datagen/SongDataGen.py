@@ -1,6 +1,8 @@
 from urllib import request
-from typing import List
+from typing import List, Dict
 import json, re
+
+songList: Dict[str, Dict[str, any]] = {}
 
 with request.urlopen("https://dp4p6x0xfi5o9.cloudfront.net/chunithm/data.json") as url:
     data = json.loads(url.read().decode())
@@ -35,6 +37,14 @@ with request.urlopen("https://dp4p6x0xfi5o9.cloudfront.net/chunithm/data.json") 
                 regions.append('intl')
 
             file.write(f"    \"{title}\":  SongData({i + 10}, \"{title}\", \"{version}\", \"{cat}\", {regions}, {difficulties}),\n")
+            songInfo = {
+                "version": version,
+                "category": cat,
+                "regions": regions,
+                "difficulties": difficulties,
+            }
+            songList[title] = songInfo
+
         file.write("}")
 
         file.write("\n\ngroups = {\n")
@@ -44,3 +54,6 @@ with request.urlopen("https://dp4p6x0xfi5o9.cloudfront.net/chunithm/data.json") 
         for cat in data["categories"]:
             file.write(f"    \"{cat["category"]}\": {{name for name, data, in SONG_DATA.items() if data.category == \"{cat["category"]}\"}},\n")
         file.write("}")
+
+with open("worlds/chunithm/datagen/chuniSongData.json", "w") as file:
+    file.write(json.dumps(songList))

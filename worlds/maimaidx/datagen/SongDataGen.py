@@ -1,6 +1,8 @@
 from urllib import request
-from typing import List
+from typing import List, Dict
 import json, re
+
+songList: Dict[str, Dict[str, any]] = {}
 
 with request.urlopen("https://dp4p6x0xfi5o9.cloudfront.net/maimai/data.json") as url:
     data = json.loads(url.read().decode())
@@ -52,13 +54,41 @@ with request.urlopen("https://dp4p6x0xfi5o9.cloudfront.net/maimai/data.json") as
                     file.write(f"    \"{title} (std)\":  SongData({i + 1 + id_offset}, \"{title}\", \"{version}\", \"{cat}\", \"std\", {regions}, {std_difficulties}),\n")
                     id_offset = id_offset + 1
                     file.write(f"    \"{title} (dx)\":  SongData({i + 1 + id_offset}, \"{title}\", \"{version}\", \"{cat}\", \"dx\", {regions}, {dx_difficulties}),\n")
+                    
+                    songInfo = {
+                        "version": version,
+                        "category": cat,
+                        "regions": regions,
+                        "difficulties": std_difficulties,
+                    }
+                    songInfo = {
+                        "version": version,
+                        "category": cat,
+                        "regions": regions,
+                        "difficulties": dx_difficulties,
+                    }
+                    songList[title] = songInfo
                     continue
-
+                    
                 else:
                     file.write(f"    \"{title}\":  SongData({i + 1 + id_offset}, \"{title}\", \"{version}\", \"{cat}\", \"std\", {regions}, {std_difficulties}),\n")
+                    songInfo = {
+                        "version": version,
+                        "category": cat,
+                        "regions": regions,
+                        "difficulties": std_difficulties,
+                    }
 
             if len(dx_difficulties) == 5:
                 file.write(f"    \"{title}\":  SongData({i + 1 + id_offset}, \"{title}\", \"{version}\", \"{cat}\", \"dx\", {regions}, {dx_difficulties}),\n")
+                songInfo = {
+                    "version": version,
+                    "category": cat,
+                    "regions": regions,
+                    "difficulties": dx_difficulties,
+                }
+
+            
         file.write("}")
 
         file.write("\n\ngroups = {\n")
@@ -71,3 +101,6 @@ with request.urlopen("https://dp4p6x0xfi5o9.cloudfront.net/maimai/data.json") as
         file.write(f"    \"std\": {{name for name, data, in SONG_DATA.items() if data.type == \"std\"}},\n")
         file.write(f"    \"dx\": {{name for name, data, in SONG_DATA.items() if data.type == \"dx\"}},\n")
         file.write("}")
+
+with open("worlds/maimaidx/datagen/maiSongData.json", "w") as file:
+    file.write(json.dumps(songList))
