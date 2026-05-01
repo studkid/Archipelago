@@ -36,13 +36,13 @@ class MaiWorld(World):
     web = MaiWeb()
     ut_can_gen_without_yaml = True
 
-    chuni_collection = MaiCollections()
-    filler_item_names = list(chuni_collection.filler_items.keys())
-    filler_item_weights = list(chuni_collection.filler_weights.values())
+    mai_collection = MaiCollections()
+    filler_item_names = list(mai_collection.filler_items.keys())
+    filler_item_weights = list(mai_collection.filler_weights.values())
 
-    item_name_to_id = {name: code for name, code in chuni_collection.item_names_to_id.items()}
-    location_name_to_id = {name: code for name, code in chuni_collection.location_names_to_id.items()}
-    item_name_groups = chuni_collection.getItemNameGroups()
+    item_name_to_id = {name: code for name, code in mai_collection.item_names_to_id.items()}
+    location_name_to_id = {name: code for name, code in mai_collection.location_names_to_id.items()}
+    item_name_groups = mai_collection.getItemNameGroups()
 
     player_mod_data = {}
     player_mod_ids = {}
@@ -67,7 +67,7 @@ class MaiWorld(World):
 
             if "finalSongIDs" in slot_data:
                 final = slot_data.get("finalSongIDs", [])
-                self.included_songs = [key for key, song in self.chuni_collection.song_items.items() if song.song_id in final]
+                self.included_songs = [key for key, song in self.mai_collection.song_items.items() if song.song_id in final]
                 self.location_count = len(self.included_songs) * 2
 
             slot_options: dict[str, any] = slot_data.get("options", {})
@@ -91,7 +91,7 @@ class MaiWorld(World):
         filter_error = False
 
         while True:
-            available_song_keys = self.chuni_collection.getSongsWithSettings(self.options, min_diff, max_diff)
+            available_song_keys = self.mai_collection.getSongsWithSettings(self.options, min_diff, max_diff)
             available_song_keys = self.handle_plando(available_song_keys)
 
             if len(available_song_keys) > 0:
@@ -188,15 +188,15 @@ class MaiWorld(World):
         self.location_count = 2 * (len(self.starting_songs) + len(self.included_songs))
 
     def create_item(self, name: str) -> Item:
-        if name == self.chuni_collection.SHEET_NAME:
+        if name == self.mai_collection.SHEET_NAME:
             return MaiFixedItem(name, ItemClassification.progression_skip_balancing,
-                                 self.chuni_collection.SHEET_CODE, self.player)
+                                 self.mai_collection.SHEET_CODE, self.player)
         
-        filler = self.chuni_collection.filler_items.get(name)
+        filler = self.mai_collection.filler_items.get(name)
         if filler:
             return MaiFixedItem(name, ItemClassification.filler, filler, self.player)
         
-        song = self.chuni_collection.song_items[name]
+        song = self.mai_collection.song_items[name]
         self.final_song_ids.add(song.song_id)
         return MaiSongItem(name, self.player, song)
     
@@ -211,7 +211,7 @@ class MaiWorld(World):
 
         # First add all goal song tokens
         for _ in range(0, item_count):
-            self.multiworld.itempool.append(self.create_item(self.chuni_collection.SHEET_NAME))
+            self.multiworld.itempool.append(self.create_item(self.mai_collection.SHEET_NAME))
 
         # Then add 1 copy of every song
         item_count += len(self.included_songs)
@@ -267,13 +267,13 @@ class MaiWorld(World):
         # Adds 2 item locations per song/album to the menu region.
         for name in all_selected_locations:
             for j in range(2):
-                loc = MaiLocation(self.player, f"{name}-{j}", self.chuni_collection.song_locations[f"{name}-{j}"], menu_region)
+                loc = MaiLocation(self.player, f"{name}-{j}", self.mai_collection.song_locations[f"{name}-{j}"], menu_region)
                 loc.access_rule = lambda state, item=name: state.has(item, self.player)
                 menu_region.locations.append(loc)
 
     def set_rules(self) -> None:
         self.multiworld.completion_condition[self.player] = lambda state: \
-            state.has(self.chuni_collection.SHEET_NAME, self.player, self.get_sheet_win_count())
+            state.has(self.mai_collection.SHEET_NAME, self.player, self.get_sheet_win_count())
                       
     def get_sheet_count(self) -> int:
         multiplier = self.options.sheet_count_percentage.value / 100.0
@@ -302,6 +302,7 @@ class MaiWorld(World):
             "victoryLocation": self.victory_song_name,
             "sheetWinCount": self.get_sheet_win_count(),
             "finalSongIDs": self.final_song_ids,
+            "sheetName": self.mai_collection.SHEET_NAME,
 
             # Might not be able to trim this slot data out as most of this info is already in slot data already
             "options": self.options.as_dict("duplicate_song_percentage", "sheet_count_percentage", "sheet_win_percentage")

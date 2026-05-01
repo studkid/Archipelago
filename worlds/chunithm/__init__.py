@@ -302,6 +302,7 @@ class ChuniWorld(World):
             "victoryLocation": self.victory_song_name,
             "sheetWinCount": self.get_sheet_win_count(),
             "finalSongIDs": self.final_song_ids,
+            "sheetName": self.chuni_collection.SHEET_NAME,
 
             # Might not be able to trim this slot data out as most of this info is already in slot data already
             "options": self.options.as_dict("duplicate_song_percentage", "sheet_count_percentage", "sheet_win_percentage")
