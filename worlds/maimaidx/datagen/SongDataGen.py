@@ -51,9 +51,9 @@ with request.urlopen("https://dp4p6x0xfi5o9.cloudfront.net/maimai/data.json") as
 
             if len(std_difficulties) == 5:
                 if len(dx_difficulties) == 5:
-                    file.write(f"    \"{title} (std)\":  SongData({i + 1 + id_offset}, \"{title}\", \"{version}\", \"{cat}\", \"std\", {regions}, {std_difficulties}),\n")
+                    file.write(f"    \"{title} (std)\":  SongData({i + 10 + id_offset}, \"{title}\", \"{version}\", \"{cat}\", \"std\", {regions}, {std_difficulties}),\n")
                     id_offset = id_offset + 1
-                    file.write(f"    \"{title} (dx)\":  SongData({i + 1 + id_offset}, \"{title}\", \"{version}\", \"{cat}\", \"dx\", {regions}, {dx_difficulties}),\n")
+                    file.write(f"    \"{title} (dx)\":  SongData({i + 10 + id_offset}, \"{title}\", \"{version}\", \"{cat}\", \"dx\", {regions}, {dx_difficulties}),\n")
                     
                     songInfoStd = {
                         "version": version,
@@ -72,7 +72,7 @@ with request.urlopen("https://dp4p6x0xfi5o9.cloudfront.net/maimai/data.json") as
                     continue
                     
                 else:
-                    file.write(f"    \"{title}\":  SongData({i + 1 + id_offset}, \"{title}\", \"{version}\", \"{cat}\", \"std\", {regions}, {std_difficulties}),\n")
+                    file.write(f"    \"{title}\":  SongData({i + 10 + id_offset}, \"{title}\", \"{version}\", \"{cat}\", \"std\", {regions}, {std_difficulties}),\n")
                     songInfo = {
                         "version": version,
                         "category": cat,
@@ -82,7 +82,7 @@ with request.urlopen("https://dp4p6x0xfi5o9.cloudfront.net/maimai/data.json") as
                     songList[title] = songInfo
 
             if len(dx_difficulties) == 5:
-                file.write(f"    \"{title}\":  SongData({i + 1 + id_offset}, \"{title}\", \"{version}\", \"{cat}\", \"dx\", {regions}, {dx_difficulties}),\n")
+                file.write(f"    \"{title}\":  SongData({i + 10 + id_offset}, \"{title}\", \"{version}\", \"{cat}\", \"dx\", {regions}, {dx_difficulties}),\n")
                 songInfo = {
                     "version": version,
                     "category": cat,
