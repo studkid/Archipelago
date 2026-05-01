@@ -5,7 +5,7 @@ from collections import ChainMap
 from BaseClasses import logging
 
 class MaiCollections:
-    SHEET_NAME: str = "Maimaile"
+    SHEET_NAME: str = "Maimile"
     SHEET_CODE: int = 1
     logger = logging.getLogger("Maimai")
 
