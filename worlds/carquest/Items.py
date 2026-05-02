@@ -27,6 +27,7 @@ glassOffset = mazeOffset + 10
 sandsOffset = glassOffset + 10
 oceanOffset = sandsOffset + 10
 iceOffset = oceanOffset + 10
+sheepOffset = iceOffset + 15
 
 item_table: Dict[str, CarQuestItemData] = {
     # Hub
@@ -86,6 +87,7 @@ item_table: Dict[str, CarQuestItemData] = {
     "Hub: University Second Floor Ramp":            CarQuestItemData("secret", 54, ItemClassification.progression),
     "Hub: Upper Bridge Jump Walls":                 CarQuestItemData("secret", 55, ItemClassification.progression),
     "Hub: Tree Area Door":                          CarQuestItemData("secret", 56, ItemClassification.progression),
+    "Hub: University Portal Buttons":               CarQuestItemData("secret", 57, ItemClassification.progression),
 
     "Hub: Sun Museum Glass":                        CarQuestItemData("museum", 90, ItemClassification.progression),
     "Hub: Block Museum Glass":                      CarQuestItemData("museum", 91, ItemClassification.progression),
@@ -158,6 +160,14 @@ item_table: Dict[str, CarQuestItemData] = {
     "Ice: Other Wall Bridges":                      CarQuestItemData("secret", iceOffset + 8, ItemClassification.progression),
     "Ice: Wall Jump Ramp":                          CarQuestItemData("secret", iceOffset + 9, ItemClassification.progression),
     "Ice: Bridge Down Ramp":                        CarQuestItemData("secret", iceOffset + 10, ItemClassification.progression),
+    "Ice: Raise North East Tower":                  CarQuestItemData("secret", iceOffset + 11, ItemClassification.progression),
+
+    # Sheep Pastrues
+    "Sheep: Shed Ramp":                             CarQuestItemData("secret", sheepOffset + 1, ItemClassification.progression),
+    "Sheep: Sheep Shed Door":                       CarQuestItemData("secret", sheepOffset + 2, ItemClassification.progression),
+    "Sheep: Windmill Activation":                   CarQuestItemData("secret", sheepOffset + 3, ItemClassification.progression),
+    "Sheep: Raise Shed":                            CarQuestItemData("secret", sheepOffset + 4, ItemClassification.progression),
+    "Sheep: Raised Shed Hidden Wall":               CarQuestItemData("secret", sheepOffset + 5, ItemClassification.progression),
 
     # Filler
     "Energy Cell":                                  CarQuestItemData("filler", 10001, ItemClassification.filler),

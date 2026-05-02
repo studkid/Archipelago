@@ -27,6 +27,7 @@ glassOffset = mazeOffset + 50
 sandOffset = glassOffset + 60
 oceanOffset = sandOffset + 140
 iceOffset = oceanOffset + 140
+sheepOffset = iceOffset + 200
 
 location_table: Dict[str, CarQuestLocationData] = {
     # Hub
@@ -194,6 +195,7 @@ location_table: Dict[str, CarQuestLocationData] = {
     # 159 Power Cells
     # 12 Mega Power Cells
     # 2 Tokens
+    # 185 Total
     "Ice: South Jump Artifact":                      CarQuestLocationData("Artifact", "Ice Temple Main", iceOffset + 1),
     "Ice: North East Perimeter Artifact":            CarQuestLocationData("Artifact", "Ice Temple Main", iceOffset + 2),
     "Ice: Outside West Jump Artifact":               CarQuestLocationData("Artifact", "Ice Temple Main", iceOffset + 3),
@@ -206,4 +208,16 @@ location_table: Dict[str, CarQuestLocationData] = {
     "Ice: South East Tower Jump Artifact":           CarQuestLocationData("Artifact", "Ice Tower Jump", iceOffset + 10),
     "Ice: North East Bridge Ramp Artifact":          CarQuestLocationData("Artifact", "Ice Bridge Ramp To Monument", iceOffset + 11),
     "Ice: Nother East Tower Interior Artifact":      CarQuestLocationData("Artifact", "Ice NE Tower Interior", iceOffset + 12),
+
+    # Sheep Pastures
+    # 6 Secrets
+    # 103 Power Cells
+    # 2 Tokens
+    # 111 Total
+    "Sheep: West Hidden Behind Tree Artifact":       CarQuestLocationData("Artifact", "Sheep Patures Main", sheepOffset + 1),
+    "Sheep: In Sheep Shed Artifact":                 CarQuestLocationData("Artifact", "Sheep Patures In Shed", sheepOffset + 2),
+    "Sheep: Sheep Herder Artifact":                  CarQuestLocationData("Artifact", "Sheep Patures Main", sheepOffset + 3),
+    "Sheep: Inside Windmill Artifact":               CarQuestLocationData("Artifact", "Sheep Patures Main", sheepOffset + 4),
+    "Sheep: Raised Shed Artifact":                   CarQuestLocationData("Artifact", "Sheep Patures Shed Raised", sheepOffset + 5),
+    "Sheep: Inside Raised Shed Artifact":            CarQuestLocationData("Artifact", "Sheep Patures Shed Raised", sheepOffset + 6),
 }

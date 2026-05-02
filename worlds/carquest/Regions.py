@@ -28,7 +28,7 @@ def create_regions(multiworld: MultiWorld, player: int, options: CarQuestOptions
         "Hub Drained Pool":                  CarQuestRegionData([], None),
         "Hub Throne Room East Exterior":     CarQuestRegionData([], ["Hub Throne Room West Exterior", "Hub Floating Islands Path"]),
         "Hub Throne Room West Exterior":     CarQuestRegionData([], None),
-        "Hub Central Bridge":                CarQuestRegionData([], ["Maze Start", "Hub Lookout Long Path"]),
+        "Hub Central Bridge":                CarQuestRegionData([], ["Maze Start", "Hub Lookout Long Path", "Hub Tree"]),
         "Hub University Exterior":           CarQuestRegionData([], ["Hub Lower Whale Lookout", "Hub University Interior"]),
         "Hub Upper Pool Perimeter":          CarQuestRegionData([], ["Hub Light Puzzle Area", "Hub Throne Room East Exterior", "Hub Start Outlook", "Hub Ice Portal"]),
         "Hub Lower Whale Lookout":           CarQuestRegionData([], ["Hub Whale Bridge"]),
@@ -44,6 +44,7 @@ def create_regions(multiworld: MultiWorld, player: int, options: CarQuestOptions
         "Hub University Interior":           CarQuestRegionData([], ["Hub University Second Floor"]),
         "Hub University Second Floor":       CarQuestRegionData([], []),
         "Hub Ice Portal":                    CarQuestRegionData([], ["Ice Temple Main"]),
+        "Hub Tree":                          CarQuestRegionData([], ["Sheep Patures Main"]),
 
         # Simple
         "Simple Square Area":                CarQuestRegionData([], None),
@@ -100,6 +101,11 @@ def create_regions(multiworld: MultiWorld, player: int, options: CarQuestOptions
         "Ice Tower Jump":                    CarQuestRegionData([], []),
         "Ice Bridge Ramp To Monument":       CarQuestRegionData([], ["Ice Temple Lower East Ledge"]),
         "Ice NE Tower Interior":             CarQuestRegionData([], []),
+
+        # Sheep Patures
+        "Sheep Patures Main":                CarQuestRegionData([], ["Sheep Patures In Shed", "Sheep Patures Shed Raised"]),
+        "Sheep Patures In Shed":             CarQuestRegionData([], []),
+        "Sheep Patures Shed Raised":         CarQuestRegionData([], []),
 
         # Rich
         "Rich Area":                         CarQuestRegionData([], None),
