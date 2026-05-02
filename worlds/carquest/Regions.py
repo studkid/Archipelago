@@ -29,8 +29,8 @@ def create_regions(multiworld: MultiWorld, player: int, options: CarQuestOptions
         "Hub Throne Room East Exterior":     CarQuestRegionData([], ["Hub Throne Room West Exterior", "Hub Floating Islands Path"]),
         "Hub Throne Room West Exterior":     CarQuestRegionData([], None),
         "Hub Central Bridge":                CarQuestRegionData([], ["Maze Start", "Hub Lookout Long Path"]),
-        "Hub University Exterior":           CarQuestRegionData([], ["Hub Lower Whale Lookout"]),
-        "Hub Upper Pool Perimeter":          CarQuestRegionData([], ["Hub Light Puzzle Area", "Hub Throne Room East Exterior", "Hub Start Outlook"]),
+        "Hub University Exterior":           CarQuestRegionData([], ["Hub Lower Whale Lookout", "Hub University Interior"]),
+        "Hub Upper Pool Perimeter":          CarQuestRegionData([], ["Hub Light Puzzle Area", "Hub Throne Room East Exterior", "Hub Start Outlook", "Hub Ice Portal"]),
         "Hub Lower Whale Lookout":           CarQuestRegionData([], ["Hub Whale Bridge"]),
         "Hub Whale Bridge":                  CarQuestRegionData([], ["Ocean Main"]),
         "Hub Colloseum":                     CarQuestRegionData([], ["Hub Colloseum Exterior", "Hub Colloseum Podium"]),
@@ -41,6 +41,9 @@ def create_regions(multiworld: MultiWorld, player: int, options: CarQuestOptions
         "Hub Floating Islands Path":         CarQuestRegionData([], ["Sands Main"]),
         "Hub Lookout Long Path":             CarQuestRegionData([], []),
         "Hub Start Outlook":                 CarQuestRegionData([], None),
+        "Hub University Interior":           CarQuestRegionData([], ["Hub University Second Floor"]),
+        "Hub University Second Floor":       CarQuestRegionData([], []),
+        "Hub Ice Portal":                    CarQuestRegionData([], ["Ice Temple Main"]),
 
         # Simple
         "Simple Square Area":                CarQuestRegionData([], None),
@@ -81,6 +84,22 @@ def create_regions(multiworld: MultiWorld, player: int, options: CarQuestOptions
         # Ocean
         "Ocean Main":                        CarQuestRegionData([], ["Ocean Inside Fort"]),
         "Ocean Inside Fort":                 CarQuestRegionData([], []),
+
+        # Ice Temple
+        "Ice Temple Main":                   CarQuestRegionData([], ["Ice Temple NE Ledge", "Ice Temple Lower East Ledge",
+                                                                     "Ice Temple South Path Start", "Ice NE Perimeter Ledge"]),
+        "Ice Temple South Path Start":       CarQuestRegionData([], ["Ice Temple South Ledge End"]),
+        "Ice Temple South Ledge End":        CarQuestRegionData([], None),
+        "Ice Temple NE Ledge":               CarQuestRegionData([], None),
+        "Ice Temple Lower East Ledge":       CarQuestRegionData([], None),
+        "Ice NE Perimeter Ledge":            CarQuestRegionData([], ["Ice SE Tower"]),
+        "Ice SE Tower":                      CarQuestRegionData([], ["Ice South Bridge"]),
+        "Ice SW Tower":                      CarQuestRegionData([], ["Ice South Bridge"]),
+        "Ice South Bridge":                  CarQuestRegionData([], ["Ice SW Tower", "Ice Northern Towers"]),
+        "Ice Northern Towers":               CarQuestRegionData([], ["Ice Tower Jump", "Ice Bridge Ramp To Monument", "Ice NE Tower Interior"]),
+        "Ice Tower Jump":                    CarQuestRegionData([], []),
+        "Ice Bridge Ramp To Monument":       CarQuestRegionData([], ["Ice Temple Lower East Ledge"]),
+        "Ice NE Tower Interior":             CarQuestRegionData([], []),
 
         # Rich
         "Rich Area":                         CarQuestRegionData([], None),

@@ -26,6 +26,7 @@ mazeOffset = sliderOffset + 50
 glassOffset = mazeOffset + 50
 sandOffset = glassOffset + 60
 oceanOffset = sandOffset + 140
+iceOffset = oceanOffset + 140
 
 location_table: Dict[str, CarQuestLocationData] = {
     # Hub
@@ -79,6 +80,15 @@ location_table: Dict[str, CarQuestLocationData] = {
     "Hub: Long Lookout Alley Artifact":                 CarQuestLocationData("Artifact", "Hub Lookout Long Path", 42),
     "Hub: Central Path Dead End Artifact":              CarQuestLocationData("Artifact", "Hub Central Bridge", 43),
     "Hub: Start Lookout Artifact":                      CarQuestLocationData("Artifact", "Hub Start Outlook", 44),
+    "Hub: University Podium Artifact":                  CarQuestLocationData("Artifact", "Hub University Interior", 45),
+    "Hub: University Back Right Artifact":              CarQuestLocationData("Artifact", "Hub University Interior", 46),
+    "Hub: University Second Row Artifact":              CarQuestLocationData("Artifact", "Hub University Interior", 47),
+    "Hub: University Third Row Artifact":               CarQuestLocationData("Artifact", "Hub University Interior", 48),
+    "Hub: University Fourth Row Artifact":              CarQuestLocationData("Artifact", "Hub University Interior", 49),
+    "Hub: University First Row Artifact":               CarQuestLocationData("Artifact", "Hub University Interior", 50),
+    "Hub: University Back Left Artifact":               CarQuestLocationData("Artifact", "Hub University Interior", 51),
+    "Hub: Behind University Portal Artifact":           CarQuestLocationData("Artifact", "Hub University Second Floor", 52),
+    "Hub: Ice Portal Drop Ledge Museum Piece":          CarQuestLocationData("Museum", "Hub Ice Portal", 53),
 
     # Simple
     # 2 Secrets
@@ -178,4 +188,22 @@ location_table: Dict[str, CarQuestLocationData] = {
     "Ocean: Inside Pirate Ship Artifact":             CarQuestLocationData("Artifact", "Ocean Main", oceanOffset + 9),
     "Ocean: Inside Vulcano Artifact":                 CarQuestLocationData("Artifact", "Ocean Main", oceanOffset + 10),
     "Ocean: Whale Artifact":                          CarQuestLocationData("Artifact", "Ocean Main", oceanOffset + 11),
+
+    # Ice Temple
+    # 12 Secrets
+    # 159 Power Cells
+    # 12 Mega Power Cells
+    # 2 Tokens
+    "Ice: South Jump Artifact":                      CarQuestLocationData("Artifact", "Ice Temple Main", iceOffset + 1),
+    "Ice: North East Perimeter Artifact":            CarQuestLocationData("Artifact", "Ice Temple Main", iceOffset + 2),
+    "Ice: Outside West Jump Artifact":               CarQuestLocationData("Artifact", "Ice Temple Main", iceOffset + 3),
+    "Ice: North East Jump Artifact":                 CarQuestLocationData("Artifact", "Ice Temple NE Ledge", iceOffset + 4),
+    "Ice: Lowest East Jump Artifact":                CarQuestLocationData("Artifact", "Ice Temple Lower East Ledge", iceOffset + 5),
+    "Ice: South East Tower Artifact":                CarQuestLocationData("Artifact", "Ice SE Tower", iceOffset + 6),
+    "Ice: East Top Jump Artifact":                   CarQuestLocationData("Artifact", "Ice Temple South Ledge End", iceOffset + 7),
+    "Ice: South West Tower Artifact":                CarQuestLocationData("Artifact", "Ice SW Tower", iceOffset + 8),
+    "Ice: North East Tower Artifact":                CarQuestLocationData("Artifact", "Ice Northern Towers", iceOffset + 9),
+    "Ice: South East Tower Jump Artifact":           CarQuestLocationData("Artifact", "Ice Tower Jump", iceOffset + 10),
+    "Ice: North East Bridge Ramp Artifact":          CarQuestLocationData("Artifact", "Ice Bridge Ramp To Monument", iceOffset + 11),
+    "Ice: Nother East Tower Interior Artifact":      CarQuestLocationData("Artifact", "Ice NE Tower Interior", iceOffset + 12),
 }
