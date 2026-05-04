@@ -27,7 +27,7 @@ def create_regions(multiworld: MultiWorld, player: int, options: CarQuestOptions
         "Hub Vault":                         CarQuestRegionData([], ["Slider Start"]),
         "Hub Drained Pool":                  CarQuestRegionData([], None),
         "Hub Throne Room East Exterior":     CarQuestRegionData([], ["Hub Throne Room West Exterior", "Hub Floating Islands Path"]),
-        "Hub Throne Room West Exterior":     CarQuestRegionData([], None),
+        "Hub Throne Room West Exterior":     CarQuestRegionData([], ["Throne Interior"]),
         "Hub Central Bridge":                CarQuestRegionData([], ["Maze Start", "Hub Lookout Long Path", "Hub Tree"]),
         "Hub University Exterior":           CarQuestRegionData([], ["Hub Lower Whale Lookout", "Hub University Interior"]),
         "Hub Upper Pool Perimeter":          CarQuestRegionData([], ["Hub Light Puzzle Area", "Hub Throne Room East Exterior", "Hub Start Outlook", "Hub Ice Portal"]),
@@ -120,6 +120,14 @@ def create_regions(multiworld: MultiWorld, player: int, options: CarQuestOptions
         "Island Hut Inside":                CarQuestRegionData([], ["Island Treetop", "Island Hut Ledge"]),
         "Island East Path End":             CarQuestRegionData([], []),
         "Island Treetop":                   CarQuestRegionData([], ["Island Hut Inside"]),
+
+        # Throne Room
+        "Throne Interior":                  CarQuestRegionData([], ["Throne Interior N Window", "Throne Interior S Window", "Throne Garden"]),
+        "Throne Interior N Window":         CarQuestRegionData([], []),
+        "Throne Interior S Window":         CarQuestRegionData([], []),
+        "Throne Garden":                    CarQuestRegionData([], ["Throne East Exterior Wall", "Throne West Exterior Wall"]),
+        "Throne East Exterior Wall":        CarQuestRegionData([], ["Throne West Exterior Wall"]),
+        "Throne West Exterior Wall":        CarQuestRegionData([], ["Throne East Exterior Wall",]),
 
         # Rich
         "Rich Area":                         CarQuestRegionData([], None),

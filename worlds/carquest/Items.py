@@ -29,6 +29,7 @@ oceanOffset = sandsOffset + 10
 iceOffset = oceanOffset + 10
 sheepOffset = iceOffset + 15
 islandOffset = sheepOffset + 5
+throneOffset = islandOffset + 40
 
 item_table: Dict[str, CarQuestItemData] = {
     # Hub
@@ -90,6 +91,7 @@ item_table: Dict[str, CarQuestItemData] = {
     "Hub: Tree Area Door":                          CarQuestItemData("secret", 56, ItemClassification.progression),
     "Hub: University Portal Buttons":               CarQuestItemData("secret", 57, ItemClassification.progression),
     "Hub: Throne Room Door":                        CarQuestItemData("secret", 58, ItemClassification.progression),
+    "Hub: Power Room South Door":                   CarQuestItemData("secret", 59, ItemClassification.progression),
 
     "Hub: Sun Museum Glass":                        CarQuestItemData("museum", 90, ItemClassification.progression),
     "Hub: Block Museum Glass":                      CarQuestItemData("museum", 91, ItemClassification.progression),
@@ -206,6 +208,25 @@ item_table: Dict[str, CarQuestItemData] = {
     "Island: Pond Treetop Ramp Blocker":            CarQuestItemData("secret", islandOffset + 32, ItemClassification.progression),
     "Island: Open Hut Door":                        CarQuestItemData("secret", islandOffset + 33, ItemClassification.progression),
     "Island: Exit Ramp":                            CarQuestItemData("secret", islandOffset + 34, ItemClassification.progression),
+
+    # Throne Room
+    "Throne: Interior South West Ramp":             CarQuestItemData("secret", throneOffset + 1, ItemClassification.progression),
+    "Throne: Interior South East Ramp":             CarQuestItemData("secret", throneOffset + 2, ItemClassification.progression),
+    "Throne: Open North Windows":                   CarQuestItemData("secret", throneOffset + 3, ItemClassification.progression),
+    "Throne: Open Main Door":                       CarQuestItemData("secret", throneOffset + 4, ItemClassification.progression),
+    "Throne: Main Door Ramp":                       CarQuestItemData("secret", throneOffset + 5, ItemClassification.progression),
+    "Throne: West Middle Window":                   CarQuestItemData("secret", throneOffset + 6, ItemClassification.progression),
+    "Throne: West Push Ramp":                       CarQuestItemData("secret", throneOffset + 7, ItemClassification.progression),
+    "Throne: East Middle Window":                   CarQuestItemData("secret", throneOffset + 8, ItemClassification.progression),
+    "Throne: East Push Ramp":                       CarQuestItemData("secret", throneOffset + 9, ItemClassification.progression),
+    "Throne: West Middle Window":                   CarQuestItemData("secret", throneOffset + 10, ItemClassification.progression),
+    "Throne: East Middle Window":                   CarQuestItemData("secret", throneOffset + 11, ItemClassification.progression),
+    "Throne: East Exterior Wall":                   CarQuestItemData("secret", throneOffset + 12, ItemClassification.progression),
+    "Throne: West Exterior Wall":                   CarQuestItemData("secret", throneOffset + 13, ItemClassification.progression),
+    "Throne: Lower High Garden Artifact":           CarQuestItemData("secret", throneOffset + 14, ItemClassification.progression),
+    "Throne: North Throne Hidden Door Artifact":    CarQuestItemData("secret", throneOffset + 15, ItemClassification.progression),
+    "Throne: Throne Ramp":                          CarQuestItemData("secret", throneOffset + 16, ItemClassification.progression),
+    "Throne: Exit Portal":                          CarQuestItemData("secret", throneOffset + 17, ItemClassification.progression),
  
     # Filler
     "Energy Cell":                                  CarQuestItemData("filler", 10001, ItemClassification.filler),

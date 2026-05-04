@@ -29,6 +29,7 @@ oceanOffset = sandOffset + 140
 iceOffset = oceanOffset + 140
 sheepOffset = iceOffset + 200
 islandOffset = sheepOffset + 120
+throneOffset = islandOffset + 250
 
 location_table: Dict[str, CarQuestLocationData] = {
     # Hub
@@ -263,4 +264,29 @@ location_table: Dict[str, CarQuestLocationData] = {
     "Island: Treetop Inside Flower Artifact":        CarQuestLocationData("Artifact", "Island Treetop", islandOffset + 33),
     "Island: Inside Hut Artifact":                   CarQuestLocationData("Artifact", "Island Hut Inside", islandOffset + 34),
     "Island: Exit Reward Artifact":                  CarQuestLocationData("Artifact", "Island Night", islandOffset + 35),
+
+    # Throne Room
+    # 18 Secrets
+    # 169 Power Cells
+    # 7 Mega Power Cells
+    # 1 Token
+    # 195 Total
+    "Throne: Behind Throne Artifact":                CarQuestLocationData("Artifact", "Throne Interior", throneOffset + 1),
+    "Throne: South West Trick Jump Artifact":        CarQuestLocationData("Artifact", "Throne Interior", throneOffset + 2),
+    "Throne: South East Trick Jump Artifact":        CarQuestLocationData("Artifact", "Throne Interior", throneOffset + 3),
+    "Throne: North East Window Artifact":            CarQuestLocationData("Artifact", "Throne Interior N Window", throneOffset + 4),
+    "Throne: South West Window Artifact":            CarQuestLocationData("Artifact", "Throne Interior S Window", throneOffset + 5),
+    "Throne: Lower Garden Artifact":                 CarQuestLocationData("Artifact", "Throne Garden", throneOffset + 6),
+    "Throne: Hidden East Garden Artifact":           CarQuestLocationData("Artifact", "Throne Garden", throneOffset + 7),
+    "Throne: Middle West Window Artifact":           CarQuestLocationData("Artifact", "Throne Interior", throneOffset + 8),
+    "Throne: Hidden West Garden Artifact":           CarQuestLocationData("Artifact", "Throne Garden", throneOffset + 9),
+    "Throne: Middle East Window Artifact":           CarQuestLocationData("Artifact", "Throne Interior", throneOffset + 10),
+    "Throne: South West Window Artifact":            CarQuestLocationData("Artifact", "Throne Interior", throneOffset + 11),
+    "Throne: South East Window Artifact":            CarQuestLocationData("Artifact", "Throne Interior", throneOffset + 12),
+    "Throne: East Exterior Wall Artifact":           CarQuestLocationData("Artifact", "Throne East Exterior Wall", throneOffset + 13),
+    "Throne: Exterior Corner Wall Artifact":         CarQuestLocationData("Artifact", "Throne West Exterior Wall", throneOffset + 14),
+    "Throne: Upper Garden Artifact":                 CarQuestLocationData("Artifact", "Throne Garden", throneOffset + 15),
+    "Throne: Hidden Throne Door Artifact":           CarQuestLocationData("Artifact", "Throne N Window", throneOffset + 16),
+    "Throne: Throne Ramp Artifact":                  CarQuestLocationData("Artifact", "Throne Interior", throneOffset + 17),
+    "Throne: Exit Reward Artifact":                  CarQuestLocationData("Artifact", "Throne Garden", throneOffset + 18),
 }
