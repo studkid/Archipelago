@@ -28,7 +28,7 @@ def create_regions(multiworld: MultiWorld, player: int, options: CarQuestOptions
         "Hub Drained Pool":                  CarQuestRegionData([], None),
         "Hub Throne Room East Exterior":     CarQuestRegionData([], ["Hub Throne Room West Exterior", "Hub Floating Islands Path"]),
         "Hub Throne Room West Exterior":     CarQuestRegionData([], ["Throne Interior"]),
-        "Hub Central Bridge":                CarQuestRegionData([], ["Maze Start", "Hub Lookout Long Path", "Hub Tree"]),
+        "Hub Central Bridge":                CarQuestRegionData([], ["Maze Start", "Hub Lookout Long Path", "Hub Tree", "Hub Power Room"]),
         "Hub University Exterior":           CarQuestRegionData([], ["Hub Lower Whale Lookout", "Hub University Interior"]),
         "Hub Upper Pool Perimeter":          CarQuestRegionData([], ["Hub Light Puzzle Area", "Hub Throne Room East Exterior", "Hub Start Outlook", "Hub Ice Portal"]),
         "Hub Lower Whale Lookout":           CarQuestRegionData([], ["Hub Whale Bridge"]),
@@ -42,9 +42,10 @@ def create_regions(multiworld: MultiWorld, player: int, options: CarQuestOptions
         "Hub Lookout Long Path":             CarQuestRegionData([], []),
         "Hub Start Outlook":                 CarQuestRegionData([], None),
         "Hub University Interior":           CarQuestRegionData([], ["Hub University Second Floor"]),
-        "Hub University Second Floor":       CarQuestRegionData([], ["Island Day"]),
-        "Hub Ice Portal":                    CarQuestRegionData([], ["Ice Temple Main"]),
+        "Hub University Second Floor":       CarQuestRegionData([], ["Island Day", "Planetarium"]),
+        "Hub Ice Portal":                    CarQuestRegionData([], ["Ice Temple Main", "Hub Power Room"]),
         "Hub Tree":                          CarQuestRegionData([], ["Sheep Patures Main"]),
+        "Hub Power Room":                    CarQuestRegionData([], ["Hub Ice Portal", "Power Room", "Hub Central Bridge"]),
 
         # Simple
         "Simple Square Area":                CarQuestRegionData([], None),
@@ -127,7 +128,13 @@ def create_regions(multiworld: MultiWorld, player: int, options: CarQuestOptions
         "Throne Interior S Window":         CarQuestRegionData([], []),
         "Throne Garden":                    CarQuestRegionData([], ["Throne East Exterior Wall", "Throne West Exterior Wall"]),
         "Throne East Exterior Wall":        CarQuestRegionData([], ["Throne West Exterior Wall"]),
-        "Throne West Exterior Wall":        CarQuestRegionData([], ["Throne East Exterior Wall",]),
+        "Throne West Exterior Wall":        CarQuestRegionData([], ["Throne East Exterior Wall"]),
+
+        # Planetarium
+        "Planetarium":                      CarQuestRegionData([], []),
+
+        # Power Room
+        "Power Room":                       CarQuestRegionData([], []),
 
         # Rich
         "Rich Area":                         CarQuestRegionData([], None),

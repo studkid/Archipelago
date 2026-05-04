@@ -30,6 +30,8 @@ iceOffset = oceanOffset + 10
 sheepOffset = iceOffset + 15
 islandOffset = sheepOffset + 5
 throneOffset = islandOffset + 40
+planetOffset = throneOffset + 20
+powerOffset = planetOffset + 10
 
 item_table: Dict[str, CarQuestItemData] = {
     # Hub
@@ -92,9 +94,12 @@ item_table: Dict[str, CarQuestItemData] = {
     "Hub: University Portal Buttons":               CarQuestItemData("secret", 57, ItemClassification.progression),
     "Hub: Throne Room Door":                        CarQuestItemData("secret", 58, ItemClassification.progression),
     "Hub: Power Room South Door":                   CarQuestItemData("secret", 59, ItemClassification.progression),
+    "Hub: University Portal Planetarium Access":    CarQuestItemData("secret", 60, ItemClassification.progression),
+    "Hub: Power Room North Door":                   CarQuestItemData("secret", 61, ItemClassification.progression),
 
     "Hub: Sun Museum Glass":                        CarQuestItemData("museum", 90, ItemClassification.progression),
     "Hub: Block Museum Glass":                      CarQuestItemData("museum", 91, ItemClassification.progression),
+    "Hub: Book Museum Glass":                      CarQuestItemData("museum", 92, ItemClassification.progression),
 
     # Simple
     "Simple: Exit Bridge":                          CarQuestItemData("secret",  simpleOffset + 1, ItemClassification.progression),
@@ -227,6 +232,24 @@ item_table: Dict[str, CarQuestItemData] = {
     "Throne: North Throne Hidden Door Artifact":    CarQuestItemData("secret", throneOffset + 15, ItemClassification.progression),
     "Throne: Throne Ramp":                          CarQuestItemData("secret", throneOffset + 16, ItemClassification.progression),
     "Throne: Exit Portal":                          CarQuestItemData("secret", throneOffset + 17, ItemClassification.progression),
+
+    # Planetarium
+    "Planetarium: Elevator Access":                 CarQuestItemData("secret", planetOffset + 1, ItemClassification.progression),
+
+    # Power Room
+    "Power Room: Green Cable Push":                 CarQuestItemData("secret", powerOffset + 1, ItemClassification.progression),
+    "Power Room: Green Cable Activate":             CarQuestItemData("secret", powerOffset + 2, ItemClassification.progression),
+    "Power Room: Blue Cable Push":                  CarQuestItemData("secret", powerOffset + 3, ItemClassification.progression),
+    "Power Room: Blue Cable Activate":              CarQuestItemData("secret", powerOffset + 4, ItemClassification.progression),
+    "Power Room: Red Cable Push":                   CarQuestItemData("secret", powerOffset + 5, ItemClassification.progression),
+    "Power Room: Red Cable Activate":               CarQuestItemData("secret", powerOffset + 6, ItemClassification.progression),
+    "Power Room: Yellow Cable Push":                CarQuestItemData("secret", powerOffset + 7, ItemClassification.progression),
+    "Power Room: Yellow Cable Activate":            CarQuestItemData("secret", powerOffset + 8, ItemClassification.progression),
+    "Power Room: Final Path":                       CarQuestItemData("secret", powerOffset + 9, ItemClassification.progression),
+    "Power Room: Exit Teleporter":                  CarQuestItemData("secret", powerOffset + 10, ItemClassification.progression),
+
+    # Limbo
+    "Limbo: Crown and Exit Portal":                 CarQuestItemData("secret", powerOffset + 11, ItemClassification.progression),
  
     # Filler
     "Energy Cell":                                  CarQuestItemData("filler", 10001, ItemClassification.filler),

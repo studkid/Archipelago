@@ -30,6 +30,9 @@ iceOffset = oceanOffset + 140
 sheepOffset = iceOffset + 200
 islandOffset = sheepOffset + 120
 throneOffset = islandOffset + 250
+planetOffset = throneOffset + 200
+powerOffset = planetOffset + 20
+limboOffset = powerOffset + 230
 
 location_table: Dict[str, CarQuestLocationData] = {
     # Hub
@@ -92,6 +95,8 @@ location_table: Dict[str, CarQuestLocationData] = {
     "Hub: University Back Left Artifact":               CarQuestLocationData("Artifact", "Hub University Interior", 51),
     "Hub: Behind University Portal Artifact":           CarQuestLocationData("Artifact", "Hub University Second Floor", 52),
     "Hub: Ice Portal Drop Ledge Museum Piece":          CarQuestLocationData("Museum", "Hub Ice Portal", 53),
+    "Hub: Power Room Entry Artifact":                   CarQuestLocationData("Artifact", "Hub Power Room", 54),
+    "Hub: Power Room Entry Artifact":                   CarQuestLocationData("Artifact", "Hub Power Room", 54),
 
     # Simple
     # 2 Secrets
@@ -270,6 +275,7 @@ location_table: Dict[str, CarQuestLocationData] = {
     # 169 Power Cells
     # 7 Mega Power Cells
     # 1 Token
+    # 1 Museum
     # 195 Total
     "Throne: Behind Throne Artifact":                CarQuestLocationData("Artifact", "Throne Interior", throneOffset + 1),
     "Throne: South West Trick Jump Artifact":        CarQuestLocationData("Artifact", "Throne Interior", throneOffset + 2),
@@ -289,4 +295,36 @@ location_table: Dict[str, CarQuestLocationData] = {
     "Throne: Hidden Throne Door Artifact":           CarQuestLocationData("Artifact", "Throne Interior N Window", throneOffset + 16),
     "Throne: Throne Ramp Artifact":                  CarQuestLocationData("Artifact", "Throne Interior", throneOffset + 17),
     "Throne: Exit Reward Artifact":                  CarQuestLocationData("Artifact", "Throne Garden", throneOffset + 18),
+    "Throne: Brick Bristle's Museum Piece":          CarQuestLocationData("Artifact", "Throne Garden", throneOffset + 19),
+
+    # Planetarium
+    # 2 Artifacts
+    # 9 Power Cells
+    # 1 Token
+    # 12 Total
+    "Planetarium: Top of Portal Artifact":           CarQuestLocationData("Artifact", "Planetarium", planetOffset + 1),
+    "Planetarium: Top Path Artifact":                CarQuestLocationData("Artifact", "Planetarium", planetOffset + 2),
+
+    # Power Room
+    # 10 Artifacts
+    # 201 Power Cells
+    # 2 Tokens
+    # 213 Total
+    "Power Room: East Bottom Artifact":              CarQuestLocationData("Artifact", "Power Room", powerOffset + 1),
+    "Power Room: Green Center Artifact":             CarQuestLocationData("Artifact", "Power Room", powerOffset + 2),
+    "Power Room: Green Cable Artifact":              CarQuestLocationData("Artifact", "Power Room", powerOffset + 3),
+    "Power Room: Blue Center Artifact":              CarQuestLocationData("Artifact", "Power Room", powerOffset + 4),
+    "Power Room: Blue Cable Artifact":               CarQuestLocationData("Artifact", "Power Room", powerOffset + 5),
+    "Power Room: Red Center Artifact":               CarQuestLocationData("Artifact", "Power Room", powerOffset + 6),
+    "Power Room: Red Cable Artifact":                CarQuestLocationData("Artifact", "Power Room", powerOffset + 7),
+    "Power Room: Yellow Center Artifact":            CarQuestLocationData("Artifact", "Power Room", powerOffset + 8),
+    "Power Room: Book Artifact":                     CarQuestLocationData("Artifact", "Power Room", powerOffset + 9),
+    "Power Room: Top Artifact Near Token":           CarQuestLocationData("Artifact", "Power Room", powerOffset + 10),
+
+    # Limbo
+    # 1 Artifact
+    # 172 Power Cells
+    # 2 Token
+    # 175 Total
+    "Power Room: East Bottom Artifact":              CarQuestLocationData("Artifact", "Power Room", powerOffset + 11),
 }
