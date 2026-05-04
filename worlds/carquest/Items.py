@@ -28,6 +28,7 @@ sandsOffset = glassOffset + 10
 oceanOffset = sandsOffset + 10
 iceOffset = oceanOffset + 10
 sheepOffset = iceOffset + 15
+islandOffset = sheepOffset + 5
 
 item_table: Dict[str, CarQuestItemData] = {
     # Hub
@@ -88,6 +89,7 @@ item_table: Dict[str, CarQuestItemData] = {
     "Hub: Upper Bridge Jump Walls":                 CarQuestItemData("secret", 55, ItemClassification.progression),
     "Hub: Tree Area Door":                          CarQuestItemData("secret", 56, ItemClassification.progression),
     "Hub: University Portal Buttons":               CarQuestItemData("secret", 57, ItemClassification.progression),
+    "Hub: Throne Room Door":                        CarQuestItemData("secret", 58, ItemClassification.progression),
 
     "Hub: Sun Museum Glass":                        CarQuestItemData("museum", 90, ItemClassification.progression),
     "Hub: Block Museum Glass":                      CarQuestItemData("museum", 91, ItemClassification.progression),
@@ -169,6 +171,42 @@ item_table: Dict[str, CarQuestItemData] = {
     "Sheep: Raise Shed":                            CarQuestItemData("secret", sheepOffset + 4, ItemClassification.progression),
     "Sheep: Raised Shed Hidden Wall":               CarQuestItemData("secret", sheepOffset + 5, ItemClassification.progression),
 
+    # Brick Bristle's Island
+    "Island: East Long Path Start Wall":            CarQuestItemData("secret", islandOffset + 1, ItemClassification.progression),
+    "Island: Artifact Blocker Under East Path":     CarQuestItemData("secret", islandOffset + 2, ItemClassification.progression),
+    "Island: First East Path Bridge":               CarQuestItemData("secret", islandOffset + 3, ItemClassification.progression),
+    "Island: Lower Jump Blocker Behind Start":      CarQuestItemData("secret", islandOffset + 4, ItemClassification.progression),
+    "Island: Lower South East Triangle Island":     CarQuestItemData("secret", islandOffset + 5, ItemClassification.progression),
+    "Island: Second East Path Bridge":              CarQuestItemData("secret", islandOffset + 6, ItemClassification.progression),
+    "Island: East Path Ocean Ramp":                 CarQuestItemData("secret", islandOffset + 7, ItemClassification.progression),
+    "Island: Third East Path Bridge":               CarQuestItemData("secret", islandOffset + 8, ItemClassification.progression),
+    "Island: Night Portal":                         CarQuestItemData("secret", islandOffset + 9, ItemClassification.progression),
+    "Island: West Shark Island Ramp":               CarQuestItemData("secret", islandOffset + 10, ItemClassification.progression),
+    "Island: West Island Artifact Ramp":            CarQuestItemData("secret", islandOffset + 11, ItemClassification.progression),
+    "Island: East Ledge Artifact Ramp":             CarQuestItemData("secret", islandOffset + 12, ItemClassification.progression),
+    "Island: South Path Artifact Jump Ramp":        CarQuestItemData("secret", islandOffset + 13, ItemClassification.progression),
+    "Island: East Ledge Cave Entrance":             CarQuestItemData("secret", islandOffset + 14, ItemClassification.progression),
+    "Island: South Path Cave Entrance":             CarQuestItemData("secret", islandOffset + 15, ItemClassification.progression),
+    "Island: Open Clam":                            CarQuestItemData("secret", islandOffset + 16, ItemClassification.progression),
+    "Island: Shark Pinnacle":                       CarQuestItemData("secret", islandOffset + 17, ItemClassification.progression),
+    "Island: North Lower Wall Ramp":                CarQuestItemData("secret", islandOffset + 18, ItemClassification.progression),
+    "Island: East Path Raft Cave Door":             CarQuestItemData("secret", islandOffset + 19, ItemClassification.progression),
+    "Island: North Upper Wall Ramp":                CarQuestItemData("secret", islandOffset + 20, ItemClassification.progression),
+    "Island: Lower Serpant Hump":                   CarQuestItemData("secret", islandOffset + 21, ItemClassification.progression),
+    "Island: South Path Cave Wall Removal":         CarQuestItemData("secret", islandOffset + 22, ItemClassification.progression),
+    "Island: Lower Serpant Head":                   CarQuestItemData("secret", islandOffset + 23, ItemClassification.progression),
+    "Island: Lower Spiral Island":                  CarQuestItemData("secret", islandOffset + 24, ItemClassification.progression),
+    "Island: Pond Treetop Ramp":                    CarQuestItemData("secret", islandOffset + 25, ItemClassification.progression),
+    "Island: Serpant head Jump Ramp":               CarQuestItemData("secret", islandOffset + 26, ItemClassification.progression),
+    "Island: Hut Entrance Ramp":                    CarQuestItemData("secret", islandOffset + 27, ItemClassification.progression),
+    "Island: East Ocean Jump Ramp":                 CarQuestItemData("secret", islandOffset + 28, ItemClassification.progression),
+    "Island: Hut Treetop Ramp":                     CarQuestItemData("secret", islandOffset + 29, ItemClassification.progression),
+    "Island: Treetop East Bridge":                  CarQuestItemData("secret", islandOffset + 30, ItemClassification.progression),
+    "Island: Pond Drain":                           CarQuestItemData("secret", islandOffset + 31, ItemClassification.progression),
+    "Island: Pond Treetop Ramp Blocker":            CarQuestItemData("secret", islandOffset + 32, ItemClassification.progression),
+    "Island: Open Hut Door":                        CarQuestItemData("secret", islandOffset + 33, ItemClassification.progression),
+    "Island: Exit Ramp":                            CarQuestItemData("secret", islandOffset + 34, ItemClassification.progression),
+ 
     # Filler
     "Energy Cell":                                  CarQuestItemData("filler", 10001, ItemClassification.filler),
 }

@@ -42,7 +42,7 @@ def create_regions(multiworld: MultiWorld, player: int, options: CarQuestOptions
         "Hub Lookout Long Path":             CarQuestRegionData([], []),
         "Hub Start Outlook":                 CarQuestRegionData([], None),
         "Hub University Interior":           CarQuestRegionData([], ["Hub University Second Floor"]),
-        "Hub University Second Floor":       CarQuestRegionData([], []),
+        "Hub University Second Floor":       CarQuestRegionData([], ["Island Day"]),
         "Hub Ice Portal":                    CarQuestRegionData([], ["Ice Temple Main"]),
         "Hub Tree":                          CarQuestRegionData([], ["Sheep Patures Main"]),
 
@@ -106,6 +106,20 @@ def create_regions(multiworld: MultiWorld, player: int, options: CarQuestOptions
         "Sheep Patures Main":                CarQuestRegionData([], ["Sheep Patures In Shed", "Sheep Patures Shed Raised"]),
         "Sheep Patures In Shed":             CarQuestRegionData([], []),
         "Sheep Patures Shed Raised":         CarQuestRegionData([], []),
+
+        # Brick Bristle's Island
+        "Island Day":                       CarQuestRegionData([], ["Island Day South Path", "Island Night",
+                                                                    "Island North Lower Ledge", "Island North Upper Ledge",
+                                                                    "Island East Path End", "Island Treetop"]),
+        "Island Day South Path":            CarQuestRegionData([], []),
+        "Island Night South Path":          CarQuestRegionData([], []),
+        "Island Night":                     CarQuestRegionData([], ["Island Hut Ledge", "Island Night South Path", "Island East Path End"]),
+        "Island North Lower Ledge":         CarQuestRegionData([], []),
+        "Island North Upper Ledge":         CarQuestRegionData([], ["Island North Lower Ledge"]),
+        "Island Hut Ledge":                 CarQuestRegionData([], ["Island Hut Inside"]),
+        "Island Hut Inside":                CarQuestRegionData([], ["Island Treetop", "Island Hut Ledge"]),
+        "Island East Path End":             CarQuestRegionData([], []),
+        "Island Treetop":                   CarQuestRegionData([], ["Island Hut Inside"]),
 
         # Rich
         "Rich Area":                         CarQuestRegionData([], None),

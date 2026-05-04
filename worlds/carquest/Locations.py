@@ -28,6 +28,7 @@ sandOffset = glassOffset + 60
 oceanOffset = sandOffset + 140
 iceOffset = oceanOffset + 140
 sheepOffset = iceOffset + 200
+islandOffset = sheepOffset + 120
 
 location_table: Dict[str, CarQuestLocationData] = {
     # Hub
@@ -220,4 +221,46 @@ location_table: Dict[str, CarQuestLocationData] = {
     "Sheep: Inside Windmill Artifact":               CarQuestLocationData("Artifact", "Sheep Patures Main", sheepOffset + 4),
     "Sheep: Raised Shed Artifact":                   CarQuestLocationData("Artifact", "Sheep Patures Shed Raised", sheepOffset + 5),
     "Sheep: Inside Raised Shed Artifact":            CarQuestLocationData("Artifact", "Sheep Patures Shed Raised", sheepOffset + 6),
+
+    # Brick Bristle's Island
+    # 35 Artifacts
+    # 199 Energy Cells
+    # 5 Mega Energy Cells
+    # 2 Tokens
+    # 241 Total
+    "Island: Spiral Island Artifact":                CarQuestLocationData("Artifact", "Island Day", islandOffset + 1),
+    "Island: East Small Rock In Ocean Artifact":     CarQuestLocationData("Artifact", "Island Day", islandOffset + 2),
+    "Island: Artifact Hidden Under East Path":       CarQuestLocationData("Artifact", "Island Day", islandOffset + 3),
+    "Island: East Path First Artifact":              CarQuestLocationData("Artifact", "Island Day", islandOffset + 4),
+    "Island: Raft Behind Start Artifact":            CarQuestLocationData("Artifact", "Island Day South Path", islandOffset + 5),
+    "Island: South East Triange Island Artifact":    CarQuestLocationData("Artifact", "Island Day", islandOffset + 6),
+    "Island: East Path Second Artifact":             CarQuestLocationData("Artifact", "Island Day", islandOffset + 7),
+    "Island: East Path North Raft Artifact":         CarQuestLocationData("Artifact", "Island Day", islandOffset + 8),
+    "Island: East Path South Raft Artifact":         CarQuestLocationData("Artifact", "Island Day", islandOffset + 9),
+    "Island: East Path End Artifact":                CarQuestLocationData("Artifact", "Island East Path End", islandOffset + 10),
+    "Island: Shark Island Artifact":                 CarQuestLocationData("Artifact", "Island Night", islandOffset + 11),
+    "Island: West Island Ramp Artifact":             CarQuestLocationData("Artifact", "Island Day", islandOffset + 12),
+    "Island: East Island Ledge Artifact":            CarQuestLocationData("Artifact", "Island Night", islandOffset + 13),
+    "Island: South Path Jump Artifact":              CarQuestLocationData("Artifact", "Island Night", islandOffset + 14),
+    "Island: South East Cave Artifact":              CarQuestLocationData("Artifact", "Island Day", islandOffset + 15),
+    "Island: South Path Cave Artifact":              CarQuestLocationData("Artifact", "Island Day", islandOffset + 16),
+    "Island: Clam Artifact":                         CarQuestLocationData("Artifact", "Island Day", islandOffset + 17),
+    "Island: West Jump Artifact":                    CarQuestLocationData("Artifact", "Island Day", islandOffset + 18),
+    "Island: North Wall Lower Artifact":             CarQuestLocationData("Artifact", "Island North Lower Ledge", islandOffset + 19),
+    "Island: East Path Raft Cave Artifact":          CarQuestLocationData("Artifact", "Island Day", islandOffset + 20),
+    "Island: North Wall Upper Artifact":             CarQuestLocationData("Artifact", "Island North Upper Ledge", islandOffset + 21),
+    "Island: Back Serpant Hump Artifact":            CarQuestLocationData("Artifact", "Island Day", islandOffset + 22),
+    "Island: Second South Path Cave Artifact":       CarQuestLocationData("Artifact", "Island Day", islandOffset + 23),
+    "Island: Serpant Head Artifact":                 CarQuestLocationData("Artifact", "Island Day", islandOffset + 24),
+    "Island: Hut Ledge Artifact":                    CarQuestLocationData("Artifact", "Island Night", islandOffset + 25),
+    "Island: Night South Path Artifact":             CarQuestLocationData("Artifact", "Island Night South Path", islandOffset + 26),
+    "Island: Front Serpant Hump Artifact":           CarQuestLocationData("Artifact", "Island Night", islandOffset + 27),
+    "Island: Inside Hut Artifact":                   CarQuestLocationData("Artifact", "Island Hut Inside", islandOffset + 28),
+    "Island: East Ocean Jump Artifact":              CarQuestLocationData("Artifact", "Island Night", islandOffset + 29),
+    "Island: Treetop Near Flower Artifact":          CarQuestLocationData("Artifact", "Island Treetop", islandOffset + 30),
+    "Island: Treetop Top of Pond Ramp Artifact":     CarQuestLocationData("Artifact", "Island Treetop", islandOffset + 31),
+    "Island: Drained Pond Artifact":                 CarQuestLocationData("Artifact", "Island Treetop", islandOffset + 32),
+    "Island: Treetop Inside Flower Artifact":        CarQuestLocationData("Artifact", "Island Treetop", islandOffset + 33),
+    "Island: Inside Hut Artifact":                   CarQuestLocationData("Artifact", "Island Hut Inside", islandOffset + 34),
+    "Island: Exit Reward Artifact":                  CarQuestLocationData("Artifact", "Island Night", islandOffset + 35),
 }
