@@ -18,7 +18,7 @@ def create_regions(multiworld: MultiWorld, player: int, options: CarQuestOptions
         "Hub Pool Area":                     CarQuestRegionData([], ["Hub Upper Uni Alleyway", "Hub South Pool Deadend Path",
                                                                      "Floating Cube Area", "Hub Cube Monument", "Hub South Portal",
                                                                      "Hub Vault", "Hub Drained Pool", "Hub University Exterior", "Hub Museum",
-                                                                     "Hub Colloseum"]),
+                                                                     "Hub Colloseum", "Hub Pool Jump"]),
         "Hub Upper Uni Alleyway":            CarQuestRegionData([], None),
         "Hub South Pool Deadend Path":       CarQuestRegionData([], None),
         "Hub Museum":                        CarQuestRegionData([], None),
@@ -34,7 +34,7 @@ def create_regions(multiworld: MultiWorld, player: int, options: CarQuestOptions
         "Hub Lower Whale Lookout":           CarQuestRegionData([], ["Hub Whale Bridge"]),
         "Hub Whale Bridge":                  CarQuestRegionData([], ["Ocean Main"]),
         "Hub Colloseum":                     CarQuestRegionData([], ["Hub Colloseum Exterior", "Hub Colloseum Podium"]),
-        "Hub Colloseum Exterior":            CarQuestRegionData([], None),
+        "Hub Colloseum Exterior":            CarQuestRegionData([], ["Hub Colloseum Top"]),
         "Hub Colloseum Podium":              CarQuestRegionData([], ["Hub Colloseum Middle Level", "Rich Area"]),
         "Hub Colloseum Middle Level":        CarQuestRegionData([], ["Glass Box"]),
         "Hub Light Puzzle Area":             CarQuestRegionData([], []),
@@ -43,9 +43,12 @@ def create_regions(multiworld: MultiWorld, player: int, options: CarQuestOptions
         "Hub Start Outlook":                 CarQuestRegionData([], None),
         "Hub University Interior":           CarQuestRegionData([], ["Hub University Second Floor"]),
         "Hub University Second Floor":       CarQuestRegionData([], ["Island Day", "Planetarium"]),
-        "Hub Ice Portal":                    CarQuestRegionData([], ["Ice Temple Main", "Hub Power Room"]),
+        "Hub Ice Portal":                    CarQuestRegionData([], ["Ice Temple Main", "Hub Power Room", "Hub Teleport Island"]),
         "Hub Tree":                          CarQuestRegionData([], ["Sheep Patures Main"]),
         "Hub Power Room":                    CarQuestRegionData([], ["Hub Ice Portal", "Power Room", "Hub Central Bridge"]),
+        "Hub Pool Jump":                     CarQuestRegionData([], []),
+        "Hub Colloseum Top":                 CarQuestRegionData([], ["Hub Colloseum"]),
+        "Hub Teleport Island":               CarQuestRegionData([], []),
 
         # Simple
         "Simple Square Area":                CarQuestRegionData([], None),
@@ -134,7 +137,9 @@ def create_regions(multiworld: MultiWorld, player: int, options: CarQuestOptions
         "Planetarium":                      CarQuestRegionData([], []),
 
         # Power Room
-        "Power Room":                       CarQuestRegionData([], []),
+        "Power Room":                       CarQuestRegionData([], ["Limbo"]),
+        "Limbo":                            CarQuestRegionData([], ["Throne Boss"]),
+        "Throne Boss":                      CarQuestRegionData([], []),
 
         # Rich
         "Rich Area":                         CarQuestRegionData([], None),

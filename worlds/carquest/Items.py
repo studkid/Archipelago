@@ -35,6 +35,7 @@ powerOffset = planetOffset + 10
 
 item_table: Dict[str, CarQuestItemData] = {
     # Hub
+    # Currently missing some items here...
     "Hub: Start Room Blocker":                      CarQuestItemData("secret", 1, ItemClassification.progression),
     "Hub: Simple Portal Bridge Wall":               CarQuestItemData("secret", 2, ItemClassification.progression),
     "Hub: North Pool Small Secret Door":            CarQuestItemData("secret", 3, ItemClassification.progression),
@@ -96,10 +97,18 @@ item_table: Dict[str, CarQuestItemData] = {
     "Hub: Power Room South Door":                   CarQuestItemData("secret", 59, ItemClassification.progression),
     "Hub: University Portal Planetarium Access":    CarQuestItemData("secret", 60, ItemClassification.progression),
     "Hub: Power Room North Door":                   CarQuestItemData("secret", 61, ItemClassification.progression),
+    "Hub: World Peace":                             CarQuestItemData("secret", 62, ItemClassification.progression), # secret name: brickbristles
 
     "Hub: Sun Museum Glass":                        CarQuestItemData("museum", 90, ItemClassification.progression),
     "Hub: Block Museum Glass":                      CarQuestItemData("museum", 91, ItemClassification.progression),
-    "Hub: Book Museum Glass":                      CarQuestItemData("museum", 92, ItemClassification.progression),
+    "Hub: Book Museum Glass":                       CarQuestItemData("museum", 92, ItemClassification.progression),
+    "Hub: Energy Cell Museum Glass":                CarQuestItemData("museum", 93, ItemClassification.progression),
+    "Hub: Tire Museum Glass":                       CarQuestItemData("museum", 94, ItemClassification.progression),
+    "Hub: Blockstar Museum Glass":                  CarQuestItemData("museum", 95, ItemClassification.progression),
+    "Hub: Tree Museum Glass":                       CarQuestItemData("museum", 96, ItemClassification.progression),
+    "Hub: Cube Museum Glass":                       CarQuestItemData("museum", 97, ItemClassification.progression),
+    "Hub: Portal Museum Glass":                     CarQuestItemData("museum", 98, ItemClassification.progression),
+    "Hub: Brick Bristles Museum Glass":             CarQuestItemData("museum", 99, ItemClassification.progression),
 
     # Simple
     "Simple: Exit Bridge":                          CarQuestItemData("secret",  simpleOffset + 1, ItemClassification.progression),
@@ -145,6 +154,7 @@ item_table: Dict[str, CarQuestItemData] = {
     "Sands: North East Door":                       CarQuestItemData("secret", sandsOffset + 7, ItemClassification.progression),
     "Sands: Reveal King Artifact":                  CarQuestItemData("secret", sandsOffset + 8, ItemClassification.progression),
     "Sands: Exit Reward Reveal":                    CarQuestItemData("secret", sandsOffset + 9, ItemClassification.progression),
+    "Sands: Lower North West Tower":                CarQuestItemData("secret", sandsOffset + 10, ItemClassification.progression),
 
     # Ocean
     "Ocean: Vulcano Slope":                         CarQuestItemData("secret", oceanOffset + 1, ItemClassification.progression),

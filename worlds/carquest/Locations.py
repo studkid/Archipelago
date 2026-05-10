@@ -62,41 +62,45 @@ location_table: Dict[str, CarQuestLocationData] = {
     "Hub: Pool South East Artifact":                    CarQuestLocationData("Artifact", "Hub Pool Area", 18), # Needs Drained Pool
     "Hub: Pool North West Artifact":                    CarQuestLocationData("Artifact", "Hub Pool Area", 19), # Needs Drained Pool
     "Hub: Pool Center Artifact":                        CarQuestLocationData("Artifact", "Hub Pool Area", 20), # Needs Refilled Pool
-    "Hub: Throne Exterior Museum Piece":                CarQuestLocationData("Museum", "Hub Throne Room West Exterior", 21),
-    "Hub: Throne Exterior Artifact":                    CarQuestLocationData("Artifact", "Hub Throne Room West Exterior", 22),
-    "Hub: Lookout Artifact":                            CarQuestLocationData("Artifact", "Hub Central Bridge", 23),
-    "Hub: Central Bridge East Ramp Artifact":           CarQuestLocationData("Artifact", "Hub Central Bridge", 24),
-    "Hub: University Exterior Artifact":                CarQuestLocationData("Artifact", "Hub University Exterior", 25),
-    "Hub: Central Bridge West Ramp Artifact":           CarQuestLocationData("Artifact", "Hub Central Bridge", 26),
-    "Hub: Pool North East Artifact":                    CarQuestLocationData("Artifact", "Hub Pool Area", 27),
-    "Hub: Alley Push Ramp Artifact":                    CarQuestLocationData("Artifact", "Hub Pool Area", 28), # Needs "Hub: Exterior University Wall Door"
-    "Hub: Upper Alley Bridge Near Throne Artifact":     CarQuestLocationData("Artifact", "Hub Upper Pool Perimeter", 29),
-    "Hub: Lower Artifact Near Whale Bridge":            CarQuestLocationData("Artifact", "Hub Lower Whale Lookout", 30),
-    "Hub: Upper Artifact Near Whale Bridge":            CarQuestLocationData("Artifact", "Hub Lower Whale Lookout", 31),
-    "Hub: Whale Bridge Artifact":                       CarQuestLocationData("Artifact", "Hub Whale Bridge", 32),
-    "Hub: Colloseum Hidden in Push Block Artifact":     CarQuestLocationData("Artifact", "Hub Colloseum", 33),
-    "Hub: Colloseum Podeum Artifact":                   CarQuestLocationData("Artifact", "Hub Colloseum", 34),
-    "Hub: Start Area Jump Artifact":                    CarQuestLocationData("Artifact", "Hub Start", 35),
-    "Hub: Behind Colloseum Artifact":                   CarQuestLocationData("Artifact", "Hub Colloseum Exterior", 36),
-    "Hub: Near Rich Portal Artifact":                   CarQuestLocationData("Artifact", "Hub Colloseum Podium", 37),
-    "Hub: Inside Podeum Artifact":                      CarQuestLocationData("Artifact", "Hub Colloseum", 38),
-    "Hub: Upper Light Puzzle Artifact":                 CarQuestLocationData("Artifact", "Hub Light Puzzle Area", 39),
-    "Hub: Floating Island Artifact":                    CarQuestLocationData("Artifact", "Hub Upper Pool Perimeter", 40),
-    "Hub: Upper Pool Dead End Path Artifact":           CarQuestLocationData("Artifact", "Hub Upper Pool Perimeter", 41),
-    "Hub: Long Lookout Alley Artifact":                 CarQuestLocationData("Artifact", "Hub Lookout Long Path", 42),
-    "Hub: Central Path Dead End Artifact":              CarQuestLocationData("Artifact", "Hub Central Bridge", 43),
-    "Hub: Start Lookout Artifact":                      CarQuestLocationData("Artifact", "Hub Start Outlook", 44),
-    "Hub: University Podium Artifact":                  CarQuestLocationData("Artifact", "Hub University Interior", 45),
-    "Hub: University Back Right Artifact":              CarQuestLocationData("Artifact", "Hub University Interior", 46),
-    "Hub: University Second Row Artifact":              CarQuestLocationData("Artifact", "Hub University Interior", 47),
-    "Hub: University Third Row Artifact":               CarQuestLocationData("Artifact", "Hub University Interior", 48),
-    "Hub: University Fourth Row Artifact":              CarQuestLocationData("Artifact", "Hub University Interior", 49),
-    "Hub: University First Row Artifact":               CarQuestLocationData("Artifact", "Hub University Interior", 50),
-    "Hub: University Back Left Artifact":               CarQuestLocationData("Artifact", "Hub University Interior", 51),
-    "Hub: Behind University Portal Artifact":           CarQuestLocationData("Artifact", "Hub University Second Floor", 52),
-    "Hub: Ice Portal Drop Ledge Museum Piece":          CarQuestLocationData("Museum", "Hub Ice Portal", 53),
-    "Hub: Power Room Entry Artifact":                   CarQuestLocationData("Artifact", "Hub Power Room", 54),
-    "Hub: Power Room Entry Artifact":                   CarQuestLocationData("Artifact", "Hub Power Room", 54),
+    "Hub: Throne Exterior Artifact":                    CarQuestLocationData("Artifact", "Hub Throne Room West Exterior", 21),
+    "Hub: Lookout Artifact":                            CarQuestLocationData("Artifact", "Hub Central Bridge", 22),
+    "Hub: Central Bridge East Ramp Artifact":           CarQuestLocationData("Artifact", "Hub Central Bridge", 23),
+    "Hub: University Exterior Artifact":                CarQuestLocationData("Artifact", "Hub University Exterior", 24),
+    "Hub: Central Bridge West Ramp Artifact":           CarQuestLocationData("Artifact", "Hub Central Bridge", 25),
+    "Hub: Pool North East Artifact":                    CarQuestLocationData("Artifact", "Hub Pool Area", 26),
+    "Hub: Alley Push Ramp Artifact":                    CarQuestLocationData("Artifact", "Hub Pool Area", 27), # Needs "Hub: Exterior University Wall Door"
+    "Hub: Upper Alley Bridge Near Throne Artifact":     CarQuestLocationData("Artifact", "Hub Upper Pool Perimeter", 28),
+    "Hub: Lower Artifact Near Whale Bridge":            CarQuestLocationData("Artifact", "Hub Lower Whale Lookout", 29),
+    "Hub: Upper Artifact Near Whale Bridge":            CarQuestLocationData("Artifact", "Hub Lower Whale Lookout", 30),
+    "Hub: Whale Bridge Artifact":                       CarQuestLocationData("Artifact", "Hub Whale Bridge", 31),
+    "Hub: Colloseum Hidden in Push Block Artifact":     CarQuestLocationData("Artifact", "Hub Colloseum", 32),
+    "Hub: Colloseum Podeum Artifact":                   CarQuestLocationData("Artifact", "Hub Colloseum", 33),
+    "Hub: Start Area Jump Artifact":                    CarQuestLocationData("Artifact", "Hub Start", 34),
+    "Hub: Behind Colloseum Artifact":                   CarQuestLocationData("Artifact", "Hub Colloseum Exterior", 35),
+    "Hub: Near Rich Portal Artifact":                   CarQuestLocationData("Artifact", "Hub Colloseum Podium", 36),
+    "Hub: Inside Podeum Artifact":                      CarQuestLocationData("Artifact", "Hub Colloseum", 37),
+    "Hub: Upper Light Puzzle Artifact":                 CarQuestLocationData("Artifact", "Hub Light Puzzle Area", 38),
+    "Hub: Floating Island Artifact":                    CarQuestLocationData("Artifact", "Hub Upper Pool Perimeter", 39),
+    "Hub: Upper Pool Dead End Path Artifact":           CarQuestLocationData("Artifact", "Hub Upper Pool Perimeter", 40),
+    "Hub: Long Lookout Alley Artifact":                 CarQuestLocationData("Artifact", "Hub Lookout Long Path", 41),
+    "Hub: Central Path Dead End Artifact":              CarQuestLocationData("Artifact", "Hub Central Bridge", 42),
+    "Hub: Start Lookout Artifact":                      CarQuestLocationData("Artifact", "Hub Start Outlook", 43),
+    "Hub: University Podium Artifact":                  CarQuestLocationData("Artifact", "Hub University Interior", 44),
+    "Hub: University Back Right Artifact":              CarQuestLocationData("Artifact", "Hub University Interior", 45),
+    "Hub: University Second Row Artifact":              CarQuestLocationData("Artifact", "Hub University Interior", 46),
+    "Hub: University Third Row Artifact":               CarQuestLocationData("Artifact", "Hub University Interior", 47),
+    "Hub: University Fourth Row Artifact":              CarQuestLocationData("Artifact", "Hub University Interior", 48),
+    "Hub: University First Row Artifact":               CarQuestLocationData("Artifact", "Hub University Interior", 49),
+    "Hub: University Back Left Artifact":               CarQuestLocationData("Artifact", "Hub University Interior", 50),
+    "Hub: Behind University Portal Artifact":           CarQuestLocationData("Artifact", "Hub University Second Floor", 51),
+    "Hub: Power Room Entry Artifact":                   CarQuestLocationData("Artifact", "Hub Power Room", 52),
+
+    "Hub: Throne Exterior Museum Piece":                CarQuestLocationData("Museum", "Hub Throne Room West Exterior", 55),
+    "Hub: Ice Portal Drop Ledge Museum Piece":          CarQuestLocationData("Museum", "Hub Ice Portal", 56),
+    "Hub: Hopscotch Museum Piece":                      CarQuestLocationData("Museum", "Hub Pool Area", 57),
+    "Hub: South Pool Jump Museum Piece":                CarQuestLocationData("Museum", "Hub Pool Jump", 58),
+    "Hub: Colloseum Museum Piece":                      CarQuestLocationData("Museum", "Hub Colloseum Top", 59),
+    "Hub: Teleport Islands Museum Piece":               CarQuestLocationData("Museum", "Hub Teleport Island", 60),
 
     # Simple
     # 2 Secrets
@@ -182,9 +186,10 @@ location_table: Dict[str, CarQuestLocationData] = {
 
     # Ocean
     # 11 Secrets
+    # 1 Museum
     # 103 Power Cells
     # 2 Tokens
-    # 116 Total
+    # 117 Total
     "Ocean: Shipwreck Artifact":                      CarQuestLocationData("Artifact", "Ocean Main", oceanOffset + 1),
     "Ocean: Top of Vulcano Artifact":                 CarQuestLocationData("Artifact", "Ocean Main", oceanOffset + 2),
     "Ocean: Outer Fort Bottom Artifact":              CarQuestLocationData("Artifact", "Ocean Main", oceanOffset + 3),
@@ -196,6 +201,7 @@ location_table: Dict[str, CarQuestLocationData] = {
     "Ocean: Inside Pirate Ship Artifact":             CarQuestLocationData("Artifact", "Ocean Main", oceanOffset + 9),
     "Ocean: Inside Vulcano Artifact":                 CarQuestLocationData("Artifact", "Ocean Main", oceanOffset + 10),
     "Ocean: Whale Artifact":                          CarQuestLocationData("Artifact", "Ocean Main", oceanOffset + 11),
+    "Ocean: Vulcano Museum Piece":                    CarQuestLocationData("Artifact", "Ocean Main", oceanOffset + 12),
 
     # Ice Temple
     # 12 Secrets
@@ -214,7 +220,8 @@ location_table: Dict[str, CarQuestLocationData] = {
     "Ice: North East Tower Artifact":                CarQuestLocationData("Artifact", "Ice Northern Towers", iceOffset + 9),
     "Ice: South East Tower Jump Artifact":           CarQuestLocationData("Artifact", "Ice Tower Jump", iceOffset + 10),
     "Ice: North East Bridge Ramp Artifact":          CarQuestLocationData("Artifact", "Ice Bridge Ramp To Monument", iceOffset + 11),
-    "Ice: Nother East Tower Interior Artifact":      CarQuestLocationData("Artifact", "Ice NE Tower Interior", iceOffset + 12),
+    "Ice: North East Tower Interior Artifact":       CarQuestLocationData("Artifact", "Ice NE Tower Interior", iceOffset + 12),
+    "Ice: North East Tower Interior Museum Piece":   CarQuestLocationData("Museum", "Ice NE Tower Interior", iceOffset + 13),
 
     # Sheep Pastures
     # 6 Secrets
@@ -295,15 +302,18 @@ location_table: Dict[str, CarQuestLocationData] = {
     "Throne: Hidden Throne Door Artifact":           CarQuestLocationData("Artifact", "Throne Interior N Window", throneOffset + 16),
     "Throne: Throne Ramp Artifact":                  CarQuestLocationData("Artifact", "Throne Interior", throneOffset + 17),
     "Throne: Exit Reward Artifact":                  CarQuestLocationData("Artifact", "Throne Garden", throneOffset + 18),
-    "Throne: Brick Bristle's Museum Piece":          CarQuestLocationData("Artifact", "Throne Garden", throneOffset + 19),
+    "Throne: Brick Bristles' Museum Piece":          CarQuestLocationData("Artifact", "Throne Garden", throneOffset + 19),
+    "Throne: Brick Bristles Deafeated":              CarQuestLocationData("Boss", "Throne Boss", throneOffset + 20),
 
     # Planetarium
     # 2 Artifacts
+    # 1 Museum
     # 9 Power Cells
     # 1 Token
-    # 12 Total
+    # 13 Total
     "Planetarium: Top of Portal Artifact":           CarQuestLocationData("Artifact", "Planetarium", planetOffset + 1),
     "Planetarium: Top Path Artifact":                CarQuestLocationData("Artifact", "Planetarium", planetOffset + 2),
+    "Planetarium: X Puzzle Museum Piece":            CarQuestLocationData("Artifact", "Planetarium", planetOffset + 3),
 
     # Power Room
     # 10 Artifacts
@@ -326,5 +336,5 @@ location_table: Dict[str, CarQuestLocationData] = {
     # 172 Power Cells
     # 2 Token
     # 175 Total
-    "Power Room: East Bottom Artifact":              CarQuestLocationData("Artifact", "Power Room", powerOffset + 11),
+    "Limbo: Crown Artifact":                         CarQuestLocationData("Artifact", "Limbo", powerOffset + 11),
 }
