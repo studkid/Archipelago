@@ -6,7 +6,7 @@ from .Items import CarQuestItem, CarQuestItemData, item_table
 from .Locations import CarQuestLocation, location_table
 from .Options import CarQuestOptions
 from .Regions import create_regions
-# from .Rules import set_rules
+from .Rules import set_rules
 
 class CarQuestWeb(WebWorld):
     theme = "stone"
@@ -60,3 +60,6 @@ class CarQuestWorld(World):
 
         from Utils import visualize_regions
         visualize_regions(self.multiworld.get_region("Menu", self.player), "carquest_world.puml")
+
+    def set_rules(self):
+        set_rules(self)

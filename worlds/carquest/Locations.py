@@ -75,7 +75,7 @@ location_table: Dict[str, CarQuestLocationData] = {
     "Hub: Whale Bridge Artifact":                       CarQuestLocationData("Artifact", "Hub Whale Bridge", 31),
     "Hub: Colloseum Hidden in Push Block Artifact":     CarQuestLocationData("Artifact", "Hub Colloseum", 32),
     "Hub: Colloseum Podeum Artifact":                   CarQuestLocationData("Artifact", "Hub Colloseum", 33),
-    "Hub: Start Area Jump Artifact":                    CarQuestLocationData("Artifact", "Hub Start", 34),
+    "Hub: Start Area Jump Artifact":                    CarQuestLocationData("Artifact", "Hub South Portal", 34),
     "Hub: Behind Colloseum Artifact":                   CarQuestLocationData("Artifact", "Hub Colloseum Exterior", 35),
     "Hub: Near Rich Portal Artifact":                   CarQuestLocationData("Artifact", "Hub Colloseum Podium", 36),
     "Hub: Inside Podeum Artifact":                      CarQuestLocationData("Artifact", "Hub Colloseum", 37),

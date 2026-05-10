@@ -12,9 +12,9 @@ def create_regions(multiworld: MultiWorld, player: int, options: CarQuestOptions
     regions: Dict[str, CarQuestRegionData] = {
         # Hub
         "Menu":                              CarQuestRegionData(None, ["Hub Start"]),
-        "Hub Start":                         CarQuestRegionData([], ["Hub Simple Portal Path", "Hub Throne Room East Exterior",  
+        "Hub Start":                         CarQuestRegionData([], ["Hub Simple Portal Path", "Hub South Portal"]),
+        "Hub Simple Portal Path":            CarQuestRegionData([], ["Simple Square Area", "Hub Pool Area", "Hub Throne Room East Exterior",  
                                                                      "Hub Central Bridge", "Hub Upper Pool Perimeter"]),
-        "Hub Simple Portal Path":            CarQuestRegionData([], ["Simple Square Area", "Hub Pool Area"]),
         "Hub Pool Area":                     CarQuestRegionData([], ["Hub Upper Uni Alleyway", "Hub South Pool Deadend Path",
                                                                      "Floating Cube Area", "Hub Cube Monument", "Hub South Portal",
                                                                      "Hub Vault", "Hub Drained Pool", "Hub University Exterior", "Hub Museum",
