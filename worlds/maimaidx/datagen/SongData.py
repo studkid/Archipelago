@@ -1702,7 +1702,7 @@ SONG_DATA: Dict[str, SongData] = {
     "AiAe":  SongData(1866, "AiAe", "CiRCLE PLUS", "ゲーム＆バラエティ", "std", ['jp'], [5, 8, 12.4, 14.4, None]),
     "キミは“見ていたね”？":  SongData(1872, "キミは“見ていたね”？", "CiRCLE PLUS", "オンゲキ＆CHUNITHM", "std", ['jp'], [3, 6, 10, 13.1, None]),
     "奇々解体":  SongData(1878, "奇々解体", "CiRCLE PLUS", "ゲーム＆バラエティ", "std", ['jp'], [3, 6, 9.6, 13.2, None]),
-    "Break The Speakers":  SongData(1879, "Break The Speakers", "CiRCLE PLUS", "maimai", "std", ['jp', 'intl', 'usa'], [5, 8.6, 12.6, 14.6, None]),
+    "Break The Speakers":  SongData(1879, "Break The Speakers", "CiRCLE PLUS", "maimai", "std", ['jp', 'intl', 'usa'], [5, 8.6, 12.6, 14.7, None]),
     "雑魚":  SongData(1880, "雑魚", "CiRCLE PLUS", "niconico＆ボーカロイド", "std", ['jp'], [2, 6, 10, 13.1, None]),
     "お返事まだカナ？おじさん構文！":  SongData(1881, "お返事まだカナ？おじさん構文！", "CiRCLE PLUS", "niconico＆ボーカロイド", "std", ['jp'], [4, 7.6, 11, 13.6, None]),
     "ZEUS":  SongData(1882, "ZEUS", "CiRCLE PLUS", "ゲーム＆バラエティ", "std", ['jp'], [5, 8, 12.8, 14.3, None]),
@@ -1712,6 +1712,9 @@ SONG_DATA: Dict[str, SongData] = {
     "Operation☆DOTABATA!":  SongData(1886, "Operation☆DOTABATA!", "CiRCLE PLUS", "ゲーム＆バラエティ", "std", ['jp'], [3, 6, 11, 13.4, None]),
     "RE Aoharu":  SongData(1887, "RE Aoharu", "CiRCLE PLUS", "ゲーム＆バラエティ", "std", ['jp'], [3, 7, 10.6, 13.7, None]),
     "Usagi Flap":  SongData(1888, "Usagi Flap", "CiRCLE PLUS", "ゲーム＆バラエティ", "std", ['jp'], [3, 6, 10, 13.2, None]),
+    "オールマスター":  SongData(1889, "オールマスター", "CiRCLE PLUS", "maimai", "std", ['jp'], [4, 6, 11, 13.3, None]),
+    "STRAY":  SongData(1890, "STRAY", "CiRCLE PLUS", "maimai", "std", ['jp'], [3, 6, 10.6, 13.3, None]),
+    "クロノイデア":  SongData(1891, "クロノイデア", "CiRCLE PLUS", "maimai", "std", ['jp'], [5, 8, 11.6, 14.3, None]),
 }
 
 groups = {
