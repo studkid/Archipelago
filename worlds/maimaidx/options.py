@@ -56,7 +56,7 @@ class MinLevel(Range):
     Note: Number represented is the internal difficulty multiplied by 10.
     """
     range_start = 10
-    range_end = 140
+    range_end = 160
     default = 10
     display_name = "Minimum Level"
 
@@ -66,8 +66,8 @@ class MaxLevel(Range):
     Note: Number represented is the internal difficulty multiplied by 10.
     """
     range_start = 10
-    range_end = 140
-    default = 140
+    range_end = 160
+    default = 160
     display_name = "Maximum Level"
 
 class SheetCountPercentage(Range):
