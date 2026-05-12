@@ -70,8 +70,8 @@ class RoR1World(World):
                 self.multiworld.push_precollected(self.create_item("Stage 3"))
                 self.multiworld.push_precollected(self.create_item("Stage 4"))
                 self.multiworld.push_precollected(self.create_item("Stage 5"))
-        # elif self.options.grouping == "stage":
-        #     self.multiworld.push_precollected(self.create_item("Stage 1"))
+        elif self.options.grouping == "stage":
+            self.multiworld.push_precollected(self.create_item("Stage 1"))
         
         itempool: List[str] = []
 
@@ -149,7 +149,7 @@ class RoR1World(World):
         num_of_events = total_locations // 25
         if total_locations / 25 == num_of_events:
             num_of_events -= 1
-        world_region = self.multiworld.get_region("Contact Light", self.player)
+        world_region = self.multiworld.get_region("Risk of Rain", self.player)
         if self.options.grouping == "universal":
             # universal pickups
             for i in range(num_of_events):
@@ -160,16 +160,16 @@ class RoR1World(World):
                 event_loc.access_rule = \
                     lambda state, i=i: state.can_reach(f"ItemPickup{((i + 1) * 25) - 1}", "Location", self.player)
                 world_region.locations.append(event_loc)
-        else:
-            # stage and map pickups
-            event_region = self.multiworld.get_region("OrderedStage_6", self.player)
-            event_loc = RoR1Location(self.player, "OrderedStage_6", None, event_region)
-            event_loc.place_locked_item(RoR1Item("OrderedStage_6", ItemClassification.progression, None, self.player))
-            event_loc.show_in_spoiler = False
-            event_region.locations.append(event_loc)
-            event_loc.access_rule = lambda state: state.has("Temple of the Elders", self.player)
+        # else:
+        #     # stage and map pickups
+        #     event_region = self.multiworld.get_region("OrderedStage_6", self.player)
+        #     event_loc = RoR1Location(self.player, "OrderedStage_6", None, event_region)
+        #     event_loc.place_locked_item(RoR1Item("OrderedStage_6", ItemClassification.progression, None, self.player))
+        #     event_loc.show_in_spoiler = False
+        #     event_region.locations.append(event_loc)
+        #     event_loc.access_rule = lambda state: state.has("Temple of the Elders", self.player)
 
-        victory_region = self.multiworld.get_region("Victory", self.player)
-        victory_event = RoR1Location(self.player, "Victory", None, victory_region)
+        # victory_region = self.multiworld.get_region("Victory", self.player)
+        victory_event = RoR1Location(self.player, "Victory", None, world_region)
         victory_event.place_locked_item(RoR1Item("Victory", ItemClassification.progression, None, self.player))
-        victory_region.locations.append(victory_event)
+        world_region.locations.append(victory_event)

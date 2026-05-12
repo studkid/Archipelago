@@ -13,7 +13,7 @@ class Grouping(Choice):
     """
     display_name = "Location Grouping"
     option_universal = 0
-    # option_stage = 1
+    option_stage = 1
     option_map = 2
     default = 2
 

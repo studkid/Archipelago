@@ -16,7 +16,7 @@ def create_grouped_regions(self) -> None:
     player = self.player
 
     map_regions: Dict[str, RoR1RegionData] = {
-        "Menu":                             RoR1RegionData(None, ["Desolate Forest", "Dried Lake"]),
+        "Menu":                             RoR1RegionData(None, ["OrderedStage_1"]),
         "Desolate Forest":                  RoR1RegionData([], ["OrderedStage_2"]),
         "Dried Lake":                       RoR1RegionData([], ["OrderedStage_2"]),
         "Damp Caverns":                     RoR1RegionData([], ["OrderedStage_3"]),
@@ -28,17 +28,16 @@ def create_grouped_regions(self) -> None:
         "Temple of the Elders":             RoR1RegionData([], ["OrderedStage_6"]),
     }
     stage_regions: Dict[str, RoR1RegionData] = {
-        "OrderedStage_2":                          RoR1RegionData([], ["Damp Caverns", "Sky Meadow"]),
-        "OrderedStage_3":                          RoR1RegionData([], ["Ancient Valley", "Sunken Tombs"]),
-        "OrderedStage_4":                          RoR1RegionData([], ["Magma Barracks", "Hive Cluster"]),
-        "OrderedStage_5":                          RoR1RegionData([], ["Temple of the Elders"]),
-        "OrderedStage_6":                          RoR1RegionData([], ["Risk of Rain"]),
+        "OrderedStage_1":                   RoR1RegionData([], ["Desolate Forest", "Dried Lake"]),
+        "OrderedStage_2":                   RoR1RegionData([], ["Damp Caverns", "Sky Meadow"]),
+        "OrderedStage_3":                   RoR1RegionData([], ["Ancient Valley", "Sunken Tombs"]),
+        "OrderedStage_4":                   RoR1RegionData([], ["Magma Barracks", "Hive Cluster"]),
+        "OrderedStage_5":                   RoR1RegionData([], ["Temple of the Elders"]),
+        "OrderedStage_6":                   RoR1RegionData([], ["Risk of Rain"]),
         
     }
     other_regions: Dict[str, RoR1RegionData] = {
-        "Risk of Rain":                     RoR1RegionData(None, ["Victory", "Contact Light"]),
-        "Contact Light":                    RoR1RegionData(None, []),
-        "Victory":                          RoR1RegionData(None, None)
+        "Risk of Rain":                     RoR1RegionData([], [])
     }
 
     if not ror_options.strict_stage_prog:
@@ -66,15 +65,15 @@ def create_grouped_regions(self) -> None:
             for i in range(0, pickups):
                 map_regions[key].locations.append(f"{key}: Item Pickup {i + 1}")
 
-    # elif ror_options.grouping == "stage":
-    #     map_regions["Menu"].region_exits.append("OrderedStage_1")
-    #     x = 1
-    #     for key in stage_regions:
-    #         if key == "OrderedStage_6":
-    #             continue
-    #         for i in range(0, pickups):
-    #             stage_regions[key].locations.append(f"Stage {x}: Item Pickup {i + 1}")
-    #         x += 1
+    elif ror_options.grouping == "stage":
+        map_regions["Menu"].region_exits.append("OrderedStage_1")
+        x = 1
+        for key in stage_regions:
+            if key == "OrderedStage_6":
+                continue
+            for i in range(0, pickups):
+                stage_regions[key].locations.append(f"Stage {x}: Item Pickup {i + 1}")
+            x += 1
     
     regions_pool: Dict = {**map_regions, **stage_regions, **other_regions}
 
@@ -111,7 +110,7 @@ def create_universal_regions(self) -> None:
 
     victory_region = create_universal_region(multiworld, player, "Victory")
     multiworld.regions.append(victory_region)
-    contactLight = create_universal_region(multiworld, player, "Contact Light",
+    contactLight = create_universal_region(multiworld, player, "Risk of Rain",
                                       get_universal_item_pickups(ror_options.total_locations.value))
     multiworld.regions.append(contactLight)
 
