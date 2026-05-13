@@ -9,12 +9,10 @@ class RoR1LocationData(NamedTuple):
     category: str
     code: Optional[int] = None
 
-ror_locations_start_id = 250000
+startId = 1
+stageId = startId + 5000
 
-ror_locations_start_ordered_stage = ror_locations_start_id + ItemPickups.range_end
-
-offset_chests = 0
-
+offsetChests = 0
 
 map_orderedstage_1_table: Dict[str, int] = {
     "Desolate Forest":          0,
@@ -66,22 +64,42 @@ def shift_by_offset(dictionary: Dict[str, int], offset: int) -> Dict[str, int]:
 def get_map_locations(chests: int, map_name: str, map_index: int) -> Dict[str, int]:
     locations = {}
 
-    map_start_id = map_index * ItemPickups.range_end + ror_locations_start_ordered_stage
+    mapStartId = map_index * ItemPickups.range_end + startId
     for n in range(chests):
-        locations.update({f"{map_name}: Item Pickup {n + 1}": n + offset_chests + map_start_id})
+        locations.update({f"{map_name}: Item Pickup {n + 1}": n + offsetChests + mapStartId})
     return locations
 
-def get_locations(chests: int) -> Dict[str, int]:
+def get_stage_locations(chests: int, stage: int) -> Dict[str, int]:
     locations = {}
-    orderedstages = compress_dict_list_horizontal(map_orderedstages_table)
-    for map_name, map_index in orderedstages.items():
-        locations.update(get_map_locations(
-            chests = chests,
-            map_name = map_name,
-            map_index = map_index
-        ),)
+
+    stageStartId = stage * ItemPickups.range_end + stageId
+    for n in range(chests):
+        locations.update({f"Stage {stage + 1}: Item Pickup {n + 1}": n + offsetChests + stageStartId})
+    return locations
+
+def get_locations(chests: int, type: int = 0) -> Dict[str, int]:
+    locations = {}
+    if type == 2:
+        orderedstages = compress_dict_list_horizontal(map_orderedstages_table)
+        for map_name, map_index in orderedstages.items():
+            locations.update(get_map_locations(
+                chests = chests,
+                map_name = map_name,
+                map_index = map_index
+            ),)
+
+    if type == 1:
+        for stage in range(5):
+            locations.update(get_stage_locations(chests, stage))
+
     return locations
 
 location_table = get_locations(
-    chests=ItemPickups.range_end
+    chests=ItemPickups.range_end,
+    type=2
 )
+
+location_table.update(get_locations(
+    chests=ItemPickups.range_end,
+    type=1
+))

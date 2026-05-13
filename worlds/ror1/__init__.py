@@ -83,12 +83,12 @@ class RoR1World(World):
             else:
                 itempool += ["Progressive Stage"] * 4
 
-                
-            total_locations = len(
-                get_locations(
-                    chests=self.options.total_pickups.value,
-                )
+        total_locations = len(
+            get_locations(
+                chests=self.options.total_pickups.value,
+                type=self.options.grouping.value
             )
+        )
 
         if self.options.required_frags.value > 0 and self.options.available_frags.value > 0:
             fillerSize = total_locations - len(itempool)
@@ -98,7 +98,6 @@ class RoR1World(World):
             
         trapWeights = self.options.trap_weights
         itemWeights = self.options.item_weights
-        print(trapWeights.values())
         traps = self.random.choices([trap for trap in trapWeights.keys()], [weight for weight in trapWeights.values()], 
                                     k = round((total_locations - len(itempool)) * (self.options.trap_percentage.value / 100)))
         itempool.extend(traps)
