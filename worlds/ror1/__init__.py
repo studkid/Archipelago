@@ -37,7 +37,7 @@ class RoR1World(World):
     item_name_to_id = {name: data.code for name, data in item_table.items()}
     item_name_groups = {
         "Stages": {name for name, data in item_table.items() if data.category == "Stage"},
-        "Maps": {name for name, data in item_table.items() if data.category == "Maps"},
+        "Maps": {name for name, data in item_table.items() if data.category == "Map"},
         "Upgrades": {name for name, data in item_table.items() if data.category == "Upgrade"},
         "Fillers": {name for name, data in item_table.items() if data.category == "Filler"},
         "Traps": {name for name, data in item_table.items() if data.category == "Trap"},
