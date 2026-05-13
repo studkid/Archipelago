@@ -1,5 +1,5 @@
 from .items import RoR1Item, item_table, map_offset
-from .locations import RoR1Location, get_locations, location_table, map_table, shift_by_offset
+from .locations import RoR1Location, get_locations, location_table, vanilla_map_table, shift_by_offset
 from .options import ROROptions, ror_option_groups
 from .rules import set_rules
 from .regions import create_grouped_regions
@@ -62,7 +62,7 @@ class RoR1World(World):
         maps_pool = {}
 
         if self.options.grouping == "map":
-            maps_pool = shift_by_offset(map_table, map_offset)
+            maps_pool = shift_by_offset(vanilla_map_table, map_offset)
             unlock = self.random.choices(list(self.mapProgression[0]), k=1)
             self.multiworld.push_precollected(self.create_item(unlock[0]))
             maps_pool.pop(unlock[0])
@@ -85,8 +85,9 @@ class RoR1World(World):
 
         total_locations = len(
             get_locations(
-                chests=self.options.total_pickups.value,
-                type=self.options.grouping.value
+                pickups=self.options.total_pickups.value,
+                type=self.options.grouping.value,
+                ssSupport=self.options.starstorm
             )
         )
 

@@ -2,6 +2,22 @@ from dataclasses import dataclass
 from Options import Toggle, DefaultOnToggle, Range, Choice, PerGameCommonOptions, OptionCounter, StartInventoryPool, OptionGroup
 from .weights import trap_weights, default_weights
 
+class GameVersion(Choice):
+    """
+    Version of the game you are going to play.  Automatically disables any settings incompatible with the chosen version
+    Any will ensure compatibility between either original or returns
+    """
+    display_name = "Game Version"
+    option_any = 0
+    option_original = 1
+    option_returns = 2
+
+class Starstorm(Toggle):
+    """
+    Allows Starstorm stages to be shuffled.  Limited support for Returns
+    """
+    display_name = "Enable Starstorm Support"
+
 class Grouping(Choice):
     """
     Stages: Each stage will have location checks within each map variant on a given stage.
@@ -23,6 +39,13 @@ class ItemPickups(Range):
     range_start = 10
     range_end = 50
     default = 20
+
+# class EasterEggMap(Choice):
+#     """
+#     Adds a location for collecting the White Undershirt (M) from Boar Beach
+#     With SS, also adds a location for collecting "Paul's Motivational Tape" from Mount of the Goats
+#     """
+#     display_name = "Shuffle Boar Beach"
 
 class ProgressiveStage(DefaultOnToggle):
     """
@@ -114,6 +137,8 @@ class TrapWeights(OptionCounter):
 
 ror_option_groups = [
     OptionGroup("Location Settings", [
+        GameVersion,
+        Starstorm,
         Grouping,
         ItemPickups,
         ItemPickupStep,
@@ -138,6 +163,8 @@ ror_option_groups = [
 
 @dataclass
 class ROROptions(PerGameCommonOptions):
+    version: GameVersion
+    starstorm: Starstorm
     grouping: Grouping
     total_pickups: ItemPickups
     progressive_stages: ProgressiveStage

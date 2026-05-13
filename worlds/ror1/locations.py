@@ -38,6 +38,26 @@ map_special_table: Dict[str, int] = {
     "Risk of Rain":            10,
 }
 
+map_ss_orderedstage_1_table: Dict[str, int] = {
+    "Stray Tarn":              11,
+}
+
+map_ss_orderedstage_2_table: Dict[str, int] = {
+    "Whistling Basin":         12,
+}
+
+map_ss_orderedstage_3_table: Dict[str, int] = {
+    "Torrid Wastelands":         13,
+}
+
+map_ss_orderedstage_4_table: Dict[str, int] = {
+    "Verdant Woodland":         14,
+}
+
+map_ss_orderedstage_5_table: Dict[str, int] = {
+    "Uncharted Mountain":         15,
+}
+
 X = TypeVar("X")
 Y = TypeVar("Y")
 
@@ -52,10 +72,18 @@ def compress_dict_list_horizontal(list_of_dict: List[Dict[X, Y]]) -> Dict[X, Y]:
 map_orderedstages_table = \
     [map_orderedstage_1_table, map_orderedstage_2_table, map_orderedstage_3_table,
      map_orderedstage_4_table, map_orderedstage_5_table]
-
-map_table = \
+vanilla_map_table = \
     {**compress_dict_list_horizontal(map_orderedstages_table),
      **map_special_table}
+
+map_ss_orderedstage_table = \
+    [map_ss_orderedstage_1_table, map_ss_orderedstage_2_table, map_ss_orderedstage_3_table,
+     map_ss_orderedstage_4_table, map_ss_orderedstage_5_table]
+ss_map_table =\
+    {**compress_dict_list_horizontal(map_ss_orderedstage_table)}
+
+all_map_table = {**vanilla_map_table, **ss_map_table}
+
 
 def shift_by_offset(dictionary: Dict[str, int], offset: int) -> Dict[str, int]:
     """Shift all indexes in a dictionary by an offset"""
@@ -77,29 +105,33 @@ def get_stage_locations(chests: int, stage: int) -> Dict[str, int]:
         locations.update({f"Stage {stage + 1}: Item Pickup {n + 1}": n + offsetChests + stageStartId})
     return locations
 
-def get_locations(chests: int, type: int = 0) -> Dict[str, int]:
+def get_locations(pickups: int, type: int = 0, ssSupport: bool = False) -> Dict[str, int]:
     locations = {}
     if type == 2:
         orderedstages = compress_dict_list_horizontal(map_orderedstages_table)
+        if ssSupport:
+            orderedstages.update(compress_dict_list_horizontal(map_ss_orderedstage_table))
         for map_name, map_index in orderedstages.items():
             locations.update(get_map_locations(
-                chests = chests,
+                chests = pickups,
                 map_name = map_name,
                 map_index = map_index
             ),)
 
     if type == 1:
         for stage in range(5):
-            locations.update(get_stage_locations(chests, stage))
+            locations.update(get_stage_locations(pickups, stage))
 
     return locations
 
 location_table = get_locations(
-    chests=ItemPickups.range_end,
-    type=2
+    pickups=ItemPickups.range_end,
+    type=2,
+    ssSupport=True
 )
 
 location_table.update(get_locations(
-    chests=ItemPickups.range_end,
-    type=1
+    pickups=ItemPickups.range_end,
+    type=1,
+    ssSupport=True
 ))

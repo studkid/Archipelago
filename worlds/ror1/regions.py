@@ -20,7 +20,7 @@ def create_grouped_regions(self: World) -> List[List[str]]:
         ["Desolate Forest", "Dried Lake"],
         ["Damp Caverns", "Sky Meadow"],
         ["Ancient Valley", "Sunken Tombs"],
-        ["Magema Barracks", "Hive Cluster"],
+        ["Magma Barracks", "Hive Cluster"],
         ["Temple of the Elders"]
     ]
 
@@ -36,6 +36,13 @@ def create_grouped_regions(self: World) -> List[List[str]]:
         "Hive Cluster":                     RoR1RegionData([], ["OrderedStage_5"]),
         "Temple of the Elders":             RoR1RegionData([], ["OrderedStage_6"]),
     }
+    starstorm_map_regions: Dict[str, RoR1RegionData] = {
+        "Stray Tarn":                       RoR1RegionData([], ["OrderedStage_2"]), # Make this loop only?
+        "Whistling Basin":                  RoR1RegionData([], ["OrderedStage_3"]),
+        "Torrid Wastelands":                RoR1RegionData([], ["OrderedStage_4"]),
+        "Verdant Woodland":                 RoR1RegionData([], ["OrderedStage_5"]),
+        "Uncharted Mountain":               RoR1RegionData([], ["OrderedStage_6"]),
+    }
     stage_regions: Dict[str, RoR1RegionData] = {
         "OrderedStage_1":                   RoR1RegionData([], ["Desolate Forest", "Dried Lake"]),
         "OrderedStage_2":                   RoR1RegionData([], ["Damp Caverns", "Sky Meadow"]),
@@ -43,42 +50,43 @@ def create_grouped_regions(self: World) -> List[List[str]]:
         "OrderedStage_4":                   RoR1RegionData([], ["Magma Barracks", "Hive Cluster"]),
         "OrderedStage_5":                   RoR1RegionData([], ["Temple of the Elders"]),
         "OrderedStage_6":                   RoR1RegionData([], ["Risk of Rain"]),
-        
     }
     other_regions: Dict[str, RoR1RegionData] = {
         "Risk of Rain":                     RoR1RegionData([], [])
     }
 
+    orderedMaps = {**map_regions, **starstorm_map_regions}
+
+    if ror_options.starstorm:
+        for i, map in enumerate(starstorm_map_regions.keys()):
+            stage_regions[f"OrderedStage_{i + 1}"].region_exits.append(map)
+            mapProgression[i].append(map)
+
     if not ror_options.map_shuffle:
         if not ror_options.strict_stage_prog:
-            for key in map_orderedstage_2_table:
-                map_regions[key].region_exits.append("OrderedStage_3")
-                map_regions[key].region_exits.append("OrderedStage_4")
-                map_regions[key].region_exits.append("OrderedStage_5")
-            for key in map_orderedstage_3_table:
-                map_regions[key].region_exits.append("OrderedStage_4")
-                map_regions[key].region_exits.append("OrderedStage_5")
-            for key in map_orderedstage_4_table:
-                map_regions[key].region_exits.append("OrderedStage_5")
+
+            for stage, maps in enumerate(mapProgression):
+                for map in maps:
+                    for i in range(3 - stage):
+                        orderedMaps[map].region_exits.append(f"OrderedStage_{stage + i + 3}")
 
         if not ror_options.stage_five_tp:
             for key in map_regions:
-                if not key == "Menu" or not key == "Temple of the Elders":
+                if not key == "Menu" or not "OrderedStage_6" in map_regions[key].region_exits:
                     map_regions[key].region_exits.append("OrderedStage_6")
 
     else:
         mapList: List[str] = [map for map in map_regions.keys() if not map == "Menu"]
+        if ror_options.starstorm:
+            mapList.append([map for map in starstorm_map_regions.keys()])
         self.random.shuffle(mapList)
         shuffledMaps: List[str] = []
-
-        # Find an automated way to determine this
-        mapCounts = [2, 2, 2, 2, 1]
 
         for stage in range(5):
             selectedMaps = []
             stage_regions[f"OrderedStage_{stage + 1}"].region_exits.clear()
 
-            for _ in range(mapCounts[stage]):
+            for _ in range(len(mapProgression[stage])):
                 map = mapList.pop()
                 selectedMaps.append(map)
                 map_regions[map].region_exits.clear()
@@ -100,11 +108,12 @@ def create_grouped_regions(self: World) -> List[List[str]]:
     pickups = int(ror_options.total_pickups)
 
     if ror_options.grouping == "map":
-        for key in map_regions:
-            if key == "Menu":
-                continue
-            for i in range(0, pickups):
-                map_regions[key].locations.append(f"{key}: Item Pickup {i + 1}")
+        for maps in mapProgression:
+            for key in maps:
+                if key == "Menu":
+                    continue
+                for i in range(0, pickups):
+                    orderedMaps[key].locations.append(f"{key}: Item Pickup {i + 1}")
 
     elif ror_options.grouping == "stage":
         map_regions["Menu"].region_exits.append("OrderedStage_1")
@@ -117,6 +126,8 @@ def create_grouped_regions(self: World) -> List[List[str]]:
             x += 1
     
     regions_pool: Dict = {**map_regions, **stage_regions, **other_regions}
+    if ror_options.starstorm:
+        regions_pool.update(starstorm_map_regions)
 
     for name, data, in regions_pool.items():
         multiworld.regions.append(create_region(multiworld, player, name, data))

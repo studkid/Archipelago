@@ -1,6 +1,6 @@
 from BaseClasses import Item, ItemClassification
 from typing import NamedTuple, Optional, Dict
-from .locations import map_table
+from .locations import all_map_table
 
 class RoR1Item(Item):
     game: str = "Risk of Rain"
@@ -54,7 +54,7 @@ def create_map_table(name: str, map_id: int, map_classification: ItemClassificat
     return {name: RoR1ItemData("Map", map_offset + map_id, map_classification)}
 
 map_pool: Dict[str, RoR1ItemData] = {}
-for data, key in map_table.items():
+for data, key in all_map_table.items():
     classification = ItemClassification.progression
     map_pool.update(create_map_table(data, key, classification))
 
