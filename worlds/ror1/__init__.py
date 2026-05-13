@@ -119,13 +119,20 @@ class RoR1World(World):
 
         from Utils import visualize_regions
         visualize_regions(self.multiworld.get_region("Menu", self.player), "my_world.puml")
+
+    def write_spoiler_header(self, spoiler_handle):
+        if self.options.map_shuffle:
+            spoiler_handle.write("Shuffled Maps:\n")
+            for stage, maps in enumerate(self.mapProgression):
+                spoiler_handle.write(f"  Stage {stage + 1} -> {maps}\n")
     
     def fill_slot_data(self) -> Dict[str, Any]:
         options_dict = self.options.as_dict("grouping", "total_pickups", "item_pickup_step",
                                             "stage_five_tp", "strict_stage_prog", "progressive_stages", casing="camel")
-        options_dict["requiredFrags"] = self.requiredFragAmount
         return {
             **options_dict,
+            "requiredFrags": self.requiredFragAmount,
+            "mapProgression": self.mapProgression,
         }
     
     def create_events(self) -> None:
