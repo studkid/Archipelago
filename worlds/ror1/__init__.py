@@ -77,7 +77,7 @@ class RoR1World(World):
         for map_name, _ in maps_pool.items():
             itempool += [map_name]
 
-        if self.options.require_stage:
+        if self.options.require_stage or not self.options.grouping == "map":
             if not self.options.progressive_stages:
                 itempool += ["Stage 2", "Stage 3", "Stage 4", "Stage 5"]
             else:
