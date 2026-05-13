@@ -1,6 +1,6 @@
 from .items import RoR1Item, item_table, map_offset
 from .locations import RoR1Location, item_pickups, get_locations, map_orderedstages_table, map_table, shift_by_offset
-from .options import ROROptions
+from .options import ROROptions, ror_option_groups
 from .rules import set_rules
 from .regions import create_grouped_regions
 
@@ -26,6 +26,8 @@ class RiskOfWeb(WebWorld):
         ["studkid"]
     )]
 
+    option_groups = ror_option_groups
+
 class RoR1World(World):
     game = "Risk of Rain"
     web = RiskOfWeb()
@@ -40,6 +42,7 @@ class RoR1World(World):
         "Fillers": {name for name, data in item_table.items() if data.category == "Filler"},
         "Traps": {name for name, data in item_table.items() if data.category == "Trap"},
     }
+
     location_name_to_id = item_pickups
 
     data_version = 8
@@ -103,7 +106,7 @@ class RoR1World(World):
         self.multiworld.itempool += map(self.create_item, itempool)
 
     def get_filler_item_name(self):
-        return self.random.choices([filler for filler in self.options.item_weights.keys()], [weight for weight in self.options.item_weights.items()], k=1)[0]
+        return self.random.choices([filler for filler in self.options.item_weights.keys()], [weight for weight in self.options.item_weights.values()], k=1)[0]
 
     def create_item(self, name: str) -> Item:
         data = item_table[name]

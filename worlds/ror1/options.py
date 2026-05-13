@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from Options import Toggle, DefaultOnToggle, Range, Choice, PerGameCommonOptions, OptionCounter, StartInventoryPool
+from Options import Toggle, DefaultOnToggle, Range, Choice, PerGameCommonOptions, OptionCounter, StartInventoryPool, OptionGroup
 from .weights import trap_weights, default_weights
 
 class Grouping(Choice):
@@ -17,8 +17,7 @@ class Grouping(Choice):
 
 class ItemPickups(Range):
     """
-    Number of location checks which are added to the Risk of Rain playthrough.
-    On stage or map grouping, will determine how many locations checks are added per stage/map.
+    Number of item pickups locations each map/stage group will have.
     """
     display_name = "Total Locations"
     range_start = 10
@@ -38,16 +37,17 @@ class RequireStage(DefaultOnToggle):
     """
     display_name = "Require Stage"
 
-class StrictStageProg(Toggle):
+class StrictStageProg(DefaultOnToggle):
     """
     Require both the prior stage and any corresponding map before having access to later stages
     Ex. You won't be able to access Stage 3 until you have Stage 2 and either Stage 2 map
     """
     display_name = "Strict Map Requirements"
 
-class StageFiveTP(Toggle):
+class StageFiveTP(DefaultOnToggle):
     """
-    Only allow access to teleport to final stage if on stage 5, like RoR2
+    Only allow access to teleport to final stage if you have at least visited a stage 5 map on your current run.
+    Recommended if not shuffling teleporter fragments for goal.
     """
     display_name = "Divine Teleporter on Stage 5"
 
@@ -104,6 +104,29 @@ class TrapWeights(OptionCounter):
     valid_keys = trap_weights.keys()
     min = 0
     default = trap_weights
+
+ror_option_groups = [
+    OptionGroup("Location Settings", [
+        Grouping,
+        ItemPickups,
+        ItemPickupStep,
+    ]),
+    OptionGroup("Logic Settings", [
+        ProgressiveStage,
+        RequireStage,
+        StrictStageProg,
+        StageFiveTP
+    ]),
+    OptionGroup("Teleporter Frag Hunt Settings", [
+        AvailableFrags,
+        RequiredFrags,
+    ]),
+    OptionGroup("Item Pool Settings", [
+        ItemWeights,
+        TrapPercentage, 
+        TrapWeights 
+    ])
+]
 
 @dataclass
 class ROROptions(PerGameCommonOptions):
