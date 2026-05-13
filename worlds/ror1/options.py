@@ -51,6 +51,13 @@ class StageFiveTP(DefaultOnToggle):
     """
     display_name = "Divine Teleporter on Stage 5"
 
+class MapShuffle(Toggle):
+    """
+    Shuffles map order to appear in different points of stage progression.
+    Recommended to play with Strict Stage Progression enabled.
+    """
+    display_name = "Map Shuffle"
+
 class AvailableFrags(Range):
     """
     Percentage of filler items to be replaced with teleporter fragments
@@ -115,7 +122,8 @@ ror_option_groups = [
         ProgressiveStage,
         RequireStage,
         StrictStageProg,
-        StageFiveTP
+        StageFiveTP,
+        MapShuffle
     ]),
     OptionGroup("Teleporter Frag Hunt Settings", [
         AvailableFrags,
@@ -136,6 +144,7 @@ class ROROptions(PerGameCommonOptions):
     require_stage: RequireStage
     stage_five_tp: StageFiveTP
     strict_stage_prog: StrictStageProg
+    map_shuffle: MapShuffle
     available_frags: AvailableFrags
     required_frags: RequiredFrags
     item_pickup_step: ItemPickupStep

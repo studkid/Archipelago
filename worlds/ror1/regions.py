@@ -1,7 +1,8 @@
 from typing import Dict, List, NamedTuple, Optional, TYPE_CHECKING
 
-from BaseClasses import Region, Entrance, MultiWorld
-from .locations import location_table, map_orderedstage_2_table, map_orderedstage_3_table, map_orderedstage_4_table, RoR1Location
+from BaseClasses import Region, MultiWorld
+from .locations import location_table, map_orderedstage_2_table, map_orderedstage_3_table, map_orderedstage_4_table, map_orderedstages_table, RoR1Location
+from worlds.AutoWorld import World
 
 if TYPE_CHECKING:
     from . import RoR1World
@@ -10,10 +11,18 @@ class RoR1RegionData(NamedTuple):
     locations: Optional[List[str]]
     region_exits: Optional[List[str]]
 
-def create_grouped_regions(self) -> None:
+def create_grouped_regions(self: World) -> List[List[str]]:
     ror_options = self.options
     multiworld = self.multiworld
     player = self.player
+
+    mapProgression: List[List[str]] = [
+        ["Desolate Forest", "Dried Lake"],
+        ["Damp Caverns", "Sky Meadow"],
+        ["Ancient Valley", "Sunken Tombs"],
+        ["Magema Barracks", "Hive Cluster"],
+        ["Temple of the Elders"]
+    ]
 
     map_regions: Dict[str, RoR1RegionData] = {
         "Menu":                             RoR1RegionData(None, ["OrderedStage_1"]),
@@ -40,21 +49,53 @@ def create_grouped_regions(self) -> None:
         "Risk of Rain":                     RoR1RegionData([], [])
     }
 
-    if not ror_options.strict_stage_prog:
-        for key in map_orderedstage_2_table:
-            map_regions[key].region_exits.append("OrderedStage_3")
-            map_regions[key].region_exits.append("OrderedStage_4")
-            map_regions[key].region_exits.append("OrderedStage_5")
-        for key in map_orderedstage_3_table:
-            map_regions[key].region_exits.append("OrderedStage_4")
-            map_regions[key].region_exits.append("OrderedStage_5")
-        for key in map_orderedstage_4_table:
-            map_regions[key].region_exits.append("OrderedStage_5")
+    if not ror_options.map_shuffle:
+        if not ror_options.strict_stage_prog:
+            for key in map_orderedstage_2_table:
+                map_regions[key].region_exits.append("OrderedStage_3")
+                map_regions[key].region_exits.append("OrderedStage_4")
+                map_regions[key].region_exits.append("OrderedStage_5")
+            for key in map_orderedstage_3_table:
+                map_regions[key].region_exits.append("OrderedStage_4")
+                map_regions[key].region_exits.append("OrderedStage_5")
+            for key in map_orderedstage_4_table:
+                map_regions[key].region_exits.append("OrderedStage_5")
 
-    if not ror_options.stage_five_tp:
-        for key in map_regions:
-            if not key == "Menu" or not key == "Temple of the Elders":
-                map_regions[key].region_exits.append("OrderedStage_6")
+        if not ror_options.stage_five_tp:
+            for key in map_regions:
+                if not key == "Menu" or not key == "Temple of the Elders":
+                    map_regions[key].region_exits.append("OrderedStage_6")
+
+    else:
+        mapList: List[str] = [map for map in map_regions.keys() if not map == "Menu"]
+        self.random.shuffle(mapList)
+        shuffledMaps: List[str] = []
+
+        # Find an automated way to determine this
+        mapCounts = [2, 2, 2, 2, 1]
+
+        for stage in range(5):
+            selectedMaps = []
+            stage_regions[f"OrderedStage_{stage + 1}"].region_exits.clear()
+
+            for _ in range(mapCounts[stage]):
+                map = mapList.pop()
+                selectedMaps.append(map)
+                map_regions[map].region_exits.clear()
+                stage_regions[f"OrderedStage_{stage + 1}"].region_exits.append(map)
+                map_regions[map].region_exits.append(f"OrderedStage_{stage + 2}")
+
+                if not ror_options.strict_stage_prog:
+                    for i in range(3 - stage):
+                        map_regions[map].region_exits.append(f"OrderedStage_{stage + i + 3}")
+
+                if not ror_options.stage_five_tp:
+                    map_regions[map].region_exits.append("OrderedStage_6")
+            
+            shuffledMaps.append(selectedMaps)
+
+        mapProgression = shuffledMaps
+
 
     pickups = int(ror_options.total_pickups)
 
@@ -82,7 +123,8 @@ def create_grouped_regions(self) -> None:
 
     for name, data, in regions_pool.items():
         create_connections_in_regions(multiworld, player, name, data)
-    
+
+    return mapProgression
 
 def create_region(multiworld:MultiWorld, player: int, name: str, data: RoR1RegionData) -> Region:
     region = Region(name, player, multiworld)

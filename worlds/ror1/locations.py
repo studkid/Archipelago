@@ -15,6 +15,7 @@ ror_locations_start_ordered_stage = ror_locations_start_id + ItemPickups.range_e
 
 offset_chests = 0
 
+
 map_orderedstage_1_table: Dict[str, int] = {
     "Desolate Forest":          0,
     "Dried Lake":               1,

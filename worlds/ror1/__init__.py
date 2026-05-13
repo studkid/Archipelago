@@ -1,5 +1,5 @@
 from .items import RoR1Item, item_table, map_offset
-from .locations import RoR1Location, get_locations, location_table, map_orderedstages_table, map_table, shift_by_offset
+from .locations import RoR1Location, get_locations, location_table, map_table, shift_by_offset
 from .options import ROROptions, ror_option_groups
 from .rules import set_rules
 from .regions import create_grouped_regions
@@ -51,8 +51,10 @@ class RoR1World(World):
     fragAmount = 0
     requiredFragAmount = 0
 
+    mapProgression: List[List[str]] = []
+
     def create_regions(self) -> None:
-        create_grouped_regions(self)
+        self.mapProgression = create_grouped_regions(self)
 
         self.create_events()
 
@@ -61,7 +63,7 @@ class RoR1World(World):
 
         if self.options.grouping == "map":
             maps_pool = shift_by_offset(map_table, map_offset)
-            unlock = self.random.choices(list(map_orderedstages_table[0].keys()), k=1)
+            unlock = self.random.choices(list(self.mapProgression[0]), k=1)
             self.multiworld.push_precollected(self.create_item(unlock[0]))
             maps_pool.pop(unlock[0])
             if not self.options.require_stage:
@@ -98,7 +100,7 @@ class RoR1World(World):
         itemWeights = self.options.item_weights
         print(trapWeights.values())
         traps = self.random.choices([trap for trap in trapWeights.keys()], [weight for weight in trapWeights.values()], 
-                                    k = round((total_locations - len(itempool)) / self.options.trap_percentage.value))
+                                    k = round((total_locations - len(itempool)) * (self.options.trap_percentage.value / 100)))
         itempool.extend(traps)
         filler = self.random.choices([trap for trap in itemWeights.keys()], [weight for weight in itemWeights.values()], k = total_locations - len(itempool))
         itempool.extend(filler)
@@ -114,6 +116,9 @@ class RoR1World(World):
     
     def set_rules(self) -> None:
         set_rules(self)
+
+        from Utils import visualize_regions
+        visualize_regions(self.multiworld.get_region("Menu", self.player), "my_world.puml")
     
     def fill_slot_data(self) -> Dict[str, Any]:
         options_dict = self.options.as_dict("grouping", "total_pickups", "item_pickup_step",

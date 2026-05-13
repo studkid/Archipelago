@@ -1,6 +1,6 @@
 from worlds.generic.Rules import set_rule
 from worlds.AutoWorld import World
-from .locations import get_locations, map_orderedstages_table
+from .locations import get_map_locations, map_orderedstages_table
 from .options import Grouping
 from rule_builder.rules import Has, HasAnyCount, OptionFilter, CanReachRegion, HasAllCounts
 
