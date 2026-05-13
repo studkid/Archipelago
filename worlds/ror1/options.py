@@ -31,14 +31,53 @@ class Grouping(Choice):
     option_map = 2
     default = 2
 
+class SplitLocations(Toggle):
+    """
+    Changes locations from item pickups to interacting with chests/shrines
+    """
+    display_name = "Split Item Locations"
+
 class ItemPickups(Range):
     """
     Number of item pickups locations each map/stage group will have.
+    Ignored if split item locations is true
     """
-    display_name = "Total Locations"
+    display_name = "Item Pickup Locations"
     range_start = 10
     range_end = 50
     default = 20
+
+class ItemPickupStep(Range):
+    """
+    Number of items to pick up before an AP Check is completed.
+    Setting to 1 means every other pickup.
+    Setting to 2 means every third pickup. So on...
+    Ignored if split item locations is true
+    """
+    display_name = "Item Pickup Step"
+    range_start = 0
+    range_end = 5
+    default = 1
+
+class ChestPickups(Range):
+    """
+    Number of chest locations each map/stage group will have.
+    Ignored if split item locations is false
+    """
+    display_name = "Chest Locations"
+    range_start = 2
+    range_end = 25
+    default = 10
+
+class ShrinePickups(Range):
+    """
+    Number of shrine locations each map/stage group will have.
+    Ignored if split item locations is false
+    """
+    display_name = "Shrine Locations"
+    range_start = 2
+    range_end = 25
+    default = 5
 
 # class EasterEggMap(Choice):
 #     """
@@ -99,17 +138,6 @@ class RequiredFrags(Range):
     range_end = 100
     default = 0
 
-class ItemPickupStep(Range):
-    """
-    Number of items to pick up before an AP Check is completed.
-    Setting to 1 means every other pickup.
-    Setting to 2 means every third pickup. So on...
-    """
-    display_name = "Item Pickup Step"
-    range_start = 0
-    range_end = 5
-    default = 1
-
 class TrapPercentage(Range):
     """Percentage of filler to be replaced with traps."""
     display_name = "Trap Percentage"
@@ -140,8 +168,11 @@ ror_option_groups = [
         GameVersion,
         Starstorm,
         Grouping,
+        SplitLocations,
         ItemPickups,
         ItemPickupStep,
+        ChestPickups,
+        ShrinePickups,
     ]),
     OptionGroup("Logic Settings", [
         ProgressiveStage,
@@ -166,7 +197,10 @@ class ROROptions(PerGameCommonOptions):
     version: GameVersion
     starstorm: Starstorm
     grouping: Grouping
+    split_locations: SplitLocations
     total_pickups: ItemPickups
+    chest_locations: ChestPickups
+    shrine_locations: ShrinePickups
     progressive_stages: ProgressiveStage
     require_stage: RequireStage
     stage_five_tp: StageFiveTP

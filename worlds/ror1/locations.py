@@ -1,5 +1,5 @@
 from BaseClasses import Location
-from .options import ItemPickups
+from .options import ItemPickups, ChestPickups, ShrinePickups
 from typing import Dict, List, TypeVar, NamedTuple, Optional
 
 class RoR1Location(Location):
@@ -89,23 +89,31 @@ def shift_by_offset(dictionary: Dict[str, int], offset: int) -> Dict[str, int]:
     """Shift all indexes in a dictionary by an offset"""
     return {name: index+offset for name, index in dictionary.items()}
 
-def get_map_locations(chests: int, map_name: str, map_index: int) -> Dict[str, int]:
+def get_map_locations(pickups: int, chests: int, shrines: int, map_name: str, map_index: int) -> Dict[str, int]:
     locations = {}
 
     mapStartId = map_index * ItemPickups.range_end + startId
-    for n in range(chests):
+    for n in range(pickups):
         locations.update({f"{map_name}: Item Pickup {n + 1}": n + offsetChests + mapStartId})
+    for n in range(chests):
+        locations.update({f"{map_name}: Chests {n + 1}": n + offsetChests + mapStartId})
+    for n in range(shrines):
+        locations.update({f"{map_name}: Shrines {n + 1}": n + offsetChests + mapStartId})
     return locations
 
-def get_stage_locations(chests: int, stage: int) -> Dict[str, int]:
+def get_stage_locations(pickups: int, chests: int, shrines: int, stage: int) -> Dict[str, int]:
     locations = {}
 
     stageStartId = stage * ItemPickups.range_end + stageId
-    for n in range(chests):
+    for n in range(pickups):
         locations.update({f"Stage {stage + 1}: Item Pickup {n + 1}": n + offsetChests + stageStartId})
+    for n in range(chests):
+        locations.update({f"Stage {stage + 1}: Chests {n + 1}": n + offsetChests + stageStartId})
+    for n in range(shrines):
+        locations.update({f"Stage {stage + 1}: Shrines {n + 1}": n + offsetChests + stageStartId})
     return locations
 
-def get_locations(pickups: int, type: int = 0, ssSupport: bool = False) -> Dict[str, int]:
+def get_locations(pickups: int, chests: int, shrines: int, type: int = 0, ssSupport: bool = False) -> Dict[str, int]:
     locations = {}
     if type == 2:
         orderedstages = compress_dict_list_horizontal(map_orderedstages_table)
@@ -113,25 +121,36 @@ def get_locations(pickups: int, type: int = 0, ssSupport: bool = False) -> Dict[
             orderedstages.update(compress_dict_list_horizontal(map_ss_orderedstage_table))
         for map_name, map_index in orderedstages.items():
             locations.update(get_map_locations(
-                chests = pickups,
+                pickups = pickups,
+                chests = chests,
+                shrines = shrines,
                 map_name = map_name,
                 map_index = map_index
-            ),)
+            ))
 
     if type == 1:
         for stage in range(5):
-            locations.update(get_stage_locations(pickups, stage))
+            locations.update(get_stage_locations(
+                pickups = pickups,
+                chests = chests,
+                shrines = shrines,
+                stage = stage
+            ))
 
     return locations
 
 location_table = get_locations(
     pickups=ItemPickups.range_end,
+    chests=ChestPickups.range_end,
+    shrines=ShrinePickups.range_end,
     type=2,
     ssSupport=True
 )
 
 location_table.update(get_locations(
     pickups=ItemPickups.range_end,
+    chests=ChestPickups.range_end,
+    shrines=ShrinePickups.range_end,
     type=1,
     ssSupport=True
 ))

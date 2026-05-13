@@ -53,6 +53,13 @@ class RoR1World(World):
 
     mapProgression: List[List[str]] = []
 
+    def generate_early(self):
+        if self.options.split_locations:
+            self.options.total_pickups.value = 0
+        else:
+            self.options.chest_locations.value = 0
+            self.options.shrine_locations.value = 0
+
     def create_regions(self) -> None:
         self.mapProgression = create_grouped_regions(self)
 
@@ -86,6 +93,8 @@ class RoR1World(World):
         total_locations = len(
             get_locations(
                 pickups=self.options.total_pickups.value,
+                chests=self.options.chest_locations.value,
+                shrines=self.options.shrine_locations.value,
                 type=self.options.grouping.value,
                 ssSupport=self.options.starstorm
             )
@@ -127,8 +136,9 @@ class RoR1World(World):
                 spoiler_handle.write(f"  Stage {stage + 1} -> {maps}\n")
     
     def fill_slot_data(self) -> Dict[str, Any]:
-        options_dict = self.options.as_dict("grouping", "total_pickups", "item_pickup_step",
-                                            "stage_five_tp", "strict_stage_prog", "progressive_stages", casing="camel")
+        options_dict = self.options.as_dict("grouping", "split_locations", "total_pickups", "item_pickup_step",
+                                            "chest_locations", "shrine_locations", "stage_five_tp", 
+                                            "strict_stage_prog", "progressive_stages", casing="camel")
         return {
             **options_dict,
             "requiredFrags": self.requiredFragAmount,

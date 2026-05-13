@@ -106,6 +106,8 @@ def create_grouped_regions(self: World) -> List[List[str]]:
 
 
     pickups = int(ror_options.total_pickups)
+    chests = int(ror_options.chest_locations)
+    shrines = int(ror_options.shrine_locations)
 
     if ror_options.grouping == "map":
         for maps in mapProgression:
@@ -114,6 +116,10 @@ def create_grouped_regions(self: World) -> List[List[str]]:
                     continue
                 for i in range(0, pickups):
                     orderedMaps[key].locations.append(f"{key}: Item Pickup {i + 1}")
+                for i in range(0, chests):
+                    orderedMaps[key].locations.append(f"{key}: Chest {i + 1}")
+                for i in range(0, shrines):
+                    orderedMaps[key].locations.append(f"{key}: Shrine {i + 1}")
 
     elif ror_options.grouping == "stage":
         map_regions["Menu"].region_exits.append("OrderedStage_1")
@@ -123,6 +129,10 @@ def create_grouped_regions(self: World) -> List[List[str]]:
                 continue
             for i in range(0, pickups):
                 stage_regions[key].locations.append(f"Stage {x}: Item Pickup {i + 1}")
+            for i in range(0, chests):
+                stage_regions[key].locations.append(f"Stage {x}: Chest {i + 1}")
+            for i in range(0, shrines):
+                stage_regions[key].locations.append(f"Stage {x}: Shrine {i + 1}")
             x += 1
     
     regions_pool: Dict = {**map_regions, **stage_regions, **other_regions}
