@@ -11,18 +11,9 @@ class RoR1LocationData(NamedTuple):
 
 ror_locations_start_id = 250000
 
-def get_universal_item_pickups(n: int) -> Dict[str, int]:
-    n = max(n, 0)
-    n = min(n, ItemPickups.range_end)
-    return {f"ItemPickup{i + 1}": ror_locations_start_id + i for i in range(n)}
-
-item_pickups = get_universal_item_pickups(ItemPickups.range_end)
-location_table = item_pickups
-
 ror_locations_start_ordered_stage = ror_locations_start_id + ItemPickups.range_end
 
 offset_chests = 0
-
 
 map_orderedstage_1_table: Dict[str, int] = {
     "Desolate Forest":          0,
@@ -90,6 +81,6 @@ def get_locations(chests: int) -> Dict[str, int]:
         ),)
     return locations
 
-location_table.update(get_locations(
+location_table = get_locations(
     chests=ItemPickups.range_end
-))
+)

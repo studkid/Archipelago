@@ -1,5 +1,5 @@
 from .items import RoR1Item, item_table, map_offset
-from .locations import RoR1Location, item_pickups, get_locations, map_orderedstages_table, map_table, shift_by_offset
+from .locations import RoR1Location, get_locations, location_table, map_orderedstages_table, map_table, shift_by_offset
 from .options import ROROptions, ror_option_groups
 from .rules import set_rules
 from .regions import create_grouped_regions
@@ -43,7 +43,7 @@ class RoR1World(World):
         "Traps": {name for name, data in item_table.items() if data.category == "Trap"},
     }
 
-    location_name_to_id = item_pickups
+    location_name_to_id = location_table
 
     data_version = 8
     required_client_version = (0, 6, 7)
