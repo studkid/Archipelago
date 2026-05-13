@@ -19,23 +19,23 @@ map_offset: int = offset + 400
 
 # Upgrade item ids 250001 - 250005
 upgrade_table: Dict[str, RoR1ItemData] = {
-    "Common Item":          RoR1ItemData("Upgrade", 1 + offset, ItemClassification.filler, 64),
-    "Uncommon Item":        RoR1ItemData("Upgrade", 2 + offset, ItemClassification.filler, 64),
-    "Legendary Item":       RoR1ItemData("Upgrade", 3 + offset, ItemClassification.filler, 64),
-    "Boss Item":            RoR1ItemData("Upgrade", 4 + offset, ItemClassification.filler, 64),
-    "Equipment":            RoR1ItemData("Upgrade", 5 + offset, ItemClassification.filler, 64),
-    "Teleporter Fragment":  RoR1ItemData("Upgrade", 6 + offset, ItemClassification.progression, 64),
+    "Common Item":          RoR1ItemData("Upgrade", 1 + offset, ItemClassification.useful),
+    "Uncommon Item":        RoR1ItemData("Upgrade", 2 + offset, ItemClassification.useful),
+    "Legendary Item":       RoR1ItemData("Upgrade", 3 + offset, ItemClassification.useful),
+    "Boss Item":            RoR1ItemData("Upgrade", 4 + offset, ItemClassification.useful),
+    "Equipment":            RoR1ItemData("Upgrade", 5 + offset, ItemClassification.useful),
+    "Dio's Best Friend":    RoR1ItemData("Upgrade", 6 + offset, ItemClassification.progression),
 }
 # Filler item ids  250101 - 250102
 filler_table: Dict[str, RoR1ItemData] = {
-    "Money":                RoR1ItemData("Filler", 1 + filler_offset, ItemClassification.filler, 64),
-    "1000 Exp":             RoR1ItemData("Filler", 2 + filler_offset, ItemClassification.filler, 40),
+    "Gold":                 RoR1ItemData("Filler", 1 + filler_offset, ItemClassification.filler),
+    "Experience":           RoR1ItemData("Filler", 2 + filler_offset, ItemClassification.filler),
 }
 # Trap item ids 250201 - 250203
 trap_table: Dict[str, RoR1ItemData] = {
-    "Time Warp Trap":       RoR1ItemData("Trap", 1 + trap_offset, ItemClassification.trap, 20),
-    "Combat Trap":          RoR1ItemData("Trap", 2 + trap_offset, ItemClassification.trap, 20),
-    "Meteor Trap":          RoR1ItemData("Trap", 3 + trap_offset, ItemClassification.trap, 10),
+    "Time Warp Trap":       RoR1ItemData("Trap", 1 + trap_offset, ItemClassification.trap, 1),
+    "Combat Trap":          RoR1ItemData("Trap", 2 + trap_offset, ItemClassification.trap, 1),
+    "Meteor Trap":          RoR1ItemData("Trap", 3 + trap_offset, ItemClassification.trap, 1),
 }
 # Stage item ids 250301 - 250304
 stage_table: Dict[str, RoR1ItemData] = {
@@ -45,6 +45,7 @@ stage_table: Dict[str, RoR1ItemData] = {
     "Stage 4":              RoR1ItemData("Stage", 4 + stage_offset, ItemClassification.progression),
     "Stage 5":              RoR1ItemData("Stage", 5 + stage_offset, ItemClassification.progression),
     "Progressive Stage":    RoR1ItemData("Stage", 6 + stage_offset, ItemClassification.progression),
+    "Teleporter Fragment":  RoR1ItemData("Mcguffin", 7 + stage_offset, ItemClassification.progression_deprioritized_skip_balancing),
 }
 
 item_table = {**upgrade_table, **filler_table, **trap_table, **stage_table}
@@ -58,11 +59,3 @@ for data, key in map_table.items():
     map_pool.update(create_map_table(data, key, classification))
 
 item_table.update(map_pool)
-
-default_weights: Dict[str, int] = {
-    "Common Item":          64,
-    "Uncommon Item":        32,
-    "Legendary Item":       8,
-    "Boss Item":            4,
-    "Equipment":            32,
-}

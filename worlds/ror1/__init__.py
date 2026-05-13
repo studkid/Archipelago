@@ -2,7 +2,7 @@ from .items import RoR1Item, item_table, map_offset
 from .locations import RoR1Location, item_pickups, get_locations, map_orderedstages_table, map_table, shift_by_offset
 from .options import ROROptions
 from .rules import set_rules
-from .regions import create_universal_regions, create_grouped_regions
+from .regions import create_grouped_regions
 
 from worlds.AutoWorld import World, WebWorld
 from BaseClasses import Item, ItemClassification, Tutorial
@@ -43,16 +43,13 @@ class RoR1World(World):
     location_name_to_id = item_pickups
 
     data_version = 8
-    required_client_version = (0, 5, 0)
+    required_client_version = (0, 6, 7)
 
     fragAmount = 0
     requiredFragAmount = 0
 
     def create_regions(self) -> None:
-        if self.options.grouping == "universal":
-            create_universal_regions(self)
-        else:
-            create_grouped_regions(self)
+        create_grouped_regions(self)
 
         self.create_events()
 
@@ -63,71 +60,50 @@ class RoR1World(World):
             maps_pool = shift_by_offset(map_table, map_offset)
             unlock = self.random.choices(list(map_orderedstages_table[0].keys()), k=1)
             self.multiworld.push_precollected(self.create_item(unlock[0]))
-            self.multiworld.push_precollected(self.create_item("Stage 1"))
             maps_pool.pop(unlock[0])
             if not self.options.require_stage:
                 self.multiworld.push_precollected(self.create_item("Stage 2"))
                 self.multiworld.push_precollected(self.create_item("Stage 3"))
                 self.multiworld.push_precollected(self.create_item("Stage 4"))
                 self.multiworld.push_precollected(self.create_item("Stage 5"))
-        elif self.options.grouping == "stage":
-            self.multiworld.push_precollected(self.create_item("Stage 1"))
         
         itempool: List[str] = []
 
         for map_name, _ in maps_pool.items():
             itempool += [map_name]
-        
-        if self.options.grouping == "universal":
-            total_locations = self.options.total_locations.value
-        else:
-            if self.options.require_stage:
-                if not self.options.progressive_stages:
-                    itempool += ["Stage 2", "Stage 3", "Stage 4", "Stage 5"]
-                else:
-                    itempool += ["Progressive Stage"] * 4
+
+        if self.options.require_stage:
+            if not self.options.progressive_stages:
+                itempool += ["Stage 2", "Stage 3", "Stage 4", "Stage 5"]
+            else:
+                itempool += ["Progressive Stage"] * 4
 
                 
             total_locations = len(
                 get_locations(
-                    chests=self.options.total_locations.value,
+                    chests=self.options.total_pickups.value,
                 )
             )
 
         if self.options.required_frags.value > 0 and self.options.available_frags.value > 0:
             fillerSize = total_locations - len(itempool)
-            self.fragAmount = round(fillerSize * (self.options.available_frags / 100))
-            self.requiredFragAmount = round(self.fragAmount * (self.options.required_frags / 100))
+            self.fragAmount = round(fillerSize * (self.options.available_frags.value / 100))
+            self.requiredFragAmount = round(self.fragAmount * (self.options.required_frags.value / 100))
             itempool += ["Teleporter Fragment"] * self.fragAmount
             
-        junk_pool = self.create_junk_pool()
-        filler = self.random.choices(*zip(*junk_pool.items()), k = total_locations - len(itempool))
+        trapWeights = self.options.trap_weights
+        itemWeights = self.options.item_weights
+        print(trapWeights.values())
+        traps = self.random.choices([trap for trap in trapWeights.keys()], [weight for weight in trapWeights.values()], 
+                                    k = round((total_locations - len(itempool)) / self.options.trap_percentage.value))
+        itempool.extend(traps)
+        filler = self.random.choices([trap for trap in itemWeights.keys()], [weight for weight in itemWeights.values()], k = total_locations - len(itempool))
         itempool.extend(filler)
 
         self.multiworld.itempool += map(self.create_item, itempool)
 
-    def create_junk_pool(self) -> Dict[str, int]:
-        # if presets are enabled generate junk_pool from the selected preset
-        junk_pool: Dict[str, int] = {}
-        junk_pool = {
-            "Common Item": self.options.common_item.value,
-            "Uncommon Item": self.options.uncommon_item.value,
-            "Legendary Item": self.options.legendary_item.value,
-            "Boss Item": self.options.boss_item.value,
-            "Equipment": self.options.equipment.value,
-            "Money": self.options.money.value,
-            "1000 Exp": self.options.experience.value,
-            "Time Warp Trap": self.options.time_warp_trap.value,
-            "Combat Trap": self.options.combat_trap.value,
-            "Meteor Trap": self.options.meteor_trap.value,
-        }
-
-        if not self.options.enable_trap:
-            junk_pool.pop("Time Warp Trap")
-            junk_pool.pop("Combat Trap")
-            junk_pool.pop("Meteor Trap")
-
-        return junk_pool
+    def get_filler_item_name(self):
+        return self.random.choices([filler for filler in self.options.item_weights.keys()], [weight for weight in self.options.item_weights.items()], k=1)[0]
 
     def create_item(self, name: str) -> Item:
         data = item_table[name]
@@ -137,7 +113,7 @@ class RoR1World(World):
         set_rules(self)
     
     def fill_slot_data(self) -> Dict[str, Any]:
-        options_dict = self.options.as_dict("grouping", "total_locations", "item_pickup_step",
+        options_dict = self.options.as_dict("grouping", "total_pickups", "item_pickup_step",
                                             "stage_five_tp", "strict_stage_prog", "progressive_stages", casing="camel")
         options_dict["requiredFrags"] = self.requiredFragAmount
         return {
@@ -145,31 +121,7 @@ class RoR1World(World):
         }
     
     def create_events(self) -> None:
-        total_locations = self.options.total_locations.value
-        num_of_events = total_locations // 25
-        if total_locations / 25 == num_of_events:
-            num_of_events -= 1
         world_region = self.multiworld.get_region("Risk of Rain", self.player)
-        if self.options.grouping == "universal":
-            # universal pickups
-            for i in range(num_of_events):
-                event_loc = RoR1Location(self.player, f"Pickup{(i + 1) * 25}", None, world_region)
-                event_loc.place_locked_item(
-                    RoR1Item(f"Pickup{(i + 1) * 25}", ItemClassification.progression, None,
-                                   self.player))
-                event_loc.access_rule = \
-                    lambda state, i=i: state.can_reach(f"ItemPickup{((i + 1) * 25) - 1}", "Location", self.player)
-                world_region.locations.append(event_loc)
-        # else:
-        #     # stage and map pickups
-        #     event_region = self.multiworld.get_region("OrderedStage_6", self.player)
-        #     event_loc = RoR1Location(self.player, "OrderedStage_6", None, event_region)
-        #     event_loc.place_locked_item(RoR1Item("OrderedStage_6", ItemClassification.progression, None, self.player))
-        #     event_loc.show_in_spoiler = False
-        #     event_region.locations.append(event_loc)
-        #     event_loc.access_rule = lambda state: state.has("Temple of the Elders", self.player)
-
-        # victory_region = self.multiworld.get_region("Victory", self.player)
         victory_event = RoR1Location(self.player, "Victory", None, world_region)
         victory_event.place_locked_item(RoR1Item("Victory", ItemClassification.progression, None, self.player))
         world_region.locations.append(victory_event)

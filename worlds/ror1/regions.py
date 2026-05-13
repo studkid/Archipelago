@@ -56,7 +56,7 @@ def create_grouped_regions(self) -> None:
             if not key == "Menu" or not key == "Temple of the Elders":
                 map_regions[key].region_exits.append("OrderedStage_6")
 
-    pickups = int(ror_options.total_locations)
+    pickups = int(ror_options.total_pickups)
 
     if ror_options.grouping == "map":
         for key in map_regions:

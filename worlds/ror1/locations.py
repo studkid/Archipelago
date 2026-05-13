@@ -1,5 +1,5 @@
 from BaseClasses import Location
-from .options import TotalLocations
+from .options import ItemPickups
 from typing import Dict, List, TypeVar, NamedTuple, Optional
 
 class RoR1Location(Location):
@@ -13,13 +13,13 @@ ror_locations_start_id = 250000
 
 def get_universal_item_pickups(n: int) -> Dict[str, int]:
     n = max(n, 0)
-    n = min(n, TotalLocations.range_end)
+    n = min(n, ItemPickups.range_end)
     return {f"ItemPickup{i + 1}": ror_locations_start_id + i for i in range(n)}
 
-item_pickups = get_universal_item_pickups(TotalLocations.range_end)
+item_pickups = get_universal_item_pickups(ItemPickups.range_end)
 location_table = item_pickups
 
-ror_locations_start_ordered_stage = ror_locations_start_id + TotalLocations.range_end
+ror_locations_start_ordered_stage = ror_locations_start_id + ItemPickups.range_end
 
 offset_chests = 0
 
@@ -74,7 +74,7 @@ def shift_by_offset(dictionary: Dict[str, int], offset: int) -> Dict[str, int]:
 def get_map_locations(chests: int, map_name: str, map_index: int) -> Dict[str, int]:
     locations = {}
 
-    map_start_id = map_index * TotalLocations.range_end + ror_locations_start_ordered_stage
+    map_start_id = map_index * ItemPickups.range_end + ror_locations_start_ordered_stage
     for n in range(chests):
         locations.update({f"{map_name}: Item Pickup {n + 1}": n + offset_chests + map_start_id})
     return locations
@@ -91,5 +91,5 @@ def get_locations(chests: int) -> Dict[str, int]:
     return locations
 
 location_table.update(get_locations(
-    chests=TotalLocations.range_end
+    chests=ItemPickups.range_end
 ))
