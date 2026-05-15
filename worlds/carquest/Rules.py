@@ -77,7 +77,20 @@ def set_rules(world: World) -> bool:
     world.set_rule(mw.get_entrance("Hub Ice Portal -> Hub Power Room", player), Has("Hub: Power Room South Door"))
     world.set_rule(mw.get_entrance("Hub Ice Portal -> Hub Teleport Island", player), HasAll("Hub: Power Room South Door", "Hub: Power Room North Door", "Hub: World Peace"))
 
-    # Completion Rules
+    # Fixit Shop Entrances
+    world.set_rule(mw.get_entrance("Fixit Shop Main -> Fixit Shop Cave", player), Has("Desert: Shop Cave Door"))
+    world.set_rule(mw.get_entrance("Fixit Shop Main -> Fixit Shop Fence", player), Has("Desert: Fixit Shop Fence"))
+
+    # Slider Entrances
+    world.set_rule(mw.get_entrance("Slider Start -> Slider Lower Back", player), Has("Slider: Start Ramp"))
+    world.set_rule(mw.get_entrance("Slider Start -> Slider Upper Left", player), Has("Slider: Left Push Block Unlock"))
+    world.set_rule(mw.get_entrance("Slider Start -> Slider Upper Right", player), Has("Slider: Right Push Block Unlock"))
+
+    world.set_rule(mw.get_entrance("Slider Upper Right -> Slider Exit", player), Has("Slider: Left Side Ramp"))
+
+    ####################
+    # Completion Rules #
+    ####################
     if options.ending_goal == EndingGoal.option_bristles:
         world.set_completion_rule(CanReachRegion("Throne Boss"))
     elif options.ending_goal == EndingGoal.option_museum:

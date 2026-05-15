@@ -130,7 +130,7 @@ item_table: Dict[str, CarQuestItemData] = {
     "Slider: Start Ramp":                           CarQuestItemData("secret", sliderOffset + 1, ItemClassification.progression),
     "Slider: Left Push Block Unlock":               CarQuestItemData("secret", sliderOffset + 2, ItemClassification.progression),
     "Slider: Right Push Block Unlock":              CarQuestItemData("secret", sliderOffset + 3, ItemClassification.progression),
-    "Slider: Left Push Block Unlock":               CarQuestItemData("secret", sliderOffset + 4, ItemClassification.progression),
+    "Slider: Left Side Ramp":                       CarQuestItemData("secret", sliderOffset + 4, ItemClassification.progression),
     "Slider: Exit Ramp Unlock":                     CarQuestItemData("secret", sliderOffset + 5, ItemClassification.progression),
 
     # Maze
