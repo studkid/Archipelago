@@ -58,6 +58,9 @@ class CarQuestWorld(World):
     def create_regions(self):
         create_regions(self.multiworld, self.player, self.options)
 
+        self.multiworld.get_location("Hub: Starting Area Artifact", self.player).place_locked_item(
+            self.create_item("Hub: Start Room Blocker"))
+
         from Utils import visualize_regions
         visualize_regions(self.multiworld.get_region("Menu", self.player), "carquest_world.puml")
 

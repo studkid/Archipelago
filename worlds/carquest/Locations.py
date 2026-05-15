@@ -48,7 +48,7 @@ location_table: Dict[str, CarQuestLocationData] = {
     "Hub: North Pool Jump Ramp":                        CarQuestLocationData("Artifact", "Hub Pool Area", 4), # Needs "Hub: North Pool Jump Ramp"
     "Hub: Tree Slalom Start Artifact":                  CarQuestLocationData("Artifact", "Hub Pool Area", 5), # Needs "Hub: South Pool Artifact Block"
     "Hub: Upper University Alleyway Artifact":          CarQuestLocationData("Artifact", "Hub Upper Uni Alleyway", 6), 
-    "Hub: South Pool Deadend Artifact":                 CarQuestLocationData("Artifact", "Hub South Pool Deadend Path", 7), 
+    "Hub: South Pool Dead End Artifact":                CarQuestLocationData("Artifact", "Hub South Pool Dead End Path", 7), 
     "Hub: Tree Slalom Reward Artifact":                 CarQuestLocationData("Artifact", "Hub Pool Area", 8), # Needs "Hub: Tree Slalom Unlock"
     "Hub: Museum Artifact":                             CarQuestLocationData("Artifact", "Hub Museum", 9),
     "Hub: Cube Monument Artifact":                      CarQuestLocationData("Artifact", "Hub Cube Monument", 10),
@@ -68,7 +68,7 @@ location_table: Dict[str, CarQuestLocationData] = {
     "Hub: University Exterior Artifact":                CarQuestLocationData("Artifact", "Hub University Exterior", 24),
     "Hub: Central Bridge West Ramp Artifact":           CarQuestLocationData("Artifact", "Hub Central Bridge", 25),
     "Hub: Pool North East Artifact":                    CarQuestLocationData("Artifact", "Hub Pool Area", 26),
-    "Hub: Alley Push Ramp Artifact":                    CarQuestLocationData("Artifact", "Hub Pool Area", 27), # Needs "Hub: Exterior University Wall Door"
+    "Hub: Alley Push Ramp Artifact":                    CarQuestLocationData("Artifact", "Hub Uni Whale Bridge Connector", 27), # Needs "Hub: Exterior University Wall Door"
     "Hub: Upper Alley Bridge Near Throne Artifact":     CarQuestLocationData("Artifact", "Hub Upper Pool Perimeter", 28),
     "Hub: Lower Artifact Near Whale Bridge":            CarQuestLocationData("Artifact", "Hub Lower Whale Lookout", 29),
     "Hub: Upper Artifact Near Whale Bridge":            CarQuestLocationData("Artifact", "Hub Lower Whale Lookout", 30),
@@ -84,7 +84,7 @@ location_table: Dict[str, CarQuestLocationData] = {
     "Hub: Upper Pool Dead End Path Artifact":           CarQuestLocationData("Artifact", "Hub Upper Pool Perimeter", 40),
     "Hub: Long Lookout Alley Artifact":                 CarQuestLocationData("Artifact", "Hub Lookout Long Path", 41),
     "Hub: Central Path Dead End Artifact":              CarQuestLocationData("Artifact", "Hub Central Bridge", 42),
-    "Hub: Start Lookout Artifact":                      CarQuestLocationData("Artifact", "Hub Start Outlook", 43),
+    "Hub: Start Lookout Artifact":                      CarQuestLocationData("Artifact", "Hub Start Lookout", 43),
     "Hub: University Podium Artifact":                  CarQuestLocationData("Artifact", "Hub University Interior", 44),
     "Hub: University Back Right Artifact":              CarQuestLocationData("Artifact", "Hub University Interior", 45),
     "Hub: University Second Row Artifact":              CarQuestLocationData("Artifact", "Hub University Interior", 46),
