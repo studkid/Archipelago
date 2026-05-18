@@ -12,19 +12,19 @@ def set_rules(world: World) -> bool:
     # Entrance Rules #
     ##################
     # Hub Entrances
-    world.set_rule(mw.get_entrance("Hub Start -> Hub Simple Portal Path", player), Has("Hub: Start Room Blocker"))
+    world.set_rule(mw.get_entrance("Hub Start -> Hub Simple Portal Path", player), HasAny("Hub: Start Room Blocker", "Froggy Car"))
     world.set_rule(mw.get_entrance("Hub Start -> Hub South Portal", player), HasAll("Hub: Start Room Blocker", "Hub: Start Area Back Removal", "Hub: Start Room Bridge"))
 
     world.set_rule(mw.get_entrance("Hub Simple Portal Path -> Hub Pool Area", player), Has("Hub: Simple Portal Bridge Wall"))
     world.set_rule(mw.get_entrance("Hub Simple Portal Path -> Hub Throne Room East Exterior", player), Has("Hub: Start Room Right Door"))
-    world.set_rule(mw.get_entrance("Hub Simple Portal Path -> Hub Central Bridge", player), Has("Hub: Start Room Right Door"))
+    world.set_rule(mw.get_entrance("Hub Simple Portal Path -> Hub Central Bridge", player), Has("Hub: Start Room Right Door", "Froggy Car"))
     world.set_rule(mw.get_entrance("Hub Simple Portal Path -> Hub Upper Pool Perimeter", player), Has("Hub: Ramp Near Simple Portal"))
 
     world.set_rule(mw.get_entrance("Hub Pool Area -> Hub Upper Uni Alleyway", player), Has("Hub: Upper University Alleyway Access"))
     world.set_rule(mw.get_entrance("Hub Pool Area -> Hub South Pool Dead End Path", player), Has("Hub: South Pool Dead End Door"))
     world.set_rule(mw.get_entrance("Hub Pool Area -> Floating Cube Area", player), Has("Hub: North Pool Portal Access"))
     world.set_rule(mw.get_entrance("Hub Pool Area -> Hub Cube Monument", player), Has("Hub: Cube Monument Access"))
-    world.set_rule(mw.get_entrance("Hub Pool Area -> Hub South Portal", player), Has("Hub: South Portal Ramp Door"))
+    world.set_rule(mw.get_entrance("Hub Pool Area -> Hub South Portal", player), HasAll("Hub: South Portal Ramp Door", "Froggy Car"))
     world.set_rule(mw.get_entrance("Hub Pool Area -> Hub Vault", player), Has("Hub: North Pool Vault Door"))
     world.set_rule(mw.get_entrance("Hub Pool Area -> Hub Drained Pool", player), Has("Hub: Progressive Pool"))
     world.set_rule(mw.get_entrance("Hub Pool Area -> Hub University Exterior", player), Has("Hub: Exterior University Ramp"))
@@ -76,6 +76,9 @@ def set_rules(world: World) -> bool:
 
     world.set_rule(mw.get_entrance("Hub Ice Portal -> Hub Power Room", player), Has("Hub: Power Room South Door"))
     world.set_rule(mw.get_entrance("Hub Ice Portal -> Hub Teleport Island", player), HasAll("Hub: Power Room South Door", "Hub: Power Room North Door", "Hub: World Peace"))
+
+    # Simple Square Entrances
+    world.set_rule(mw.get_entrance("Simple Square Area -> Simple Square Exterior", player), HasAny("Hub: Power Room South Door", "Froggy Car", "Battery Rocket Car"))
 
     # Fixit Shop Entrances
     world.set_rule(mw.get_entrance("Fixit Shop Main -> Fixit Shop Cave", player), Has("Desert: Shop Cave Door"))
@@ -165,6 +168,21 @@ def set_rules(world: World) -> bool:
                                                                           "Power Room: Yellow Cable Push", "Power Room: Yellow Cable Activate",
                                                                           "Power Room: Exit Teleporter"))
     world.set_rule(mw.get_entrance("Limbo -> Throne Boss", player), Has("Limbo: Crown and Exit Portal"))
+
+    ##################
+    # Location Rules #
+    ##################
+    # Hub
+    world.set_rule(mw.get_location("Hub: North Pool Secret Door Artifact", player), Has("Hub: North Pool Small Secret Door"))
+    world.set_rule(mw.get_location("Hub: North Pool Jump Ramp", player), HasAny("Hub: North Pool Jump Ramp", "Froggy Car", "Battery Rocket Car"))
+    world.set_rule(mw.get_location("Hub: Tree Slalom Start Artifact", player), Has("Hub: South Pool Artifact Block"))
+    world.set_rule(mw.get_location("Hub: South Pool Dead End Artifact", player), HasAny("Hub: South Pool Dead End Door", "Froggy Car") | CanReachRegion("Hub South Portal"))
+    world.set_rule(mw.get_location("Hub: Tree Slalom Reward Artifact", player), HasAny("Hub: Tree Slalom Unlock", "Froggy Car"))
+    world.set_rule(mw.get_location("Hub: Pool Drain Artifact", player), Has("Hub: Progressive Pool"))
+    world.set_rule(mw.get_location("Hub: Pool South West Artifact", player), Has("Hub: Progressive Pool"))
+    world.set_rule(mw.get_location("Hub: Pool South East Artifact", player), Has("Hub: Progressive Pool"))
+    world.set_rule(mw.get_location("Hub: Pool South West Artifact", player), Has("Hub: Progressive Pool"))
+    world.set_rule(mw.get_location("Hub: Pool Center Artifact", player), Has("Hub: Progressive Pool", 2))
 
     ####################
     # Completion Rules #

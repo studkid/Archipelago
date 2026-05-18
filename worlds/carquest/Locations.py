@@ -111,6 +111,8 @@ location_table: Dict[str, CarQuestLocationData] = {
     "Simple: Artifact Under Mound":                     CarQuestLocationData("Artifact", "Simple Square Area", simpleOffset + 1),
     "Simple: Artifact On Exit Ramp":                    CarQuestLocationData("Artifact", "Simple Square Area", simpleOffset + 2),
 
+    "Simple: Exterior Token":                           CarQuestLocationData("Token", "Simple Square Exterior", simpleOffset + 3),
+
     # Cubes
     # 2 Secrets
     # 19 Power Cells

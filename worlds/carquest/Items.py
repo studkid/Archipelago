@@ -42,7 +42,7 @@ item_table: Dict[str, CarQuestItemData] = {
     "Hub: North Pool Jump Ramp":                    CarQuestItemData("secret", 4, ItemClassification.progression),
     "Hub: South Pool Artifact Block":               CarQuestItemData("secret", 5, ItemClassification.progression),
     "Hub: Upper University Alleyway Access":        CarQuestItemData("secret", 6, ItemClassification.progression),
-    "Hub: South Pool Dead End Door":                 CarQuestItemData("secret", 7, ItemClassification.progression),
+    "Hub: South Pool Dead End Door":                CarQuestItemData("secret", 7, ItemClassification.progression),
     "Hub: Tree Slalom Unlock":                      CarQuestItemData("secret", 8, ItemClassification.progression),
     "Hub: Museum Unlock":                           CarQuestItemData("secret", 9, ItemClassification.progression),
     "Hub: North Pool Portal Access":                CarQuestItemData("secret", 10, ItemClassification.progression),
@@ -263,6 +263,15 @@ item_table: Dict[str, CarQuestItemData] = {
     # Limbo
     "Limbo: Crown and Exit Portal":                 CarQuestItemData("secret", powerOffset + 11, ItemClassification.progression),
  
+    # Cars
+    "x2 Battery Car":                               CarQuestItemData("car", 501, ItemClassification.useful),
+    "Super Boost Car":                              CarQuestItemData("car", 502, ItemClassification.progression),
+    "Froggy Car":                                   CarQuestItemData("car", 503, ItemClassification.progression),
+    "Higher Torque Car":                            CarQuestItemData("car", 504, ItemClassification.useful),
+    "Battery Rocket Car":                           CarQuestItemData("car", 505, ItemClassification.progression),
+    "Nitro Car":                                    CarQuestItemData("car", 506, ItemClassification.progression),
+    "Spider Car":                                   CarQuestItemData("car", 507, ItemClassification.progression),
+
     # Filler
     "Energy Cell":                                  CarQuestItemData("filler", 10001, ItemClassification.filler, 0),
 }

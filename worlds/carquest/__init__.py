@@ -40,6 +40,9 @@ class CarQuestWorld(World):
         for name, data in item_table.items():
             quantity = data.max_quantity
 
+            # if data.category == "car":
+            #     continue
+
             item_pool += [self.create_item(name) for _ in range(0, quantity)]
 
         # Fill any empty locations with filler items.

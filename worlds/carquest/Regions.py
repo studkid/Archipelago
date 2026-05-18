@@ -28,7 +28,7 @@ def create_regions(multiworld: MultiWorld, player: int, options: CarQuestOptions
         "Hub Drained Pool":                  CarQuestRegionData([], None),
         "Hub Throne Room East Exterior":     CarQuestRegionData([], ["Hub Throne Room West Exterior", "Hub Floating Islands Path"]),
         "Hub Throne Room West Exterior":     CarQuestRegionData([], ["Throne Interior"]),
-        "Hub Central Bridge":                CarQuestRegionData([], ["Maze Start", "Hub Lookout Long Path", "Hub Tree", "Hub Power Room"]),
+        "Hub Central Bridge":                CarQuestRegionData([], ["Maze Start", "Hub Lookout Long Path", "Hub Tree", "Hub Power Room", "Hub Pool Area"]),
         "Hub University Exterior":           CarQuestRegionData([], ["Hub Uni Whale Bridge Connector", "Hub University Interior"]),
         "Hub Uni Whale Bridge Connector":    CarQuestRegionData([], ["Hub Lower Whale Lookout"]),
         "Hub Upper Pool Perimeter":          CarQuestRegionData([], ["Hub Light Puzzle Area", "Hub Throne Room East Exterior", "Hub Start Lookout", "Hub Ice Portal"]),
@@ -52,7 +52,8 @@ def create_regions(multiworld: MultiWorld, player: int, options: CarQuestOptions
         "Hub Teleport Island":               CarQuestRegionData([], []),
 
         # Simple
-        "Simple Square Area":                CarQuestRegionData([], None),
+        "Simple Square Area":                CarQuestRegionData([], ["Simple Square Exterior"]),
+        "Simple Square Exterior":            CarQuestRegionData([], None),
 
         # Floating Cubes
         "Floating Cube Area":                CarQuestRegionData([], None),
@@ -144,6 +145,9 @@ def create_regions(multiworld: MultiWorld, player: int, options: CarQuestOptions
     }
 
     for name, data in location_table.items():
+        if data.category == "Token":
+            continue
+        
         regions[data.region].locations.append(name)
 
     for name, data in regions.items():
