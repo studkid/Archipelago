@@ -212,7 +212,7 @@ location_table: Dict[str, CarQuestLocationData] = {
     "Ice: South Jump Artifact":                      CarQuestLocationData("Artifact", "Ice Temple Main", iceOffset + 1),
     "Ice: North East Perimeter Artifact":            CarQuestLocationData("Artifact", "Ice Temple Main", iceOffset + 2),
     "Ice: Outside West Jump Artifact":               CarQuestLocationData("Artifact", "Ice Temple Main", iceOffset + 3),
-    "Ice: North East Jump Artifact":                 CarQuestLocationData("Artifact", "Ice Temple NE Ledge", iceOffset + 4),
+    "Ice: North East Jump Artifact":                 CarQuestLocationData("Artifact", "Ice Temple Main", iceOffset + 4),
     "Ice: Lowest East Jump Artifact":                CarQuestLocationData("Artifact", "Ice Temple Lower East Ledge", iceOffset + 5),
     "Ice: South East Tower Artifact":                CarQuestLocationData("Artifact", "Ice SE Tower", iceOffset + 6),
     "Ice: East Top Jump Artifact":                   CarQuestLocationData("Artifact", "Ice Temple South Ledge End", iceOffset + 7),

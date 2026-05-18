@@ -88,6 +88,56 @@ def set_rules(world: World) -> bool:
 
     world.set_rule(mw.get_entrance("Slider Upper Right -> Slider Exit", player), Has("Slider: Left Side Ramp"))
 
+    # Maze
+    world.set_rule(mw.get_entrance("Maze Start -> Maze Exterior Walls", player), Has("Maze: Door to Big Ramp"))
+    world.set_rule(mw.get_entrance("Maze Start -> Maze Cave", player), Has("Maze: Raise Cave Wall"))
+
+    world.set_rule(mw.get_entrance("Maze Exterior Walls -> Maze Interior Walls", player), Has("Maze: Hedge Ramp"))
+
+    world.set_rule(mw.get_entrance("Maze Interior Walls -> Maze Interior Walls Upper", player), Has("Maze: Raise Cave Wall"))
+
+
+    world.set_rule(mw.get_entrance("Maze Interior Walls Upper -> Maze Interior Walls Bridge", player), Has("Maze: Interior Wall Bridge"))
+
+    # Glass Box
+    world.set_rule(mw.get_entrance("Glass Box -> Glass Box Exit", player), Has("Glass Box: Exit Bridge"))
+
+    # Sands of Fallen Kings
+    world.set_rule(mw.get_entrance("Sands Main -> Sands North Exterior Walls", player), Has("Sands: Exterior Walls Access"))
+    world.set_rule(mw.get_entrance("Sands Main -> Sands South Exterior Walls", player), Has("Sands: Lower South West Tower"))
+
+    # Ocean
+    world.set_rule(mw.get_entrance("Ocean Main -> Sands South Exterior Walls", player), HasAll("Ocean: Fort Bottom Ramp", "Ocean: Fort Middle Ramp", "Ocean: Fort Top Ramp"))
+
+    # Ice Temple
+    world.set_rule(mw.get_entrance("Ice Temple Main -> Ice Temple NE Ledge", player), Has("Ice: Perimeter Wall Blocker"))
+    world.set_rule(mw.get_entrance("Ice Temple Main -> Ice Temple Lower East Ledge", player), Has("Ice: South Ramp Blocker"))
+    world.set_rule(mw.get_entrance("Ice Temple Main -> Ice Temple South Path Start", player), Has("Ice: South Ramp Blocker"))
+
+    world.set_rule(mw.get_entrance("Ice Temple South Path Start -> Ice Temple South Ledge End", player), HasAll("Ice: South Jump Path Wall", "Ice: Ice Pillar Blocker"))
+
+    world.set_rule(mw.get_entrance("Ice NE Perimeter Ledge -> Ice SE Tower", player), Has("Ice: Secondary Wall Ramp"))
+
+    world.set_rule(mw.get_entrance("Ice SE Tower -> Ice SW Tower", player), Has("Ice: South Wall Bridge"))
+
+    world.set_rule(mw.get_entrance("Ice SW Tower -> Ice Northern Towers", player), Has("Ice: Other Wall Bridges"))
+
+    world.set_rule(mw.get_entrance("Ice Northern Towers -> Ice Tower Jump", player), Has("Ice: Wall Jump Ramp"))
+    world.set_rule(mw.get_entrance("Ice Northern Towers -> Ice Bridge Ramp To Monument", player), Has("Ice: Wall Bridge Ramp to Monument"))
+    world.set_rule(mw.get_entrance("Ice Northern Towers -> Ice NE Tower Interior", player), Has("Ice: Raise North East Tower"))
+
+    # Sheep Pastures
+    world.set_rule(mw.get_entrance("Sheep Patures Main -> Sheep Patures In Shed", player), HasAny("Sheep: Shed Ramp", "Sheep: Sheep Shed Door"))
+    world.set_rule(mw.get_entrance("Sheep Patures Main -> Sheep Patures Shed Raised", player), Has("Sheep: Raise Shed"))
+
+    # Island
+    world.set_rule(mw.get_entrance("Island Day -> Island Day South Path", player), Has("Island: Lower Jump Blocker Behind Start"))
+    world.set_rule(mw.get_entrance("Island Day -> Island Night", player), Has("Island: Night Portal"))
+    world.set_rule(mw.get_entrance("Island Day -> Island North Lower Ledge", player), Has("Island: North Lower Wall Ramp"))
+    world.set_rule(mw.get_entrance("Island Day -> Island North Upper Ledge", player), Has("Island: North Upper Wall Ramp"))
+    world.set_rule(mw.get_entrance("Island Day -> Island East Path End", player), Has("Sheep: Raise Shed"))
+    world.set_rule(mw.get_entrance("Island Day -> Island Treetop", player), Has("Sheep: Raise Shed"))
+
     ####################
     # Completion Rules #
     ####################

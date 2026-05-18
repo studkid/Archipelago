@@ -89,25 +89,22 @@ def create_regions(multiworld: MultiWorld, player: int, options: CarQuestOptions
 
         # Ocean
         "Ocean Main":                        CarQuestRegionData([], ["Ocean Inside Fort"]),
-        "Ocean Inside Fort":                 CarQuestRegionData([], []),
+        "Ocean Main":                 CarQuestRegionData([], []),
 
         # Ice Temple
-        "Ice Temple Main":                   CarQuestRegionData([], ["Ice Temple NE Ledge", "Ice Temple Lower East Ledge",
-                                                                     "Ice Temple South Path Start", "Ice NE Perimeter Ledge"]),
+        "Ice Temple Main":                   CarQuestRegionData([], ["Ice Temple Lower East Ledge", "Ice Temple South Path Start", "Ice NE Perimeter Ledge"]),
         "Ice Temple South Path Start":       CarQuestRegionData([], ["Ice Temple South Ledge End"]),
         "Ice Temple South Ledge End":        CarQuestRegionData([], None),
-        "Ice Temple NE Ledge":               CarQuestRegionData([], None),
         "Ice Temple Lower East Ledge":       CarQuestRegionData([], None),
         "Ice NE Perimeter Ledge":            CarQuestRegionData([], ["Ice SE Tower"]),
-        "Ice SE Tower":                      CarQuestRegionData([], ["Ice South Bridge"]),
-        "Ice SW Tower":                      CarQuestRegionData([], ["Ice South Bridge"]),
-        "Ice South Bridge":                  CarQuestRegionData([], ["Ice SW Tower", "Ice Northern Towers"]),
+        "Ice SE Tower":                      CarQuestRegionData([], ["Ice SW Tower"]),
+        "Ice SW Tower":                      CarQuestRegionData([], ["Ice Northern Towers"]),
         "Ice Northern Towers":               CarQuestRegionData([], ["Ice Tower Jump", "Ice Bridge Ramp To Monument", "Ice NE Tower Interior"]),
         "Ice Tower Jump":                    CarQuestRegionData([], []),
         "Ice Bridge Ramp To Monument":       CarQuestRegionData([], ["Ice Temple Lower East Ledge"]),
         "Ice NE Tower Interior":             CarQuestRegionData([], []),
 
-        # Sheep Patures
+        # Sheep Pastures
         "Sheep Patures Main":                CarQuestRegionData([], ["Sheep Patures In Shed", "Sheep Patures Shed Raised"]),
         "Sheep Patures In Shed":             CarQuestRegionData([], []),
         "Sheep Patures Shed Raised":         CarQuestRegionData([], []),

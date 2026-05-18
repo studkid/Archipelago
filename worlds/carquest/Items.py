@@ -172,14 +172,14 @@ item_table: Dict[str, CarQuestItemData] = {
     # Ice Temple
     "Ice: West Artifact Blocker":                   CarQuestItemData("secret", iceOffset + 1, ItemClassification.progression),
     "Ice: South Ramp Blocker":                      CarQuestItemData("secret", iceOffset + 2, ItemClassification.progression),
-    "Ice: Secondary Wall Ramp Access":              CarQuestItemData("secret", iceOffset + 3, ItemClassification.progression),
-    "Ice: Big Ice Blocker":                         CarQuestItemData("secret", iceOffset + 4, ItemClassification.progression),
+    "Ice: Secondary Wall Ramp":                     CarQuestItemData("secret", iceOffset + 3, ItemClassification.progression),
+    "Ice: Ice Pillar Blocker":                      CarQuestItemData("secret", iceOffset + 4, ItemClassification.progression),
     "Ice: Perimeter Wall Blocker":                  CarQuestItemData("secret", iceOffset + 5, ItemClassification.progression),
     "Ice: South Jump Path Wall":                    CarQuestItemData("secret", iceOffset + 6, ItemClassification.progression),
     "Ice: South Wall Bridge":                       CarQuestItemData("secret", iceOffset + 7, ItemClassification.progression),
     "Ice: Other Wall Bridges":                      CarQuestItemData("secret", iceOffset + 8, ItemClassification.progression),
     "Ice: Wall Jump Ramp":                          CarQuestItemData("secret", iceOffset + 9, ItemClassification.progression),
-    "Ice: Bridge Down Ramp":                        CarQuestItemData("secret", iceOffset + 10, ItemClassification.progression),
+    "Ice: Wall Bridge Ramp to Monument":            CarQuestItemData("secret", iceOffset + 10, ItemClassification.progression),
     "Ice: Raise North East Tower":                  CarQuestItemData("secret", iceOffset + 11, ItemClassification.progression),
 
     # Sheep Pastrues
