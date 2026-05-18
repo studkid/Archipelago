@@ -107,10 +107,10 @@ def set_rules(world: World) -> bool:
     world.set_rule(mw.get_entrance("Sands Main -> Sands South Exterior Walls", player), Has("Sands: Lower South West Tower"))
 
     # Ocean
-    world.set_rule(mw.get_entrance("Ocean Main -> Sands South Exterior Walls", player), HasAll("Ocean: Fort Bottom Ramp", "Ocean: Fort Middle Ramp", "Ocean: Fort Top Ramp"))
+    world.set_rule(mw.get_entrance("Ocean Main -> Ocean Inside Fort", player), HasAll("Ocean: Fort Bottom Ramp", "Ocean: Fort Middle Ramp", "Ocean: Fort Top Ramp"))
 
     # Ice Temple
-    world.set_rule(mw.get_entrance("Ice Temple Main -> Ice Temple NE Ledge", player), Has("Ice: Perimeter Wall Blocker"))
+    world.set_rule(mw.get_entrance("Ice Temple Main -> Ice NE Perimeter Ledge", player), Has("Ice: Perimeter Wall Blocker"))
     world.set_rule(mw.get_entrance("Ice Temple Main -> Ice Temple Lower East Ledge", player), Has("Ice: South Ramp Blocker"))
     world.set_rule(mw.get_entrance("Ice Temple Main -> Ice Temple South Path Start", player), Has("Ice: South Ramp Blocker"))
 
@@ -135,8 +135,31 @@ def set_rules(world: World) -> bool:
     world.set_rule(mw.get_entrance("Island Day -> Island Night", player), Has("Island: Night Portal"))
     world.set_rule(mw.get_entrance("Island Day -> Island North Lower Ledge", player), Has("Island: North Lower Wall Ramp"))
     world.set_rule(mw.get_entrance("Island Day -> Island North Upper Ledge", player), Has("Island: North Upper Wall Ramp"))
-    world.set_rule(mw.get_entrance("Island Day -> Island East Path End", player), Has("Sheep: Raise Shed"))
-    world.set_rule(mw.get_entrance("Island Day -> Island Treetop", player), Has("Sheep: Raise Shed"))
+    # world.set_rule(mw.get_entrance("Island Day -> Island East Path End", player), Has("Sheep: Raise Shed")) Why was this an entrance?
+    world.set_rule(mw.get_entrance("Island Day -> Island Treetop", player), HasAll("Island: Pond Treetop Ramp", "Island: Pond Treetop Ramp Blocker"))
+
+    world.set_rule(mw.get_entrance("Island Night -> Island Hut Ledge", player), Has("Island: Lower Spiral Island"))
+    world.set_rule(mw.get_entrance("Island Night -> Island Night South Path", player), Has("Island: South Path Cave Wall Removal")) #ig this is only needed for the artifact?
+    world.set_rule(mw.get_entrance("Island Night -> Island East Path End", player), HasAll("Island: First East Path Bridge", "Island: Second East Path Bridge", "Island: Third East Path Bridge"))
+
+    world.set_rule(mw.get_entrance("Island Hut Ledge -> Island Hut Inside", player), Has("Island: Hut Treetop Ramp"))
+
+    world.set_rule(mw.get_entrance("Island Hut Inside -> Island Treetop", player), Has("Island: Treetop West Bridge"))
+    world.set_rule(mw.get_entrance("Island Treetop -> Island Hut Inside", player), Has("Island: Treetop West Bridge"))
+
+    # Throne Room
+    world.set_rule(mw.get_entrance("Throne Interior -> Throne Interior N Window", player), Has("Throne: Open North Windows"))
+    world.set_rule(mw.get_entrance("Throne Interior -> Throne Interior S Window", player), Has("Throne: Open South Windows"))
+    world.set_rule(mw.get_entrance("Throne Interior -> Throne Garden", player), HasAll("Throne: Open Main Door", "Throne: Main Door Ramp"))
+    
+    world.set_rule(mw.get_entrance("Throne Garden -> Throne East Exterior Wall", player), Has("Throne: East Exterior Wall"))
+    world.set_rule(mw.get_entrance("Throne Garden -> Throne West Exterior Wall", player), Has("Throne: West Exterior Wall"))
+
+    world.set_rule(mw.get_entrance("Throne East Exterior Wall -> Throne West Exterior Wall", player), Has("Throne: Lower High Garden Artifact"))
+    world.set_rule(mw.get_entrance("Throne West Exterior Wall -> Throne East Exterior Wall", player), Has("Throne: Lower High Garden Artifact"))
+
+    # Power Room/Limbo
+    world.set_rule(mw.get_entrance("Power Room -> Limbo", player), Has("Throne: Lower High Garden Artifact"))
 
     ####################
     # Completion Rules #

@@ -89,7 +89,7 @@ def create_regions(multiworld: MultiWorld, player: int, options: CarQuestOptions
 
         # Ocean
         "Ocean Main":                        CarQuestRegionData([], ["Ocean Inside Fort"]),
-        "Ocean Main":                 CarQuestRegionData([], []),
+        "Ocean Inside Fort":                 CarQuestRegionData([], []),
 
         # Ice Temple
         "Ice Temple Main":                   CarQuestRegionData([], ["Ice Temple Lower East Ledge", "Ice Temple South Path Start", "Ice NE Perimeter Ledge"]),
@@ -112,7 +112,7 @@ def create_regions(multiworld: MultiWorld, player: int, options: CarQuestOptions
         # Brick Bristle's Island
         "Island Day":                       CarQuestRegionData([], ["Island Day South Path", "Island Night",
                                                                     "Island North Lower Ledge", "Island North Upper Ledge",
-                                                                    "Island East Path End", "Island Treetop"]),
+                                                                    "Island Treetop"]),
         "Island Day South Path":            CarQuestRegionData([], []),
         "Island Night South Path":          CarQuestRegionData([], []),
         "Island Night":                     CarQuestRegionData([], ["Island Hut Ledge", "Island Night South Path", "Island East Path End"]),

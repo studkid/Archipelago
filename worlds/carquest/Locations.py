@@ -289,6 +289,7 @@ location_table: Dict[str, CarQuestLocationData] = {
     "Throne: South East Trick Jump Artifact":        CarQuestLocationData("Artifact", "Throne Interior", throneOffset + 3),
     "Throne: North East Window Artifact":            CarQuestLocationData("Artifact", "Throne Interior N Window", throneOffset + 4),
     "Throne: South West Window Artifact":            CarQuestLocationData("Artifact", "Throne Interior S Window", throneOffset + 5),
+    "Throne: South East Window Artifact":            CarQuestLocationData("Artifact", "Throne Interior S Window", throneOffset + 5),
     "Throne: Lower Garden Artifact":                 CarQuestLocationData("Artifact", "Throne Garden", throneOffset + 6),
     "Throne: Hidden East Garden Artifact":           CarQuestLocationData("Artifact", "Throne Garden", throneOffset + 7),
     "Throne: Middle West Window Artifact":           CarQuestLocationData("Artifact", "Throne Interior", throneOffset + 8),
