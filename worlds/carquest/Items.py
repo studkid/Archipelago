@@ -264,5 +264,5 @@ item_table: Dict[str, CarQuestItemData] = {
     "Limbo: Crown and Exit Portal":                 CarQuestItemData("secret", powerOffset + 11, ItemClassification.progression),
  
     # Filler
-    "Energy Cell":                                  CarQuestItemData("filler", 10001, ItemClassification.filler),
+    "Energy Cell":                                  CarQuestItemData("filler", 10001, ItemClassification.filler, 0),
 }

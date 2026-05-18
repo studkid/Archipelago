@@ -159,7 +159,12 @@ def set_rules(world: World) -> bool:
     world.set_rule(mw.get_entrance("Throne West Exterior Wall -> Throne East Exterior Wall", player), Has("Throne: Lower High Garden Artifact"))
 
     # Power Room/Limbo
-    world.set_rule(mw.get_entrance("Power Room -> Limbo", player), Has("Throne: Lower High Garden Artifact"))
+    world.set_rule(mw.get_entrance("Power Room -> Limbo", player), HasAll("Power Room: Green Cable Push", "Power Room: Green Cable Activate",
+                                                                          "Power Room: Blue Cable Push", "Power Room: Blue Cable Activate",
+                                                                          "Power Room: Red Cable Push", "Power Room: Red Cable Activate",
+                                                                          "Power Room: Yellow Cable Push", "Power Room: Yellow Cable Activate",
+                                                                          "Power Room: Exit Teleporter"))
+    world.set_rule(mw.get_entrance("Limbo -> Throne Boss", player), Has("Limbo: Crown and Exit Portal"))
 
     ####################
     # Completion Rules #
