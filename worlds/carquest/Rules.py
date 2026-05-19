@@ -1,5 +1,5 @@
 from worlds.AutoWorld import World
-from rule_builder.rules import Has, HasAll, CanReachRegion, HasAny
+from rule_builder.rules import Has, HasAll, CanReachRegion, HasAny, HasAllCounts
 from rule_builder.options import OptionFilter
 from .Options import EndingGoal
 
@@ -17,7 +17,7 @@ def set_rules(world: World) -> bool:
 
     world.set_rule(mw.get_entrance("Hub Simple Portal Path -> Hub Pool Area", player), Has("Hub: Simple Portal Bridge Wall"))
     world.set_rule(mw.get_entrance("Hub Simple Portal Path -> Hub Throne Room East Exterior", player), Has("Hub: Start Room Right Door"))
-    world.set_rule(mw.get_entrance("Hub Simple Portal Path -> Hub Central Bridge", player), Has("Hub: Start Room Right Door", "Froggy Car"))
+    world.set_rule(mw.get_entrance("Hub Simple Portal Path -> Hub Central Bridge", player), HasAny("Hub: Start Room Right Door", "Froggy Car"))
     world.set_rule(mw.get_entrance("Hub Simple Portal Path -> Hub Upper Pool Perimeter", player), Has("Hub: Ramp Near Simple Portal"))
 
     world.set_rule(mw.get_entrance("Hub Pool Area -> Hub Upper Uni Alleyway", player), Has("Hub: Upper University Alleyway Access"))
@@ -178,11 +178,33 @@ def set_rules(world: World) -> bool:
     world.set_rule(mw.get_location("Hub: Tree Slalom Start Artifact", player), Has("Hub: South Pool Artifact Block"))
     world.set_rule(mw.get_location("Hub: South Pool Dead End Artifact", player), HasAny("Hub: South Pool Dead End Door", "Froggy Car") | CanReachRegion("Hub South Portal"))
     world.set_rule(mw.get_location("Hub: Tree Slalom Reward Artifact", player), HasAny("Hub: Tree Slalom Unlock", "Froggy Car"))
-    world.set_rule(mw.get_location("Hub: Pool Drain Artifact", player), Has("Hub: Progressive Pool"))
-    world.set_rule(mw.get_location("Hub: Pool South West Artifact", player), Has("Hub: Progressive Pool"))
-    world.set_rule(mw.get_location("Hub: Pool South East Artifact", player), Has("Hub: Progressive Pool"))
-    world.set_rule(mw.get_location("Hub: Pool South West Artifact", player), Has("Hub: Progressive Pool"))
+    world.set_rule(mw.get_location("Hub: Pool Drain Artifact", player), Has("Hub: Progressive Pool")) # Unobtainable with filled pool
+    world.set_rule(mw.get_location("Hub: Pool South West Artifact", player), HasAll("Hub: Progressive Pool", "Hub: Pool Push Block") |
+                                                                             Has("Hub: Progressive Pool", 2))
+    world.set_rule(mw.get_location("Hub: Pool South East Artifact", player), HasAll("Hub: Progressive Pool", "Hub: Pool Push Block", "Hub: Pool South East Blocker") | 
+                                                                             Has("Hub: Progressive Pool", 2)) 
+    world.set_rule(mw.get_location("Hub: Pool South West Artifact", player), HasAll("Hub: Progressive Pool", "Hub: Pool Push Block", "Hub: Pool North West Blocker") |
+                                                                             Has("Hub: Progressive Pool", 2))
     world.set_rule(mw.get_location("Hub: Pool Center Artifact", player), Has("Hub: Progressive Pool", 2))
+    world.set_rule(mw.get_location("Hub: Central Bridge West Ramp Artifact", player), Has("Hub: Central Bridge West Ramp"))
+    world.set_rule(mw.get_location("Hub: Central Bridge East Ramp Artifact", player), Has("Hub: Central Bridge East Ramp"))
+    world.set_rule(mw.get_location("Hub: Pool North East Artifact", player), HasAllCounts({"Hub: Progressive Pool": 2, "Hub: Pool North East Blocker": 1}))
+    world.set_rule(mw.get_location("Hub: Alley Push Ramp Artifact", player), Has("Hub: Exterior University Wall Door"))
+    world.set_rule(mw.get_location("Hub: Upper Artifact Near Whale Bridge", player), Has("Hub: Blocker Near Whale Bridge"))
+    world.set_rule(mw.get_location("Hub: Colloseum Podium Artifact", player), HasAny("Hub: Colloseum Push Block Unlock", "Hub: Colloseum Podium Extension"))
+    world.set_rule(mw.get_location("Hub: Start Area Jump Artifact", player), Has("Hub: Start Area Back Removal"))
+    world.set_rule(mw.get_location("Hub: Inside Podium Artifact", player), Has("Hub: Colloseum Podium Door"))
+    world.set_rule(mw.get_location("Hub: Floating Island Artifact", player), Has("Hub: Top Path Floating Islands"))
+    world.set_rule(mw.get_location("Hub: Upper Pool Dead End Path Artifact", player), Has("Hub: Start Lookout Dead End Door"))
+    world.set_rule(mw.get_location("Hub: Central Path Dead End Artifact", player), Has("Hub: Whales and Central Dead End Door"))
+    world.set_rule(mw.get_location("Hub: University Back Right Artifact", player), Has("Hub: University Back Row Ramp"))
+    world.set_rule(mw.get_location("Hub: University Back Left Artifact", player), HasAll("Hub: University Back Row Ramp", "Hub: University Lower Back Artifact Platform"))
+    world.set_rule(mw.get_location("Hub: University Second Row Artifact", player), Has("Hub: University Lower Second Row Ramp"))
+    world.set_rule(mw.get_location("Hub: University Third Row Artifact", player), Has("Hub: University Lower Third Row Ramp"))
+    world.set_rule(mw.get_location("Hub: University Fourth Row Artifact", player), Has("Hub: University Lower Fourth Row Ramp"))
+    world.set_rule(mw.get_location("Hub: University First Row Artifact", player), Has("Hub: University Lower Push Ramp"))
+
+    world.set_rule(mw.get_location("Hub: Hopscotch Museum Piece", player), Has("Hub: World Peace"))
 
     ####################
     # Completion Rules #
