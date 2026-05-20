@@ -180,7 +180,7 @@ location_table: Dict[str, CarQuestLocationData] = {
     "Sands: Exterior Wall Tower Artifact":            CarQuestLocationData("Artifact", "Sands South Exterior Walls", sandOffset + 4),
     "Sands: Artifact Inside South East Tower":        CarQuestLocationData("Artifact", "Sands Main", sandOffset + 5),
     "Sands: Artifact Under Fallen Tower Roof":        CarQuestLocationData("Artifact", "Sands Main", sandOffset + 6),
-    "Sands: North East Tower Artifact":               CarQuestLocationData("Artifact", "Sands Main", sandOffset + 7),
+    "Sands: North West Tower Artifact":               CarQuestLocationData("Artifact", "Sands Main", sandOffset + 7),
     "Sands: Artifact Under South West Roof":          CarQuestLocationData("Artifact", "Sands Main", sandOffset + 8),
     "Sands: North East Door Artifact":                CarQuestLocationData("Artifact", "Sands Main", sandOffset + 9),
     "Sands: King Head Artifact":                      CarQuestLocationData("Artifact", "Sands Main", sandOffset + 10),
