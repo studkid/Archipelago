@@ -285,6 +285,32 @@ def set_rules(world: World) -> bool:
     world.set_rule(mw.get_location("Island: Inside Hut Artifact", player), Has("Island: Open Hut Door"))
     world.set_rule(mw.get_location("Island: Exit Reward Artifact", player), Has("Island: Exit Ramp"))
 
+    # Throne
+    world.set_rule(mw.get_location("Throne: South West Trick Jump Artifact", player), Has("Throne: Interior South West Ramp"))
+    world.set_rule(mw.get_location("Throne: South East Trick Jump Artifact", player), Has("Throne: Interior South East Ramp"))
+    world.set_rule(mw.get_location("Throne: Middle West Window Artifact", player), HasAll("Throne: West Middle Window", "Throne: West Push Ramp"))
+    world.set_rule(mw.get_location("Throne: Middle East Window Artifact", player), HasAll("Throne: East Middle Window", "Throne: East Push Ramp"))
+    world.set_rule(mw.get_location("Throne: South West Window Artifact", player), HasAll("Throne: West South Window", "Throne: West Push Ramp"))
+    world.set_rule(mw.get_location("Throne: South East Window Artifact", player), HasAll("Throne: East South Window", "Throne: East Push Ramp"))
+    world.set_rule(mw.get_location("Throne: Upper Garden Artifact", player), Has("Throne: Lower High Garden Exit Ledge"))
+    world.set_rule(mw.get_location("Throne: Hidden Throne Door Artifact", player), Has("Throne: North Throne Hidden Door"))
+    world.set_rule(mw.get_location("Throne: Throne Ramp Artifact", player), HasAll("Throne: Lower High Garden Exit Ledge", "Throne: Throne Ramp"))
+
+    # Planetarium
+    world.set_rule(mw.get_location("Planetarium: Top Path Artifact", player), Has("Planetarium: Elevator Access"))
+    world.set_rule(mw.get_location("Planetarium: X Puzzle Museum Piece", player), Has("Hub: Power Restore"))
+
+    # Power Room
+    world.set_rule(mw.get_location("Power Room: Green Center Artifact", player), Has("Power Room: Green Cable Push"))
+    world.set_rule(mw.get_location("Power Room: Green Cable Artifact", player), Has("Power Room: Green Cable Activate"))
+    world.set_rule(mw.get_location("Power Room: Blue Center Artifact", player), Has("Power Room: Blue Cable Push"))
+    world.set_rule(mw.get_location("Power Room: Blue Cable Artifact", player), Has("Power Room: Blue Cable Activate"))
+    world.set_rule(mw.get_location("Power Room: Red Center Artifact", player), Has("Power Room: Red Cable Push"))
+    world.set_rule(mw.get_location("Power Room: Red Cable Artifact", player), Has("Power Room: Red Cable Activate"))
+    world.set_rule(mw.get_location("Power Room: Yellow Center Artifact", player), Has("Power Room: Yellow Cable Push"))
+    world.set_rule(mw.get_location("Power Room: Book Artifact", player), Has("Hub: Power Restore"))
+    world.set_rule(mw.get_location("Power Room: Top Artifact Near Token", player), Has("Power Room: Exit Teleporter"))
+
     ####################
     # Completion Rules #
     ####################
