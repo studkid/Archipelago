@@ -35,7 +35,6 @@ powerOffset = planetOffset + 10
 
 item_table: Dict[str, CarQuestItemData] = {
     # Hub
-    # Currently missing some items here...
     "Hub: Start Room Blocker":                      CarQuestItemData("secret", 1, ItemClassification.progression),
     "Hub: Simple Portal Bridge Wall":               CarQuestItemData("secret", 2, ItemClassification.progression),
     "Hub: North Pool Small Secret Door":            CarQuestItemData("secret", 3, ItemClassification.progression),

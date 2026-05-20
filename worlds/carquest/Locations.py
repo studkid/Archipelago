@@ -197,7 +197,7 @@ location_table: Dict[str, CarQuestLocationData] = {
     "Ocean: Outer Fort Bottom Artifact":              CarQuestLocationData("Artifact", "Ocean Main", oceanOffset + 3),
     "Ocean: Outer Fort Middle Artifact":              CarQuestLocationData("Artifact", "Ocean Main", oceanOffset + 4),
     "Ocean: Hill Near Portal Artifact":               CarQuestLocationData("Artifact", "Ocean Main", oceanOffset + 5),
-    "Ocean: Insaide Fort Artifact":                   CarQuestLocationData("Artifact", "Ocean Inside Fort", oceanOffset + 6),
+    "Ocean: Inside Fort Artifact":                    CarQuestLocationData("Artifact", "Ocean Inside Fort", oceanOffset + 6),
     "Ocean: Artifact Near Bell":                      CarQuestLocationData("Artifact", "Ocean Main", oceanOffset + 7),
     "Ocean: Fish Circle Jump Artifact":               CarQuestLocationData("Artifact", "Ocean Main", oceanOffset + 8),
     "Ocean: Inside Pirate Ship Artifact":             CarQuestLocationData("Artifact", "Ocean Main", oceanOffset + 9),

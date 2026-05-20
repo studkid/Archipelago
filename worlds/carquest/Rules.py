@@ -236,6 +236,37 @@ def set_rules(world: World) -> bool:
     world.set_rule(mw.get_location("Sands: King Head Artifact", player), Has("Sands: Reveal King Artifact"))
     world.set_rule(mw.get_location("Sands: Exit Reward Artifact", player), HasAll("Sands: Exit Reward Reveal", "Sands: Raise Exit Platform"))
 
+    # Ocean
+    world.set_rule(mw.get_location("Ocean: Top of Vulcano Artifact", player), Has("Ocean: Vulcano Slope"))
+    world.set_rule(mw.get_location("Ocean: Outer Fort Bottom Artifact", player), Has("Ocean: Fort Bottom Ramp"))
+    world.set_rule(mw.get_location("Ocean: Outer Fort Middle Artifact", player), Has("Ocean: Fort Middle Ramp"))
+    world.set_rule(mw.get_location("Ocean: Hill Near Portal Artifact", player), Has("Ocean: Raise Hill Near Exit"))
+    world.set_rule(mw.get_location("Ocean: Fish Circle Jump Artifact", player), Has("Ocean: Raise Fish Ring Rock"))
+    world.set_rule(mw.get_location("Ocean: Inside Pirate Ship Artifact", player), Has("Ocean: Pirate Ship Repair"))
+    world.set_rule(mw.get_location("Ocean: Inside Vulcano Artifact", player), Has("Ocean: Shoot Cannon"))
+    world.set_rule(mw.get_location("Ocean: Whale Artifact", player), Has("Ocean: Ring Bell"))
+
+    # Ice
+    world.set_rule(mw.get_location("Ice: Outside West Jump Artifact", player), Has("Ice: West Artifact Blocker"))
+    world.set_rule(mw.get_location("Ice: North East Tower Interior Museum Piece", player), Has("Hub: Power Restore"))
+
+    # Sheep
+    world.set_rule(mw.get_location("Sheep: Sheep Herder Artifact", player), HasAll("Sheep: Shed Ramp", "Sheep: Sheep Shed Door"))
+    world.set_rule(mw.get_location("Sheep: Inside Windmill Artifact", player), Has("Sheep: Windmill Activation"))
+    world.set_rule(mw.get_location("Sheep: Inside Raised Shed Artifact", player), Has("Sheep: Raised Shed Hidden Wall"))
+
+    # Island
+    world.set_rule(mw.get_location("Island: Artifact Hidden Under East Path", player), Has("Island: Artifact Blocker Under East Path"))
+    world.set_rule(mw.get_location("Island: East Path First Artifact", player), Has("Island: First East Path Bridge"))
+    world.set_rule(mw.get_location("Island: South East Triange Island Artifact", player), Has("Island: Lower South East Triangle Island"))
+    world.set_rule(mw.get_location("Island: East Path Second Artifact", player), Has("Island: Second East Path Bridge"))
+    world.set_rule(mw.get_location("Island: East Path North Raft Artifact", player), Has("Island: East Path Ocean Ramp"))
+    world.set_rule(mw.get_location("Island: East Path South Raft Artifact", player), Has("Island: Third East Path Bridge"))
+    world.set_rule(mw.get_location("Island: West Island Ramp Artifact", player), Has("Island: West Island Artifact Ramp"))
+    world.set_rule(mw.get_location("Island: East Island Ledge Artifact", player), Has("Island: East Ledge Artifact Ramp"))
+    world.set_rule(mw.get_location("Island: South Path Jump Artifact", player), HasAll("Island: South Path Artifact Jump Ramp", "Island: Lower Jump Blocker Behind Start"))
+    world.set_rule(mw.get_location("Island: South East Cave Artifact", player), Has("Island: East Ledge Cave Entrance"))
+
     ####################
     # Completion Rules #
     ####################
