@@ -206,7 +206,35 @@ def set_rules(world: World) -> bool:
 
     world.set_rule(mw.get_location("Hub: Hopscotch Museum Piece", player), Has("Hub: Power Restore"))
 
+    # Simple
+    world.set_rule(mw.get_location("Simple: Artifact On Exit Ramp", player), Has("Simple: Exit Bridge"))
 
+    # Cubes
+    world.set_rule(mw.get_location("Cubes: Artifact On Exit Ramp", player), Has("Cubes: Exit Bridge"))
+
+    # Desert
+    world.set_rule(mw.get_location("Desert: South West Mound Artifact", player), Has("Desert: South West Mound"))
+    world.set_rule(mw.get_location("Desert: North West Mound Artifact", player), Has("Desert: North West Mound"))
+    world.set_rule(mw.get_location("Desert: South East Mound Artifact", player), Has("Desert: South East Mound"))
+    world.set_rule(mw.get_location("Desert: Fixit Shop Interior Artifact", player), Has("Desert: Fixit Shop Mound"))
+    world.set_rule(mw.get_location("Desert: Exit Reward Artifact", player), Has("Desert: Exit Ramp"))
+
+    # Slider
+    world.set_rule(mw.get_location("Slider: Upper Upper Left Artifact", player), Has("Slider: Left Side Ramp"))
+
+    # Maze
+    world.set_rule(mw.get_location("Maze: Hidden Drop Off Artifact", player), Has("Maze: Lower Artifact Wall"))
+
+    # Glass
+
+    # Sands
+    world.set_rule(mw.get_location("Sands: South West Tower Artifact", player), Has("Sands: Lower South West Tower"))
+    world.set_rule(mw.get_location("Sands: Exterior Wall Tower Artifact", player), HasAll("Sands: Lower North East Tower", "Lower South West Tower"))
+    world.set_rule(mw.get_location("Sands: Artifact Inside South East Tower", player), Has("Sands: South East Tower Access"))
+    world.set_rule(mw.get_location("Sands: Artifact Under Fallen Tower Roof", player), Has("Sands: Lower South West Tower"))
+    world.set_rule(mw.get_location("Sands: North East Door Artifact", player), Has("Sands: North East Door"))
+    world.set_rule(mw.get_location("Sands: King Head Artifact", player), Has("Sands: Reveal King Artifact"))
+    world.set_rule(mw.get_location("Sands: Exit Reward Artifact", player), HasAll("Sands: Exit Reward Reveal", "Sands: Raise Exit Platform"))
 
     ####################
     # Completion Rules #
