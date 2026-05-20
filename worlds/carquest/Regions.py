@@ -113,7 +113,7 @@ def create_regions(multiworld: MultiWorld, player: int, options: CarQuestOptions
         # Brick Bristle's Island
         "Island Day":                       CarQuestRegionData([], ["Island Day South Path", "Island Night",
                                                                     "Island North Lower Ledge", "Island North Upper Ledge",
-                                                                    "Island Treetop"]),
+                                                                    "Island Treetop", "Island Treetop Pond"]),
         "Island Day South Path":            CarQuestRegionData([], []),
         "Island Night South Path":          CarQuestRegionData([], []),
         "Island Night":                     CarQuestRegionData([], ["Island Hut Ledge", "Island Night South Path", "Island East Path End"]),
@@ -122,7 +122,8 @@ def create_regions(multiworld: MultiWorld, player: int, options: CarQuestOptions
         "Island Hut Ledge":                 CarQuestRegionData([], ["Island Hut Inside"]),
         "Island Hut Inside":                CarQuestRegionData([], ["Island Treetop", "Island Hut Ledge"]),
         "Island East Path End":             CarQuestRegionData([], []),
-        "Island Treetop":                   CarQuestRegionData([], ["Island Hut Inside"]),
+        "Island Treetop":                   CarQuestRegionData([], ["Island Hut Inside", "Island Treetop Pond"]),
+        "Island Treetop Pond":              CarQuestRegionData([], ["Island Treetop"]),
 
         # Throne Room
         "Throne Interior":                  CarQuestRegionData([], ["Throne Interior N Window", "Throne Interior S Window", "Throne Garden"]),
