@@ -30,7 +30,7 @@ def set_rules(world: World) -> bool:
     world.set_rule(mw.get_entrance("Hub Pool Area -> Hub University Exterior", player), Has("Hub: Exterior University Ramp"))
     world.set_rule(mw.get_entrance("Hub Pool Area -> Hub Museum", player), Has("Hub: Museum Unlock"))
     world.set_rule(mw.get_entrance("Hub Pool Area -> Hub Colloseum", player), Has("Hub: Colloseum Bridge"))
-    world.set_rule(mw.get_entrance("Hub Pool Area -> Hub Pool Jump", player), Has("Hub: World Peace"))
+    world.set_rule(mw.get_entrance("Hub Pool Area -> Hub Pool Jump", player), Has("Hub: Power Restore"))
 
     world.set_rule(mw.get_entrance("Hub South Portal -> Fixit Shop Main", player), Has("Hub: South Portal Bridge"))
     
@@ -63,7 +63,7 @@ def set_rules(world: World) -> bool:
     world.set_rule(mw.get_entrance("Hub Colloseum -> Hub Colloseum Exterior", player), Has("Hub: Colloseum Exterior Wall Doors"))
     world.set_rule(mw.get_entrance("Hub Colloseum -> Hub Colloseum Podium", player), Has("Hub: Colloseum Push Block Unlock"))
 
-    world.set_rule(mw.get_entrance("Hub Colloseum Exterior -> Hub Colloseum Top", player), Has("Hub: World Peace"))
+    world.set_rule(mw.get_entrance("Hub Colloseum Exterior -> Hub Colloseum Top", player), Has("Hub: Power Restore"))
 
     world.set_rule(mw.get_entrance("Hub Colloseum Podium -> Hub Colloseum Middle Level", player), Has("Hub: Colloseum Push Block Unlock"))
     
@@ -75,7 +75,7 @@ def set_rules(world: World) -> bool:
     world.set_rule(mw.get_entrance("Hub University Second Floor -> Planetarium", player), Has("Hub: University Portal Planetarium Access"))
 
     world.set_rule(mw.get_entrance("Hub Ice Portal -> Hub Power Room", player), Has("Hub: Power Room South Door"))
-    world.set_rule(mw.get_entrance("Hub Ice Portal -> Hub Teleport Island", player), HasAll("Hub: Power Room South Door", "Hub: Power Room North Door", "Hub: World Peace"))
+    world.set_rule(mw.get_entrance("Hub Ice Portal -> Hub Teleport Island", player), HasAll("Hub: Power Room South Door", "Hub: Power Room North Door", "Hub: Power Restore"))
 
     # Simple Square Entrances
     world.set_rule(mw.get_entrance("Simple Square Area -> Simple Square Exterior", player), HasAny("Hub: Power Room South Door", "Froggy Car", "Battery Rocket Car"))
@@ -204,7 +204,9 @@ def set_rules(world: World) -> bool:
     world.set_rule(mw.get_location("Hub: University Fourth Row Artifact", player), Has("Hub: University Lower Fourth Row Ramp"))
     world.set_rule(mw.get_location("Hub: University First Row Artifact", player), Has("Hub: University Lower Push Ramp"))
 
-    world.set_rule(mw.get_location("Hub: Hopscotch Museum Piece", player), Has("Hub: World Peace"))
+    world.set_rule(mw.get_location("Hub: Hopscotch Museum Piece", player), Has("Hub: Power Restore"))
+
+
 
     ####################
     # Completion Rules #

@@ -306,7 +306,6 @@ location_table: Dict[str, CarQuestLocationData] = {
     "Throne: Throne Ramp Artifact":                  CarQuestLocationData("Artifact", "Throne Interior", throneOffset + 17),
     "Throne: Exit Reward Artifact":                  CarQuestLocationData("Artifact", "Throne Garden", throneOffset + 18),
     "Throne: Brick Bristles' Museum Piece":          CarQuestLocationData("Artifact", "Throne Garden", throneOffset + 19),
-    "Throne: Brick Bristles Deafeated":              CarQuestLocationData("Boss", "Throne Boss", throneOffset + 20),
 
     # Planetarium
     # 2 Artifacts

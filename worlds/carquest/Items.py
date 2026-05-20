@@ -99,7 +99,6 @@ item_table: Dict[str, CarQuestItemData] = {
     "Hub: Power Room South Door":                   CarQuestItemData("secret", 61, ItemClassification.progression),
     "Hub: University Portal Planetarium Access":    CarQuestItemData("secret", 62, ItemClassification.progression),
     "Hub: Power Room North Door":                   CarQuestItemData("secret", 63, ItemClassification.progression),
-    "Hub: World Peace":                             CarQuestItemData("secret", 64, ItemClassification.progression), # secret name: brickbristles
 
     "Hub: Sun Museum Glass":                        CarQuestItemData("museum", 90, ItemClassification.progression),
     "Hub: Block Museum Glass":                      CarQuestItemData("museum", 91, ItemClassification.progression),
@@ -258,7 +257,7 @@ item_table: Dict[str, CarQuestItemData] = {
     "Power Room: Red Cable Activate":               CarQuestItemData("secret", powerOffset + 6, ItemClassification.progression),
     "Power Room: Yellow Cable Push":                CarQuestItemData("secret", powerOffset + 7, ItemClassification.progression),
     "Power Room: Yellow Cable Activate":            CarQuestItemData("secret", powerOffset + 8, ItemClassification.progression),
-    "Power Room: Final Path":                       CarQuestItemData("secret", powerOffset + 9, ItemClassification.progression),
+    "Hub: Power Restore":                           CarQuestItemData("secret", powerOffset + 9, ItemClassification.progression),
     "Power Room: Exit Teleporter":                  CarQuestItemData("secret", powerOffset + 10, ItemClassification.progression),
 
     # Limbo
