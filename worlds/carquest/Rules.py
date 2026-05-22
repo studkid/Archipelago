@@ -236,7 +236,7 @@ def set_rules(world: World) -> bool:
     world.set_rule(mw.get_location("Sands: Exterior Wall Tower Artifact", player), Has("Sands: Lower North West Tower"))
     world.set_rule(mw.get_location("Sands: Artifact Inside South East Tower", player), Has("Sands: South East Tower Access"))
     world.set_rule(mw.get_location("Sands: Artifact Under Fallen Tower Roof", player), Has("Sands: Move Fallen Tower Roof"))
-    world.set_rule(mw.get_location("Sands: North West Tower Roof", player), Has("Sands: Lower North West Tower"))
+    world.set_rule(mw.get_location("Sands: North West Tower Roof Artifact", player), Has("Sands: Lower North West Tower"))
     world.set_rule(mw.get_location("Sands: Artifact Under South West Roof", player), Has("Sands: Lower South West Tower"))
     world.set_rule(mw.get_location("Sands: North East Door Artifact", player), Has("Sands: North East Door"))
     world.set_rule(mw.get_location("Sands: King Head Artifact", player), Has("Sands: Reveal King Artifact"))

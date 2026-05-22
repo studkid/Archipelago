@@ -146,7 +146,7 @@ item_table: Dict[str, CarQuestItemData] = {
 
     # Sands of Fallen Kings
     "Sands: Exterior Walls Access":                 CarQuestItemData("secret", sandsOffset + 1, ItemClassification.progression),
-    "Sands: Lower South East Tower":                CarQuestItemData("secret", sandsOffset + 2, ItemClassification.progression),
+    "Sands: Lower South West Tower":                CarQuestItemData("secret", sandsOffset + 2, ItemClassification.progression),
     "Sands: Lower North West Tower":                CarQuestItemData("secret", sandsOffset + 3, ItemClassification.progression),
     "Sands: South East Tower Access":               CarQuestItemData("secret", sandsOffset + 4, ItemClassification.progression),
     "Sands: Move Fallen Tower Roof":                CarQuestItemData("secret", sandsOffset + 5, ItemClassification.progression),
