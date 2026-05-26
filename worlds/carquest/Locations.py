@@ -280,7 +280,7 @@ location_table: Dict[str, CarQuestLocationData] = {
     "Island: Exit Reward Artifact":                  CarQuestLocationData("Artifact", "Island Night", islandOffset + 35),
 
     # Throne Room
-    # 19 Secrets
+    # 18 Secrets
     # 169 Power Cells
     # 7 Mega Power Cells
     # 1 Token

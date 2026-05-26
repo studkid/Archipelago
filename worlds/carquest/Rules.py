@@ -187,7 +187,7 @@ def set_rules(world: World) -> bool:
                                                                              Has("Hub: Progressive Pool", 2))
     world.set_rule(mw.get_location("Hub: Pool South East Artifact", player), HasAll("Hub: Progressive Pool", "Hub: Pool Push Block", "Hub: Pool South East Blocker") | 
                                                                              Has("Hub: Progressive Pool", 2)) 
-    world.set_rule(mw.get_location("Hub: Pool South West Artifact", player), HasAll("Hub: Progressive Pool", "Hub: Pool Push Block", "Hub: Pool North West Blocker") |
+    world.set_rule(mw.get_location("Hub: Pool North West Artifact", player), HasAll("Hub: Progressive Pool", "Hub: Pool Push Block", "Hub: Pool North West Blocker") |
                                                                              Has("Hub: Progressive Pool", 2))
     world.set_rule(mw.get_location("Hub: Pool Center Artifact", player), Has("Hub: Progressive Pool", 2))
     world.set_rule(mw.get_location("Hub: Central Bridge West Ramp Artifact", player), Has("Hub: Central Bridge West Ramp"))
