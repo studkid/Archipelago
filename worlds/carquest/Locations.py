@@ -2,7 +2,7 @@ from typing import NamedTuple, Dict
 from BaseClasses import Location, Optional
 
 class CarQuestLocation(Location):
-    game: str = "Car Quest"
+    game: str = "Secret Game"
 
 class CarQuestLocationData(NamedTuple):
     category: str
@@ -248,7 +248,7 @@ location_table: Dict[str, CarQuestLocationData] = {
     "Island: Artifact Hidden Under East Path":       CarQuestLocationData("Artifact", "Island Day", islandOffset + 3),
     "Island: East Path First Artifact":              CarQuestLocationData("Artifact", "Island Day", islandOffset + 4),
     "Island: Raft Behind Start Artifact":            CarQuestLocationData("Artifact", "Island Day South Path", islandOffset + 5),
-    "Island: South East Triange Island Artifact":    CarQuestLocationData("Artifact", "Island Day", islandOffset + 6),
+    "Island: South East Triangle Island Artifact":   CarQuestLocationData("Artifact", "Island Day", islandOffset + 6),
     "Island: East Path Second Artifact":             CarQuestLocationData("Artifact", "Island Day", islandOffset + 7),
     "Island: East Path North Raft Artifact":         CarQuestLocationData("Artifact", "Island Day", islandOffset + 8),
     "Island: East Path South Raft Artifact":         CarQuestLocationData("Artifact", "Island Day", islandOffset + 9),
@@ -256,7 +256,7 @@ location_table: Dict[str, CarQuestLocationData] = {
     "Island: Shark Island Artifact":                 CarQuestLocationData("Artifact", "Island Day", islandOffset + 11),
     "Island: West Island Ramp Artifact":             CarQuestLocationData("Artifact", "Island Day", islandOffset + 12),
     "Island: East Island Ledge Artifact":            CarQuestLocationData("Artifact", "Island Night", islandOffset + 13),
-    "Island: South Path Jump Artifact":              CarQuestLocationData("Artifact", "Island Night", islandOffset + 14),
+    "Island: South Path Jump Artifact":              CarQuestLocationData("Artifact", "Island Night South Path", islandOffset + 14),
     "Island: South East Cave Artifact":              CarQuestLocationData("Artifact", "Island Day", islandOffset + 15),
     "Island: South Path Cave Artifact":              CarQuestLocationData("Artifact", "Island Day", islandOffset + 16),
     "Island: Clam Artifact":                         CarQuestLocationData("Artifact", "Island Day", islandOffset + 17),

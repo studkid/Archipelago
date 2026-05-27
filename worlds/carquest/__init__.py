@@ -23,7 +23,7 @@ class CarQuestWorld(World):
     """
     Car Quest Deluxe is the PC re-release of the Switch game Car Quest.  Help Sir Blocksington collect artifacts to restore his realm. 
     """
-    game = "Car Quest Deluxe"
+    game = "Secret Game"
     options_dataclass = CarQuestOptions
     options: CarQuestOptions
     topology_present = False

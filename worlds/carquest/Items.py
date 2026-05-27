@@ -2,7 +2,7 @@ from typing import NamedTuple, Dict
 from BaseClasses import Item, ItemClassification, Optional
 
 class CarQuestItem(Item):
-    game: str = "Car Quest"
+    game: str = "Secret Game"
 
 class CarQuestItemData(NamedTuple):
     category: str
@@ -273,4 +273,6 @@ item_table: Dict[str, CarQuestItemData] = {
 
     # Filler
     "Energy Cell":                                  CarQuestItemData("filler", 10001, ItemClassification.filler, 0),
+    "Mega Energy Cell (25)":                        CarQuestItemData("filler", 10002, ItemClassification.filler, 0),
+    "Mega Energy Cell (50)":                        CarQuestItemData("filler", 10003, ItemClassification.filler, 0),
 }
