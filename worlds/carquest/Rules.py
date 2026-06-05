@@ -166,7 +166,7 @@ def set_rules(world: World) -> bool:
     world.set_rule(mw.get_entrance("Throne West Exterior Wall -> Throne East Exterior Wall", player), Has("Throne: Lower High Garden Artifact"))
 
     # Power Room/Limbo
-    world.set_rule(mw.get_entrance("Hub Power Room -> Power Room"), HasAll("Hub: Power Room South Door", "Hub: Power Room North Door"))
+    world.set_rule(mw.get_entrance("Hub Power Room -> Power Room", player), HasAll("Hub: Power Room South Door", "Hub: Power Room North Door"))
     world.set_rule(mw.get_entrance("Power Room -> Limbo", player), HasAll("Power Room: Green Cable Push", "Power Room: Green Cable Activate",
                                                                           "Power Room: Blue Cable Push", "Power Room: Blue Cable Activate",
                                                                           "Power Room: Red Cable Push", "Power Room: Red Cable Activate",
@@ -187,9 +187,9 @@ def set_rules(world: World) -> bool:
     world.set_rule(mw.get_location("Hub: Pool South West Artifact", player), HasAll("Hub: Progressive Pool", "Hub: Pool Push Block") |
                                                                              Has("Hub: Progressive Pool", 2))
     world.set_rule(mw.get_location("Hub: Pool South East Artifact", player), HasAll("Hub: Progressive Pool", "Hub: Pool Push Block", "Hub: Pool South East Blocker") | 
-                                                                             HasAllCounts({"Hub: Progressive Pool": 2}, {"Hub: Pool South East Blocker": 1})) 
+                                                                             HasAllCounts({"Hub: Progressive Pool": 2, "Hub: Pool South East Blocker": 1})) 
     world.set_rule(mw.get_location("Hub: Pool North West Artifact", player), HasAll("Hub: Progressive Pool", "Hub: Pool Push Block", "Hub: Pool North West Blocker") |
-                                                                             HasAllCounts({"Hub: Progressive Pool": 2}, {"Hub: Pool North West Blocker": 1}))
+                                                                             HasAllCounts({"Hub: Progressive Pool": 2, "Hub: Pool North West Blocker": 1}))
     world.set_rule(mw.get_location("Hub: Pool Center Artifact", player), Has("Hub: Progressive Pool", 2))
     world.set_rule(mw.get_location("Hub: Central Bridge West Ramp Artifact", player), Has("Hub: Central Bridge West Ramp"))
     world.set_rule(mw.get_location("Hub: Central Bridge East Ramp Artifact", player), Has("Hub: Central Bridge East Ramp"))
@@ -265,7 +265,7 @@ def set_rules(world: World) -> bool:
     # Island
     world.set_rule(mw.get_location("Island: Artifact Hidden Under East Path", player), Has("Island: Artifact Blocker Under East Path"))
     world.set_rule(mw.get_location("Island: East Path First Artifact", player), Has("Island: First East Path Bridge"))
-    world.set_rule(mw.get_location("Island: South East Triange Island Artifact", player), Has("Island: Lower South East Triangle Island"))
+    world.set_rule(mw.get_location("Island: South East Triangle Island Artifact", player), Has("Island: Lower South East Triangle Island"))
     world.set_rule(mw.get_location("Island: East Path Second Artifact", player), Has("Island: Second East Path Bridge"))
     world.set_rule(mw.get_location("Island: East Path North Raft Artifact", player), Has("Island: East Path Ocean Ramp"))
     world.set_rule(mw.get_location("Island: East Path South Raft Artifact", player), Has("Island: Third East Path Bridge"))
