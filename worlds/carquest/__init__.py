@@ -37,8 +37,18 @@ class CarQuestWorld(World):
         item_pool: List[CarQuestItem] = []
         total_locations = len(self.multiworld.get_unfilled_locations(self.player))
 
+        precollected = ["Hub: Start Room Blocker"]
+        self.push_precollected(self.create_item("Hub: Start Room Blocker"))
+        starting_room = ["Hub: Simple Portal Bridge Wall", "Hub: Start Room Bridge"]
+        self.random.shuffle(starting_room)
+        self.push_precollected(self.create_item(starting_room[0]))
+        precollected.append(starting_room[0])
+
         for name, data in item_table.items():
             quantity = data.max_quantity
+
+            if name in precollected:
+                continue
 
             if data.category == "car":
                 continue
@@ -61,8 +71,8 @@ class CarQuestWorld(World):
     def create_regions(self):
         create_regions(self.multiworld, self.player, self.options)
 
-        self.multiworld.get_location("Hub: Starting Area Artifact", self.player).place_locked_item(
-            self.create_item("Hub: Start Room Blocker"))
+        # self.multiworld.get_location("Hub: Starting Area Artifact", self.player).place_locked_item(
+        #     self.create_item("Hub: Start Room Blocker"))
 
         from Utils import visualize_regions
         visualize_regions(self.multiworld.get_region("Menu", self.player), "carquest_world.puml")
