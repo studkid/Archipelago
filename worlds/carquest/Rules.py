@@ -86,7 +86,7 @@ def set_rules(world: World) -> bool:
 
     # Slider Entrances
     world.set_rule(mw.get_entrance("Slider Start -> Slider Lower Back", player), Has("Slider: Start Ramp"))
-    world.set_rule(mw.get_entrance("Slider Start -> Slider Upper Left", player), Has("Slider: Left Push Block Unlock"))
+    world.set_rule(mw.get_entrance("Slider Start -> Slider Upper Left", player), HasAll("Slider: Start Ramp", "Slider: Left Push Block Unlock"))
     world.set_rule(mw.get_entrance("Slider Start -> Slider Upper Right", player), Has("Slider: Right Push Block Unlock"))
 
     world.set_rule(mw.get_entrance("Slider Upper Right -> Slider Exit", player), Has("Slider: Left Side Ramp"))
@@ -234,7 +234,7 @@ def set_rules(world: World) -> bool:
 
     # Sands
     world.set_rule(mw.get_location("Sands: South West Tower Artifact", player), Has("Sands: Lower South West Tower"))
-    world.set_rule(mw.get_location("Sands: Exterior Wall Tower Artifact", player), Has("Sands: Lower North West Tower"))
+    world.set_rule(mw.get_location("Sands: Exterior Wall Tower Artifact", player), Has("Sands: Lower Exterior Wall Tower"))
     world.set_rule(mw.get_location("Sands: Artifact Inside South East Tower", player), Has("Sands: South East Tower Access"))
     world.set_rule(mw.get_location("Sands: Artifact Under Fallen Tower Roof", player), Has("Sands: Move Fallen Tower Roof"))
     world.set_rule(mw.get_location("Sands: North West Tower Roof Artifact", player), Has("Sands: Lower North West Tower"))
