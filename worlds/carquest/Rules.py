@@ -201,6 +201,7 @@ def set_rules(world: World) -> bool:
     world.set_rule(mw.get_location("Hub: Inside Podium Artifact", player), Has("Hub: Colloseum Podium Door"))
     world.set_rule(mw.get_location("Hub: Floating Island Artifact", player), Has("Hub: Top Path Floating Islands"))
     world.set_rule(mw.get_location("Hub: Upper Pool Dead End Path Artifact", player), Has("Hub: Start Lookout Dead End Door"))
+    world.set_rule(mw.get_location("Hub: Start Lookout Artifact", player), Has("Hub: Lookout Long Path Door"))
     world.set_rule(mw.get_location("Hub: Central Path Dead End Artifact", player), Has("Hub: Whales and Central Dead End Door"))
     world.set_rule(mw.get_location("Hub: University Back Right Artifact", player), Has("Hub: University Back Row Ramp"))
     world.set_rule(mw.get_location("Hub: University Back Left Artifact", player), HasAll("Hub: University Back Row Ramp", "Hub: University Lower Back Artifact Platform"))
