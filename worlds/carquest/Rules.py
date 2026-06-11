@@ -77,6 +77,10 @@ def set_rules(world: World) -> bool:
     world.set_rule(mw.get_entrance("Hub Ice Portal -> Hub Power Room", player), Has("Hub: Power Room South Door"))
     world.set_rule(mw.get_entrance("Hub Ice Portal -> Hub Teleport Island", player), HasAll("Hub: Power Room South Door", "Hub: Power Room North Door", "Hub: Power Restore"))
 
+    world.set_rule(mw.get_entrance("Hub Power Room -> Power Room", player), HasAll("Hub: Power Room South Door", "Hub: Power Room North Door"))
+    world.set_rule(mw.get_entrance("Hub Power Room -> Hub Ice Portal", player), Has("Hub: Power Room North Door"))
+    world.set_rule(mw.get_entrance("Hub Power Room -> Hub Central Bridge", player), Has("Hub: Power Room South Door"))
+
     # Simple Square Entrances
     world.set_rule(mw.get_entrance("Simple Square Area -> Simple Square Exterior", player), HasAny("Hub: Power Room South Door", "Froggy Car", "Battery Rocket Car"))
 
@@ -166,7 +170,6 @@ def set_rules(world: World) -> bool:
     world.set_rule(mw.get_entrance("Throne West Exterior Wall -> Throne East Exterior Wall", player), Has("Throne: Lower High Garden Artifact"))
 
     # Power Room/Limbo
-    world.set_rule(mw.get_entrance("Hub Power Room -> Power Room", player), HasAll("Hub: Power Room South Door", "Hub: Power Room North Door"))
     world.set_rule(mw.get_entrance("Power Room -> Limbo", player), HasAll("Power Room: Green Cable Push", "Power Room: Green Cable Activate",
                                                                           "Power Room: Blue Cable Push", "Power Room: Blue Cable Activate",
                                                                           "Power Room: Red Cable Push", "Power Room: Red Cable Activate",
