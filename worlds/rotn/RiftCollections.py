@@ -364,7 +364,7 @@ class RotNCollections:
             "Minigame": {name for name, data, in self.song_items.items() if data.type == "Minigame"},
             "Boss Battle": {name for name, data, in self.song_items.items() if data.type == "Boss"},
 
-            "Vanilla": {name for name, data, in self.song_items.items() if data.DLC != "Workshop" or data.DLC != "local"},
+            "Vanilla": {name for name, data, in self.song_items.items() if data.DLC != "Workshop" and data.DLC != "local"},
             "Workshop": {name for name, data, in self.song_items.items() if data.DLC == "Workshop"},
             "Local": {name for name, data, in self.song_items.items() if data.DLC == "Local"},
 
