@@ -135,6 +135,11 @@ class RotNCollections:
         "The Showdown Throwdown": SongData(148, "The Showdown Throwdown", "Volume 2", 6, 12, 20, 29),
         "Ultra Creepy": SongData(149, "Ultra Creepy", "Free DLC", 5, 10, 15, 26),
         "Inside": SongData(150, "Inside", "Volume 2", 4, 12, 16, 24),
+        #K/DA
+        "POP/STARS": SongData(151, "POP/STARS", "K/DA", 4, 11, 17, 24),
+        "More": SongData(152, "More", "K/DA", 5, 11, 16, 24),
+        "Villain": SongData(153, "Villain", "K/DA", 4, 10, 15, 23),
+        "The Baddest": SongData(154, "The Baddest", "K/DA", 5, 10, 19, 25),
     }
 
     EXTRA_DATA: Dict[str, ExtraSongData] = {
@@ -176,6 +181,7 @@ class RotNCollections:
         "VA-11 HALL-A",
         "Undertale",
         "Volume 2",
+        "K/DA",
     ]
 
     DLC_SONGS: List[str] = []
@@ -383,6 +389,7 @@ class RotNCollections:
             "VA-11 HALL-A": {name for name, data, in self.song_items.items() if data.DLC == "VA-11 HALL-A" or "YLIAD" in name},
             "Undertale": {name for name, data, in self.song_items.items() if data.DLC == "Undertale" or "Spider Dance" in name},
             "Volume 2": {name for name, data, in self.song_items.items() if data.DLC == "Volume 2" or "Ultra Creepy" in name},
+            "K/DA": {name for name, data, in self.song_items.items() if data.DLC == "K/DA"},
         }
 
         return groups
