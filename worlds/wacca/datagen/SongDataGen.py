@@ -1,28 +1,35 @@
-from urllib import request
 from typing import List, Dict
 import json, re
 
 songList: Dict[str, Dict[str, any]] = {}
+data = "";
+waccaVer: Dict[int, str] = {
+    100: "WACCA",
+    150: "WACCA S",
+    200: "LILY",
+    250: "LILY R",
+    300: "REVERSE",
+    400: "PLUS",
+}
+categories: List[str] = []
 
-with request.urlopen("https://dp4p6x0xfi5o9.cloudfront.net/wacca/data.json") as url:
-    data = json.loads(url.read().decode())
+with open("worlds/wacca/datagen/rawWaccaSongData.json", "r") as jsonData:
+    data = json.load(jsonData)
 
     with open("worlds/wacca/datagen/SongData.py", "w") as file:
         file.write("from typing import Dict\n")
         file.write("from ..items import SongData\n\n")
         file.write("SONG_DATA: Dict[str, SongData] = {\n")
 
-        for i, song in enumerate(data["songs"]):
+        for i, song in enumerate(data):
             title = re.sub("\"", "'",song["title"])
-            id = re.sub("\"", "'",song["songId"])
-            version = song["version"]
+            id = song["id"]
+            version = waccaVer[song["gameVersion"]]
             cat = song["category"]
             difficulties: List[int] = []
 
             for diff in song["sheets"]:
-                if diff["type"] != "std": continue
-                
-                difficulties.append(diff["levelValue"])
+                difficulties.append(diff["difficulty"])
 
             if len(difficulties) < 5:
                 difficulties.append(None)
@@ -35,14 +42,17 @@ with request.urlopen("https://dp4p6x0xfi5o9.cloudfront.net/wacca/data.json") as 
             }
             songList[title] = songInfo
 
+            if(not cat in categories):
+                categories.append(cat)
+
         file.write("}")
 
         file.write("\n\ngroups = {\n")
-        for ver in data["versions"]:
-            file.write(f"    \"{ver["version"]}\": {{name for name, data, in SONG_DATA.items() if data.version == \"{ver["version"]}\"}},\n")
+        for ver in waccaVer.values():
+            file.write(f"    \"{ver}\": {{name for name, data, in SONG_DATA.items() if data.version == \"{ver}\"}},\n")
         
-        for cat in data["categories"]:
-            file.write(f"    \"{cat["category"]}\": {{name for name, data, in SONG_DATA.items() if data.category == \"{cat["category"]}\"}},\n")
+        for cat in categories:
+            file.write(f"    \"{cat}\": {{name for name, data, in SONG_DATA.items() if data.category == \"{cat}\"}},\n")
         file.write("}")
 
 with open("worlds/wacca/datagen/waccaSongData.json", "w") as file:
