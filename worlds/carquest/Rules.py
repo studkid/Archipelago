@@ -146,8 +146,8 @@ def set_rules(world: World) -> bool:
     world.set_rule(mw.get_entrance("Island Day -> Island Treetop Pond", player), HasAll("Island: Pond Treetop Ramp", "Island: Pond Treetop Ramp Blocker"))
 
     world.set_rule(mw.get_entrance("Island Night -> Island Hut Ledge", player), Has("Island: Lower Spiral Island"))
-    world.set_rule(mw.get_entrance("Island Night -> Island Night South Path", player), Has("Island: South Path Cave Wall Removal")) #ig this is only needed for the artifact?
-    world.set_rule(mw.get_entrance("Island Night -> Island East Path End", player), HasAll("Island: First East Path Bridge", "Island: Second East Path Bridge", "Island: Third East Path Bridge"))
+    world.set_rule(mw.get_entrance("Island Night -> Island Night South Path", player), HasAll("Island: Lower Jump Blocker Behind Start", "Island: South Path Cave Wall Removal")) #ig this is only needed for the artifact?
+    world.set_rule(mw.get_entrance("Island Night -> Island East Path End", player), HasAll("Island: Lower Jump Blocker Behind Start", "Island: First East Path Bridge", "Island: Second East Path Bridge", "Island: Third East Path Bridge"))
 
     world.set_rule(mw.get_entrance("Island Hut Ledge -> Island Hut Inside", player), Has("Island: Hut Entrance Ramp"))
 
@@ -233,6 +233,7 @@ def set_rules(world: World) -> bool:
 
     # Maze
     world.set_rule(mw.get_location("Maze: Hidden Drop Off Artifact", player), Has("Maze: Lower Artifact Wall"))
+    world.set_rule(mw.get_location("Maze: Exit Reward Artifact", player), Has("Maze: Exit Door"))
 
     # Glass
 
@@ -268,11 +269,11 @@ def set_rules(world: World) -> bool:
 
     # Island
     world.set_rule(mw.get_location("Island: Artifact Hidden Under East Path", player), Has("Island: Artifact Blocker Under East Path"))
-    world.set_rule(mw.get_location("Island: East Path First Artifact", player), Has("Island: First East Path Bridge"))
+    world.set_rule(mw.get_location("Island: East Path First Artifact", player), HasAll("Island: East Long Path Start Wall", "Island: First East Path Bridge"))
     world.set_rule(mw.get_location("Island: South East Triangle Island Artifact", player), Has("Island: Lower South East Triangle Island"))
-    world.set_rule(mw.get_location("Island: East Path Second Artifact", player), Has("Island: Second East Path Bridge"))
+    world.set_rule(mw.get_location("Island: East Path Second Artifact", player), HasAll("Island: East Long Path Start Wall", "Island: First East Path Bridge", "Island: Second East Path Bridge"))
     world.set_rule(mw.get_location("Island: East Path North Raft Artifact", player), Has("Island: East Path Ocean Ramp"))
-    world.set_rule(mw.get_location("Island: East Path South Raft Artifact", player), Has("Island: Third East Path Bridge"))
+    world.set_rule(mw.get_location("Island: East Path South Raft Artifact", player), HasAll("Island: Lower Jump Blocker Behind Start", "Island: Second East Path Bridge", "Island: Third East Path Bridge"))
     world.set_rule(mw.get_location("Island: Shark Island Artifact", player), Has("Island: West Shark Island Ramp") & (Has("Island: West Island Artifact Ramp") | CanReachRegion("Island Night")))
     world.set_rule(mw.get_location("Island: West Island Ramp Artifact", player), Has("Island: West Island Artifact Ramp"))
     world.set_rule(mw.get_location("Island: East Island Ledge Artifact", player), Has("Island: East Ledge Artifact Ramp"))
