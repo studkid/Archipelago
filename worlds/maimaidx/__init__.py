@@ -95,24 +95,15 @@ class MaiWorld(World):
             available_song_keys = self.handle_plando(available_song_keys)
 
             if len(available_song_keys) > 0:
-                # Find the proposed goal songs and add them to a new list
-                victory_song_keys = []
-                for goal_song_canidate in goal_song_pool:
-                    for index, available_song in enumerate(available_song_keys):
-                        if goal_song_canidate == available_song:
-                            # Include the canidates correlating index to the full list for later use
-                            victory_song_keys.append([index, available_song])
-
-                if victory_song_keys:
-                    chosen_song_index = self.random.randrange(0, len(victory_song_keys))
-                    self.victory_song_name = victory_song_keys[chosen_song_index][1]
+                if goal_song_pool:
+                    self.victory_song_name = self.random.choice(sorted(goal_song_pool))
                     # Replace the chosen goal song's index with the index from the full list we saved earlier.
-                    chosen_song_index = victory_song_keys[chosen_song_index][0]
                 else:
                     chosen_song_index = self.random.randrange(0, len(available_song_keys))
                     self.victory_song_name = available_song_keys[chosen_song_index]
                 #Remove goal song from 
-                del available_song_keys[chosen_song_index]
+                if self.victory_song_name in available_song_keys:
+                    available_song_keys.remove(self.victory_song_name)
                 if self.victory_song_name in self.included_songs:
                     self.included_songs.remove(self.victory_song_name)
 
@@ -141,15 +132,14 @@ class MaiWorld(World):
 
     def handle_plando(self, available_song_keys: List[str]) -> List[str]:
         start_items = self.options.start_inventory.value.keys()
-        include_songs = self.options.include_songs.value
-        exclude_songs = self.options.exclude_songs.value
+        include_songs = self.options.include_songs.value - start_items
+        exclude_songs = self.options.exclude_songs.value - start_items
 
         self.starting_songs = [s for s in start_items if s in available_song_keys]
 
         for song in include_songs:
-            if song in available_song_keys and song not in self.starting_songs:
-                if self.random.randint(1, 100) < self.options.include_songs_percentage.value:
-                    self.included_songs.append(song)
+            if self.random.randint(1, 100) < self.options.include_songs_percentage.value:
+                self.included_songs.append(song)
 
         return [s for s in available_song_keys if s not in start_items
                 and s not in exclude_songs]
