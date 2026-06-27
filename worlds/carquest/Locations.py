@@ -2,7 +2,7 @@ from typing import NamedTuple, Dict
 from BaseClasses import Location, Optional
 
 class CarQuestLocation(Location):
-    game: str = "Secret Game"
+    game: str = "Car Quest Deluxe"
 
 class CarQuestLocationData(NamedTuple):
     category: str

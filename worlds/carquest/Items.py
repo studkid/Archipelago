@@ -2,7 +2,7 @@ from typing import NamedTuple, Dict
 from BaseClasses import Item, ItemClassification, Optional
 
 class CarQuestItem(Item):
-    game: str = "Secret Game"
+    game: str = "Car Quest Deluxe"
 
 class CarQuestItemData(NamedTuple):
     category: str
