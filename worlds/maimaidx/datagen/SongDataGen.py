@@ -25,10 +25,10 @@ with request.urlopen("https://dp4p6x0xfi5o9.cloudfront.net/maimai/data.json") as
             if cat == "宴会場": continue
 
             for diff in song["sheets"]:
-                if diff["type"] != "std": 
+                if diff["type"] == "std": 
                     std_difficulties.append(diff["internalLevelValue"])
                 
-                if diff["type"] != "dx": 
+                if diff["type"] == "dx": 
                     dx_difficulties.append(diff["internalLevelValue"])
 
             if len(std_difficulties) < 5:
