@@ -212,6 +212,7 @@ def set_rules(world: World) -> bool:
     world.set_rule(mw.get_location("Hub: University Third Row Artifact", player), Has("Hub: University Lower Third Row Ramp"))
     world.set_rule(mw.get_location("Hub: University Fourth Row Artifact", player), Has("Hub: University Lower Fourth Row Ramp"))
     world.set_rule(mw.get_location("Hub: University First Row Artifact", player), Has("Hub: University Lower Push Ramp"))
+    world.set_rule(mw.get_location("Hub: Ramp Near South Portal Artifact", player), Has("Hub: South Portal Secondary Ramp"))
 
     world.set_rule(mw.get_location("Hub: Hopscotch Museum Piece", player), Has("Hub: Power Restore"))
 
