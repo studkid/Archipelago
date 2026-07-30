@@ -214,7 +214,7 @@ def set_rules(world: World) -> bool:
     world.set_rule(mw.get_location("Hub: University First Row Artifact", player), Has("Hub: University Lower Push Ramp"))
     world.set_rule(mw.get_location("Hub: Ramp Near South Portal Artifact", player), Has("Hub: South Portal Secondary Ramp"))
 
-    world.set_rule(mw.get_location("Hub: Hopscotch Museum Piece", player), Has("Hub: Power Restore"))
+    world.set_rule(mw.get_location("Hub: Hopscotch Museum Piece", player), HasAll("Hub: Power Restore", "Hub: North Pool Small Secret Door"))
 
     # Simple
     world.set_rule(mw.get_location("Simple: Artifact On Exit Ramp", player), Has("Simple: Exit Bridge"))
@@ -245,7 +245,7 @@ def set_rules(world: World) -> bool:
     world.set_rule(mw.get_location("Sands: Artifact Under Fallen Tower Roof", player), Has("Sands: Move Fallen Tower Roof"))
     world.set_rule(mw.get_location("Sands: North West Tower Roof Artifact", player), Has("Sands: Lower North West Tower"))
     world.set_rule(mw.get_location("Sands: Artifact Under South West Roof", player), Has("Sands: Lower South West Tower"))
-    world.set_rule(mw.get_location("Sands: North East Door Artifact", player), Has("Sands: North East Door"))
+    world.set_rule(mw.get_location("Sands: North East Door Artifact", player), HasAll("Sands: North East Door", "Sands: Lower Exterior Wall Tower"))
     world.set_rule(mw.get_location("Sands: King Head Artifact", player), Has("Sands: Reveal King Artifact"))
     world.set_rule(mw.get_location("Sands: Exit Reward Artifact", player), HasAll("Sands: Exit Reward Reveal", "Sands: Raise Exit Platform"))
 
