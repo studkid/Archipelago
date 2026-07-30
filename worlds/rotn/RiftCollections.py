@@ -140,6 +140,8 @@ class RotNCollections:
         "More": SongData(152, "More", "K/DA", 5, 11, 16, 24),
         "Villain": SongData(153, "Villain", "K/DA", 4, 10, 15, 23),
         "The Baddest": SongData(154, "The Baddest", "K/DA", 5, 10, 19, 25),
+        #Among Us
+        "Sought (Among Us - Seek Remix)": SongData(155, "Sought (Among Us - Seek Remix)", "Free DLC", 4, 9, 15, 24),
     }
 
     EXTRA_DATA: Dict[str, ExtraSongData] = {
