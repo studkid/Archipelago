@@ -8,6 +8,7 @@ import Utils
 
 from typing import Any, Dict, List, Optional, Set
 from .DataUtils import item_name_to_id, location_name_to_id, id_to_item_name, id_to_location_name
+from .GameState import GameStateManager
 
 tracker_loaded = False
 try:
@@ -35,8 +36,37 @@ class GuacameleeSTCEContext(Context):
     id_to_item_name: Dict[int, str] = id_to_item_name()
     id_to_location_name: Dict[int, str] = id_to_location_name()
 
+    game_state_manager: GameStateManager
+
+    process_not_found_msg_displayed: False
+    process_found_msg_displayed: False
+
     def __init__(self, server_address: Optional[str], password: Optional[str]) -> None:
         super().__init__(server_address, password)
+
+        self.game_state_manager = GameStateManager()
+
+    async def controller(self):
+        while not self.exit_event.is_set():
+            await asyncio.sleep(0.2)
+
+            if not self.game_state_manager.process_running:
+                process_found = self.game_state_manager.openProcessHandle()
+
+                if not process_found:
+                    if not self.process_not_found_msg_displayed:
+                        CommonClient.logger.info("Looking for Guacamelee STCE process...")
+
+                        self.process_found_msg_displayed = False
+                        self.process_not_found_msg_displayed = True
+
+                if process_found:
+                        CommonClient.logger.info("Guacamelee STCE process found!")
+
+                        self.process_found_msg_displayed = True
+                        self.process_not_found_msg_displayed = False
+
+                        self.game_state_manager.toggleDimSwap()
 
 def main(*args) -> None:
     Utils.init_logging("GuacameleeSTCEClient", exception_logger="Client")
@@ -60,7 +90,7 @@ def main(*args) -> None:
         ctx: GuacameleeSTCEContext = GuacameleeSTCEContext(args.connect, args.password)
 
         ctx.server_task = asyncio.create_task(CommonClient.server_loop(ctx), name="server loop")
-        # ctx.controller_task = asyncio.create_task(ctx.conntroller(), name="GuacameleeSTCEController")
+        ctx.controller_task = asyncio.create_task(ctx.controller(), name="GuacameleeSTCEController")
 
         if tracker_loaded:
             ctx.run_generator()

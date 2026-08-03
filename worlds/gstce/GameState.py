@@ -18,7 +18,13 @@ class GameState(NamedTuple):
 class GameStateManager:
     process_name: str = "Game.exe"
 
+    process_running = False
+    process = Optional[Pymem]
+
     base_address = 0x00400000
+
+    dim_swap_offset = 0x1D4101
+
     peublucho_id = 0x25D800
     
     def __init__(self) -> None:
@@ -48,10 +54,6 @@ class GameStateManager:
             
             self.process = Pymem(process_pid)
 
-            module: pymem.ressources.structure.MODULEINFO = pymem.process.module_from_name(
-                self.process.process_handle, self.process_name
-            )
-
             self.process_running = True
             
         except Exception:
@@ -61,4 +63,6 @@ class GameStateManager:
 
     def warpToLocation(self) -> None:
         tp_location: int = self.process.read_bytes(self.base_address + self.peublucho_id)
-        
+
+    def toggleDimSwap(self) -> None:
+        print(self.process.read_bytes(self.base_address + self.dim_swap_offset))
