@@ -21,6 +21,9 @@ class GameStateManager:
     process_running = False
     process = Optional[Pymem]
 
+    dl = 0xB2
+    nop = 0x90
+
     base_address = 0x00400000
 
     dim_swap_offset = 0x1D4101
@@ -69,7 +72,7 @@ class GameStateManager:
         print(dim_bytes.hex())
 
         if dim_bytes.hex() == "8a5218":
-            to_write = bytes.fromhex("01")
+            to_write = b'\xB2\x01\x90'
             self.process.write_bytes(self.base_address + self.dim_swap_offset, to_write, len(to_write))
             print(self.process.read_bytes(self.base_address + self.dim_swap_offset, 3).hex())
             return True
