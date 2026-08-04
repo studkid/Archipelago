@@ -9,6 +9,7 @@ import Utils
 from typing import Any, Dict, List, Optional, Set
 from .DataUtils import item_name_to_id, location_name_to_id, id_to_item_name, id_to_location_name
 from .GameState import GameStateManager
+from .Enums import GameStates
 
 tracker_loaded = False
 try:
@@ -44,9 +45,11 @@ class GuacameleeSTCEContext(Context):
 
     process_not_found_msg_displayed: False
     process_found_msg_displayed: False
+    waiting_msg_sent: False
 
     def __init__(self, server_address: Optional[str], password: Optional[str]) -> None:
         super().__init__(server_address, password)
+        self.waiting_msg_sent = False # No idea why this needs to be set a second time but it crashes otherwise
 
         self.game_state_manager = GameStateManager()
 
@@ -73,6 +76,14 @@ class GuacameleeSTCEContext(Context):
                     # success = self.game_state_manager.toggleDimSwap()
                     # if not success:
                     #     CommonClient.logger.info("Failed to give Dimension Swap.")
+
+            if self.game_state_manager.process_running:
+                ingame = self.game_state_manager.update()
+                if ingame:
+                    self.waiting_msg_sent = False
+                elif not self.waiting_msg_sent:
+                    CommonClient.logger.info("Waiting for game to start.")
+                    self.waiting_msg_sent = True
 
     async def warp(self):
         self.game_state_manager.warpToLocation()

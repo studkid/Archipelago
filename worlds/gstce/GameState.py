@@ -3,6 +3,7 @@ from typing import Any, Dict, List, NamedTuple, Optional, Set, Tuple, Union
 import ctypes
 import functools
 import struct
+import CommonClient
 
 import psutil
 import pymem.process
@@ -17,6 +18,7 @@ class GameState(NamedTuple):
 
 class GameStateManager:
     process_name: str = "Game.exe"
+    game_state: GameStates.INVALID
 
     process_running = False
     process = Optional[Pymem]
@@ -64,12 +66,29 @@ class GameStateManager:
         
         return True
 
+    def update(self) -> bool:
+        self.updateState()
+
+        if self.game_state == GameStates.INGAME:
+            self.waiting_msg_sent = False
+            return True
+
+        return False
+
+    def updateState(self) -> None:
+        address_bytes = self.process.read_bytes(self.process.base_address + 0x0051F3F0, 4)
+
+        if address_bytes.hex() == "00000000":
+            self.game_state = GameStates.MENU
+        else:
+            GameStates.INGAME
+
     def warpToLocation(self) -> bool:
         tp_location = self.process.read_bytes(self.process.base_address + self.tp_target_id, 5)
         print(tp_location.hex())
 
         if tp_location.hex() == "e82eedffff":
-            print(self.process.pointer(self.process.base_address + self.tp_target_id, 3))
+            # print(self.process.pointer(self.process.base_address + self.tp_target_id, 3))
             return True
 
         return False
