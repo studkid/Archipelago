@@ -35,6 +35,7 @@ class GameStateManager:
     def __init__(self) -> None:
         self.process = None
         self.process_running = False
+        self.game_state = GameStates.INVALID
 
     def openProcessHandle(self) -> bool:
         try:
@@ -71,6 +72,8 @@ class GameStateManager:
 
         if self.game_state == GameStates.INGAME:
             self.waiting_msg_sent = False
+
+            self.scanLocations()
             return True
 
         return False
@@ -81,7 +84,25 @@ class GameStateManager:
         if address_bytes.hex() == "00000000":
             self.game_state = GameStates.MENU
         else:
-            GameStates.INGAME
+            self.game_state = GameStates.INGAME
+
+    def scanLocations(self) -> None:
+        offsets: List[int] = [0x11F0, 0x0C]
+        address = self.process.base_address + 0x51F710
+        try:
+            offset = self.process.resolve_offsets(address, offsets)
+        except Exception as e:
+            print(f"Failed to get offset: {e}")
+            return
+        address_bytes = self.process.read_bytes(offset, 8)
+        print(address_bytes.hex())
+
+        while address_bytes != 0:
+            offsets[0] = offsets[0] + 0x10
+            offset = self.process.resolve_offsets(address, offsets)
+            address_bytes = self.process.read_bytes(offset, 8)
+
+            print(address_bytes.hex())
 
     def warpToLocation(self) -> bool:
         tp_location = self.process.read_bytes(self.process.base_address + self.tp_target_id, 5)

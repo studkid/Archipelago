@@ -46,10 +46,12 @@ class GuacameleeSTCEContext(Context):
     process_not_found_msg_displayed: False
     process_found_msg_displayed: False
     waiting_msg_sent: False
+    ingame_msg_sent: False
 
     def __init__(self, server_address: Optional[str], password: Optional[str]) -> None:
         super().__init__(server_address, password)
         self.waiting_msg_sent = False # No idea why this needs to be set a second time but it crashes otherwise
+        self.ingame_msg_sent = False
 
         self.game_state_manager = GameStateManager()
 
@@ -80,10 +82,14 @@ class GuacameleeSTCEContext(Context):
             if self.game_state_manager.process_running:
                 ingame = self.game_state_manager.update()
                 if ingame:
-                    self.waiting_msg_sent = False
+                    if not self.ingame_msg_sent:
+                        CommonClient.logger.info("Game started!")
+                        self.waiting_msg_sent = False
+                        self.ingame_msg_sent = True
                 elif not self.waiting_msg_sent:
                     CommonClient.logger.info("Waiting for game to start.")
                     self.waiting_msg_sent = True
+                    self.ingame_msg_sent = False
 
     async def warp(self):
         self.game_state_manager.warpToLocation()
