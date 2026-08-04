@@ -23,12 +23,12 @@ class GameStateManager:
 
     dl = 0xB2
     nop = 0x90
-
-    base_address = 0x00400000
+    eax = 0xB8
 
     dim_swap_offset = 0x1D4101
 
-    peublucho_id = 0x25D800
+    tp_target_id = 0x25EACD
+    tp_target_code = 0x25D800
     
     def __init__(self) -> None:
         self.process = None
@@ -64,20 +64,24 @@ class GameStateManager:
         
         return True
 
-    def warpToLocation(self) -> None:
-        tp_location: int = self.process.read_bytes(self.base_address + self.peublucho_id)
+    def warpToLocation(self) -> bool:
+        tp_location = self.process.read_bytes(self.process.base_address + self.tp_target_id, 5)
+        print(tp_location.hex())
+
+        if tp_location.hex() == "e82eedffff":
+            print(self.process.pointer(self.process.base_address + self.tp_target_id, 3))
+            return True
+
+        return False
 
     def toggleDimSwap(self) -> bool:
-        dim_bytes = self.process.read_bytes(self.base_address + self.dim_swap_offset, 3)
-        print(dim_bytes.hex())
+        dim_bytes = self.process.read_bytes(self.process.base_address + self.dim_swap_offset, 3)
 
         if dim_bytes.hex() == "8a5218":
             to_write = b'\xB2\x01\x90'
-            self.process.write_bytes(self.base_address + self.dim_swap_offset, to_write, len(to_write))
-            print(self.process.read_bytes(self.base_address + self.dim_swap_offset, 3).hex())
+            self.process.write_bytes(self.process.base_address + self.dim_swap_offset, to_write, len(to_write))
             return True
         else:
             to_write = bytes.fromhex("8a5218")
-            self.process.write_bytes(self.base_address + self.dim_swap_offset, to_write, len(to_write))
-            print(self.process.read_bytes(self.base_address + self.dim_swap_offset, 3).hex())
+            self.process.write_bytes(self.process.base_address + self.dim_swap_offset, to_write, len(to_write))
             return False

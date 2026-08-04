@@ -23,6 +23,10 @@ except ModuleNotFoundError:
 class GuacameleeSTCECommandProcessor(CommandProcessor):
     ctx: "GuacameleeSTCEContext"
 
+    def _cmd_warp(self) -> bool:
+        """Warp to Peublucho"""
+        Utils.async_start(self.ctx.warp(), name="warp")
+
 class GuacameleeSTCEContext(Context):
     tags: Set[str] = {"AP"}
     game: str = "Guacamelee Super Turbo Championship Edition"
@@ -66,9 +70,15 @@ class GuacameleeSTCEContext(Context):
                     self.process_found_msg_displayed = True
                     self.process_not_found_msg_displayed = False
 
-                    success = self.game_state_manager.toggleDimSwap()
-                    if not success:
-                        CommonClient.logger.info("Failed to give Dimension Swap.")
+                    # success = self.game_state_manager.toggleDimSwap()
+                    # if not success:
+                    #     CommonClient.logger.info("Failed to give Dimension Swap.")
+
+    async def warp(self):
+        self.game_state_manager.warpToLocation()
+
+    async def label(self, name):
+        self.game_state_manager.labelSlot(name)
 
 def main(*args) -> None:
     Utils.init_logging("GuacameleeSTCEClient", exception_logger="Client")
