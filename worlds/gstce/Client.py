@@ -61,12 +61,14 @@ class GuacameleeSTCEContext(Context):
                         self.process_not_found_msg_displayed = True
 
                 if process_found:
-                        CommonClient.logger.info("Guacamelee STCE process found!")
+                    CommonClient.logger.info("Guacamelee STCE process found!")
 
-                        self.process_found_msg_displayed = True
-                        self.process_not_found_msg_displayed = False
+                    self.process_found_msg_displayed = True
+                    self.process_not_found_msg_displayed = False
 
-                        self.game_state_manager.toggleDimSwap()
+                    success = self.game_state_manager.toggleDimSwap()
+                    if not success:
+                        CommonClient.logger.info("Failed to give Dimension Swap.")
 
 def main(*args) -> None:
     Utils.init_logging("GuacameleeSTCEClient", exception_logger="Client")

@@ -64,5 +64,17 @@ class GameStateManager:
     def warpToLocation(self) -> None:
         tp_location: int = self.process.read_bytes(self.base_address + self.peublucho_id)
 
-    def toggleDimSwap(self) -> None:
-        print(self.process.read_bytes(self.base_address + self.dim_swap_offset))
+    def toggleDimSwap(self) -> bool:
+        dim_bytes = self.process.read_bytes(self.base_address + self.dim_swap_offset, 3)
+        print(dim_bytes.hex())
+
+        if dim_bytes.hex() == "8a5218":
+            to_write = bytes.fromhex("01")
+            self.process.write_bytes(self.base_address + self.dim_swap_offset, to_write, len(to_write))
+            print(self.process.read_bytes(self.base_address + self.dim_swap_offset, 3).hex())
+            return True
+        else:
+            to_write = bytes.fromhex("8a5218")
+            self.process.write_bytes(self.base_address + self.dim_swap_offset, to_write, len(to_write))
+            print(self.process.read_bytes(self.base_address + self.dim_swap_offset, 3).hex())
+            return False
