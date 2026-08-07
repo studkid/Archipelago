@@ -86,23 +86,26 @@ class GameStateManager:
         else:
             self.game_state = GameStates.INGAME
 
+    def resolvePointers(self, address, offsets) -> int:
+        pointer = self.process.read_uint(self.process.base_address + address)
+        for offset in offsets:
+            try:
+                pointer = self.process.read_uint(pointer + offset)
+            except Exception as e:
+                # print(f"Failed to resolve pointer: {e}")
+                return 0x0
+        return pointer
+
     def scanLocations(self) -> None:
         offsets: List[int] = [0x11F0, 0x0C]
-        address = self.process.base_address + 0x51F710
-        try:
-            offset = self.process.resolve_offsets(address, offsets)
-        except Exception as e:
-            print(f"Failed to get offset: {e}")
-            return
-        address_bytes = self.process.read_bytes(offset, 8)
-        print(address_bytes.hex())
-
-        while address_bytes != 0:
+        
+        while(True):
+            pointer = self.resolvePointers(0x51F710, offsets)
+            if pointer == 0x0:
+                return
+            value = self.process.read_string(pointer, 40)
+            print(value)
             offsets[0] = offsets[0] + 0x10
-            offset = self.process.resolve_offsets(address, offsets)
-            address_bytes = self.process.read_bytes(offset, 8)
-
-            print(address_bytes.hex())
 
     def warpToLocation(self) -> bool:
         tp_location = self.process.read_bytes(self.process.base_address + self.tp_target_id, 5)
