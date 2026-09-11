@@ -3,6 +3,7 @@ from .datagen import extractModDataToJson
 from typing import Dict, List, Set
 from collections import ChainMap
 from BaseClasses import logging
+import traceback
 
 class RotNCollections:
     DIAMOND_NAME: str = "Diamond"
@@ -237,52 +238,55 @@ class RotNCollections:
 
             for slot_index, data_dict in enumerate(mod_data):
                 for song_name, dict_data in data_dict.items():
-                    data = SongData(int(dict_data["code"]), dict_data["song_id"], dict_data["DLC"], int(dict_data["diff_easy"]) if dict_data["diff_easy"] else None, int(dict_data["diff_medium"]) if dict_data["diff_medium"] else  None, 
-                                    int(dict_data["diff_hard"]) if dict_data["diff_hard"] else  None, int(dict_data["diff_impossible"]) if dict_data["diff_impossible"] else  None, "Custom")
-                    if not isinstance(song_name, str) or not isinstance(data, SongData):
-                        logging.warning(f"Skipping {song_name}")
-                        continue
-
-                    if data.DLC == "Local":
-                        new_code = data.code + 5000 + (1000 * slot_index)
-                        data = SongData(new_code, data.song_id, data.DLC, data.diff_easy, data.diff_medium, data.diff_hard, data.diff_impossible, "Custom")
-                        self.mod_remaps[data.song_id] = {}
-                        self.mod_remaps[data.song_id][song_name] = [new_code, new_code + 1]
-
-                    if song_name in self.song_items:
-                        logging.warning(f"{song_name} previously mapped to base ID, skipping")
-                        continue
-
-                    song_id = data.song_id
-
-                    if song_id in seen_mod_song_ids:
-                        if song_id in self.mod_remaps and song_name in self.mod_remaps[song_id]:
-                            logging.warning(f"{song_name} already remapped to {self.mod_remaps[song_id][song_name]}")
+                    try:
+                        data = SongData(int(dict_data["code"]), dict_data["song_id"], dict_data["DLC"], int(dict_data["diff_easy"]) if dict_data["diff_easy"] else None, int(dict_data["diff_medium"]) if dict_data["diff_medium"] else  None, 
+                                        int(dict_data["diff_hard"]) if dict_data["diff_hard"] else  None, int(dict_data["diff_impossible"]) if dict_data["diff_impossible"] else  None, "Custom")
+                        if not isinstance(song_name, str) or not isinstance(data, SongData):
+                            self.logger.warning(f"Skipping {song_name}")
                             continue
 
-                        resolve = {i for i in range(song_id + 2, song_id + 10)}
-                        resolve -= seen_mod_song_ids
-                        new_slots = sorted(resolve)[0:2]
+                        if data.DLC == "Local":
+                            new_code = data.code + 5000 + (1000 * slot_index)
+                            data = SongData(new_code, data.song_id, data.DLC, data.diff_easy, data.diff_medium, data.diff_hard, data.diff_impossible, "Custom")
+                            self.mod_remaps[data.song_id] = {}
+                            self.mod_remaps[data.song_id][song_name] = [new_code, new_code + 1]
 
-                        if len(new_slots) != 2:
-                            raise Exception(f"Could not remap conflict of {song_name} (out of slots)\n"
-                                                f"{self.mod_remaps[song_id]}")
-                        logging.warning(f"Remapped {song_name} to {new_slots}")
+                        if song_name in self.song_items:
+                            self.logger.warning(f"{song_name} previously mapped to base ID, skipping")
+                            continue
 
-                        data.code = new_slots[0]
-                        seen_mod_item_ids.update(new_slots)
+                        song_id = data.song_id
 
-                        self.mod_remaps.setdefault(song_id, {})
-                        self.mod_remaps[song_id] = {}
-                        self.mod_remaps[song_id][song_name] = new_slots
+                        if song_id in seen_mod_song_ids:
+                            if song_id in self.mod_remaps and song_name in self.mod_remaps[song_id]:
+                                self.logger.warning(f"{song_name} already remapped to {self.mod_remaps[song_id][song_name]}")
+                                continue
 
-                    seen_mod_song_ids.add(data.code)
-                    seen_mod_song_ids.add(data.code + 1)
+                            resolve = {i for i in range(song_id + 2, song_id + 10)}
+                            resolve -= seen_mod_song_ids
+                            new_slots = sorted(resolve)[0:2]
 
-                    self.song_items[song_name] = data
-                    self.song_locations[f"{song_name}-0"] = data.code
-                    self.song_locations[f"{song_name}-1"] = data.code + 1
-                    self.modId_to_name[song_id] = song_name
+                            if len(new_slots) != 2:
+                                raise Exception(f"Could not remap conflict of {song_name} (out of slots)\n"
+                                                    f"{self.mod_remaps[song_id]}")
+                            self.logger.warning(f"Remapped {song_name} to {new_slots}")
+
+                            data.code = new_slots[0]
+                            seen_mod_item_ids.update(new_slots)
+
+                            self.mod_remaps.setdefault(song_id, {})
+                            self.mod_remaps[song_id] = {}
+                            self.mod_remaps[song_id][song_name] = new_slots
+
+                        seen_mod_song_ids.add(data.code)
+                        seen_mod_song_ids.add(data.code + 1)
+
+                        self.song_items[song_name] = data
+                        self.song_locations[f"{song_name}-0"] = data.code
+                        self.song_locations[f"{song_name}-1"] = data.code + 1
+                        self.modId_to_name[song_id] = song_name
+                    except Exception as e:
+                        self.logger.error(f"RotN Song Import Error: {song_name} is invalid, skipping song.\n{traceback.format_exc()}")
 
         for key, data in self.SONG_DATA.items():
             self.song_items[key] = data
