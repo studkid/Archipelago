@@ -149,6 +149,13 @@ class RotNCollections:
         "Curtain Call (Finii's Theme)": SongData(158, "Curtain Call (Finii's Theme)", "Omega Strikers", 5, 11, 18, 25),
         "Go Strike! (Juliette's Theme)": SongData(159, "Go Strike! (Juliette's Theme)", "Omega Strikers", 6, 12, 17, 21),
         "Methods of Madness (Kazan's Theme)": SongData(160, "Methods of Madness (Kazan's Theme)", "Omega Strikers", 6, 11, 17, 27),
+        # Miku 2
+        "Highlight": SongData(161, "Highlight", "Hatsune Miku 2", 5, 11, 17, 23, False),
+        "CONNECT:COMMUNE": SongData(162, "CONNECT:COMMUNE", "Hatsune Miku 2", 6, 12, 17, 23, False),
+        "Artifact": SongData(163, "Artifact", "Hatsune Miku 2", 7, 13, 17, 26, False),
+        "Hello Builder": SongData(164, "Hello Builder", "Hatsune Miku 2", 7, 14, 20, 27, False),
+        "Wonder Style": SongData(165, "Wonder Style", "Hatsune Miku 2", 5, 11, 16, 25, False),
+        "My One and Oni": SongData(166, "My One and Oni", "Free DLC", 6, 11, 17, 23, False),
     }
 
     EXTRA_DATA: Dict[str, ExtraSongData] = {
@@ -192,6 +199,7 @@ class RotNCollections:
         "Volume 2",
         "K/DA",
         "Omega Strikers",
+        "Hatsune Miku 2",
     ]
 
     DLC_SONGS: List[str] = []
@@ -403,7 +411,8 @@ class RotNCollections:
             "Undertale": {name for name, data, in self.song_items.items() if data.DLC == "Undertale" or "Spider Dance" in name},
             "Volume 2": {name for name, data, in self.song_items.items() if data.DLC == "Volume 2" or "Ultra Creepy" in name},
             "K/DA": {name for name, data, in self.song_items.items() if data.DLC == "K/DA"},
-            "Omega Strikers": {name for name, data, in self.song_items.items() if data.DLC == "Omega Strikers" or "The Girl Who Glitched (Ai.Mi's Theme)" in name}
+            "Omega Strikers": {name for name, data, in self.song_items.items() if data.DLC == "Omega Strikers" or "The Girl Who Glitched (Ai.Mi's Theme)" in name},
+            "Hatsune Miku 2": {name for name, data, in self.song_items.items() if data.DLC == "Hatsune Miku 2" or "My One and Oni" in name},
         }
 
         return groups
