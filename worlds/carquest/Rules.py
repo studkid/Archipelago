@@ -317,7 +317,7 @@ def set_rules(world: World) -> bool:
     world.set_rule(mw.get_location("Power Room: Red Center Artifact", player), Has("Power Room: Red Cable Push"))
     world.set_rule(mw.get_location("Power Room: Red Cable Artifact", player), Has("Power Room: Red Cable Activate"))
     world.set_rule(mw.get_location("Power Room: Yellow Center Artifact", player), Has("Power Room: Yellow Cable Push"))
-    world.set_rule(mw.get_location("Power Room: Book Artifact", player), Has("Hub: Power Restore"))
+    world.set_rule(mw.get_location("Power Room: Book Artifact", player), Has("Hub: Power Restore")) # BAD FIX WRONG
     world.set_rule(mw.get_location("Power Room: Top Artifact Near Token", player), Has("Power Room: Exit Teleporter"))
 
     ####################
