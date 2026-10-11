@@ -1,6 +1,7 @@
 from .items import SongData, ExtraSongData
 from .datagen import extractModDataToJson
 from typing import Dict, List, Set
+from copy import deepcopy
 from collections import ChainMap
 from BaseClasses import logging
 import traceback
@@ -427,74 +428,67 @@ class RotNCollections:
         groups[group] = []
     
     def getItemNameGroups(self) -> Dict[str, str]:
-        groups = {
-            "Rhythm Rift": {name for name, data, in self.song_items.items() if data.type == "Rift"},
-            "Remix Rift": {name for name, data, in self.song_items.items() if data.type == "Remix"},
-            "Minigame": {name for name, data, in self.song_items.items() if data.type == "Minigame"},
-            "Boss Battle": {name for name, data, in self.song_items.items() if data.type == "Boss"},
+        newGroup = deepcopy(self.groups)
+        
+        for name, data in self.song_items.items():
+            if data.type == "Rift":
+                newGroup["Rhythm Rift"].append(name)
+            elif data.type == "Remix":
+                newGroup["Remix Rift"].append(name)
+            elif data.type == "Minigame":
+                newGroup["Minigame"].append(name)
+                continue
+            elif data.type == "Boss":
+                newGroup["Boss Battle"].append(name)
+                continue
 
-            "Vanilla": {name for name, data, in self.song_items.items() if data.DLC != "Workshop" and data.DLC != "local"},
-            "Workshop": {name for name, data, in self.song_items.items() if data.DLC == "Workshop"},
-            "Local": {name for name, data, in self.song_items.items() if data.DLC == "Local"},
+            if data.type == "Local":
+                newGroup["Local"].append(name)
+            elif data.type == "Workshop":
+                newGroup["Workshop"].append(name)
+            else:
+                newGroup["Vanilla"].append(name)
 
-            "Base Songs": {name for name, data, in self.song_items.items() if data.DLC == "Dove" or data.DLC == "Heph & Merlin" or data.DLC == "Nocturna" or data.DLC == "Suzu" or data.DLC == "Necrodancer" or data.DLC == "Boss Tracks"},
-            "Dove": {name for name, data, in self.song_items.items() if data.DLC == "Dove"},
-            "Heph & Merlin": {name for name, data, in self.song_items.items() if data.DLC == "Heph & Merlin"},
-            "Nocturna": {name for name, data, in self.song_items.items() if data.DLC == "Nocturna"},
-            "Suzu": {name for name, data, in self.song_items.items() if data.DLC == "Suzu"},
-            "Necrodancer": {name for name, data, in self.song_items.items() if data.DLC == "Necrodancer"},
-            "Boss Tracks": {name for name, data, in self.song_items.items() if data.DLC == "Boss Tracks"},
-            "Meat Boy": {name for name, data, in self.song_items.items() if data.DLC == "MeatBoy"},
-            "Anniversary": {name for name, data, in self.song_items.items() if data.DLC == "Anniversary"},
-            "Free DLC": {name for name, data, in self.song_items.items() if data.DLC == "Free DLC" or data.DLC == "MeatBoy" or data.DLC == "Anniversary"},
-            "Celeste": {name for name, data, in self.song_items.items() if data.DLC == "Celeste" or "Resurrections (dannyBstyle Remix)" in name},
-            "Pizza Tower": {name for name, data, in self.song_items.items() if data.DLC == "Pizza Tower"},
-            "Hatsune Miku": {name for name, data, in self.song_items.items() if data.DLC == "Hatsune Miku" or "Too Real" in name},
-            "Hololive": {name for name, data, in self.song_items.items() if data.DLC == "Hololive" or "REFLECT" in name},
-            "Everhood": {name for name, data, in self.song_items.items() if data.DLC == "Everhood" or "Powers Of Destruction" in name},
-            "Monstercat": {name for name, data, in self.song_items.items() if data.DLC == "Monstercat"},
-            "Shovel Knight": {name for name, data, in self.song_items.items() if data.DLC == "Shovel Knight" or "Main Theme" in name},
-            "Friday Night Funkin'": {name for name, data, in self.song_items.items() if data.DLC == "Friday Night Funkin'" or "Dad Battle" in name},
-            "VA-11 HALL-A": {name for name, data, in self.song_items.items() if data.DLC == "VA-11 HALL-A" or "YLIAD" in name},
-            "Undertale": {name for name, data, in self.song_items.items() if data.DLC == "Undertale" or "Spider Dance" in name},
-            "Volume 2": {name for name, data, in self.song_items.items() if data.DLC == "Volume 2" or "Ultra Creepy" in name},
-            "K/DA": {name for name, data, in self.song_items.items() if data.DLC == "K/DA"},
-            "Omega Strikers": {name for name, data, in self.song_items.items() if data.DLC == "Omega Strikers" or "The Girl Who Glitched (Ai.Mi's Theme)" in name},
-            "Hatsune Miku 2": {name for name, data, in self.song_items.items() if data.DLC == "Hatsune Miku 2" or "My One and Oni" in name},
-        }
+            if name in self.FREE_SONGS:
+                newGroup["Free DLC"].append(name)
 
-        return groups
+            if data.DLC in self.base_dlc:
+                newGroup["Base Songs"].append(name)
+
+            newGroup[data.DLC].append(name)
+
+        return newGroup
 
     def getLocationNameGroups(self) -> Dict[str, str]:
-        groups = self.groups.copy()
+        newGroup = deepcopy(self.groups)
 
         for name, _ in self.song_locations.items():
             data = self.song_items[name[:len(name)-2]]
 
             if data.type == "Rift":
-                groups["Rhythm Rift"].append(name)
+                newGroup["Rhythm Rift"].append(name)
             elif data.type == "Remix":
-                groups["Remix Rift"].append(name)
+                newGroup["Remix Rift"].append(name)
             elif data.type == "Minigame":
-                groups["Minigame"].append(name)
+                newGroup["Minigame"].append(name)
                 continue
             elif data.type == "Boss":
-                groups["Boss Battle"].append(name)
+                newGroup["Boss Battle"].append(name)
                 continue
 
             if data.type == "Local":
-                groups["Local"].append(name)
+                newGroup["Local"].append(name)
             elif data.type == "Workshop":
-                groups["Workshop"].append(name)
+                newGroup["Workshop"].append(name)
             else:
-                groups["Vanilla"].append(name)
+                newGroup["Vanilla"].append(name)
 
             if name in self.FREE_SONGS:
-                groups["Free DLC"].append(name)
+                newGroup["Free DLC"].append(name)
 
             if data.DLC in self.base_dlc:
-                groups["Base Songs"].append(name)
+                newGroup["Base Songs"].append(name)
 
-            groups[data.DLC].append(name)
+            newGroup[data.DLC].append(name)
 
-        return groups
+        return newGroup
