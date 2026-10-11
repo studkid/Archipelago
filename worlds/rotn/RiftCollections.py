@@ -17,8 +17,8 @@ class RotNCollections:
     # 2000 - 2099 Minigames
     # 2100 - 2199 Boss Battles
 
-    # Thanks to DeamonHunter for genning most of this info
     SONG_DATA: Dict[str, SongData] = {
+        # Base
         "Disco Disaster": SongData(50, "TrackName_DiscoDisaster", "Dove", 1, 4, 9, 19),
         "Elusional": SongData(51, "TrackName_Elusional", "Dove", 1, 6, 10, 18),
         "Visualize Yourself": SongData(52, "TrackName_VisualizeYourself", "Dove", 2, 6, 12, 21),
@@ -56,7 +56,7 @@ class RotNCollections:
         "Got Danged": SongData(83, "TrackName_DLC_Apricot02", "MeatBoy", 7, 12, 20, 27),
         "Bootus Bleez": SongData(84, "TrackName_DLC_Apricot03", "MeatBoy", 5, 11, 19, 27),
         #Celeste
-        "Resurrections (dannyBstyle Remix)": SongData(85, "TrackName_DLC_Banana01", "Free DLC", 5, 12, 17, 24),
+        "Resurrections (dannyBstyle Remix)": SongData(85, "TrackName_DLC_Banana01", "Celeste", 5, 12, 17, 24),
         "Scattered and Lost": SongData(86, "Scattered and Lost", "Celeste", 4, 8, 16, 25),
         "Reach for the Summit": SongData(87, "Reach for the Summit", "Celeste", 7, 11, 18, 30),
         "Confronting Myself": SongData(88, "Confronting Myself", "Celeste", 6, 9, 17, 26),
@@ -71,20 +71,20 @@ class RotNCollections:
         "Unexpectancy, Pt. 3": SongData(95, "Unexpectancy, Pt. 3", "Pizza Tower", 7, 15, 20, 27),
         "World Wide Noise": SongData(96, "World Wide Noise", "Pizza Tower", 5, 9, 18, 26),
         #Miku
-        "Too Real": SongData(97, "Too Real", "Free DLC", 4, 8, 15, 23),
+        "Too Real": SongData(97, "Too Real", "Hatsune Miku", 4, 8, 15, 23),
         "M@GICAL☆CURE! LOVE ♥ SHOT!": SongData(98, "M@GICAL☆CURE! LOVE ♥ SHOT!", "Hatsune Miku", 5, 10, 17, 24),
         "Intergalactic Bound": SongData(99, "Intergalactic Bound", "Hatsune Miku", 3, 7, 14, 21),
         "Just 1dB Louder": SongData(100, "Just 1dB Louder", "Hatsune Miku", 4, 10, 17, 24),
         "MikuFiesta": SongData(101, "MikuFiesta", "Hatsune Miku", 3, 8, 15, 22),
         "Radiant Revival": SongData(102, "Radiant Revival", "Hatsune Miku", 4, 6, 15, 21),
         #Hololive
-        "REFLECT": SongData(103, "REFLECT", "Free DLC", 6, 11, 16, 21),
+        "REFLECT": SongData(103, "REFLECT", "Hololive", 6, 11, 16, 21),
         "BIBBIDIBA": SongData(104, "BIBBIDIBA", "Hololive", 4, 8, 17, 22),
         "Play Dice!": SongData(105, "Play Dice!", "Hololive", 7, 12, 18, 23),
         "Ahoy!! 我ら宝鐘海賊団☆": SongData(106, "Ahoy!! 我ら宝鐘海賊団☆", "Hololive", 6, 13, 19, 28),
         "Carbonated Love": SongData(107, "Carbonated Love", "Hololive", 5, 9, 14, 21),
         #Everhood
-        "Powers Of Destruction": SongData(108, "Powers of Destruction", "Free DLC", 6, 10, 13, 19),
+        "Powers Of Destruction": SongData(108, "Powers of Destruction", "Everhood", 6, 10, 13, 19),
         "The Final Battle": SongData(109, "The Final Battle", "Everhood", 5, 9, 15, 20),
         "Feisty Flowers": SongData(110, "Feisty Flowers", "Everhood", 5, 11, 19, 27),
         "Revenge": SongData(111, "Revenge", "Everhood", 5, 11, 19, 27),
@@ -96,14 +96,14 @@ class RotNCollections:
         "PLAY": SongData(116, "PLAY", "Monstercat", 5, 10, 15, 25),
         "Waiting For You (feat. Joanna Jones)": SongData(117, "Waiting for you (feat. Joanna Jones)", "Monstercat", 5, 9, 15, 20),
         #Shovel Knight
-        "Main Theme": SongData(118, "Main Theme", "Free DLC", 4, 9, 17, 24),
+        "Main Theme": SongData(118, "Main Theme", "Shovel Knight", 4, 9, 17, 24),
         "La Danse Macabre (Lich Yard)": SongData(119, "La Danse Macabre (Lich Yard)", "Shovel Knight", 5, 7, 20, 27),
         "Strike the Earth! (Plains of Passage)": SongData(120, "Strike the Earth! (Plains of Passage)", "Shovel Knight", 2, 8, 16, 27),
         "In the Halls of the Usurper (Pridemoor Keep)": SongData(121, "In the Halls of the Usurper (Pridemoor Keep)", "Shovel Knight", 5, 9, 17, 22),
         "High Above the Land (The Flying Machine)": SongData(122, "High Above the Land (The Flying Machine)", "Shovel Knight", 4, 7, 16, 21),
         "An Underlying Problem (The Lost City)": SongData(123, "An Underlying Problem (The Lost City)", "Shovel Knight", 4, 11, 18, 23),
         #Friday Night Funkin'
-        "Dad Battle": SongData(124, "Dad Battle", "Free DLC", 4, 10, 16, 21),
+        "Dad Battle": SongData(124, "Dad Battle", "Friday Night Funkin'", 4, 10, 16, 21),
         "Blammed": SongData(125, "Blammed", "Friday Night Funkin'", 7, 12, 18, 25),
         "Stress": SongData(126, "Stress", "Friday Night Funkin'", 7, 15, 21, 28),
         "Darnell": SongData(127, "Darnell", "Friday Night Funkin'", 6, 10, 19, 27),
@@ -120,10 +120,10 @@ class RotNCollections:
         "Digital Drive": SongData(134, "Digital Drive", "VA-11 HALL-A", 3, 6, 18, 24),
         "Every Day is Night": SongData(135, "Every Day is Night", "VA-11 HALL-A", 3, 8, 14, 22),
         "Drive Me Wild": SongData(136, "Drive Me Wild", "VA-11 HALL-A", 5, 11, 15, 20),
-        "YLIAD": SongData(137, "YLIAD", "Free DLC", 4, 8, 14, 20),
+        "YLIAD": SongData(137, "YLIAD", "VA-11 HALL-A", 4, 8, 14, 20),
         "Welcome to VA-11 HALL-A": SongData(138, "Welcome to VA-11 HALL-A", "VA-11 HALL-A", 2, 8, 13, 21),
         #Undertale
-        "Spider Dance": SongData(139, "Spider Dance", "Free DLC", 2, 6, 13, 18),
+        "Spider Dance": SongData(139, "Spider Dance", "Undertale", 2, 6, 13, 18),
         "Hopes and Dreams": SongData(140, "Hopes and Dreams", "Undertale", 3, 9, 15, 19),
         "Death by Glamour": SongData(141, "Death by Glamour", "Undertale", 5, 13, 16, 24),
         "Bergentrückung / Asgore": SongData(142, "Bergentrückung / Asgore", "Undertale", 4, 10, 15, 21),
@@ -134,7 +134,7 @@ class RotNCollections:
         "Goo": SongData(146, "Goo", "Volume 2", 4, 11, 17, 23),
         "Phantom Funk (feat. Lawrence Ravagnan)": SongData(147, "Phantom Funk (feat. Lawrence Ravagnan)", "Volume 2", 5, 11, 16, 25),
         "The Showdown Throwdown": SongData(148, "The Showdown Throwdown", "Volume 2", 6, 12, 20, 29),
-        "Ultra Creepy": SongData(149, "Ultra Creepy", "Free DLC", 5, 10, 15, 26),
+        "Ultra Creepy": SongData(149, "Ultra Creepy", "Volume 2", 5, 10, 15, 26),
         "Inside": SongData(150, "Inside", "Volume 2", 4, 12, 16, 24),
         #K/DA
         "POP/STARS": SongData(151, "POP/STARS", "K/DA", 4, 11, 17, 24),
@@ -144,7 +144,7 @@ class RotNCollections:
         #Among Us
         "Sought (Among Us - Seek Remix)": SongData(155, "Sought (Among Us - Seek Remix)", "Free DLC", 4, 9, 15, 24),
         #Omega Strikers
-        "The Girl Who Glitched (Ai.Mi's Theme)": SongData(156, "The Girl Who Glitched (Ai.Mi's Theme)", "Free DLC", 3, 11, 16, 23),
+        "The Girl Who Glitched (Ai.Mi's Theme)": SongData(156, "The Girl Who Glitched (Ai.Mi's Theme)", "Omega Strikers", 3, 11, 16, 23),
         "Thousand Absolutes (Octavia's Theme)": SongData(157, "Thousand Absolutes (Octavia's Theme)", "Omega Strikers", 7, 13, 19, 26),
         "Curtain Call (Finii's Theme)": SongData(158, "Curtain Call (Finii's Theme)", "Omega Strikers", 5, 11, 18, 25),
         "Go Strike! (Juliette's Theme)": SongData(159, "Go Strike! (Juliette's Theme)", "Omega Strikers", 6, 12, 17, 21),
@@ -155,7 +155,7 @@ class RotNCollections:
         "Artifact": SongData(163, "Artifact", "Hatsune Miku 2", 7, 13, 17, 26),
         "Hello Builder": SongData(164, "Hello Builder", "Hatsune Miku 2", 7, 14, 20, 27),
         "Wonder Style": SongData(165, "Wonder Style", "Hatsune Miku 2", 5, 11, 16, 25),
-        "My One and Oni": SongData(166, "My One and Oni", "Free DLC", 6, 11, 17, 23),
+        "My One and Oni": SongData(166, "My One and Oni", "Hatsune Miku 2", 6, 11, 17, 23),
     }
 
     EXTRA_DATA: Dict[str, ExtraSongData] = {
@@ -172,6 +172,20 @@ class RotNCollections:
         "Reaper": ExtraSongData(2109, "Boss", 0),
         "The NecroDancer": ExtraSongData(2112, "Boss", 0),
     }
+
+    FREE_SONGS: List[str] = [
+        "Resurrections (dannyBstyle Remix)",
+        "Too Real",
+        "REFLECT",
+        "Powers Of Destruction",
+        "Main Theme",
+        "Dad Battle",
+        "YLIAD",
+        "Spider Dance",
+        "Ultra Creepy",
+        "The Girl Who Glitched (Ai.Mi's Theme)",
+        "My One and Oni",
+    ]
 
     FREE_PACKS: List[str] = [
         "Dove",
@@ -388,6 +402,29 @@ class RotNCollections:
             return True
 
         return False
+
+    groups = {
+        "Rhythm Rift": [],
+        "Remix Rift": [],
+        "Minigame": [],
+        "Boss Battle": [],
+        "Vanilla": [],
+        "Workshop": [],
+        "Local": [],
+        "Base Songs": [],
+    }
+
+    base_dlc = ["Dove", "Heph & Merlin", "Nocturna", "Suzu", "Necrodancer", "Boss Tracks"]
+
+    for group in FREE_PACKS:
+        if group == "Boss":
+            continue
+        groups[group] = []
+
+    for group in DLC_PACKS:
+        if group == "All":
+            continue
+        groups[group] = []
     
     def getItemNameGroups(self) -> Dict[str, str]:
         groups = {
@@ -425,5 +462,39 @@ class RotNCollections:
             "Omega Strikers": {name for name, data, in self.song_items.items() if data.DLC == "Omega Strikers" or "The Girl Who Glitched (Ai.Mi's Theme)" in name},
             "Hatsune Miku 2": {name for name, data, in self.song_items.items() if data.DLC == "Hatsune Miku 2" or "My One and Oni" in name},
         }
+
+        return groups
+
+    def getLocationNameGroups(self) -> Dict[str, str]:
+        groups = self.groups.copy()
+
+        for name, _ in self.song_locations.items():
+            data = self.song_items[name[:len(name)-2]]
+
+            if data.type == "Rift":
+                groups["Rhythm Rift"].append(name)
+            elif data.type == "Remix":
+                groups["Remix Rift"].append(name)
+            elif data.type == "Minigame":
+                groups["Minigame"].append(name)
+                continue
+            elif data.type == "Boss":
+                groups["Boss Battle"].append(name)
+                continue
+
+            if data.type == "Local":
+                groups["Local"].append(name)
+            elif data.type == "Workshop":
+                groups["Workshop"].append(name)
+            else:
+                groups["Vanilla"].append(name)
+
+            if name in self.FREE_SONGS:
+                groups["Free DLC"].append(name)
+
+            if data.DLC in self.base_dlc:
+                groups["Base Songs"].append(name)
+
+            groups[data.DLC].append(name)
 
         return groups
