@@ -170,7 +170,7 @@ def create_region(multiworld: MultiWorld, player: int, name: str, data: CarQuest
     return region
     
 def connect_regions(multiworld: MultiWorld, player: int, source: str, data: CarQuestRegionData, rule=None):
-    for _, target in enumerate(data.exits):
+    for target in data.exits:
         sourceRegion = multiworld.get_region(source, player)
         targetRegion = multiworld.get_region(target, player)
         sourceRegion.connect(targetRegion, rule=rule)
