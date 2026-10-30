@@ -418,6 +418,7 @@ class RotNCollections:
         "Remix Rift": [],
         "Minigame": [],
         "Boss Battle": [],
+        "Custom": [],
         "Vanilla": [],
         "Workshop": [],
         "Local": [],
@@ -450,10 +451,12 @@ class RotNCollections:
             elif data.type == "Boss":
                 newGroup["Boss Battle"].append(name)
                 continue
+            elif data.type == "Custom":
+                newGroup["Custom"].append(name)
 
-            if data.type == "Local":
+            if data.DLC == "Local":
                 newGroup["Local"].append(name)
-            elif data.type == "Workshop":
+            elif data.DLC == "Workshop":
                 newGroup["Workshop"].append(name)
             else:
                 newGroup["Vanilla"].append(name)
@@ -484,10 +487,12 @@ class RotNCollections:
             elif data.type == "Boss":
                 newGroup["Boss Battle"].append(name)
                 continue
+            elif data.type == "Custom":
+                newGroup["Custom"].append(name)
 
-            if data.type == "Local":
+            if data.DLC == "Local":
                 newGroup["Local"].append(name)
-            elif data.type == "Workshop":
+            elif data.DLC == "Workshop":
                 newGroup["Workshop"].append(name)
             else:
                 newGroup["Vanilla"].append(name)
