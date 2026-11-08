@@ -158,13 +158,13 @@ class RotNCollections:
         "Wonder Style": SongData(165, "Wonder Style", "Hatsune Miku 2", 5, 11, 16, 25),
         "My One and Oni": SongData(166, "My One and Oni", "Hatsune Miku 2", 6, 11, 17, 23),
         #Conga
-        "Konga Conga Kappa": SongData(167, "Konga Conga Kappa", "Crypt of the Necrodancer", 3, 11, 16, 24, False),
+        "Konga Conga Kappa": SongData(167, "Konga Conga Kappa", "Crypt of the Necrodancer", 3, 11, 16, 24),
         #Mystery Skulls
-        "Freaking Out": SongData(168, "Freaking Out", "Mystery Skulls", 4, 10, 18, 24, False),
-        "Hellbent (feat. Snowblood)": SongData(169, "Hellbent (feat. Snowblood)", "Mystery Skulls", 4, 10, 16, 23, False),
-        "Ghost": SongData(170, "Ghost", "Mystery Skulls", 3, 9, 16, 25, False),
-        "The Future": SongData(171, "The Future", "Mystery Skulls", 4, 9, 17, 24, False),
-        "When I'm with You": SongData(172, "When I'm with You", "Mystery Skulls", 4, 9, 15, 22, False),
+        "Freaking Out": SongData(168, "Freaking Out", "Mystery Skulls", 4, 10, 18, 24),
+        "Hellbent (feat. Snowblood)": SongData(169, "Hellbent (feat. Snowblood)", "Mystery Skulls", 4, 10, 16, 23),
+        "Ghost": SongData(170, "Ghost", "Mystery Skulls", 3, 9, 16, 25),
+        "The Future": SongData(171, "The Future", "Mystery Skulls", 4, 9, 17, 24),
+        "When I'm with You": SongData(172, "When I'm with You", "Mystery Skulls", 4, 9, 15, 22),
     }
 
     EXTRA_DATA: Dict[str, ExtraSongData] = {
