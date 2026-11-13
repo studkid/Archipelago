@@ -282,7 +282,7 @@ class RotNWorld(World):
         for name in all_selected_locations:
             for j in range(2):
                 loc = RotNLocation(self.player, f"{name}-{j}", self.rift_collection.song_locations[f"{name}-{j}"], menu_region)
-                loc.access_rule = lambda state, item=name: state.has(item, self.player)
+                self.set_rule(loc, Has(name))
                 menu_region.locations.append(loc)
 
     def set_rules(self) -> None:
