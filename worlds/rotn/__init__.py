@@ -41,7 +41,6 @@ class RotNWorld(World):
 
     rift_collection = RotNCollections()
     filler_item_names = list(rift_collection.filler_items.keys())
-    filler_item_weights = list(rift_collection.filler_weights.values())
 
     item_name_to_id = {name: code for name, code in rift_collection.item_names_to_id.items()}
     location_name_to_id = {name: code for name, code in rift_collection.location_names_to_id.items()}
@@ -204,13 +203,17 @@ class RotNWorld(World):
         filler = self.rift_collection.filler_items.get(name)
         if filler:
             return RotNFixedItem(name, ItemClassification.filler, filler, self.player)
+
+        trap = self.rift_collection.trap_items.get(name)
+        if trap:
+            return RotNFixedItem(name, ItemClassification.trap, trap, self.player)
         
         song = self.rift_collection.song_items[name]
         self.final_song_ids.add(song.song_id)
         return RotNSongItem(name, self.player, song)
     
     def get_filler_item_name(self):
-        return self.random.choices(self.filler_item_names, self.filler_item_weights)[0]
+        return self.random.choices([filler for filler in self.options.filler_weights.keys()], [weight for weight in self.options.filler_weights.values()], k=1)[0]
     
     def create_items(self) -> None:
         song_keys_in_pool = self.included_songs.copy()
@@ -252,6 +255,13 @@ class RotNWorld(World):
             item = self.create_item(song_keys_in_pool[i])
             item.classification = ItemClassification.useful
             self.multiworld.itempool.append(item)
+
+        # Trap fill
+        trapWeights = self.options.trap_weights
+        traps = self.random.choices([trap for trap in trapWeights.keys()], [weight for weight in trapWeights.values()], 
+                                    k = round(items_left * (self.options.trap_percentage.value / 100)))
+        for trap in traps:
+            self.multiworld.itempool.append(self.create_item(trap))
 
         # Fill remaining filler
         for _ in range(0, items_left):

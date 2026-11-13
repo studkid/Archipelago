@@ -1,4 +1,4 @@
-from Options import Toggle, Range, Choice, ItemSet, OptionSet, PerGameCommonOptions, OptionGroup, FreeText, Visibility
+from Options import Toggle, Range, Choice, ItemSet, OptionSet, PerGameCommonOptions, OptionGroup, FreeText, Visibility, OptionCounter
 from dataclasses import dataclass
 from .RiftCollections import RotNCollections
 
@@ -37,7 +37,7 @@ class DuplicateSongPercentage(Range):
     """
     range_start = 0
     range_end = 100
-    default = 100
+    default = 20
     display_name = "Duplicate Song Percentage"
 
 class IncludeRemixMode(Toggle):
@@ -175,7 +175,34 @@ class ModData(FreeText):
     If this is an issue, exclude them instead
     """
     default = ''
-    visibility = Visibility.template
+    visibility = Visibility.simple_ui
+
+class FillerPool(OptionCounter):
+    """
+    Set weight distribution for filler items.
+    """
+    display_name = "Filler Weight"
+    valid_keys = RotNCollections.filler_weights.keys()
+    min = 0
+    default = RotNCollections.filler_weights
+
+class TrapPercentage(Range):
+    """
+    Set percentange of filler pool to be replaced with traps.
+    """
+    display_name = "Trap Percentage"
+    range_start = 0
+    range_end = 100
+    default = 0
+
+class TrapPool(OptionCounter):
+    """
+    Set weight distribution for trap items.
+    """
+    display_name = "Trap Weight"
+    valid_keys = RotNCollections.trap_weights.keys()
+    min = 0
+    default = RotNCollections.trap_weights
 
 rotn_option_groups = [
     OptionGroup("Game Length Settings", [
@@ -204,7 +231,12 @@ rotn_option_groups = [
     OptionGroup("Difficulty Modifiers", [
         GradeNeeded,
         FullComboNeeded,
-    ])
+    ]),
+    OptionGroup("Item Pool", [
+        FillerPool,
+        TrapPercentage,
+        TrapPool,
+    ]),
 ]
 
 @dataclass
@@ -228,3 +260,6 @@ class RotNOptions(PerGameCommonOptions):
     exclude_songs: ExcludeSongs
     goal_song_pool: GoalSongPool
     rotn_mod_data: ModData
+    filler_weights: FillerPool
+    trap_percentage: TrapPercentage
+    trap_weights: TrapPool

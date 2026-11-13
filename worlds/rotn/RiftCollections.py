@@ -12,7 +12,9 @@ class RotNCollections:
     logger = logging.getLogger("RotN")
 
     # Current ID reservations
-    # 1 - 59 Diamonds + filler/traps
+    # 1 - 19 Diamonds + filler/traps
+    # 20 - 29 Prog Health
+    # 30 - 49 Traps
     # 50 - 999 Rhythm Rifts (Supports max 474 Songs)
     # 1050 - 1999 Remix Rifts
     # 2000 - 2099 Minigames
@@ -256,6 +258,24 @@ class RotNCollections:
         "Ham": 1,
         "Vibe Charge": 5,
     }
+
+    trap_items: Dict[str, int] = {
+        "Mystery Trap": 20,
+        "Gloom Trap": 21,
+        "Nightmare Trap": 22,
+        "Coda Trap": 23,
+        "Glass Trap": 24,
+        "Upscroll Trap": 25,
+    }
+
+    trap_weights: Dict[str, int] = {
+            "Mystery Trap": 3,
+            "Gloom Trap": 5,
+            "Nightmare Trap": 6,
+            "Coda Trap": 0,
+            "Glass Trap": 0,
+            "Upscroll Trap": 1,
+        }
 
     item_names_to_id: ChainMap = ChainMap({}, filler_items)
     location_names_to_id: ChainMap = ChainMap(song_locations)
