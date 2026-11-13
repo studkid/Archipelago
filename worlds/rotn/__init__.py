@@ -4,6 +4,7 @@ from worlds.AutoWorld import WebWorld, World
 from typing import List, ClassVar, Type
 from math import floor
 import typing
+from copy import deepcopy
 from Options import PerGameCommonOptions, OptionError
 
 from .options import RotNOptions, rotn_option_groups, GoalCondition
@@ -54,6 +55,7 @@ class RotNWorld(World):
     victory_song_name: str = ""
     victory_song_type: int = 0
     location_count: int
+    song_diff_order = []
 
     ut_can_gen_without_yaml = True
 
@@ -76,7 +78,9 @@ class RotNWorld(World):
                 self.location_count = len(self.included_songs) * 2
 
             self.options.goal_condition.value = slot_data.get("goalCondition")
-            self.options.duplicate_song_percentage = 0
+            self.options.duplicate_song_percentage.value = 0
+            self.options.starting_health.value = slot_data.get('startingHealth')
+            self.options.starting_health.value = slot_data.get('requireHealth')
         
         if len(self.options.difficulty_option.value) == 0:
             self.options.difficulty_option.value = self.options.difficulty_option.default
@@ -94,6 +98,7 @@ class RotNWorld(World):
         while True:
             available_song_keys = self.rift_collection.getSongsWithSettings(self.options, min_diff, max_diff, self.player_mod_data)
             available_song_keys = self.handle_plando(available_song_keys)
+            self.song_diff_order = deepcopy(available_song_keys)
 
             if len(available_song_keys) > 0:
                 # Find the proposed goal songs and add them to a new list
@@ -334,12 +339,15 @@ class RotNWorld(World):
             "diamondWinCount": self.get_diamond_win_count(),
             "songClearCount": self.get_song_clear_count(),
             "goalCondition": self.options.goal_condition.value,
+            "startingHealth": self.options.starting_health.value,
+            "requireHealth": self.options.require_health.value,
             "gradeNeeded": self.options.grade_needed.value,
             "fullComboNeeded": self.options.full_combo_needed.value,
             "remixes": self.options.include_remix.value,
             "minigameMode": self.options.include_minigames.value,
             "bossMode": self.options.include_boss_battle.value,
             "finalSongIDs": self.final_song_ids,
+            "intensity": [min(self.options.min_intensity.value, self.options.max_intensity.value), max(self.options.min_intensity.value, self.options.max_intensity.value)],
             "modData": {pack: [[song[0], song[1]] for song in songs if song[1] in self.final_song_ids]
                         for pack, songs in self.player_mod_data.items()},
             "modRemap": self.player_mod_remap,

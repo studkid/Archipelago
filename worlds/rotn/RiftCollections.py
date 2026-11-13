@@ -2,18 +2,20 @@ from .items import SongData, ExtraSongData
 from .datagen import extractModDataToJson
 from typing import Dict, List, Set
 from copy import deepcopy
-from collections import ChainMap
+from collections import ChainMap, OrderedDict
 from BaseClasses import logging
 import traceback
 
 class RotNCollections:
     DIAMOND_NAME: str = "Diamond"
     DIAMOND_CODE: int = 1
+    HEALTH_NAME: str = "Max Health Increase"
+    HEALTH_CODE: int = 20
     logger = logging.getLogger("RotN")
 
     # Current ID reservations
     # 1 - 19 Diamonds + filler/traps
-    # 20 - 29 Prog Health
+    # 20 Prog Health
     # 30 - 49 Traps
     # 50 - 999 Rhythm Rifts (Supports max 474 Songs)
     # 1050 - 1999 Remix Rifts
@@ -374,23 +376,23 @@ class RotNCollections:
             self.song_locations[f"{name} (Hard)-1"] = location_id_index + 5
             location_id_index += 6
 
-    def getSongsWithSettings(self, options, diff_lower: int, diff_higher:int, mod_data: Dict) -> List[str]:
+    def getSongsWithSettings(self, options, diff_lower: int, diff_higher: int, mod_data: Dict) -> List[str]:
         dlc_songs = options.dlc_songs
-        filtered_list = []
+        filtered_list: Dict[str, int] = {}
 
         for key, data in self.song_items.items():
             if data.DLC == "Minigame":
                 if options.include_minigames == 1 and data.diff_easy == 1:
-                    filtered_list.append(key)
+                    filtered_list[1] = key
                 elif options.include_minigames == 2 and data.diff_easy == 0:
-                    filtered_list.append(key)
+                    filtered_list[1] = key
                 continue
 
             if data.DLC == "Boss":
                 if options.include_boss_battle == 1 and data.diff_easy == 1:
-                    filtered_list.append(key)
+                    filtered_list[1] = key
                 elif options.include_boss_battle == 2 and data.diff_easy == 0:
-                    filtered_list.append(key)
+                    filtered_list[1] = key
                 continue
             
             if data.type == "Remix" and not options.include_remix:
@@ -404,22 +406,23 @@ class RotNCollections:
                 continue
 
             if data.diff_easy != None and "Easy" in options.difficulty_option and diff_lower <= data.diff_easy <= diff_higher:
-                filtered_list.append(key)
+                filtered_list[key] = data.diff_easy
                 continue
 
             if data.diff_medium != None and "Medium" in options.difficulty_option and diff_lower <= data.diff_medium <= diff_higher:
-                filtered_list.append(key)
+                filtered_list[key] = data.diff_medium
                 continue
 
             if data.diff_hard != None and "Hard" in options.difficulty_option and diff_lower <= data.diff_hard <= diff_higher:
-                filtered_list.append(key)
+                filtered_list[key] = data.diff_hard
                 continue
 
             if data.diff_impossible != None and "Impossible" in options.difficulty_option and diff_lower <= data.diff_impossible <= diff_higher:
-                filtered_list.append(key)
+                filtered_list[key] = data.diff_impossible
                 continue
 
-        return filtered_list
+        sorted_list = OrderedDict(sorted(filtered_list.items(), key=lambda item: item[1]))
+        return sorted_list.keys()
     
     def songMatchesDlcFilter(self, song: SongData, dlc_songs: Set[str]) -> bool:
         if "All" in dlc_songs:
@@ -432,6 +435,14 @@ class RotNCollections:
             return True
 
         return False
+
+    def getSortedIncludeSongs(self, song_ids: Set[int], diff_lower: int, diff_higher: int) -> List[str]:
+        filtered_list = {}
+
+        for key, data in self.song_items.items():
+            if data.song_id in song_ids:
+                if data.song_id >= 2000 or data.song_id <= 2199:
+                    filtered_list[key] = 1
 
     groups = {
         "Song Item": [],

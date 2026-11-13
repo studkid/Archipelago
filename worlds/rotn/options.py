@@ -1,4 +1,4 @@
-from Options import Toggle, Range, Choice, ItemSet, OptionSet, PerGameCommonOptions, OptionGroup, FreeText, Visibility, OptionCounter
+from Options import Toggle, Range, Choice, ItemSet, OptionSet, PerGameCommonOptions, OptionGroup, FreeText, Visibility, OptionCounter, DefaultOnToggle
 from dataclasses import dataclass
 from .RiftCollections import RotNCollections
 
@@ -95,6 +95,24 @@ class MaxIntensity(Range):
     default = 40
     display_name = "Maximum Intensity"
 
+class StartingHealth(Range):
+    """
+    Sets starting max health [1-10].
+    Only applicable to Rhythm Rifts
+    """
+    range_start = 1
+    range_end = 10
+    default = 10
+    display_name = "Starting Health"
+
+class RequireHealth(DefaultOnToggle):
+    """
+    Makes health upgrades required for harder songs and goal.
+    Intensity rating is based on the lowest intensity chart within your selected intensity ranges and difficulty choices.
+    Minigames/Boss Battles never require health upgrades.
+    """
+    display_name = "Require Health"
+
 class GradeNeeded(Choice):
     """
     Minimum Grade required on song completion to send a check
@@ -113,7 +131,6 @@ class FullComboNeeded(Toggle):
     Requires a full combo on song completion to send a check
     """
     display_name = "Full Combo Needed"
-    default = False
 
 class GoalCondition(Choice):
     """
@@ -252,6 +269,8 @@ rotn_option_groups = [
         ModData,
     ]),
     OptionGroup("Difficulty Filtering Settings", [
+        StartingHealth,
+        RequireHealth,
         DifficultyOption,
         MinIntensity,
         MaxIntensity,
@@ -279,6 +298,8 @@ class RotNOptions(PerGameCommonOptions):
     difficulty_option: DifficultyOption
     min_intensity: MinIntensity
     max_intensity: MaxIntensity
+    starting_health: StartingHealth
+    require_health: RequireHealth
     grade_needed: GradeNeeded
     full_combo_needed: FullComboNeeded
     diamond_count_percentage: DiamondCountPercentage
