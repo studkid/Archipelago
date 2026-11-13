@@ -115,19 +115,45 @@ class FullComboNeeded(Toggle):
     display_name = "Full Combo Needed"
     default = False
 
+class GoalCondition(Choice):
+    """
+    Sets requirements needed to unlock your goal song.
+    Diamonds: Adds diamond items to the pool, goal song is unlocked once a certain percentage of them are obtained.
+    Song Clears: Complete a set percentage of your total songs.
+    """
+    display_name = "Goal Song Unlock Condition"
+    option_diamonds = 0
+    option_song_clears = 1
+    option_both = 2
+
 class DiamondCountPercentage(Range):
-    """Percentage of filler item to be replaced with diamonds."""
+    """
+    Percentage of filler item to be replaced with diamonds.
+    Ignored if Goal Song Unlock Condition is set to `song_clears`
+    """
     range_start = 50
     range_end = 100
     default = 80
-    display_name = "Diamond Percentage"
+    display_name = "Total Diamond Percentage"
 
 class DiamondWinPercentage(Range):
-    """The percentage of diamonds in the item pool that are needed to unlock the winning song."""
+    """
+    The percentage of diamonds in the item pool that are needed to unlock the goal song.
+    Ignored if Goal Song Unlock Condition is set to `song_clears`
+    """
     range_start = 50
     range_end = 100
     default = 80
-    display_name = "Diamonds Needed to Win"
+    display_name = "Diamond Goal Percentage"
+
+class SongClearPercentage(Range):
+    """
+    The percentage of song clears needed to unlock the goal song
+    Ignored if Goal Song Unlock Condition is set to `diamonds`"""
+    range_start = 50
+    range_end = 100
+    default = 80
+    display_name = "Song Clear Percentage"
 
 class IncludeSongsPercentage(Range):
     """
@@ -206,8 +232,10 @@ class TrapPool(OptionCounter):
 
 rotn_option_groups = [
     OptionGroup("Game Length Settings", [
+        GoalCondition,
         DiamondCountPercentage,
         DiamondWinPercentage,
+        SongClearPercentage,
         StartingSongs,
         AdditionalSongs,
         DuplicateSongPercentage,
@@ -263,3 +291,5 @@ class RotNOptions(PerGameCommonOptions):
     filler_weights: FillerPool
     trap_percentage: TrapPercentage
     trap_weights: TrapPool
+    goal_condition: GoalCondition
+    song_clear_percentage: SongClearPercentage

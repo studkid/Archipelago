@@ -6,11 +6,12 @@ from math import floor
 import typing
 from Options import PerGameCommonOptions, OptionError
 
-from .options import RotNOptions, rotn_option_groups
+from .options import RotNOptions, rotn_option_groups, GoalCondition
 from .RiftCollections import RotNCollections
 from .items import RotNSongItem, RotNFixedItem
 from .locations import RotNLocation
 from .datagen import getPlayerSpecificIds
+from rule_builder.rules import HasGroupUnique, Has, OptionFilter
 
 class RotNWeb(WebWorld):
     theme = "stone"
@@ -74,14 +75,8 @@ class RotNWorld(World):
                 self.included_songs = [key for key, song in self.rift_collection.song_items.items() if song.song_id in final]
                 self.location_count = len(self.included_songs) * 2
 
-            slot_options: dict[str, any] = slot_data.get("options", {})
-
-            for key, value in slot_options.items():
-                opt: Optional[Option] = getattr(self.options, key, None)
-                if opt is not None:
-                    # You can also set .value directly but that won't work if you have OptionSets
-                    setattr(self.options, key, opt.from_any(value))
-            return
+            self.options.goal_condition.value = slot_data.get("goalCondition")
+            self.options.duplicate_song_percentage = 0
         
         if len(self.options.difficulty_option.value) == 0:
             self.options.difficulty_option.value = self.options.difficulty_option.default
@@ -291,10 +286,14 @@ class RotNWorld(World):
                 menu_region.locations.append(loc)
 
     def set_rules(self) -> None:
-        self.multiworld.completion_condition[self.player] = lambda state: \
-            state.has(self.rift_collection.DIAMOND_NAME, self.player, self.get_diamond_win_count())
+        diamondRule = Has(self.rift_collection.DIAMOND_NAME, self.get_diamond_win_count()) | [OptionFilter(GoalCondition, GoalCondition.option_song_clears)]
+        songRule = HasGroupUnique("Song Item", self.get_song_clear_count()) | [OptionFilter(GoalCondition, GoalCondition.option_diamonds)]
+        self.set_completion_rule(diamondRule & songRule)
                       
     def get_diamond_count(self) -> int:
+        if(self.options.goal_condition == GoalCondition.option_song_clears):
+            return 0
+        
         multiplier = self.options.diamond_count_percentage.value / 100.0
         song_count = len(self.starting_songs) + len(self.included_songs)
         return max(1, floor(song_count * multiplier))
@@ -307,10 +306,22 @@ class RotNWorld(World):
         multiplier = self.options.diamond_win_percentage.value / 100.0
         diamond_count = self.get_diamond_count()
         return max(1, floor(diamond_count * multiplier))
+
+    def get_song_clear_count(self) -> int:
+        re_gen_passthrough = getattr(self.multiworld, "re_gen_passthrough", {})
+        if re_gen_passthrough and self.game in re_gen_passthrough:
+            return re_gen_passthrough[self.game].get("songClearCount")
+
+        multiplier = self.options.song_clear_percentage / 100.0
+        song_count = self.location_count / 2
+        return max(1, floor(song_count * multiplier))
     
     def write_spoiler_header(self, spoiler_handle: typing.TextIO):
         spoiler_handle.write(f"Selected Goal Song:              {self.victory_song_name}\n")
-        spoiler_handle.write(f"Diamonds Needed for Goal:        {self.get_diamond_win_count()}\n")
+        if(self.options.goal_condition != GoalCondition.option_song_clears):
+            spoiler_handle.write(f"Diamonds Needed for Goal:        {self.get_diamond_win_count()}\n")
+        if(self.options.goal_condition != GoalCondition.option_diamonds):
+            spoiler_handle.write(f"Song Clears Needed for Goal:     {self.get_song_clear_count()}\n")
     
     @staticmethod
     def interpret_slot_data(slot_data: dict[str, any]) -> dict[str, any]:
@@ -321,6 +332,8 @@ class RotNWorld(World):
             "victoryLocation": self.victory_song_name,
             "victoryType": self.victory_song_type,
             "diamondWinCount": self.get_diamond_win_count(),
+            "songClearCount": self.get_song_clear_count(),
+            "goalCondition": self.options.goal_condition.value,
             "gradeNeeded": self.options.grade_needed.value,
             "fullComboNeeded": self.options.full_combo_needed.value,
             "remixes": self.options.include_remix.value,
@@ -330,7 +343,4 @@ class RotNWorld(World):
             "modData": {pack: [[song[0], song[1]] for song in songs if song[1] in self.final_song_ids]
                         for pack, songs in self.player_mod_data.items()},
             "modRemap": self.player_mod_remap,
-
-            # Might not be able to trim this slot data out as most of this info is already in slot data already
-            "options": self.options.as_dict("duplicate_song_percentage", "diamond_count_percentage", "diamond_win_percentage")
         }

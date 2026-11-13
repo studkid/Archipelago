@@ -269,13 +269,13 @@ class RotNCollections:
     }
 
     trap_weights: Dict[str, int] = {
-            "Mystery Trap": 3,
-            "Gloom Trap": 5,
-            "Nightmare Trap": 6,
-            "Coda Trap": 0,
-            "Glass Trap": 0,
-            "Upscroll Trap": 1,
-        }
+        "Mystery Trap": 3,
+        "Gloom Trap": 5,
+        "Nightmare Trap": 6,
+        "Coda Trap": 0,
+        "Glass Trap": 0,
+        "Upscroll Trap": 1,
+    }
 
     item_names_to_id: ChainMap = ChainMap({}, filler_items)
     location_names_to_id: ChainMap = ChainMap(song_locations)
@@ -434,6 +434,7 @@ class RotNCollections:
         return False
 
     groups = {
+        "Song Item": [],
         "Rhythm Rift": [],
         "Remix Rift": [],
         "Minigame": [],
@@ -461,6 +462,7 @@ class RotNCollections:
         newGroup = deepcopy(self.groups)
         
         for name, data in self.song_items.items():
+            newGroup["Song Item"].append(name)
             if data.type == "Rift":
                 newGroup["Rhythm Rift"].append(name)
             elif data.type == "Remix":
