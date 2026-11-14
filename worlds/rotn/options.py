@@ -98,18 +98,28 @@ class MaxIntensity(Range):
 class StartingHealth(Range):
     """
     Sets starting max health [1-10].
-    Only applicable to Rhythm Rifts
+    Only applicable to Rhythm/Remix Rifts
     """
     range_start = 1
     range_end = 10
     default = 10
     display_name = "Starting Health"
 
+class MaxHealth(Range):
+    """
+    Sets maximum possible health to achieve from Max Health Increasing items.
+    Does nothing if equal to starting health.
+    """
+    range_start = 1
+    range_end = 20
+    default = 10
+    display_name = "Maximum Health"
+
 class RequireHealth(DefaultOnToggle):
     """
-    Makes health upgrades required for harder songs and goal.
+    Makes health upgrades required for harder songs.
     Intensity rating is based on the lowest intensity chart within your selected intensity ranges and difficulty choices.
-    Minigames/Boss Battles never require health upgrades.
+    Only applicable to Rhythm/Remix Rifts
     """
     display_name = "Require Health"
 
@@ -270,6 +280,7 @@ rotn_option_groups = [
     ]),
     OptionGroup("Difficulty Filtering Settings", [
         StartingHealth,
+        MaxHealth,
         RequireHealth,
         DifficultyOption,
         MinIntensity,
@@ -299,6 +310,7 @@ class RotNOptions(PerGameCommonOptions):
     min_intensity: MinIntensity
     max_intensity: MaxIntensity
     starting_health: StartingHealth
+    max_health: MaxHealth
     require_health: RequireHealth
     grade_needed: GradeNeeded
     full_combo_needed: FullComboNeeded

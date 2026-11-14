@@ -2,9 +2,9 @@ from .items import SongData, ExtraSongData
 from .datagen import extractModDataToJson
 from typing import Dict, List, Set
 from copy import deepcopy
-from collections import ChainMap, OrderedDict
+from collections import ChainMap
 from BaseClasses import logging
-import traceback
+from math import ceil
 
 class RotNCollections:
     DIAMOND_NAME: str = "Diamond"
@@ -279,13 +279,14 @@ class RotNCollections:
         "Upscroll Trap": 1,
     }
 
-    item_names_to_id: ChainMap = ChainMap({}, filler_items)
+    item_names_to_id: ChainMap = ChainMap({}, filler_items, trap_items)
     location_names_to_id: ChainMap = ChainMap(song_locations)
 
     modId_to_name: Dict[str, str] = {}
 
     def __init__(self) -> None:
         self.item_names_to_id[self.DIAMOND_NAME] = self.DIAMOND_CODE
+        self.item_names_to_id[self.HEALTH_NAME] = self.HEALTH_CODE
 
         mod_data = extractModDataToJson()
 
@@ -376,23 +377,27 @@ class RotNCollections:
             self.song_locations[f"{name} (Hard)-1"] = location_id_index + 5
             location_id_index += 6
 
-    def getSongsWithSettings(self, options, diff_lower: int, diff_higher: int, mod_data: Dict) -> List[str]:
+    lowest_diff = 60
+    highest_diff = 1
+    int_dict: Dict[int, List[str]]= {}
+
+    def getSongsWithSettings(self, options, diff_lower: int, diff_higher:int, mod_data: Dict) -> List[str]:
         dlc_songs = options.dlc_songs
-        filtered_list: Dict[str, int] = {}
+        filtered_list = []
 
         for key, data in self.song_items.items():
             if data.DLC == "Minigame":
                 if options.include_minigames == 1 and data.diff_easy == 1:
-                    filtered_list[1] = key
+                    filtered_list.append(key)
                 elif options.include_minigames == 2 and data.diff_easy == 0:
-                    filtered_list[1] = key
+                    filtered_list.append(key)
                 continue
 
             if data.DLC == "Boss":
                 if options.include_boss_battle == 1 and data.diff_easy == 1:
-                    filtered_list[1] = key
+                    filtered_list.append(key)
                 elif options.include_boss_battle == 2 and data.diff_easy == 0:
-                    filtered_list[1] = key
+                    filtered_list.append(key)
                 continue
             
             if data.type == "Remix" and not options.include_remix:
@@ -406,23 +411,47 @@ class RotNCollections:
                 continue
 
             if data.diff_easy != None and "Easy" in options.difficulty_option and diff_lower <= data.diff_easy <= diff_higher:
-                filtered_list[key] = data.diff_easy
+                if data.diff_easy not in self.int_dict.keys():
+                    self.int_dict[data.diff_easy] = []
+    
+                self.int_dict[data.diff_easy].append(key)
+                self.lowest_diff = min(self.lowest_diff, data.diff_easy)
+                self.highest_diff = max(self.highest_diff, data.diff_easy)
+                filtered_list.append(key)
                 continue
 
             if data.diff_medium != None and "Medium" in options.difficulty_option and diff_lower <= data.diff_medium <= diff_higher:
-                filtered_list[key] = data.diff_medium
+                if data.diff_medium not in self.int_dict.keys():
+                    self.int_dict[data.diff_medium] = []
+    
+                self.int_dict[data.diff_medium].append(key)
+                self.lowest_diff = min(self.lowest_diff, data.diff_medium)
+                self.highest_diff = max(self.highest_diff, data.diff_medium)
+                filtered_list.append(key)
                 continue
 
             if data.diff_hard != None and "Hard" in options.difficulty_option and diff_lower <= data.diff_hard <= diff_higher:
-                filtered_list[key] = data.diff_hard
+                if data.diff_hard not in self.int_dict.keys():
+                    self.int_dict[data.diff_hard] = []
+    
+                self.int_dict[data.diff_hard].append(key)
+                self.lowest_diff = min(self.lowest_diff, data.diff_hard)
+                self.highest_diff = max(self.highest_diff, data.diff_hard)
+                filtered_list.append(key)
                 continue
 
             if data.diff_impossible != None and "Impossible" in options.difficulty_option and diff_lower <= data.diff_impossible <= diff_higher:
-                filtered_list[key] = data.diff_impossible
+                if data.diff_impossible not in self.int_dict.keys():
+                    self.int_dict[data.diff_impossible] = []
+    
+                self.int_dict[data.diff_impossible].append(key)
+                self.lowest_diff = min(self.lowest_diff, data.diff_impossible)
+                self.highest_diff = max(self.highest_diff, data.diff_impossible)
+                filtered_list.append(key)
                 continue
 
-        sorted_list = OrderedDict(sorted(filtered_list.items(), key=lambda item: item[1]))
-        return sorted_list.keys()
+        self.int_dict = {key: value for key, value in sorted(self.int_dict.items(), key=lambda item: item[0])}
+        return filtered_list
     
     def songMatchesDlcFilter(self, song: SongData, dlc_songs: Set[str]) -> bool:
         if "All" in dlc_songs:
@@ -436,13 +465,64 @@ class RotNCollections:
 
         return False
 
-    def getSortedIncludeSongs(self, song_ids: Set[int], diff_lower: int, diff_higher: int) -> List[str]:
-        filtered_list = {}
+    def getSongIntensity(self, options, song: str) -> int:
+        diffs = options.difficulty_option
+        min_diff = min(options.min_intensity.value, options.max_intensity.value)
+        max_diff = max(options.min_intensity.value, options.max_intensity.value)
+        data = self.song_items[song]
 
-        for key, data in self.song_items.items():
-            if data.song_id in song_ids:
-                if data.song_id >= 2000 or data.song_id <= 2199:
-                    filtered_list[key] = 1
+        if data.DLC == "Minigame" or data.DLC == "Boss":
+            return 1
+
+        if data.diff_easy != None and "Easy" in diffs and min_diff <= data.diff_easy <= max_diff:
+            return data.diff_easy
+
+        if data.diff_medium != None and "Medium" in diffs and min_diff <= data.diff_medium <= max_diff:
+            return data.diff_medium
+
+        if data.diff_hard != None and "Hard" in diffs and min_diff <= data.diff_hard <= max_diff:
+            return data.diff_hard
+
+        if data.diff_impossible != None and "Impossible" in diffs and min_diff <= data.diff_impossible <= max_diff:
+            return data.diff_impossible
+
+    def getSphereOneSongs(self, options, song_list: List[str]) -> List[str]:
+        if options.starting_health.value >= 10 or not options.require_health.value: return song_list
+
+        sphere_one_songs = []
+
+        for intensity, songs in self.int_dict.items():
+            for song in songs:
+                sphere_one_songs.append(song)
+            self.lowest_diff = intensity + 1
+
+            if len(sphere_one_songs) > options.starting_song_count + 5:
+                break
+
+        return sphere_one_songs
+
+    def getHealthRule(self, options, song) -> int:
+        if options.starting_health.value >= 10 or options.starting_health.value == options.max_health.value or not options.require_health.value: return 0
+
+        starting_health = options.starting_health.value
+        max_health = options.max_health.value
+        health_items = max_health - starting_health
+        diff_range = self.highest_diff - self.lowest_diff
+        intensity = self.getSongIntensity(options, song)
+
+        if intensity < self.lowest_diff:
+            return 0
+
+        if intensity < self.lowest_diff + ceil(diff_range * .25):
+            return ceil(health_items * .25)
+
+        if intensity < self.lowest_diff + ceil(diff_range * .50):
+                    return ceil(health_items * .50)
+
+        if intensity < self.lowest_diff + ceil(diff_range * .75):
+                    return ceil(health_items * .75)
+
+        return health_items
 
     groups = {
         "Song Item": [],

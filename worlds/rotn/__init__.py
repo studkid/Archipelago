@@ -1,5 +1,4 @@
 from BaseClasses import Tutorial, Region, Item, ItemClassification, logging
-from Options import Optional, Option
 from worlds.AutoWorld import WebWorld, World
 from typing import List, ClassVar, Type
 from math import floor
@@ -180,9 +179,14 @@ class RotNWorld(World):
 
         # Next, make sure the starting songs are fulfilled
         if len(self.starting_songs) < starting_song_count:
+            sphere_one_songs = self.rift_collection.getSphereOneSongs(self.options, available_song_keys)
+            self.random.shuffle(sphere_one_songs)
             for _ in range(len(self.starting_songs), starting_song_count):
-                if len(available_song_keys) > 0:
-                    self.starting_songs.append(available_song_keys.pop())
+                if len(sphere_one_songs) > 0:
+                    song_name = sphere_one_songs.pop()
+                    self.starting_songs.append(song_name)
+                    if song_name in available_song_keys:
+                        available_song_keys.remove(song_name)
                 else:
                     self.starting_songs.append(self.included_songs.pop())
 
@@ -199,6 +203,10 @@ class RotNWorld(World):
         if name == self.rift_collection.DIAMOND_NAME:
             return RotNFixedItem(name, ItemClassification.progression_skip_balancing,
                                  self.rift_collection.DIAMOND_CODE, self.player)
+
+        if name == self.rift_collection.HEALTH_NAME:
+            return RotNFixedItem(name, ItemClassification.progression_skip_balancing,
+                                 self.rift_collection.HEALTH_CODE, self.player)
         
         filler = self.rift_collection.filler_items.get(name)
         if filler:
@@ -224,6 +232,11 @@ class RotNWorld(World):
         # First add all goal song tokens
         for _ in range(0, item_count):
             self.multiworld.itempool.append(self.create_item(self.rift_collection.DIAMOND_NAME))
+
+        # Add Health Increases
+        health_count = self.options.max_health - self.options.starting_health
+        for _ in range(0, health_count):
+            self.multiworld.itempool.append(self.create_item(self.rift_collection.HEALTH_NAME))
 
         # Then add 1 copy of every song
         item_count += len(self.included_songs)
@@ -285,23 +298,35 @@ class RotNWorld(World):
 
         # Adds 2 item locations per song/album to the menu region.
         for name in all_selected_locations:
+            health_items = 0
+
+            # Ensures starting songs are sphere 1
+            if name not in self.starting_songs:
+                health_items = self.rift_collection.getHealthRule(self.options, name)
+
             for j in range(2):
                 loc = RotNLocation(self.player, f"{name}-{j}", self.rift_collection.song_locations[f"{name}-{j}"], menu_region)
-                self.set_rule(loc, Has(name))
+                self.set_rule(loc, Has(name) & Has(self.rift_collection.HEALTH_NAME, health_items))
                 menu_region.locations.append(loc)
 
     def set_rules(self) -> None:
         diamondRule = Has(self.rift_collection.DIAMOND_NAME, self.get_diamond_win_count()) | [OptionFilter(GoalCondition, GoalCondition.option_song_clears)]
         songRule = HasGroupUnique("Song Item", self.get_song_clear_count()) | [OptionFilter(GoalCondition, GoalCondition.option_diamonds)]
-        self.set_completion_rule(diamondRule & songRule)
+        healthRule = Has(self.rift_collection.HEALTH_NAME, self.get_health_count())
+        self.set_completion_rule(diamondRule & songRule & healthRule)
+
+    def get_health_count(self) -> int:
+        return self.options.max_health - self.options.starting_health
                       
     def get_diamond_count(self) -> int:
         if(self.options.goal_condition == GoalCondition.option_song_clears):
             return 0
         
+        health_count = self.get_health_count()
         multiplier = self.options.diamond_count_percentage.value / 100.0
         song_count = len(self.starting_songs) + len(self.included_songs)
-        return max(1, floor(song_count * multiplier))
+        return max(1, floor((song_count - health_count) * multiplier))
+    
     
     def get_diamond_win_count(self) -> int:
         re_gen_passthrough = getattr(self.multiworld, "re_gen_passthrough", {})
@@ -340,6 +365,7 @@ class RotNWorld(World):
             "songClearCount": self.get_song_clear_count(),
             "goalCondition": self.options.goal_condition.value,
             "startingHealth": self.options.starting_health.value,
+            "maxHealth": self.options.max_health.value,
             "requireHealth": self.options.require_health.value,
             "gradeNeeded": self.options.grade_needed.value,
             "fullComboNeeded": self.options.full_combo_needed.value,
