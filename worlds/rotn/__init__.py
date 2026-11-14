@@ -55,6 +55,7 @@ class RotNWorld(World):
     victory_song_type: int = 0
     location_count: int
     song_diff_order = []
+    glitches_item_name = "Skip Health"
 
     ut_can_gen_without_yaml = True
 
@@ -68,19 +69,27 @@ class RotNWorld(World):
         logger = logging.getLogger("RotN")
         # Universal Tracker Support
         re_gen_passthrough = getattr(self.multiworld, "re_gen_passthrough", {})
+        final_song_list = []
         if re_gen_passthrough and self.game in re_gen_passthrough:
             slot_data: dict[str, any] = re_gen_passthrough[self.game]
 
             if "finalSongIDs" in slot_data:
                 final = slot_data.get("finalSongIDs", [])
-                self.included_songs = [key for key, song in self.rift_collection.song_items.items() if song.song_id in final]
+                self.included_songs = list(final)
                 self.location_count = len(self.included_songs) * 2
 
             self.options.goal_condition.value = slot_data.get("goalCondition")
             self.options.duplicate_song_percentage.value = 0
             self.options.starting_health.value = slot_data.get('startingHealth')
+            self.options.max_health.value = slot_data.get('maxHealth')
             self.options.starting_health.value = slot_data.get('requireHealth')
-        
+            self.options.difficulty_option.value = slot_data.get('difficulty')
+            intensity_range = slot_data.get('intensity')
+            self.rift_collection.lowest_diff = intensity_range[0]
+            self.rift_collection.highest_diff = intensity_range[1]
+            
+            return
+
         if len(self.options.difficulty_option.value) == 0:
             self.options.difficulty_option.value = self.options.difficulty_option.default
             logger.warning(f"\nWarning: {self.player_name} has no difficulties selected in difficulty_option.  They should fix their yaml.\nResetting to default value to continue gen.")
@@ -207,6 +216,10 @@ class RotNWorld(World):
         if name == self.rift_collection.HEALTH_NAME:
             return RotNFixedItem(name, ItemClassification.progression_skip_balancing,
                                  self.rift_collection.HEALTH_CODE, self.player)
+
+        if name == self.glitches_item_name:
+            return RotNFixedItem(name, ItemClassification.progression_skip_balancing,
+                                 None, self.player)
         
         filler = self.rift_collection.filler_items.get(name)
         if filler:
@@ -306,14 +319,17 @@ class RotNWorld(World):
 
             for j in range(2):
                 loc = RotNLocation(self.player, f"{name}-{j}", self.rift_collection.song_locations[f"{name}-{j}"], menu_region)
-                self.set_rule(loc, Has(name) & Has(self.rift_collection.HEALTH_NAME, health_items))
+                self.set_rule(loc, Has(name) & (Has(self.rift_collection.HEALTH_NAME, health_items) | Has(self.glitches_item_name)))
                 menu_region.locations.append(loc)
 
     def set_rules(self) -> None:
         diamondRule = Has(self.rift_collection.DIAMOND_NAME, self.get_diamond_win_count()) | [OptionFilter(GoalCondition, GoalCondition.option_song_clears)]
         songRule = HasGroupUnique("Song Item", self.get_song_clear_count()) | [OptionFilter(GoalCondition, GoalCondition.option_diamonds)]
         healthRule = Has(self.rift_collection.HEALTH_NAME, self.get_health_count())
-        self.set_completion_rule(diamondRule & songRule & healthRule)
+        self.set_completion_rule(diamondRule & songRule & (healthRule | Has(self.glitches_item_name)))
+
+    def create_event(self, name: str) -> Item:
+        return RotNFixedItem(name, ItemClassification.progression, None, self.player)
 
     def get_health_count(self) -> int:
         return self.options.max_health - self.options.starting_health
@@ -373,7 +389,8 @@ class RotNWorld(World):
             "minigameMode": self.options.include_minigames.value,
             "bossMode": self.options.include_boss_battle.value,
             "finalSongIDs": self.final_song_ids,
-            "intensity": [min(self.options.min_intensity.value, self.options.max_intensity.value), max(self.options.min_intensity.value, self.options.max_intensity.value)],
+            "difficulty": list(self.options.difficulty_option),
+            "intensity": [self.rift_collection.lowest_diff, self.rift_collection.highest_diff],
             "modData": {pack: [[song[0], song[1]] for song in songs if song[1] in self.final_song_ids]
                         for pack, songs in self.player_mod_data.items()},
             "modRemap": self.player_mod_remap,
