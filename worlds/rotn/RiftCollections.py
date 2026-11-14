@@ -5,6 +5,7 @@ from copy import deepcopy
 from collections import ChainMap
 from BaseClasses import logging
 from math import ceil
+import traceback
 
 class RotNCollections:
     DIAMOND_NAME: str = "Diamond"
