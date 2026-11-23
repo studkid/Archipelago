@@ -259,7 +259,7 @@ class RotNCollections:
         "Cheese": 7,
         "Chicken": 4,
         "Ham": 1,
-        "Vibe Charge": 5,
+        # "Vibe Charge": 5,
     }
 
     trap_items: Dict[str, int] = {
