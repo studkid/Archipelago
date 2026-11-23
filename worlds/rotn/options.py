@@ -228,7 +228,7 @@ class ModData(FreeText):
     If this is an issue, exclude them instead
     """
     default = ''
-    visibility = Visibility.simple_ui
+    visibility = Visibility.simple_ui | Visibility.template | Visibility.complex_ui
 
 class FillerPool(OptionCounter):
     """
