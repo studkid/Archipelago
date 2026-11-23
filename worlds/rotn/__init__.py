@@ -82,7 +82,7 @@ class RotNWorld(World):
             self.options.duplicate_song_percentage.value = 0
             self.options.starting_health.value = slot_data.get('startingHealth')
             self.options.max_health.value = slot_data.get('maxHealth')
-            self.options.starting_health.value = slot_data.get('requireHealth')
+            self.options.require_health.value = slot_data.get('requireHealth')
             self.options.difficulty_option.value = slot_data.get('difficulty')
             intensity_range = slot_data.get('intensity')
             self.rift_collection.lowest_diff = intensity_range[0]
@@ -391,6 +391,7 @@ class RotNWorld(World):
             "finalSongIDs": self.final_song_ids,
             "difficulty": list(self.options.difficulty_option),
             "intensity": [self.rift_collection.lowest_diff, self.rift_collection.highest_diff],
+            "worldVersion": self.world_version,
             "modData": {pack: [[song[0], song[1]] for song in songs if song[1] in self.final_song_ids]
                         for pack, songs in self.player_mod_data.items()},
             "modRemap": self.player_mod_remap,

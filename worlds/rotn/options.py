@@ -146,7 +146,7 @@ class GoalCondition(Choice):
     """
     Sets requirements needed to unlock your goal song.
     Diamonds: Adds diamond items to the pool, goal song is unlocked once a certain percentage of them are obtained.
-    Song Clears: Complete a set percentage of your total songs.
+    Song Clears: Complete a set percentage of your total songs.  (Note: this is based on location clears, not recomended if playing with !collect enabled)
     """
     display_name = "Goal Song Unlock Condition"
     option_diamonds = 0

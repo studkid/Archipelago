@@ -251,7 +251,7 @@ class RotNCollections:
         "Cheese": 3,
         "Chicken": 4,
         "Ham": 5,
-        "Vibe Charge": 6,
+        # "Vibe Charge": 6,
     }
 
     filler_weights: Dict[str, int] = {
@@ -263,12 +263,12 @@ class RotNCollections:
     }
 
     trap_items: Dict[str, int] = {
-        "Mystery Trap": 20,
-        "Gloom Trap": 21,
-        "Nightmare Trap": 22,
-        "Coda Trap": 23,
-        "Glass Trap": 24,
-        "Upscroll Trap": 25,
+        "Mystery Trap": 30,
+        "Gloom Trap": 31,
+        "Nightmare Trap": 32,
+        "Coda Trap": 33,
+        "Glass Trap": 34,
+        "Upscroll Trap": 35,
     }
 
     trap_weights: Dict[str, int] = {
